@@ -55,4 +55,7 @@ Here are price trends on the world's major stock markets, as calculated by Morga
 To make them directly comparable, each index is based on the close of 1969 equaling 100.
 The percentage change is since year-end.
 And also Seiyu rose 240 at 2,710.
-Aiwa did fell 220, the Dow index gained 30.
+Aiwa did fell 220,360.
+Aiwaa did fell 230, the Dow index rose 3232. the time index gained 30.
+Aiwa did fell 230, the Dow index gained 43.26. the time index gained 30.
+
