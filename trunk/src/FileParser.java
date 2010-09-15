@@ -19,7 +19,7 @@ public class FileParser {
 	public static void main(String args[]){
 		int cnt =0;
 
-		if(args.length==2)
+		if(args.length==3)
 		{
 
 
@@ -27,18 +27,14 @@ public class FileParser {
 			{
 
 
-
-
-
-
-				FileInputStream fstream2 = new FileInputStream("question.txt");
+				FileInputStream fstream2 = new FileInputStream(args[1]);
 				DataInputStream in2 = new DataInputStream(fstream2);
 				BufferedReader br2 = new BufferedReader(new InputStreamReader(in2));
 				String strLine2;
 				while ((strLine2 = br2.readLine()) != null)
 				{
 					//cnt++;
-					System.out.println(strLine2);
+					//System.out.println(strLine2);
 					parseQuestion(strLine2);
 					//if(cnt==4)
 					//	break;
@@ -50,7 +46,7 @@ public class FileParser {
 
 
 
-				FileInputStream fstream = new FileInputStream("posfile.txt");
+				FileInputStream fstream = new FileInputStream(args[0]);
 				DataInputStream in = new DataInputStream(fstream);
 				BufferedReader br = new BufferedReader(new InputStreamReader(in));
 				String strLine;
@@ -69,10 +65,10 @@ public class FileParser {
 
 				System.out.println();
 				System.out.println("Verbs "+Verbs.size());
-				printTable(Verbs);
+				//printTable(Verbs);
 				System.out.println();
 				System.out.println("Nouns "+Nouns.size());
-				printTable(Nouns);
+				//printTable(Nouns);
 
 
 			}
@@ -89,9 +85,9 @@ public class FileParser {
 		else
 		{
 			System.out.println("Usage--");
-			System.out.println("First parameter -- Input file");
+			System.out.println("First parameter -- Input POS file");
 			System.out.println("Second parameter -- Question file");
-
+			System.out.println("Third parameter -- Input Text file");
 		}
 	}
 
@@ -111,7 +107,7 @@ public class FileParser {
 
 	private static void parseLine(String strLine) {
 		try {
-			// Create matcher on file
+			
 			String st[] =strLine.split(" ");
 			for(int i=0;i<st.length;i++){
 
@@ -159,9 +155,39 @@ public class FileParser {
 
 
 
-	private static void parseQuestion(String strLine2) {
+	private static void parseQuestion(String str) {
 		// TODO Auto-generated method stub
+		Questions q= new Questions();
+		
+		
+		
+		for(int i=0;i<q.questionList.size();i++){
+		Pattern pattern = Pattern.compile(q.questionList.get(i));
+		Matcher matcher = pattern.matcher(str);
+		
+		// Find all matches
+		while (matcher.find()) {
+			// Get the matching string
+			String match = matcher.group(1);
+			//if(!Nouns.containsKey(match))
+			//	Nouns.put(match, "1");
+			System.out.println(str);
+			System.out.println(match);
+			getAnswer(match,i);
+			
+		}
+		
+		}
+		
+		
+	}
 
+
+
+
+	private static void getAnswer(String match, int i) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
