@@ -107,7 +107,7 @@ public class FileParser {
 
 	private static void parseLine(String strLine) {
 		try {
-			
+
 			String st[] =strLine.split(" ");
 			for(int i=0;i<st.length;i++){
 
@@ -158,36 +158,84 @@ public class FileParser {
 	private static void parseQuestion(String str) {
 		// TODO Auto-generated method stub
 		Questions q= new Questions();
-		
-		
-		
+
+
+
 		for(int i=0;i<q.questionList.size();i++){
-		Pattern pattern = Pattern.compile(q.questionList.get(i));
-		Matcher matcher = pattern.matcher(str);
-		
-		// Find all matches
-		while (matcher.find()) {
-			// Get the matching string
-			String match = matcher.group(1);
-			//if(!Nouns.containsKey(match))
-			//	Nouns.put(match, "1");
-			System.out.println(str);
-			System.out.println(match);
-			getAnswer(match,i);
-			
+			Pattern pattern = Pattern.compile(q.questionList.get(i));
+			Matcher matcher = pattern.matcher(str);
+
+			while (matcher.find()) {
+
+				String match = matcher.group(1);
+
+				System.out.println(str);
+				//System.out.println(match);
+				boolean ans= getAnswer(match,i);
+				if(ans==false){
+					System.out.println("No Information Available.");
+				}
+
+			}
+
 		}
-		
-		}
-		
-		
+
+
 	}
 
 
 
 
-	private static void getAnswer(String match, int i) {
+	private static boolean getAnswer(String nounCase, int casei) {
 		// TODO Auto-generated method stub
-		
+		boolean flag=false;
+		try{
+
+
+
+			FileInputStream fstream = new FileInputStream("inputfile.txt");
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine;
+			while ((strLine = br.readLine()) != null)
+			{
+				if(casei==0){
+
+
+					Pattern pattern = Pattern.compile("("+nounCase+".*?)(,\\s|\\.)",Pattern.DOTALL);
+					Matcher matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+
+						String match = matcher.group(1).trim();
+
+						System.out.println(match);
+						System.out.println(strLine);
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+				}
+
+			}
+
+			in.close();
+
+			return flag;
+
+
+
+		}
+		catch (Exception e)
+		{
+			System.err.println("Error: " + e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+
+
 	}
 
 
