@@ -167,11 +167,10 @@ public class FileParser {
 
 			while (matcher.find()) {
 
-				String match = matcher.group(1);
 
 				System.out.println(str);
 				//System.out.println(match);
-				boolean ans= getAnswer(match,i);
+				boolean ans= getAnswer(matcher,i);
 				if(ans==false){
 					System.out.println("No Information Available.");
 				}
@@ -186,11 +185,12 @@ public class FileParser {
 
 
 
-	private static boolean getAnswer(String nounCase, int casei) {
+	private static boolean getAnswer(Matcher matcherr, int casei) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
 		try{
 
+			String nounCase = matcherr.group(1);
 
 
 			FileInputStream fstream = new FileInputStream("inputfile.txt");
@@ -202,7 +202,7 @@ public class FileParser {
 				if(casei==0){
 
 
-					Pattern pattern = Pattern.compile("("+nounCase+".*?)(,\\s|\\.)",Pattern.DOTALL);
+					Pattern pattern = Pattern.compile("("+nounCase+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					Matcher matcher = pattern.matcher(strLine);
 
 
@@ -218,6 +218,62 @@ public class FileParser {
 					//System.out.println(strLine);
 
 				}
+
+
+
+
+
+				if(casei==1){
+
+
+					String caseQ = matcherr.group(2);
+					Pattern pattern = Pattern.compile("("+nounCase+".* (fall|fell|loose|lost).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					Matcher matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+
+						String match = matcher.group(1).trim();
+
+						System.out.println(match);
+						System.out.println(strLine);
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+				}
+
+
+
+
+
+
+
+				if(casei==2){
+
+
+					String caseQ = matcherr.group(2);
+					Pattern pattern = Pattern.compile("("+nounCase+".* (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					Matcher matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+
+						String match = matcher.group(1).trim();
+
+						System.out.println(match);
+						System.out.println(strLine);
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+				}
+
+
+
+
 
 			}
 
