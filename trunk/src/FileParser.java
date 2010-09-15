@@ -167,7 +167,7 @@ public class FileParser {
 
 			while (matcher.find()) {
 
-
+				System.out.println();
 				System.out.println(str);
 				//System.out.println(match);
 				boolean ans= getAnswer(matcher,i);
@@ -188,6 +188,8 @@ public class FileParser {
 	private static boolean getAnswer(Matcher matcherr, int casei) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
+		int cntLine=0;
+		int cnt=0;
 		try{
 
 			String nounCase = matcherr.group(1);
@@ -199,19 +201,20 @@ public class FileParser {
 			String strLine;
 			while ((strLine = br.readLine()) != null)
 			{
+				cntLine++;
 				if(casei==0){
 
 
-					Pattern pattern = Pattern.compile("("+nounCase+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					Pattern pattern = Pattern.compile("("+nounCase+" .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					Matcher matcher = pattern.matcher(strLine);
 
 
 					while (matcher.find()) {
-
+						cnt++;
 						String match = matcher.group(1).trim();
 
-						System.out.println(match);
-						System.out.println(strLine);
+						System.out.println("A "+cnt+": "+match+".");
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
 
@@ -227,16 +230,29 @@ public class FileParser {
 
 
 					String caseQ = matcherr.group(2);
-					Pattern pattern = Pattern.compile("("+nounCase+".* (fall|fell|loose|lost).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					//Pattern pattern = Pattern.compile("("+nounCase+"[^,\\.]*? (fall|fell|loose|lost) .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					Pattern pattern = Pattern.compile(""+nounCase+" [^,\\.]*?(fall|fell|loose|lost) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL);
+
+
+
 					Matcher matcher = pattern.matcher(strLine);
 
 
 					while (matcher.find()) {
-
-						String match = matcher.group(1).trim();
-
-						System.out.println(match);
-						System.out.println(strLine);
+						cnt++;
+						String match = matcher.group(2).trim();
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
 
@@ -254,16 +270,27 @@ public class FileParser {
 
 
 					String caseQ = matcherr.group(2);
-					Pattern pattern = Pattern.compile("("+nounCase+".* (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					Pattern pattern = Pattern.compile(""+nounCase+" [^,\\.]*?(rise|gain|gained|rose) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					Matcher matcher = pattern.matcher(strLine);
 
 
 					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(2).trim();
 
-						String match = matcher.group(1).trim();
-
-						System.out.println(match);
-						System.out.println(strLine);
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
 
