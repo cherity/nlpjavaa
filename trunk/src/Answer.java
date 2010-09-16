@@ -10,7 +10,7 @@ public class Answer {
 
 
 
-	public static boolean getAnswer(Matcher matcherr, int casei) {
+	public  boolean getAnswer(Matcher matcherr, int casei) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
 		int cntLine=0;
