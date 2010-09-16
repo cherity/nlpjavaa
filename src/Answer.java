@@ -213,6 +213,49 @@ public class Answer {
 
 
 
+
+				case 4:
+
+
+					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+					pattern = Pattern.compile(""+nounCase+".*?(to|at) ([0-9\\s.,/]*).*",Pattern.DOTALL);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(2).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+
+
+					break;
+
+
+
+
+
+
+
+
+
 				default: break;
 
 
