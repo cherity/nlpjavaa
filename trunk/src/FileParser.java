@@ -13,8 +13,8 @@ import java.util.regex.Pattern;
 
 public class FileParser {
 
-	public static Hashtable Verbs = new Hashtable();
-	public static Hashtable Nouns = new Hashtable();
+	public static Hashtable<String,String> Verbs = new Hashtable<String,String>();
+	public static Hashtable<String,String> Nouns = new Hashtable<String,String>();
 
 	public static void main(String args[]){
 		int cnt =0;
@@ -63,11 +63,11 @@ public class FileParser {
 
 
 
-				System.out.println();
-				System.out.println("Verbs "+Verbs.size());
+				//System.out.println();
+				//System.out.println("Verbs "+Verbs.size());
 				//printTable(Verbs);
-				System.out.println();
-				System.out.println("Nouns "+Nouns.size());
+				//System.out.println();
+				//System.out.println("Nouns "+Nouns.size());
 				//printTable(Nouns);
 
 
@@ -94,10 +94,10 @@ public class FileParser {
 
 
 
-	private static void printTable(Hashtable ht) {
+	private static void printTable(Hashtable<String,String> ht) {
 
 
-		Enumeration e = ht.keys();
+		Enumeration<String> e = ht.keys();
 		while( e. hasMoreElements() ){
 			System.out.println( e.nextElement() );
 		}
