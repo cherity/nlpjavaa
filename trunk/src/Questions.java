@@ -5,9 +5,9 @@ public class Questions {
 
 	public ArrayList<String> questionList=new ArrayList<String>();
 
-	public String  negVerbs="(fall|fell|loose|lost|collapse|collapsed|crash|crashed|dip|dipped|decline|declined|down|sink|drop|dropped)";
-	public String  posVerbs="(rise|risen|climb|climbed|gain|gained|rose|grow|raised|raise|hike|hiked|up)";
-	public String  allVerbs="(rise|risen|climb|climbed|gain|gained|rose|grow|raised|raise|hike|hiked|up|fall|fell|loose|lost|collapse|collapsed|crash|drop|dropped|crashed|dip|dipped|decline|declined|down|sink)";
+	public String  negVerbs="(fall|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|carshing|crash|crashed|dip|dipped|dipping|declining|sinking|dropping|decline|declined|down|sink|drop|dropped)";
+	public String  posVerbs="(rise|risen|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up)";
+	public String  allVerbs="(rise|risen|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|fall|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|carshing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|droppping|down|sink)";
 
 	public Questions(){
 
