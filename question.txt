@@ -11,3 +11,5 @@ What indexes fell?
 What indexes rose?
 What company stocks rose? 
 What did the dollar do against the yen? 
+Which stocks rise?
+Which stocks went down?
