@@ -5,8 +5,8 @@ public class Questions {
 
 	public ArrayList<String> questionList=new ArrayList<String>();
 
-	public String  negVerbs="(fall|fell|loose|lost|collapse|collapsed|crash|crashed|dip(ped|)|decline|declined|down|sink)";
-	public String  posVerbs="(rise(n|)|gain|gained|rose|grow|raised|raise|hike(d|)|up)";
+	public String  negVerbs="(fall|fell|loose|lost|collapse|collapsed|crash|crashed|dip|dipped|decline|declined|down|sink)";
+	public String  posVerbs="(rise|risen|gain|gained|rose|grow|raised|raise|hike|hiked|up)";
 	public String  allVerbs="(rise|risen|gain|gained|rose|grow|raised|raise|hike|hiked|up|fall|fell|loose|lost|collapse|collapsed|crash|crashed|dip|dipped|decline|declined|down|sink)";
 
 	public Questions(){
