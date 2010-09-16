@@ -27,6 +27,7 @@ public class Answer {
 			Pattern pattern;
 			Matcher matcher;
 			String caseQ;
+			Questions question= new Questions();
 
 			while ((strLine = br.readLine()) != null)
 			{
@@ -93,6 +94,7 @@ public class Answer {
 
 
 					break;
+
 				case 2:
 
 
@@ -129,6 +131,87 @@ public class Answer {
 
 
 					break;
+
+
+
+
+
+
+				case 3:
+
+
+
+					boolean wrflag=true;
+					//int cntt =matcherr.groupCount();
+					//for(int tt=0;tt<= matcherr.groupCount();tt++){
+					//	System.out.print(tt+matcherr.group(tt)+"            ");
+					//}
+
+					caseQ = matcherr.group(2);
+					pattern = Pattern.compile(""+nounCase+" [^,\\.]*?("+question.allVerbs+") .*(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+						String pos="";
+						String neg="";
+						String x=caseQ;
+						String y=matcherr.group(3);
+
+						if(question.negVerbs.matches(".*"+x+".*")){
+							neg=x;
+							pos=y;
+
+						}
+						else if(question.posVerbs.matches(".*"+x+".*")){
+							neg=y;
+							pos=x;
+						}
+						else if(question.posVerbs.matches(".*"+y+".*")){
+							neg=x;
+							pos=y;
+						}
+						else if(question.negVerbs.matches(".*"+y+".*")){
+							neg=y;
+							pos=x;
+						}
+						else{
+							wrflag=false;
+						}
+
+
+
+						if(question.negVerbs.matches(".*"+match+".*")){
+							if(wrflag)
+								System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
+							else
+								System.out.println("A "+cnt+": "+match+".");
+						}
+						else if(question.posVerbs.matches(".*"+match+".*")){
+							if(wrflag)
+								System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
+							else
+								System.out.println("A "+cnt+": "+match+".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+
+
+
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+
+
+					break;
+
+
 
 				default: break;
 

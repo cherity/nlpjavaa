@@ -7,6 +7,7 @@ public class Questions {
 
 	public String  negVerbs="(fall|fell|loose|lost|collapse|collapsed|crash|crashed|dip(ped|)|decline|declined|down|sink)";
 	public String  posVerbs="(rise(n|)|gain|gained|rose|grow|raised|raise|hike(d|)|up)";
+	public String  allVerbs="(rise|risen|gain|gained|rose|grow|raised|raise|hike|hiked|up|fall|fell|loose|lost|collapse|collapsed|crash|crashed|dip|dipped|decline|declined|down|sink)";
 
 	public Questions(){
 
@@ -17,7 +18,7 @@ public class Questions {
 		questionList.add(".*[Hh]ow much did .*?([A-Z].*)\\s?.* "+posVerbs+"\\?");
 
 
-		questionList.add(".*[Dd]id .*?([A-Z].*) .*?(rise(n|)|fall|gain|gained|fell|rose|loose|lost|grow|raised|raise|hike(d|)|up|collapse|collapsed|crash|crashed|dip(ped|)|decline|declined|down|sink) or .*?(rise(n|)|fall|gain|gained|fell|rose|loose|lost|grow|raised|raise|hike(d|)|up|collapse|collapsed|crash|crashed|dip(ped|)|decline|declined|down|sink)\\?");
+		questionList.add(".*[Dd]id .*?([A-Z].*) .*?"+allVerbs+" or "+allVerbs+"\\?");
 
 		questionList.add(".*[Ww]hat did .*?([A-Z].*) close at\\?");
 
