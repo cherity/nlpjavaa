@@ -20,14 +20,14 @@ public class Questions {
 
 		questionList.add(".*[Dd]id .*?([A-Z].*) .*?"+allVerbs+" or "+allVerbs+"\\?");
 
-		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) close at\\?");
+		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) close(d|) at\\?");
 
 
 
+		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) open(ed|) at\\?");
+		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) s(ell|old) at\\?");
 
 
-		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) open at\\?");
-		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) sell at\\?");
 
 		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+negVerbs+"\\?");
 		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+posVerbs+"\\?");
