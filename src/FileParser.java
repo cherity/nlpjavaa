@@ -16,6 +16,7 @@ public class FileParser {
 	public static Hashtable<String,String> Verbs = new Hashtable<String,String>();
 	public static Hashtable<String,String> Nouns = new Hashtable<String,String>();
 
+	public static int cnttt=0;
 	public static void main(String args[]){
 		int cnt =0;
 
@@ -160,15 +161,14 @@ public class FileParser {
 		Questions q= new Questions();
 
 
-
 		for(int i=0;i<q.questionList.size();i++){
 			Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
 			Matcher matcher = pattern.matcher(str);
 
 			while (matcher.find()) {
-
+cnttt++;
 				System.out.println();
-				System.out.println(str);
+				System.out.println(cnttt+". "+str);
 				//System.out.println(match);
 				Answer answer = new Answer();
 				boolean ans= answer.getAnswer(matcher,i);
