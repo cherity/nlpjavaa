@@ -162,7 +162,7 @@ public class FileParser {
 
 
 		for(int i=0;i<q.questionList.size();i++){
-			Pattern pattern = Pattern.compile(q.questionList.get(i));
+			Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
 			Matcher matcher = pattern.matcher(str);
 
 			while (matcher.find()) {
