@@ -26,6 +26,9 @@ public class Answer {
 			}
 
 			FileInputStream fstream = new FileInputStream("inputfile.txt");
+
+
+			//FileInputStream fstream = new FileInputStream("posfile.txt");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;
@@ -396,7 +399,7 @@ public class Answer {
 
 
 					boolean flag2=false;
-					pattern = Pattern.compile("[,\\.] [a-z0-9]*\\s?([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("[,\\.] [a-z0-9]*\\s?([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL);
 					//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
 					matcher = pattern.matcher(strLine);
 
@@ -423,7 +426,7 @@ public class Answer {
 
 					//System.out.println(strLine);
 					if(!flag2){
-						pattern = Pattern.compile("^([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						pattern = Pattern.compile("^([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL);
 						//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
 						matcher = pattern.matcher(strLine);
 
@@ -460,11 +463,13 @@ public class Answer {
 				case 8:
 
 					boolean flag3=false;
-					pattern = Pattern.compile("[,\\.] [a-z0-9]*\\s?([A-Z].*? [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//latest--pattern = Pattern.compile("[,\\.] [A-Za-z0-9]*\\s?([A-Z].*? [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
 					//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
+
+					pattern = Pattern.compile("(\\[.* [iI]ndex .*\\])"+question.posVerbs+".*?",Pattern.DOTALL);
 					matcher = pattern.matcher(strLine);
 
-
+					//System.out.println(strLine);
 					while (matcher.find()) {
 						cnt++;
 						String match = matcher.group(1).trim();
@@ -486,8 +491,8 @@ public class Answer {
 					}
 
 					//System.out.println(strLine);
-					if(!flag3){
-						pattern = Pattern.compile("^([A-Z].*? [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					{
+						pattern = Pattern.compile("^([A-Z].*? [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
 						//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
 						matcher = pattern.matcher(strLine);
 
@@ -518,6 +523,44 @@ public class Answer {
 					break;
 
 
+
+
+
+				case 10:
+
+					String c1= matcherr.group(2);
+					String c2= matcherr.group(3);
+					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+					pattern = Pattern.compile("\\b"+c1+"\\b.*? ("+question.allVerbs+") .*?against .*?\\b"+c2+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+
+
+
+					break;
 
 				default: break;
 
