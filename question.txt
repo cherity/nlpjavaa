@@ -7,8 +7,6 @@ How much did Aiwa fall?
 How much did the Dow index rise?
 What was the discount rate? 
 Did the Nikkei Index rise or fall?
-What indexes fell?
-What indexes rose?
 What company stocks rose? 
 What did the dollar do against the yen? 
 Which stocks rise?
@@ -30,3 +28,5 @@ What did Pepsi open at?
 How much did Times index opened at?
 How much did Timex sold at?
 How much did Tin sell at?
+What indexes fell?
+What indexes rose?

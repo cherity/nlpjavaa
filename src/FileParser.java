@@ -166,7 +166,7 @@ public class FileParser {
 			Matcher matcher = pattern.matcher(str);
 
 			while (matcher.find()) {
-cnttt++;
+				cnttt++;
 				System.out.println();
 				System.out.println(cnttt+". "+str);
 				//System.out.println(match);

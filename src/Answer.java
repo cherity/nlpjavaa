@@ -363,6 +363,162 @@ public class Answer {
 
 
 
+
+				case 7:
+					/*
+
+					//pattern = Pattern.compile(".*?([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile(".*?([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+					 */
+					//System.out.println(strLine);
+
+
+
+					boolean flag2=false;
+					pattern = Pattern.compile("[,\\.] [a-z0-9]*\\s?([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+						flag2=true;
+					}
+
+					//System.out.println(strLine);
+					if(!flag2){
+						pattern = Pattern.compile("^([A-Z].*? [iI]ndex) .*?"+question.negVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
+						matcher = pattern.matcher(strLine);
+
+
+						while (matcher.find()) {
+							cnt++;
+							String match = matcher.group(1).trim();
+
+							char[] trimarr= match.toCharArray();
+							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+								System.out.print("A "+cnt+": ");
+								for(int l=0;l<trimarr.length-1;l++){
+									System.out.print(trimarr[l]);
+								}
+								System.out.println(".");
+							}
+							else{
+								System.out.println("A "+cnt+": "+match+".");
+							}
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							flag=true;
+							flag2=true;
+						}
+					}
+
+
+
+
+
+					break;
+
+
+
+				case 8:
+
+					boolean flag3=false;
+					pattern = Pattern.compile("[,\\.] [a-z0-9]*\\s?([A-Z].*? [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+						flag3=true;
+					}
+
+					//System.out.println(strLine);
+					if(!flag3){
+						pattern = Pattern.compile("^([A-Z].*? [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						//pattern = Pattern.compile(".*[,\\.]\\s[a-z0-9]* ([A-Z].* [iI]ndex) .*?"+question.posVerbs+".*?",Pattern.DOTALL);
+						matcher = pattern.matcher(strLine);
+
+
+						while (matcher.find()) {
+							cnt++;
+							String match = matcher.group(1).trim();
+
+							char[] trimarr= match.toCharArray();
+							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+								System.out.print("A "+cnt+": ");
+								for(int l=0;l<trimarr.length-1;l++){
+									System.out.print(trimarr[l]);
+								}
+								System.out.println(".");
+							}
+							else{
+								System.out.println("A "+cnt+": "+match+".");
+							}
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							flag=true;
+							flag2=true;
+						}
+					}
+
+
+
+					break;
+
+
+
 				default: break;
 
 
