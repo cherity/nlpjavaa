@@ -540,17 +540,9 @@ public class Answer {
 						cnt++;
 						String match = matcher.group(1).trim();
 
-						char[] trimarr= match.toCharArray();
-						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-							System.out.print("A "+cnt+": ");
-							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
-							}
-							System.out.println(".");
-						}
-						else{
-							System.out.println("A "+cnt+": "+match+".");
-						}
+
+						System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
@@ -561,6 +553,89 @@ public class Answer {
 
 
 					break;
+
+
+
+
+				case 11:
+
+
+					boolean wrflag2=true;
+					String c3= matcherr.group(2);
+					String c4= matcherr.group(6);
+					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+					pattern = Pattern.compile("\\b"+c3+"\\b.*? ("+question.allVerbs+") .*?against .*?\\b"+c4+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						String pos="";
+						String neg="";
+						String x=matcherr.group(3);
+						String y=matcherr.group(4);
+
+						if(question.negVerbs.matches(".*"+x+".*")){
+							neg=x;
+							pos=y;
+
+						}
+						else if(question.posVerbs.matches(".*"+x+".*")){
+							neg=y;
+							pos=x;
+						}
+						else if(question.posVerbs.matches(".*"+y+".*")){
+							neg=x;
+							pos=y;
+						}
+						else if(question.negVerbs.matches(".*"+y+".*")){
+							neg=y;
+							pos=x;
+						}
+						else{
+							wrflag2=false;
+						}
+
+
+
+						if(question.negVerbs.matches(".*"+match+".*")){
+							if(wrflag2)
+								System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
+							else
+								System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+						}
+						else if(question.posVerbs.matches(".*"+match+".*")){
+							if(wrflag2)
+								System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
+							else
+								System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+						}
+
+
+
+
+
+
+
+
+
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+
+
+
+					break;
+
 
 				default: break;
 

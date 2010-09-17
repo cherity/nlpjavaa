@@ -26,9 +26,9 @@ public class Questions {
 		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) open(ed|) at\\?");
 		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) s(ell|old) at\\?");
 
-		
-		
-		
+
+
+
 
 		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+negVerbs+"\\?");
 		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+posVerbs+"\\?");
