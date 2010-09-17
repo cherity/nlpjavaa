@@ -56,10 +56,10 @@ To make them directly comparable, each index is based on the close of 1969 equal
 The percentage change is since year-end.
 And also Seiyu rose 240 at 2,710.
 Aiwa did fell 220,360.
-Aiwaa did fell 230, the Dow index rose 3232. the time index gained 30.
-Aiwa did fell 230, the Dow index gained 43.26. the time index gained 30.
+Aiwaa did fell 230, the Dow index rose 3232. the Time index gained 30.
+Aiwa did fell 230.
 Pepsi opened at 23456.
-Times Index opened at 234. Nippon Shokubai opened at 222
+Times Index opened at 234. Nippon Shokubai opened at 222.
 Tin was bought at 30, Timex sold at 60.
 
 
