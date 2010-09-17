@@ -8,7 +8,6 @@ How much did the Dow index rise?
 What was the discount rate? 
 Did the Nikkei Index rise or fall?
 What company stocks rose? 
-What did the dollar do against the yen? 
 Which stocks rise?
 Which stocks went down?
 Which index went up?
@@ -30,3 +29,6 @@ How much did Timex sold at?
 How much did Tin sell at?
 What indexes fell?
 What indexes rose?
+What did dollar do against yen?
+What did the dollar do against the yen?
+What did the dollar do against the rupee?

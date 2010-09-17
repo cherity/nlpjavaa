@@ -529,7 +529,7 @@ public class Answer {
 				case 10:
 
 					String c1= matcherr.group(2);
-					String c2= matcherr.group(3);
+					String c2= matcherr.group(4);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
 					pattern = Pattern.compile("\\b"+c1+"\\b.*? ("+question.allVerbs+") .*?against .*?\\b"+c2+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
