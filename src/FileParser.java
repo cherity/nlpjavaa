@@ -28,6 +28,9 @@ public class FileParser {
 			{
 
 
+				POSFileReader posfi=new POSFileReader();
+				posfi.readFile(args[0]);
+
 				FileInputStream fstream2 = new FileInputStream(args[1]);
 				DataInputStream in2 = new DataInputStream(fstream2);
 				BufferedReader br2 = new BufferedReader(new InputStreamReader(in2));

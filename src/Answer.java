@@ -36,9 +36,11 @@ public class Answer {
 			Matcher matcher;
 			String caseQ;
 			Questions question= new Questions();
-
-			while ((strLine = br.readLine()) != null)
+			POSFileReader posff= new POSFileReader();
+			//while ((strLine = br.readLine()) != null)
+			for(int ttt=0;ttt<posff.freetextfile.size();ttt++)
 			{
+				strLine=posff.freetextfile.get(ttt);
 				cntLine++;
 				switch(casei){
 				case 0:
