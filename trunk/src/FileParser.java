@@ -17,7 +17,7 @@ public class FileParser {
 	public static void main(String args[]){
 		int cnt =0;
 
-		if(args.length==3)
+		if(args.length==2)
 		{
 
 
@@ -81,7 +81,7 @@ public class FileParser {
 			System.out.println("Usage--");
 			System.out.println("First parameter -- Input POS file");
 			System.out.println("Second parameter -- Question file");
-			System.out.println("Third parameter -- Input Text file");
+
 		}
 	}
 
