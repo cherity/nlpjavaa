@@ -25,12 +25,12 @@ public class Answer {
 				nounCase= matcherr.group(1);
 			}
 
-			FileInputStream fstream = new FileInputStream("inputfile.txt");
+			/*FileInputStream fstream = new FileInputStream("inputfile.txt");
 
 
 			//FileInputStream fstream = new FileInputStream("posfile.txt");
 			DataInputStream in = new DataInputStream(fstream);
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));*/
 			String strLine;
 			String strLinePos;
 			Pattern pattern;
@@ -712,7 +712,7 @@ public class Answer {
 				}
 			}
 
-			in.close();
+			//in.close();
 
 			return flag;
 
