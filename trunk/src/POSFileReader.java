@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public class POSFileReader {
 
 	public static ArrayList<String> freetextfile=new ArrayList<String>();
+	public static ArrayList<String> freeposfile=new ArrayList<String>();
 
 	//public static String[] ast;
 	public static void main(String args[]){
@@ -32,7 +33,9 @@ public class POSFileReader {
 			{
 				cnt++;
 				//System.out.println(strLine);
+				freeposfile.add(strLine);
 				parseEachLine(strLine);
+
 				//		if(cnt==2)
 				//		break;
 			}
@@ -54,8 +57,8 @@ public class POSFileReader {
 	private static void parseEachLine(String strLine) {
 		// TODO Auto-generated method stub
 
-		System.out.println(strLine);
-		strLine=strLine.replaceAll("\\\\/", "yessss");
+		//System.out.println(strLine);
+		strLine=strLine.replaceAll("\\\\/", "yesssrandomsss");
 		String[] words =strLine.split("(/.*? |/.*?$)");
 		String line2="";
 		int cnt2=0;
@@ -84,7 +87,7 @@ public class POSFileReader {
 			//if(cnt2==3)
 			//break;
 			word = word.replaceAll("\\s", "");
-			word = word.replaceAll("yessss", "/");
+			word = word.replaceAll("yesssrandomsss", "/");
 			if(cnt2==1||word.startsWith("'")||word.startsWith(",")||word.startsWith(".")||word.startsWith("%")||word.startsWith("n't")||word.startsWith("'t")){
 				line2= line2+word;
 			}
@@ -99,16 +102,16 @@ public class POSFileReader {
 		line2=line2.replaceAll("\\( ", "\\(");
 		line2=line2.replaceAll(" \\)", "\\)");
 		line2=line2.replaceAll("\\$ ", "\\$");
-		System.out.print(line2);
+		//System.out.print(line2);
 
-		System.out.println();
+		//System.out.println();
 		String line="";
 		int cnt =0;
 		for(String word: words){
 			//System.out.println(word);
 			cnt++;
 			word=	word.replace("] ","");
-			word = word.replaceAll("yessss", "/");
+			word = word.replaceAll("yesssrandomsss", "/");
 			word=word.replace("[ ","");
 			word = word.replaceAll("\\s", "");
 			if(cnt==1||word.startsWith("'")||word.startsWith(",")||word.startsWith(".")||word.startsWith("%")||word.startsWith("n't")||word.startsWith("'t")){
@@ -124,9 +127,9 @@ public class POSFileReader {
 		line=line.replaceAll("\\( ", "\\(");
 		line=line.replaceAll(" \\)", "\\)");
 		line=line.replaceAll("\\$ ", "\\$");
-		System.out.println(line);
+		//System.out.println(line);
 		freetextfile.add(line);
-		System.out.println();
+		//System.out.println();
 
 	}
 
@@ -182,13 +185,13 @@ public class POSFileReader {
 
 		//System.out.println("");
 		//System.out.println("match1");
-		while (matcher.find()) {
+		/*while (matcher.find()) {
 
 			String match = matcher.group(1).trim();
 			//System.out.println(match);
 			//System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 
-		}
+		}*/
 
 
 
