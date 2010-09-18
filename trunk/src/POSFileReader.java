@@ -9,6 +9,7 @@ public class POSFileReader {
 
 	public static ArrayList<String> freetextfile=new ArrayList<String>();
 
+	//public static String[] ast;
 	public static void main(String args[]){
 		readFile(args[0]);
 
@@ -16,7 +17,7 @@ public class POSFileReader {
 
 
 
-	private static void readFile(String fileName) {
+	public static void readFile(String fileName) {
 		int cnt=0;
 		try{
 
@@ -44,7 +45,7 @@ public class POSFileReader {
 			//System.out.println();
 			//System.out.println("Nouns "+Nouns.size());
 			//printTable(Nouns);
-
+			//ast=(String[])freetextfile.toArray();
 
 		}
 		catch (Exception e)
