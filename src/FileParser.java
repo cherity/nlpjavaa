@@ -4,9 +4,6 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,8 +25,8 @@ public class FileParser {
 			{
 
 
-				POSFileReader posfi=new POSFileReader();
-				posfi.readFile(args[0]);
+				//POSFileReader posfi=new POSFileReader();
+				POSFileReader.readFile(args[0]);
 
 				FileInputStream fstream2 = new FileInputStream(args[1]);
 				DataInputStream in2 = new DataInputStream(fstream2);
@@ -67,13 +64,6 @@ public class FileParser {
 
 
 
-				//System.out.println();
-				//System.out.println("Verbs "+Verbs.size());
-				//printTable(Verbs);
-				//System.out.println();
-				//System.out.println("Nouns "+Nouns.size());
-				//printTable(Nouns);
-
 
 			}
 			catch (Exception e)
@@ -97,7 +87,7 @@ public class FileParser {
 
 
 
-
+	/*
 	private static void printTable(Hashtable<String,String> ht) {
 
 
@@ -108,7 +98,7 @@ public class FileParser {
 
 	}
 
-
+	 */
 	private static void parseLine(String strLine) {
 		try {
 

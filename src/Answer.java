@@ -32,6 +32,7 @@ public class Answer {
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;
+			String strLinePos;
 			Pattern pattern;
 			Matcher matcher;
 			String caseQ;
@@ -40,7 +41,12 @@ public class Answer {
 			//while ((strLine = br.readLine()) != null)
 			for(int ttt=0;ttt<posff.freetextfile.size();ttt++)
 			{
+
+				strLinePos=posff.freeposfile.get(ttt);
+
 				strLine=posff.freetextfile.get(ttt);
+
+
 				cntLine++;
 				switch(casei){
 				case 0:
@@ -366,9 +372,39 @@ public class Answer {
 
 					break;
 
+				case 7:
+
+					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?"+question.negVerbs+".*?",Pattern.DOTALL);
+					matcher = pattern.matcher(strLinePos);
+
+					while (matcher.find()) {
+						cnt++;
+						String matchFirst = matcher.group(1).trim();
+
+						String match = modifyString(matchFirst);
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+
+					break;
 
 
 
+
+					/*
 				case 7:
 					/*
 
@@ -395,7 +431,7 @@ public class Answer {
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
-					 */
+
 					//System.out.println(strLine);
 
 
@@ -460,8 +496,8 @@ public class Answer {
 
 					break;
 
-
-
+					 */
+					/*
 				case 8:
 
 					boolean flag3=false;
@@ -516,7 +552,7 @@ public class Answer {
 							}
 							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 							flag=true;
-							flag2=true;
+
 						}
 					}
 
@@ -524,7 +560,37 @@ public class Answer {
 
 					break;
 
+					 */
 
+
+				case 8:
+
+					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?"+question.posVerbs+".*?",Pattern.DOTALL);
+					matcher = pattern.matcher(strLinePos);
+
+					while (matcher.find()) {
+						cnt++;
+						String matchFirst = matcher.group(1).trim();
+
+						String match = modifyString(matchFirst);
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+
+					break;
 
 
 
@@ -661,6 +727,40 @@ public class Answer {
 		}
 
 
+	}
+
+	private String modifyString(String strLine) {
+		// TODO Auto-generated method stub
+
+
+		strLine=strLine.replaceAll("\\\\/", "yesssrandomsss");
+
+		String[] words =strLine.split("(/.*? |/.*?$)");
+
+		String line="";
+		int cnt =0;
+		for(String word: words){
+			//System.out.println(word);
+			cnt++;
+			word=	word.replace("]","");
+			word = word.replaceAll("yesssrandomsss", "/");
+			word=word.replace("[ ","");
+			word = word.replaceAll("\\s", "");
+			if(cnt==1||word.startsWith("'")||word.startsWith(",")||word.startsWith(".")||word.startsWith("%")||word.startsWith("n't")||word.startsWith("'t")){
+				line= line+word;
+			}
+			else{
+				line=line+" "+word;
+
+
+			}
+			//System.out.println(word);
+		}
+		line=line.replaceAll("\\( ", "\\(");
+		line=line.replaceAll(" \\)", "\\)");
+		line=line.replaceAll("\\$ ", "\\$");
+
+		return line;
 	}
 
 
