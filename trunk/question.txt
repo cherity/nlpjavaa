@@ -5,7 +5,6 @@ How much did Ferranti International Signal rise?
 What did Nippon Shokubai close at?
 How much did Aiwa fall? 
 How much did the Dow index rise?
-What was the discount rate? 
 Did the Nikkei Index rise or fall?
 What company stocks rose? 
 Which stocks rise?
@@ -34,3 +33,5 @@ What did the dollar do against the yen?
 What did the dollar do against the rupee?
 What did Nikkei Index do?
 What did Sumitomo metal do?
+What was the discount rate?
+What was discount rate?

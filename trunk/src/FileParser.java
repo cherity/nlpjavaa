@@ -27,6 +27,9 @@ public class FileParser {
 
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
+				//POSFileReader.freetextfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
+				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
+
 
 				FileInputStream fstream2 = new FileInputStream(args[1]);
 				DataInputStream in2 = new DataInputStream(fstream2);
