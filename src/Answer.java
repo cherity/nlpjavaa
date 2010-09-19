@@ -18,7 +18,7 @@ public class Answer {
 		try{
 
 			String nounCase;
-			if(casei==4 ||casei==5||casei==6){
+			if(casei==4 ||casei==5||casei==6||casei==9){
 				nounCase= matcherr.group(2);
 			}
 			else{
@@ -55,7 +55,7 @@ public class Answer {
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					pattern = Pattern.compile("\\b"+nounCase+"\\b .*?("+question.allVerbs+").*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					
+
 					matcher = pattern.matcher(strLine);
 
 
@@ -72,7 +72,7 @@ public class Answer {
 						}else{
 							out=match.toUpperCase();
 						}
-						
+
 						System.out.println("A "+cnt+": "+out+".");
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
@@ -91,7 +91,7 @@ public class Answer {
 
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^,\\.]*? (fall|fell|loose|lost) .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.negVerbs+" ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.negVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 
@@ -132,7 +132,7 @@ public class Answer {
 
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -248,7 +248,7 @@ public class Answer {
 
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(closed|close) (to|at) ([0-9\\s.,/]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(closed|close) (to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -279,7 +279,7 @@ public class Answer {
 
 
 					if(!flag){
-						pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(to|at) ([0-9\\s.,/]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 						matcher = pattern.matcher(strLine);
 
 
@@ -315,7 +315,7 @@ public class Answer {
 
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(open|opened|start|started) (to|at) ([0-9\\s.,/]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(open|opened|start|started) (to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -355,7 +355,7 @@ public class Answer {
 
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(sell|sold|bought) (to|at) ([0-9\\s.,/]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b.*?(sell|sold|bought) (to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -604,6 +604,126 @@ public class Answer {
 
 
 					break;
+
+
+
+
+
+
+
+
+				case 9:
+
+					boolean flagdr=false;
+					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+
+
+
+
+
+
+					//pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) [^,\\.]*?\\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) in (the)? \\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+
+
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+
+
+						//System.out.println("A "+cnt+": "+match+".");
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+						flagdr=true;
+					}
+
+
+
+
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?was ([0-9][0-9\\s\\.,/%]*)",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+
+						//System.out.println("A "+cnt+": "+match+".");
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+						flagdr=true;
+					}
+
+					//System.out.println(strLine);
+
+
+
+
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?(to|at) ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					matcher = pattern.matcher(strLine);
+
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(2).trim();
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println(strLine);
+
+
+
+					break;
+
+
+
+
+
+
+
+
+
 
 
 
