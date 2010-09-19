@@ -27,12 +27,8 @@ public class Questions {
 		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) s(ell|old) at\\?");
 
 
-
-
-
 		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+negVerbs+"\\?");
 		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+posVerbs+"\\?");
-
 
 
 		questionList.add(".*[Ww]hat was\\s?(the)?\\s?(.*)\\?");

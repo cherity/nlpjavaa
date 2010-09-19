@@ -8,10 +8,11 @@ import java.util.regex.Pattern;
 
 public class Answer {
 
-
+	public String suffix="(to |at |)";
 
 	public  boolean getAnswer(Matcher matcherr, int casei) {
 		// TODO Auto-generated method stub
+
 		boolean flag=false;
 		int cntLine=0;
 		int cnt=0;
@@ -89,6 +90,7 @@ public class Answer {
 				case 1:
 
 
+					boolean flag3=false;
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^,\\.]*? (fall|fell|loose|lost) .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.negVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
@@ -114,10 +116,38 @@ public class Answer {
 						}
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
+						flag3=true;
 					}
 
 					//System.out.println(strLine);
 
+
+					if(!flag3){
+						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) "+question.negVerbs+".*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+
+
+						matcher = pattern.matcher(strLine);
+
+
+						while (matcher.find()) {
+							cnt++;
+							String match = matcher.group(1).trim();
+
+							char[] trimarr= match.toCharArray();
+							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+								System.out.print("A "+cnt+": ");
+								for(int l=0;l<trimarr.length-1;l++){
+									System.out.print(trimarr[l]);
+								}
+								System.out.println(".");
+							}
+							else{
+								System.out.println("A "+cnt+": "+match+".");
+							}
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							flag=true;
+						}
+					}
 
 
 
@@ -128,11 +158,14 @@ public class Answer {
 
 
 
-
+					boolean flag2=false;
 
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+					//pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+
+
 					matcher = pattern.matcher(strLine);
 
 
@@ -153,6 +186,34 @@ public class Answer {
 						}
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
+						flag2=true;
+					}
+
+					if(!flag2){
+						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) "+question.posVerbs+".*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+
+
+						matcher = pattern.matcher(strLine);
+
+
+						while (matcher.find()) {
+							cnt++;
+							String match = matcher.group(1).trim();
+
+							char[] trimarr= match.toCharArray();
+							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+								System.out.print("A "+cnt+": ");
+								for(int l=0;l<trimarr.length-1;l++){
+									System.out.print(trimarr[l]);
+								}
+								System.out.println(".");
+							}
+							else{
+								System.out.println("A "+cnt+": "+match+".");
+							}
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							flag=true;
+						}
 					}
 
 					//System.out.println(strLine);
@@ -177,7 +238,7 @@ public class Answer {
 					//}
 
 					caseQ = matcherr.group(2);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.allVerbs+" .*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.allVerbs+" "+suffix+".*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -838,7 +899,97 @@ public class Answer {
 					break;
 
 
-				default: break;
+
+
+
+
+				case 12:
+
+					//pattern = Pattern.compile(".*(\\[[A-Z].*?\\]).*"+question.negVerbs+".*?",Pattern.DOTALL);
+					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
+
+
+					pattern = Pattern.compile(".*(\\[.*?\\]).*?"+question.negVerbs+".*?",Pattern.DOTALL);
+
+
+					matcher = pattern.matcher(strLinePos);
+
+					while (matcher.find()) {
+						cnt++;
+						String matchFirst = matcher.group(1).trim();
+
+						String match = modifyString(matchFirst);
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println("-------------------");
+					break;
+
+
+
+
+
+
+				case 13:
+
+					//pattern = Pattern.compile(".*(\\[[A-Z].*?\\]).*"+question.negVerbs+".*?",Pattern.DOTALL);
+					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
+
+
+					pattern = Pattern.compile(".*(\\[[A-Z ].*\\]).*"+question.posVerbs+".*?",Pattern.DOTALL);
+
+
+					matcher = pattern.matcher(strLinePos);
+
+					while (matcher.find()) {
+
+						String matchFirst = matcher.group(1).trim();
+
+						String match = modifyString(matchFirst);
+						if(match.matches(".*[iI]ndex.*")){
+							continue;	
+						}
+
+						cnt++;
+
+						char[] trimarr= match.toCharArray();
+						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
+							System.out.print("A "+cnt+": ");
+							for(int l=0;l<trimarr.length-1;l++){
+								System.out.print(trimarr[l]);
+							}
+							System.out.println(".");
+						}
+						else{
+							System.out.println("A "+cnt+": "+match+".");
+						}
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println("-------------------");
+					break;
+
+
+
+
+
+				default: 
+					flag=false;
+					break;
 
 
 
