@@ -912,7 +912,7 @@ public class Answer {
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
 
-					pattern = Pattern.compile(".*(\\[.*?\\]).*?\\b"+question.negVerbs+"\\b.*?",Pattern.DOTALL);
+					pattern = Pattern.compile(".*\\[(.*?)\\].*?\\b"+question.negVerbs+"\\b.*?",Pattern.DOTALL);
 
 
 					matcher = pattern.matcher(strLinePos);
@@ -952,7 +952,38 @@ public class Answer {
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
 
-					pattern = Pattern.compile("([A-Z].*).*?\\b"+question.posVerbs+"\\b.*?",Pattern.DOTALL);
+					pattern = Pattern.compile(".*\\[.*NNP.*\\].*\\b"+question.posVerbs+"\\b.*",Pattern.DOTALL);
+
+
+					matcher = pattern.matcher(strLinePos);
+
+					while (matcher.find()) {
+
+						String matchFirst = matcher.group(1).trim();
+
+						//String match = modifyString(matchFirst);
+						String match = matchFirst;
+						if(match.matches(".*[iI]ndex.*")){
+							continue;	
+						}
+
+						cnt++;
+						
+
+						System.out.println("A "+cnt+": "+match+".");
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+					//System.out.println("-------------------");
+					break;
+
+
+
+					
+					/*
+					
+					pattern = Pattern.compile(".*?(.*).*\\b"+question.posVerbs+"\\b.*?",Pattern.DOTALL);
 
 
 					matcher = pattern.matcher(strLine);
@@ -968,19 +999,7 @@ public class Answer {
 						}
 
 						cnt++;
-						/*
-						char[] trimarr= match.toCharArray();
-						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
-							System.out.print("A "+cnt+": ");
-							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
-							}
-							System.out.println(".");
-						}
-						else{
-							System.out.println("A "+cnt+": "+match+".");
-						}
-						 */
+						
 
 						System.out.println("A "+cnt+": "+match+".");
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
@@ -989,10 +1008,7 @@ public class Answer {
 
 					//System.out.println("-------------------");
 					break;
-
-
-
-
+*/
 
 				default: 
 					flag=false;
