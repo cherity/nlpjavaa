@@ -55,7 +55,7 @@ public class Answer {
 
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b .*?("+question.allVerbs+").*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 					matcher = pattern.matcher(strLine);
 
@@ -93,7 +93,7 @@ public class Answer {
 					boolean flag3=false;
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^,\\.]*? (fall|fell|loose|lost) .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.negVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?\\b"+question.negVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 
@@ -123,7 +123,7 @@ public class Answer {
 
 
 					if(!flag3){
-						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) "+question.negVerbs+".*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) \\b"+question.negVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 						matcher = pattern.matcher(strLine);
@@ -163,7 +163,7 @@ public class Answer {
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?\\b"+question.posVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 					matcher = pattern.matcher(strLine);
@@ -190,7 +190,7 @@ public class Answer {
 					}
 
 					if(!flag2){
-						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) "+question.posVerbs+".*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) \\b"+question.posVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 						matcher = pattern.matcher(strLine);
@@ -238,7 +238,7 @@ public class Answer {
 					//}
 
 					caseQ = matcherr.group(2);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.allVerbs+" "+suffix+".*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?\\b"+question.allVerbs+"\\b .*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -448,12 +448,13 @@ public class Answer {
 
 				case 7:
 
-					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?"+question.negVerbs+".*?",Pattern.DOTALL);
+					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?\\b"+question.negVerbs+"\\b.*?",Pattern.DOTALL);
 					matcher = pattern.matcher(strLinePos);
 
 					while (matcher.find()) {
 						cnt++;
 						String matchFirst = matcher.group(1).trim();
+						//String matchFirst1 = matcher.group(2).trim();
 
 						String match = modifyString(matchFirst);
 
@@ -468,6 +469,7 @@ public class Answer {
 						else{
 							System.out.println("A "+cnt+": "+match+".");
 						}
+						//System.out.println(matchFirst1);
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
@@ -639,7 +641,8 @@ public class Answer {
 
 				case 8:
 
-					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?"+question.posVerbs+".*?",Pattern.DOTALL);
+					//pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?"+question.posVerbs+".*?",Pattern.DOTALL);
+					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?\\b"+question.posVerbs+"\\b.*?",Pattern.DOTALL);
 					matcher = pattern.matcher(strLinePos);
 
 					while (matcher.find()) {
@@ -794,7 +797,7 @@ public class Answer {
 					String c2= matcherr.group(4);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+c1+"\\b.*? ("+question.allVerbs+") .*?against .*?\\b"+c2+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+c1+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c2+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -827,7 +830,7 @@ public class Answer {
 					String c4= matcherr.group(6);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+c3+"\\b.*? ("+question.allVerbs+") .*?against .*?\\b"+c4+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+c3+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c4+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -909,7 +912,7 @@ public class Answer {
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
 
-					pattern = Pattern.compile(".*(\\[.*?\\]).*?"+question.negVerbs+".*?",Pattern.DOTALL);
+					pattern = Pattern.compile(".*(\\[.*?\\]).*?\\b"+question.negVerbs+"\\b.*?",Pattern.DOTALL);
 
 
 					matcher = pattern.matcher(strLinePos);
@@ -949,7 +952,7 @@ public class Answer {
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
 
-					pattern = Pattern.compile("([A-Z].*).*?"+question.posVerbs+".*?",Pattern.DOTALL);
+					pattern = Pattern.compile("([A-Z].*).*?\\b"+question.posVerbs+"\\b.*?",Pattern.DOTALL);
 
 
 					matcher = pattern.matcher(strLine);
