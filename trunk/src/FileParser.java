@@ -27,7 +27,9 @@ public class FileParser {
 
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
-				//POSFileReader.freetextfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
+				//POSFileReader.freetextfile.add("Indian Steel edged 2 higher to 126 1/2 on 8.3 million shares, Indian Telecommuncations settled 6 higher at 268, and Indian Petroleum gained 1 to 307 1/2.");
+				//POSFileReader.freeposfile.add("Indian Steel edged 2 higher to 126 1/2 on 8.3 million shares, Indian Telecommuncations settled 6 higher at 268, and Indian Petroleum gained 1 to 307 1/2.");
+
 				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
 
 

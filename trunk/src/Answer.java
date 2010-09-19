@@ -949,22 +949,23 @@ public class Answer {
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
 
-					pattern = Pattern.compile(".*(\\[[A-Z ].*\\]).*"+question.posVerbs+".*?",Pattern.DOTALL);
+					pattern = Pattern.compile("([A-Z].*).*?"+question.posVerbs+".*?",Pattern.DOTALL);
 
 
-					matcher = pattern.matcher(strLinePos);
+					matcher = pattern.matcher(strLine);
 
 					while (matcher.find()) {
 
 						String matchFirst = matcher.group(1).trim();
 
-						String match = modifyString(matchFirst);
+						//String match = modifyString(matchFirst);
+						String match = matchFirst;
 						if(match.matches(".*[iI]ndex.*")){
 							continue;	
 						}
 
 						cnt++;
-
+						/*
 						char[] trimarr= match.toCharArray();
 						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
 							System.out.print("A "+cnt+": ");
@@ -976,6 +977,9 @@ public class Answer {
 						else{
 							System.out.println("A "+cnt+": "+match+".");
 						}
+						 */
+
+						System.out.println("A "+cnt+": "+match+".");
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
