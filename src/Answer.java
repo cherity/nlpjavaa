@@ -52,15 +52,28 @@ public class Answer {
 				case 0:
 
 
-					pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b .*?("+question.allVerbs+").*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					
 					matcher = pattern.matcher(strLine);
 
 
 					while (matcher.find()) {
 						cnt++;
 						String match = matcher.group(1).trim();
+						String out="";
+						if(question.negVerbs.matches(".*"+match+".*")){
+							out="It Fell";
 
-						System.out.println("A "+cnt+": "+match+".");
+						}
+						else if(question.posVerbs.matches(".*"+match+".*")){
+							out="It Rose";
+						}else{
+							out=match.toUpperCase();
+						}
+						
+						System.out.println("A "+cnt+": "+out+".");
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
