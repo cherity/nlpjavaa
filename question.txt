@@ -6,9 +6,6 @@ What did Nippon Shokubai close at?
 How much did Aiwa fall? 
 How much did the Dow index rise?
 Did the Nikkei Index rise or fall?
-What company stocks rose? 
-Which stocks rise?
-Which stocks went down?
 Which index went up?
 How much did Aiwa have dipped?
 How much did Aiwa went up?
@@ -35,3 +32,12 @@ What did Nikkei Index do?
 What did Sumitomo metal do?
 What was the discount rate?
 What was discount rate?
+Which stocks fall?
+Which stocks rise?
+How much did British Steel fall?
+How much did British Steel rise?
+Did British Telecommuncations rise or fall?
+Did British Steel rise or fall?
+Did Tesco rise or fall?
+How much did British Telecommuncations rise?
+How much did Tesco rise?
