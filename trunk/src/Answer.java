@@ -904,7 +904,7 @@ public class Answer {
 
 
 
-
+					/*
 
 				case 12:
 
@@ -942,6 +942,68 @@ public class Answer {
 					break;
 
 
+					 */
+
+
+				case 12:
+					boolean flag5 =true;
+					pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.negVerbs+".*?[0-9]+");
+					//pattern = Pattern.compile(".*?(\\[[\\sA-Z].*?\\])\\b"+question.posVerbs+"");
+
+
+					matcher = pattern.matcher(strLinePos);
+
+					while (matcher.find()) {
+
+						String matchFirst = matcher.group(1).trim();
+
+						flag5=true;
+						//String match = modifyString(matchFirst);
+						String match = matchFirst;
+						if(match.matches(".*[iI]ndex.*")){
+							continue;	
+						}
+
+						Matcher m = Pattern.compile("\\[(.*?)\\]").matcher(match);
+						while (m.find()) {
+							String name = m.group(1);
+							if (!name.contains("NNP")) {
+								continue;
+							}
+							match=name;
+
+							String[] ast= match.split(" ");
+							//System.out.println(match);
+							for(String a :ast){
+								//System.out.println(a);
+								if(!a.equals("")){
+									if (!a.contains("NNP")&&!a.contains("NNPS")){
+										flag5=false;
+									}
+								}
+							}
+
+
+							if(flag5){
+								cnt++;
+								System.out.println("A "+cnt+": "+match+".");
+								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							}
+						}
+
+
+
+
+
+
+						flag=true;
+					}
+
+					//System.out.println("-------------------");
+					break;
+
+
+
 
 
 
@@ -952,15 +1014,15 @@ public class Answer {
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
 					boolean flag1 =true;
+					//pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.posVerbs+"");
+					String verb;
 					pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.posVerbs+"");
-
-
 					matcher = pattern.matcher(strLinePos);
 
 					while (matcher.find()) {
 
 						String matchFirst = matcher.group(1).trim();
-
+						verb=matcher.group(2).trim();
 						flag1=true;
 						//String match = modifyString(matchFirst);
 						String match = matchFirst;
@@ -989,9 +1051,26 @@ public class Answer {
 
 
 							if(flag1){
-								cnt++;
-								System.out.println("A "+cnt+": "+match+".");
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+
+								//match =match.replaceAll(" ","");
+								match =match.replaceAll("/NNPS","");
+								match =match.replaceAll("/NNP","");
+
+								match =match.trim();
+								//System.out.println(verb);
+								Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*").matcher(strLine);
+								//System.out.println(strLine);
+								//System.out.println(match+".*"+verb+".*");
+								while(m2.find()){
+									String gg =m2.group(1);
+									String ggarr[] =gg.split(" ");
+									if(ggarr.length<=10){
+										cnt++;
+
+										System.out.println("A "+cnt+": "+match+".");
+										System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									}
+								}
 							}
 						}
 
