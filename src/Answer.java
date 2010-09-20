@@ -951,7 +951,7 @@ public class Answer {
 					//pattern = Pattern.compile(".*(\\[[A-Z].*?\\]).*"+question.negVerbs+".*?",Pattern.DOTALL);
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
-
+					boolean flag1 =true;
 					pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.posVerbs+"");
 
 
@@ -961,12 +961,12 @@ public class Answer {
 
 						String matchFirst = matcher.group(1).trim();
 
+						flag1=true;
 						//String match = modifyString(matchFirst);
 						String match = matchFirst;
 						if(match.matches(".*[iI]ndex.*")){
 							continue;	
 						}
-
 
 						Matcher m = Pattern.compile("\\[(.*?)\\]").matcher(match);
 						while (m.find()) {
@@ -975,9 +975,24 @@ public class Answer {
 								continue;
 							}
 							match=name;
-							cnt++;
-							System.out.println("A "+cnt+": "+match+".");
-							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+
+							String[] ast= match.split(" ");
+							//System.out.println(match);
+							for(String a :ast){
+								//System.out.println(a);
+								if(!a.equals("")){
+									if (!a.contains("NNP")&&!a.contains("NNPS")){
+										flag1=false;
+									}
+								}
+							}
+
+
+							if(flag1){
+								cnt++;
+								System.out.println("A "+cnt+": "+match+".");
+								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							}
 						}
 
 
