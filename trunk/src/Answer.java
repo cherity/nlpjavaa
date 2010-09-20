@@ -1058,9 +1058,11 @@ public class Answer {
 
 								match =match.trim();
 								//System.out.println(verb);
+								//Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*").matcher(strLine);
+
+								/*IMPPPPPPP
 								Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*").matcher(strLine);
-								//System.out.println(strLine);
-								//System.out.println(match+".*"+verb+".*");
+
 								while(m2.find()){
 									String gg =m2.group(1);
 									String ggarr[] =gg.split(" ");
@@ -1071,6 +1073,34 @@ public class Answer {
 										System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 									}
 								}
+
+
+
+
+								 */
+
+
+
+
+
+								Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*[0-9]+").matcher(strLine);
+
+								while(m2.find()){
+									//System.out.println("--------" +m2.group());
+									String gg =m2.group(1);
+									String ggarr[] =gg.split(" ");
+									if(ggarr.length<=10){
+										cnt++;
+
+										System.out.println("A "+cnt+": "+match+".");
+										System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									}
+								}
+
+
+
+
+
 							}
 						}
 
