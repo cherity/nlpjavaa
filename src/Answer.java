@@ -952,7 +952,7 @@ public class Answer {
 					//pattern = Pattern.compile(".*([A-Z].*)[^,\\.]*"+question.negVerbs+".*?",Pattern.DOTALL);
 
 
-					pattern = Pattern.compile(".*\\[.*NNP.*\\].*\\b"+question.posVerbs+"\\b.*",Pattern.DOTALL);
+					pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.posVerbs+"");
 
 
 					matcher = pattern.matcher(strLinePos);
@@ -967,11 +967,24 @@ public class Answer {
 							continue;	
 						}
 
-						cnt++;
-						
 
-						System.out.println("A "+cnt+": "+match+".");
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						Matcher m = Pattern.compile("\\[(.*?)\\]").matcher(match);
+						while (m.find()) {
+							String name = m.group(1);
+							if (!name.contains("NNP")) {
+								continue;
+							}
+							match=name;
+							cnt++;
+							System.out.println("A "+cnt+": "+match+".");
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						}
+
+
+
+
+
+
 						flag=true;
 					}
 
@@ -980,9 +993,9 @@ public class Answer {
 
 
 
-					
+
 					/*
-					
+
 					pattern = Pattern.compile(".*?(.*).*\\b"+question.posVerbs+"\\b.*?",Pattern.DOTALL);
 
 
@@ -999,7 +1012,7 @@ public class Answer {
 						}
 
 						cnt++;
-						
+
 
 						System.out.println("A "+cnt+": "+match+".");
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
@@ -1008,7 +1021,7 @@ public class Answer {
 
 					//System.out.println("-------------------");
 					break;
-*/
+					 */
 
 				default: 
 					flag=false;
