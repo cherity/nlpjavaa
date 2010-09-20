@@ -945,68 +945,6 @@ public class Answer {
 					 */
 
 
-				case 12:
-					boolean flag5 =true;
-					pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.negVerbs+".*?[0-9]+");
-					//pattern = Pattern.compile(".*?(\\[[\\sA-Z].*?\\])\\b"+question.posVerbs+"");
-
-
-					matcher = pattern.matcher(strLinePos);
-
-					while (matcher.find()) {
-
-						String matchFirst = matcher.group(1).trim();
-
-						flag5=true;
-						//String match = modifyString(matchFirst);
-						String match = matchFirst;
-						if(match.matches(".*[iI]ndex.*")){
-							continue;	
-						}
-
-						Matcher m = Pattern.compile("\\[(.*?)\\]").matcher(match);
-						while (m.find()) {
-							String name = m.group(1);
-							if (!name.contains("NNP")) {
-								continue;
-							}
-							match=name;
-
-							String[] ast= match.split(" ");
-							//System.out.println(match);
-							for(String a :ast){
-								//System.out.println(a);
-								if(!a.equals("")){
-									if (!a.contains("NNP")&&!a.contains("NNPS")){
-										flag5=false;
-									}
-								}
-							}
-
-
-							if(flag5){
-								cnt++;
-								System.out.println("A "+cnt+": "+match+".");
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-							}
-						}
-
-
-
-
-
-
-						flag=true;
-					}
-
-					//System.out.println("-------------------");
-					break;
-
-
-
-
-
-
 
 				case 13:
 
@@ -1146,6 +1084,97 @@ public class Answer {
 					//System.out.println("-------------------");
 					break;
 					 */
+
+
+
+
+
+
+				case 12:
+					boolean flag5 =true;
+					//pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.posVerbs+"");
+					String verb2;
+					pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.negVerbs+"");
+					matcher = pattern.matcher(strLinePos);
+
+					while (matcher.find()) {
+
+						String matchFirst = matcher.group(1).trim();
+						verb2=matcher.group(2).trim();
+						flag5=true;
+						//String match = modifyString(matchFirst);
+						String match = matchFirst;
+						if(match.matches(".*[iI]ndex.*")){
+							continue;	
+						}
+
+						Matcher m = Pattern.compile("\\[(.*?)\\]").matcher(match);
+						while (m.find()) {
+							String name = m.group(1);
+							if (!name.contains("NNP")) {
+								continue;
+							}
+							match=name;
+
+							String[] ast= match.split(" ");
+							//System.out.println(match);
+							for(String a :ast){
+								//System.out.println(a);
+								if(!a.equals("")){
+									if (!a.contains("NNP")&&!a.contains("NNPS")){
+										flag5=false;
+									}
+								}
+							}
+
+
+							if(flag5){
+
+								//match =match.replaceAll(" ","");
+								match =match.replaceAll("/NNPS","");
+								match =match.replaceAll("/NNP","");
+
+								match =match.trim();
+
+
+
+
+
+
+								Matcher m2 = Pattern.compile("("+match+".*?"+verb2+").*[0-9]+").matcher(strLine);
+
+								while(m2.find()){
+									//System.out.println("--------" +m2.group());
+									String gg =m2.group(1);
+									String ggarr[] =gg.split(" ");
+									if(ggarr.length<=10){
+										cnt++;
+
+										System.out.println("A "+cnt+": "+match+".");
+										System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									}
+								}
+
+
+
+
+
+							}
+						}
+
+
+
+
+
+
+						flag=true;
+					}
+
+					//System.out.println("-------------------");
+					break;
+
+
+
 
 				default: 
 					flag=false;
