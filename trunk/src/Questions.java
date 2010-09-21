@@ -23,8 +23,8 @@ public class Questions {
 		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) close(d|) at\\?");
 
 
-		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) open(ed|) at\\?");
-		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) s(ell|old) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*) open(ed|) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*) s(ell|old) at\\?");
 
 
 		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+negVerbs+"\\?");

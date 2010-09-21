@@ -19,8 +19,11 @@ public class Answer {
 		try{
 
 			String nounCase;
-			if(casei==4 ||casei==5||casei==6||casei==9||casei==3||casei==0){
+			if(casei==4 ||casei==9||casei==3||casei==0){
 				nounCase= matcherr.group(2);
+			}
+			else if(casei==5||casei==6){
+				nounCase= matcherr.group(3);
 			}
 			else{
 				nounCase= matcherr.group(1);
@@ -341,7 +344,8 @@ public class Answer {
 
 				case 4:
 
-
+					
+					boolean flagclose=false;
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
 					pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(closed|close) (to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
@@ -365,16 +369,13 @@ public class Answer {
 						}
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
+						flagclose=true;
 					}
 
-					//System.out.println(strLine);
+				
 
-
-
-
-
-
-					if(!flag){
+					if(!flagclose){
+						
 						pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 						matcher = pattern.matcher(strLine);
 
@@ -434,9 +435,6 @@ public class Answer {
 						flag=true;
 					}
 
-					//System.out.println(strLine);
-
-
 
 
 					break;
@@ -474,13 +472,12 @@ public class Answer {
 						flag=true;
 					}
 
-					//System.out.println(strLine);
-
-
 
 
 					break;
 
+					
+					
 				case 7:
 
 					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?\\b"+question.negVerbs+"\\b.*?",Pattern.DOTALL);
@@ -717,11 +714,6 @@ public class Answer {
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
 
-
-
-
-
-
 					//pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) [^,\\.]*?\\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) in (the)? \\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
@@ -781,9 +773,6 @@ public class Answer {
 						flagdr=true;
 					}
 
-					//System.out.println(strLine);
-
-
 
 
 					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?(to|at) ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
@@ -808,9 +797,6 @@ public class Answer {
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
-
-					//System.out.println(strLine);
-
 
 
 					break;
@@ -846,9 +832,6 @@ public class Answer {
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
-
-					//System.out.println(strLine);
-
 
 
 
@@ -919,19 +902,9 @@ public class Answer {
 
 
 
-
-
-
-
-
-
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
-
-					//System.out.println(strLine);
-
-
 
 
 					break;
@@ -1047,13 +1020,7 @@ public class Answer {
 									}
 								}
 
-
-
-
 								 */
-
-
-
 
 
 								Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*[0-9]+").matcher(strLine);
@@ -1071,13 +1038,8 @@ public class Answer {
 								}
 
 
-
-
-
 							}
 						}
-
-
 
 
 
@@ -1085,7 +1047,7 @@ public class Answer {
 						flag=true;
 					}
 
-					//System.out.println("-------------------");
+
 					break;
 
 
@@ -1190,22 +1152,13 @@ public class Answer {
 									}
 								}
 
-
-
-
-
 							}
 						}
-
-
-
-
-
 
 						flag=true;
 					}
 
-					//System.out.println("-------------------");
+
 					break;
 
 
