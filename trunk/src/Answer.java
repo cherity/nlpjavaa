@@ -19,7 +19,7 @@ public class Answer {
 		try{
 
 			String nounCase;
-			if(casei==4 ||casei==5||casei==6||casei==9){
+			if(casei==4 ||casei==5||casei==6||casei==9||casei==3){
 				nounCase= matcherr.group(2);
 			}
 			else{
@@ -237,8 +237,11 @@ public class Answer {
 					//	System.out.print(tt+matcherr.group(tt)+"            ");
 					//}
 
-					caseQ = matcherr.group(2);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?\\b"+question.allVerbs+"\\b .*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					caseQ = matcherr.group(3);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b [^\\.]*?\\b"+question.allVerbs+"\\b .*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//	pattern = Pattern.compile(".*\\b"+nounCase+"\\b.* \\b"+question.allVerbs+"\\b .*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//pattern = Pattern.compile(".*\\b"+nounCase+"\\b.*(fell).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					//System.out.println(".*\\b"+nounCase+"\\b.*fell.*");
 					matcher = pattern.matcher(strLine);
 
 
@@ -248,7 +251,7 @@ public class Answer {
 						String pos="";
 						String neg="";
 						String x=caseQ;
-						String y=matcherr.group(3);
+						String y=matcherr.group(4);
 
 						if(question.negVerbs.matches(".*"+x+".*")){
 							neg=x;
