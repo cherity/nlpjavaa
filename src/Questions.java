@@ -11,7 +11,7 @@ public class Questions {
 
 	public Questions(){
 
-		questionList.add(".*[Ww]hat did .*?([A-Z].*) do\\?");
+		questionList.add(".*[Ww]hat did (the )?.*?([A-Z].*) do\\?");
 
 
 		questionList.add(".*[Hh]ow much did .*?([A-Z].*)\\s?.* "+negVerbs+"\\?");

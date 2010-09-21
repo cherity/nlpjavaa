@@ -19,7 +19,7 @@ public class Answer {
 		try{
 
 			String nounCase;
-			if(casei==4 ||casei==5||casei==6||casei==9||casei==3){
+			if(casei==4 ||casei==5||casei==6||casei==9||casei==3||casei==0){
 				nounCase= matcherr.group(2);
 			}
 			else{
@@ -52,7 +52,7 @@ public class Answer {
 				switch(casei){
 				case 0:
 
-
+					boolean flagcase0=false;
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					pattern = Pattern.compile("\\b"+nounCase+"\\b .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
@@ -77,10 +77,42 @@ public class Answer {
 						System.out.println("A "+cnt+": "+out+".");
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
+						flagcase0=true;
 					}
 
 					//System.out.println(strLine);
+					if(!flagcase0){
+						nounCase=getDiffNoun(nounCase);
 
+						//System.out.println("\\b"+nounCase+"\\b .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))");
+
+						pattern = Pattern.compile("\\b"+nounCase+"\\b .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+
+						matcher = pattern.matcher(strLine);
+
+
+						while (matcher.find()) {
+							cnt++;
+							String match = matcher.group(1).trim();
+							String out="";
+							if(question.negVerbs.matches(".*"+match+".*")){
+								out="It Fell";
+
+							}
+							else if(question.posVerbs.matches(".*"+match+".*")){
+								out="It Rose";
+							}else{
+								out=match.toUpperCase();
+							}
+
+							System.out.println("A "+cnt+": "+out+".");
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							flag=true;
+							flagcase0=true;
+						}
+
+
+					}
 
 
 
@@ -93,7 +125,7 @@ public class Answer {
 					boolean flag3=false;
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^,\\.]*? (fall|fell|loose|lost) .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?\\b"+question.negVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?\\b"+question.negVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 
@@ -123,7 +155,7 @@ public class Answer {
 
 
 					if(!flag3){
-						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) \\b"+question.negVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) \\b"+question.negVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 						matcher = pattern.matcher(strLine);
@@ -163,7 +195,7 @@ public class Answer {
 					caseQ = matcherr.group(2);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?\\b"+question.posVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?\\b"+question.posVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 					matcher = pattern.matcher(strLine);
@@ -190,7 +222,7 @@ public class Answer {
 					}
 
 					if(!flag2){
-						pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) \\b"+question.posVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*? ([0-9][0-9\\s\\.,/%]*) \\b"+question.posVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 
 						matcher = pattern.matcher(strLine);
@@ -1203,6 +1235,25 @@ public class Answer {
 		}
 
 
+	}
+
+	private String getDiffNoun(String nounCase) {
+		// TODO Auto-generated method stub
+
+		String strnoun[] =nounCase.split(" ");
+		String newnoun="";
+		int i=0;
+		for(String str:strnoun){
+			i++;
+			if(i==strnoun.length){
+				newnoun+=str;
+			}else{
+				newnoun+=str+"\\s?.*?\\s?";
+			}
+
+		}
+
+		return newnoun;
 	}
 
 	private String modifyString(String strLine) {
