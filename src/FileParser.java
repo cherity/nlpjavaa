@@ -12,24 +12,28 @@ public class FileParser {
 
 	public static Hashtable<String,String> Verbs = new Hashtable<String,String>();
 	public static Hashtable<String,String> Nouns = new Hashtable<String,String>();
-
 	public static int cnttt=0;
+
+
 	public static void main(String args[]){
 		int cnt =0;
 
 		if(args.length==2)
 		{
 
-
 			try
 			{
 
-
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
-				//POSFileReader.freetextfile.add("Indian Steel edged 2 higher to 126 1/2 on 8.3 million shares, Indian Telecommuncations settled 6 higher at 268, and Indian Petroleum gained 1 to 307 1/2.");
-				//POSFileReader.freeposfile.add("Indian Steel edged 2 higher to 126 1/2 on 8.3 million shares, Indian Telecommuncations settled 6 higher at 268, and Indian Petroleum gained 1 to 307 1/2.");
+				//POSFileReader.freetextfile.add("Nitt opened at 235");
+				//POSFileReader.freeposfile.add("Nitt opened at 235");
 
+				
+				//POSFileReader.freetextfile.add("Nitt, sold at 5235");
+				//POSFileReader.freeposfile.add("Nitt, sold at 5235");
+
+				
 				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
 
 
@@ -49,9 +53,6 @@ public class FileParser {
 				in2.close();
 
 
-
-
-
 				FileInputStream fstream = new FileInputStream(args[0]);
 				DataInputStream in = new DataInputStream(fstream);
 				BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -68,16 +69,12 @@ public class FileParser {
 				in.close();
 
 
-
-
 			}
 			catch (Exception e)
 			{
 				System.err.println("Error: " + e.getMessage());
 				e.printStackTrace();
 			}
-
-
 
 
 		}

@@ -1,3 +1,4 @@
+What did the Nitt open at?
 What did Seiyu do?
 What did Mitsubishi Industries do?
 Did Misawa Homes rise or fall?
@@ -14,9 +15,6 @@ How much did Aiwa have hiked up?
 What did Nikon close at?
 How much did Toshiba close at?
 Did the dollar up or down against the yen?
-What did Nippon Shokubai open at?
-How much did Nippon Shokubai open at?
-How much did Nippon Shokubai sell at?
 What did Nikkei Index close at?
 How much did Kajima fall?
 How much did Ohbayashi fall?
@@ -42,3 +40,5 @@ How much did Nikon rise?
 How much did Tesco close at?
 Which stocks fall?
 Which stocks rise?
+How much did Nitt open at?
+How much did Nitt sell at?
