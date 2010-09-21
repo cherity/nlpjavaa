@@ -18,7 +18,7 @@ public class Questions {
 		questionList.add(".*[Hh]ow much did .*?([A-Z].*)\\s?.* "+posVerbs+"\\?");
 
 
-		questionList.add(".*[Dd]id .*?([A-Z].*) .*?"+allVerbs+" or "+allVerbs+"\\?");
+		questionList.add(".*[Dd]id (the )?.*?([A-Z].*) .*?"+allVerbs+" or "+allVerbs+"\\?");
 
 		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) close(d|) at\\?");
 
