@@ -56,16 +56,17 @@ public class Answer {
 					boolean flagcase0=false;
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b("+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 					matcher = pattern.matcher(strLine);
 
 
 					while (matcher.find()) {
 						cnt++;
+						//String match = matcher.group(1).trim();
 						String match = matcher.group(1).trim();
 						String out="";
-						if(question.negVerbs.matches(".*"+match+".*")){
+						/*if(question.negVerbs.matches(".*"+match+".*")){
 							out="It Fell";
 
 						}
@@ -73,9 +74,9 @@ public class Answer {
 							out="It Rose";
 						}else{
 							out=match.toUpperCase();
-						}
+						}*/
 
-						System.out.println("A "+cnt+": "+out+".");
+						System.out.println("A "+cnt+": "+match+".");
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 						flagcase0=true;
@@ -87,7 +88,7 @@ public class Answer {
 
 						//System.out.println("\\b"+nounCase+"\\b .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))");
 
-						pattern = Pattern.compile("\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+						pattern = Pattern.compile("\\b("+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 						matcher = pattern.matcher(strLine);
 
@@ -96,7 +97,7 @@ public class Answer {
 							cnt++;
 							String match = matcher.group(1).trim();
 							String out="";
-							if(question.negVerbs.matches(".*"+match+".*")){
+							/*if(question.negVerbs.matches(".*"+match+".*")){
 								out="It Fell";
 
 							}
@@ -105,8 +106,8 @@ public class Answer {
 							}else{
 								out=match.toUpperCase();
 							}
-
-							System.out.println("A "+cnt+": "+out+".");
+							 */
+							System.out.println("A "+cnt+": "+match+".");
 							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 							flag=true;
 							flagcase0=true;
