@@ -36,8 +36,8 @@ public class FileParser {
 
 
 				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
-				
-				
+
+
 				/*if(POSFileReader.freetextfile.size()==POSFileReader.freeposfile.size()){
 					System.out.println("Size Equal");
 				}
@@ -163,13 +163,27 @@ public class FileParser {
 		// TODO Auto-generated method stub
 		Questions q= new Questions();
 
-
+		boolean flag =false;
 		for(int i=0;i<q.questionList.size();i++){
 			Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
 			Matcher matcher = pattern.matcher(str);
+			int k=0;
+/*
+			if(i==q.questionList.size()-1){
+				cnttt++;
+				System.out.println();
+				System.out.println(cnttt+". "+str);
+				//System.out.println(match);
+				Answer answer = new Answer();
+
+				System.out.println("No Information Available.");
+
+				return;
+			}*/
 
 			while (matcher.find()) {
 				cnttt++;
+				k++;
 				System.out.println();
 				System.out.println(cnttt+". "+str);
 				//System.out.println(match);
@@ -179,7 +193,13 @@ public class FileParser {
 					System.out.println("No Information Available.");
 				}
 
+				flag=true;
 			}
+
+			if(flag){
+				break;
+			}
+
 
 		}
 
