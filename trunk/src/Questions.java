@@ -32,7 +32,7 @@ public class Questions {
 
 
 		//questionList.add(".*[Ww]hat was\\s?(the)?\\s?(.*)\\?");
-		questionList.add(".*[Ww]hat was\\s?(the)?\\s?(discount rate)\\?");
+		questionList.add(".*[Ww]hat was\\s?(the)?\\s?([Dd]iscount [Rr]ate)\\?");
 
 		questionList.add(".*[Ww]hat did\\s?(the)?\\s?(.*) do against\\s?(the)?\\s?(.*)\\?");
 		questionList.add(".*Did\\s?(the)?\\s?(.*) "+allVerbs+" or "+allVerbs+" against\\s?(the)?\\s?(.*)\\?");
