@@ -11,14 +11,14 @@ public class Answer {
 	public String suffix="(to |at |)";
 
 	public  boolean getAnswer(Matcher matcherr, int casei) {
-		// TODO Auto-generated method stub
 
 		boolean flag=false;
-		int cntLine=0;
-		int cnt=0;
+		int cntLine=0, cnt=0;
+
 		try{
 
 			String nounCase;
+
 			if(casei==4 ||casei==9||casei==3||casei==0){
 				nounCase= matcherr.group(2);
 			}
@@ -30,24 +30,22 @@ public class Answer {
 			}
 
 			/*FileInputStream fstream = new FileInputStream("inputfile.txt");
-
-
 			//FileInputStream fstream = new FileInputStream("posfile.txt");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));*/
-			String strLine;
-			String strLinePos;
+
+			String strLine, strLinePos, caseQ;
 			Pattern pattern;
 			Matcher matcher;
-			String caseQ;
+
 			Questions question= new Questions();
 			POSFileReader posff= new POSFileReader();
 			//while ((strLine = br.readLine()) != null)
+
 			for(int ttt=0;ttt<posff.freetextfile.size();ttt++)
 			{
 
 				strLinePos=posff.freeposfile.get(ttt);
-
 				strLine=posff.freetextfile.get(ttt);
 
 
@@ -714,8 +712,7 @@ public class Answer {
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
 
 					//pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) [^,\\.]*?\\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) in (the)? \\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-
+					pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) in (the )?\\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 					matcher = pattern.matcher(strLine);
 
@@ -746,13 +743,13 @@ public class Answer {
 
 
 
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?was ([0-9][0-9\\s\\.,/%]*)",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?(was |is )([0-9][0-9\\s\\.,/%]*)",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
 					while (matcher.find()) {
 						cnt++;
-						String match = matcher.group(1).trim();
+						String match = matcher.group(2).trim();
 
 						char[] trimarr= match.toCharArray();
 						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
@@ -774,7 +771,7 @@ public class Answer {
 
 
 
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?(to|at) ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?(to |at )([0-9][0-9\\s\\.,/%]*).*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -799,13 +796,6 @@ public class Answer {
 
 
 					break;
-
-
-
-
-
-
-
 
 
 

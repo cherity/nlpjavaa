@@ -26,11 +26,12 @@ public class FileParser {
 
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
-				//POSFileReader.freetextfile.add("Nitt opened at 235");
+				
+				//POSFileReader.freetextfile.add("discount rate was 235");
 				//POSFileReader.freeposfile.add("Nitt opened at 235");
 
 				
-				//POSFileReader.freetextfile.add("Nitt, sold at 5235");
+				//POSFileReader.freetextfile.add("discount rate, finished at 78235");
 				//POSFileReader.freeposfile.add("Nitt, sold at 5235");
 
 				
