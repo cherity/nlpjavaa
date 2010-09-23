@@ -273,7 +273,7 @@ public class Answer {
 					//}
 
 					caseQ = matcherr.group(3);
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^\\.]*?\\b"+question.allVerbs+"\\b .*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^\\.]*?\\b"+question.allVerbs+"\\b.*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//	pattern = Pattern.compile(".*\\b"+nounCase+"\\b.* \\b"+question.allVerbs+"\\b .*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//pattern = Pattern.compile(".*\\b"+nounCase+"\\b.*(fell).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//System.out.println(".*\\b"+nounCase+"\\b.*fell.*");
@@ -288,20 +288,20 @@ public class Answer {
 						String x=caseQ;
 						String y=matcherr.group(4);
 
-						if(question.negVerbs.matches(".*"+x+".*")){
+						if(question.negVerbs.matches(".*\\b"+x+"\\b.*")){
 							neg=x;
 							pos=y;
 
 						}
-						else if(question.posVerbs.matches(".*"+x+".*")){
+						else if(question.posVerbs.matches(".*\\b"+x+"\\b.*")){
 							neg=y;
 							pos=x;
 						}
-						else if(question.posVerbs.matches(".*"+y+".*")){
+						else if(question.posVerbs.matches(".*\\b"+y+"\\b.*")){
 							neg=x;
 							pos=y;
 						}
-						else if(question.negVerbs.matches(".*"+y+".*")){
+						else if(question.negVerbs.matches(".*\\b"+y+"\\b.*")){
 							neg=y;
 							pos=x;
 						}
@@ -311,13 +311,13 @@ public class Answer {
 
 
 
-						if(question.negVerbs.matches(".*"+match+".*")){
+						if(question.negVerbs.matches(".*\\b"+match+"\\b.*")){
 							if(wrflag)
 								System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
 							else
 								System.out.println("A "+cnt+": "+match+".");
 						}
-						else if(question.posVerbs.matches(".*"+match+".*")){
+						else if(question.posVerbs.matches(".*\\b"+match+"\\b.*")){
 							if(wrflag)
 								System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
 							else
@@ -333,7 +333,6 @@ public class Answer {
 						flag=true;
 					}
 
-					//System.out.println(strLine);
 
 
 
@@ -344,7 +343,7 @@ public class Answer {
 
 				case 4:
 
-					
+
 					boolean flagclose=false;
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
@@ -372,10 +371,10 @@ public class Answer {
 						flagclose=true;
 					}
 
-				
+
 
 					if(!flagclose){
-						
+
 						pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 						matcher = pattern.matcher(strLine);
 
@@ -476,8 +475,8 @@ public class Answer {
 
 					break;
 
-					
-					
+
+
 				case 7:
 
 					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?\\b"+question.negVerbs+"\\b.*?",Pattern.DOTALL);
