@@ -26,17 +26,24 @@ public class FileParser {
 
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
-				
+
 				//POSFileReader.freetextfile.add("discount rate was 235");
 				//POSFileReader.freeposfile.add("Nitt opened at 235");
 
-				
+
 				//POSFileReader.freetextfile.add("discount rate, finished at 78235");
 				//POSFileReader.freeposfile.add("Nitt, sold at 5235");
 
-				
-				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
 
+				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
+				
+				
+				/*if(POSFileReader.freetextfile.size()==POSFileReader.freeposfile.size()){
+					System.out.println("Size Equal");
+				}
+				else{
+					System.out.println("Not Equal");
+				}*/
 
 				FileInputStream fstream2 = new FileInputStream(args[1]);
 				DataInputStream in2 = new DataInputStream(fstream2);
