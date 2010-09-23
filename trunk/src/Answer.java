@@ -274,7 +274,9 @@ public class Answer {
 					//	System.out.print(tt+matcherr.group(tt)+"            ");
 					//}
 
-					caseQ = matcherr.group(3);
+					caseQ = matcherr.group(4);
+					//System.out.println(nounCase+caseQ+" "+matcherr.group(6));
+					
 					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^\\.]*?\\b"+question.allVerbs+"\\b.*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//	pattern = Pattern.compile(".*\\b"+nounCase+"\\b.* \\b"+question.allVerbs+"\\b .*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					//pattern = Pattern.compile(".*\\b"+nounCase+"\\b.*(fell).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
@@ -288,7 +290,7 @@ public class Answer {
 						String pos="";
 						String neg="";
 						String x=caseQ;
-						String y=matcherr.group(4);
+						String y=matcherr.group(6);
 
 						if(question.negVerbs.matches(".*\\b"+x+"\\b.*")){
 							neg=x;
