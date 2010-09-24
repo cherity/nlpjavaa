@@ -168,7 +168,7 @@ public class FileParser {
 			Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
 			Matcher matcher = pattern.matcher(str);
 			int k=0;
-/*
+			/*
 			if(i==q.questionList.size()-1){
 				cnttt++;
 				System.out.println();

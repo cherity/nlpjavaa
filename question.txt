@@ -47,3 +47,22 @@ Which stocks fall?
 Which stocks rise?
 How much did Nitt open at?
 How much did Nitt sell at?
+How much did Ferranti International Signal have rise?
+How much did Aiwa fall? 
+How much did Aiwa have dipped?
+How much did the Aiwa went up?
+How much did Aiwa rise?
+How much did Aiwa have hiked up?
+How much did Kajima have fallen down?
+How much did Ohbayashi had dipped?
+How much did British Steel rise?
+How much did British Telecommuncations rise?
+How much did British Petroleum rise?
+How much did Nikon rise?
+Did Misawa Homes have rise or had fall?
+Did Misawa Homes up or down?
+Did the Nikkei Index rise or fall?
+Did the Nikkei Index gain or lost?
+Did Tesco went up or down?
+Did British Telecommuncations had risen or fallen?
+Did British Petroleum rise or fall?

@@ -9,7 +9,7 @@ public class Questions {
 	public String  posVerbs="(rise|risen|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating)";
 	public String  allVerbs="(rise|risen|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|fall|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|carshing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|droppping|down|sink|sinked)";
 	public String  extraEle="(went |have |had |has )?";
-	
+
 	public Questions(){
 
 		questionList.add(".*[Ww]hat did (the )?.*?([A-Z].*) do\\?");
@@ -21,7 +21,7 @@ public class Questions {
 
 		questionList.add(".*[Dd]id (the )?.*?([A-Z].*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+"\\?");
 
-		
+
 		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*) close(d|) at\\?");
 
 
