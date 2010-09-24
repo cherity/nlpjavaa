@@ -161,25 +161,27 @@ public class FileParser {
 
 	private static void parseQuestion(String str) {
 		// TODO Auto-generated method stub
-		Questions q= new Questions();
+		Questions q = new Questions();
 
-		boolean flag =false;
+		boolean flag = false;
+
 		for(int i=0;i<q.questionList.size();i++){
 			Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
 			Matcher matcher = pattern.matcher(str);
+
 			int k=0;
-			/*
+
 			if(i==q.questionList.size()-1){
 				cnttt++;
 				System.out.println();
 				System.out.println(cnttt+". "+str);
 				//System.out.println(match);
-				Answer answer = new Answer();
+				//Answer answer = new Answer();
 
 				System.out.println("No Information Available.");
 
 				return;
-			}*/
+			}
 
 			while (matcher.find()) {
 				cnttt++;
@@ -190,7 +192,7 @@ public class FileParser {
 				Answer answer = new Answer();
 				boolean ans= answer.getAnswer(matcher,i);
 				if(ans==false){
-					System.out.println("No Information Available.");
+					System.out.println(i+"No Information Available.");
 				}
 
 				flag=true;
