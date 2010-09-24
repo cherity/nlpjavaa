@@ -27,8 +27,8 @@ public class FileParser {
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
 
-				//POSFileReader.freetextfile.add("discount rate was 235");
-				//POSFileReader.freeposfile.add("Nitt opened at 235");
+			POSFileReader.freetextfile.add("The Rupee edged down in opposing to the dollar");
+			POSFileReader.freeposfile.add("The Rupee edged down in comparison to the dollar");
 
 
 				//POSFileReader.freetextfile.add("discount rate, finished at 78235");
@@ -192,7 +192,7 @@ public class FileParser {
 				Answer answer = new Answer();
 				boolean ans= answer.getAnswer(matcher,i);
 				if(ans==false){
-					System.out.println(i+"No Information Available.");
+					System.out.println("No Information Available.");
 				}
 
 				flag=true;

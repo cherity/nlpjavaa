@@ -813,7 +813,7 @@ public class Answer {
 					String c2= matcherr.group(4);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+c1+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c2+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+c1+"\\b,?.*? \\b"+question.allVerbs+"\\b .*?(against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs) .*?\\b"+c2+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 					//System.out.println("\\b"+c1+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c2+"\\b.*");
 
@@ -827,6 +827,37 @@ public class Answer {
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
 					}
+
+
+
+
+
+
+					pattern = Pattern.compile("\\b"+c2+"\\b,?.*? \\b"+question.allVerbs+"\\b .*?(against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs) .*?\\b"+c1+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					matcher = pattern.matcher(strLine);
+					//System.out.println("\\b"+c1+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c2+"\\b.*");
+
+					while (matcher.find()) {
+						cnt++;
+						String match = matcher.group(1).trim();
+
+						if(question.negVerbs.matches(".*"+match+".*")){
+							System.out.println("A "+cnt+": "+"RISE"+".");
+						}
+						else if(question.posVerbs.matches(".*"+match+".*")){
+							System.out.println("A "+cnt+": "+"FALL"+".");
+						}
+
+						//System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+
+						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						flag=true;
+					}
+
+
+
+
+
 
 
 
@@ -846,7 +877,7 @@ public class Answer {
 					//System.out.println(c3+"--------"+c4);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+c3+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c4+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+c3+"\\b,?.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c4+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 					//System.out.println("\\b"+c3+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c4+"\\b.*");
 

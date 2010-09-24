@@ -6,8 +6,8 @@ public class Questions {
 	public ArrayList<String> questionList=new ArrayList<String>();
 
 	public String  negVerbs="(fall|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|carshing|crash|crashed|dip|dipped|dipping|declining|sinking|dropping|decline|declined|down|sink|sinked|drop|dropped|low|lower|fallen)";
-	public String  posVerbs="(rise|risen|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating)";
-	public String  allVerbs="(rise|risen|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|fall|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|carshing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|droppping|down|sink|sinked)";
+	public String  posVerbs="(rise|risen|rises|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|jumps|jumped|jumping|jump)";
+	public String  allVerbs="(rise|risen|rises|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|jumps|jumped|jumping|jump|fall|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|carshing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|droppping|down|sink|sinked)";
 	public String  extraEle="(went |have |had |has )?";
 
 	public Questions(){
@@ -36,7 +36,7 @@ public class Questions {
 		//questionList.add(".*[Ww]hat was\\s?(the)?\\s?(.*)\\?");
 		questionList.add(".*[Ww]hat was\\s?(the)?\\s?([Dd]iscount [Rr]ate)\\?");
 
-		questionList.add(".*[Ww]hat did\\s?(the)?\\s?(.*) do against\\s?(the)?\\s?(.*)\\?");
+		questionList.add(".*[Ww]hat did\\s?(the)?\\s?(.*?) do against\\s?(the)?\\s?(.*?)\\?");
 		questionList.add(".*Did\\s?(the)?\\s?(.*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+" against\\s?(the)?\\s?(.*?)\\?");
 
 		questionList.add(".*[Ww](hat|hich)\\s?(company)?\\s?(stock|stocks)\\s?.*"+negVerbs+"\\?");
