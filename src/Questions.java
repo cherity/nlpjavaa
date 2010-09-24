@@ -41,7 +41,8 @@ public class Questions {
 
 		questionList.add(".*[Ww](hat|hich)\\s?(company)?\\s?(stock|stocks)\\s?.*"+negVerbs+"\\?");
 		questionList.add(".*[Ww](hat|hich)\\s?(company)?\\s?(stock|stocks)\\s?.*"+posVerbs+"\\?");
-		questionList.add(".*\\?");
+
+		questionList.add(".*");
 
 
 

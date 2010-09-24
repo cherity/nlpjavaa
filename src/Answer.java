@@ -1025,9 +1025,9 @@ public class Answer {
 
 								while(m2.find()){
 									//System.out.println("--------" +m2.group());
-									String gg =m2.group(1);
-									String ggarr[] =gg.split(" ");
-									if(ggarr.length<=10){
+									String distStr =m2.group(1);
+									String dist[] =distStr.split(" ");
+									if(dist.length<=10){
 										cnt++;
 
 										System.out.println("A "+cnt+": "+match+".");
@@ -1086,6 +1086,8 @@ public class Answer {
 
 
 				case 12:
+
+
 					boolean flag5 =true;
 					//pattern = Pattern.compile(".*?([\\[\\sA-Z\\]].*?)\\b"+question.posVerbs+"");
 					String verb2;
@@ -1140,9 +1142,9 @@ public class Answer {
 
 								while(m2.find()){
 									//System.out.println("--------" +m2.group());
-									String gg =m2.group(1);
-									String ggarr[] =gg.split(" ");
-									if(ggarr.length<=10){
+									String distStr =m2.group(1);
+									String dist[] =distStr.split(" ");
+									if(dist.length<=10){
 										cnt++;
 
 										System.out.println("A "+cnt+": "+match+".");
