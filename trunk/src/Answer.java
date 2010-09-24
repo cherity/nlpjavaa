@@ -1122,8 +1122,9 @@ public class Answer {
 
 								 */
 
-
-								Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*[0-9]+").matcher(strLine);
+								//Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*[0-9]+").matcher(strLine);
+								//							 "(\\b"+match+"\\b,? .*?\\b"+verb+"\\b).*[0-9]+"
+								Matcher m2 = Pattern.compile("(\\b"+match+"\\b,? .*?\\b"+verb+").*[0-9]+").matcher(strLine);
 
 								while(m2.find()){
 									//System.out.println("--------" +m2.group());
@@ -1240,7 +1241,9 @@ public class Answer {
 
 
 
-								Matcher m2 = Pattern.compile("("+match+".*?"+verb2+").*[0-9]+").matcher(strLine);
+								//Matcher m2 = Pattern.compile("("+match+".*?"+verb2+").*[0-9]+").matcher(strLine);
+								//							 "(\\b"+match+"\\b,? .*?\\b"+verb2+"\\b).*[0-9]+"
+								Matcher m2 = Pattern.compile("(\\b"+match+"\\b,? .*?\\b"+verb2+").*[0-9]+").matcher(strLine);
 
 								while(m2.find()){
 									//System.out.println("--------" +m2.group());

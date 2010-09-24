@@ -27,8 +27,8 @@ public class FileParser {
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
 
-			//POSFileReader.freetextfile.add("The Rupee edged down in opposing to the dollar");
-			//POSFileReader.freeposfile.add("The Rupee edged down in comparison to the dollar");
+				//POSFileReader.freetextfile.add("The Rupee edged down in opposing to the dollar");
+				//POSFileReader.freeposfile.add("The Rupee edged down in comparison to the dollar");
 
 
 				//POSFileReader.freetextfile.add("discount rate, finished at 78235");
