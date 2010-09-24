@@ -487,29 +487,32 @@ public class Answer {
 					matcher = pattern.matcher(strLinePos);
 
 					while (matcher.find()) {
-						cnt++;
+
 						String matchFirst = matcher.group(1).trim();
 						//String matchFirst1 = matcher.group(2).trim();
 
 						String match = modifyString(matchFirst);
+						match=match.trim();
 
-						char[] trimarr= match.toCharArray();
-						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
-							System.out.print("A "+cnt+": ");
-							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
+						if(!match.equalsIgnoreCase("index") && !match.equalsIgnoreCase("index.") && !match.equalsIgnoreCase("index .")){
+							cnt++;
+							char[] trimarr= match.toCharArray();
+							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
+								System.out.print("A "+cnt+": ");
+								for(int l=0;l<trimarr.length-1;l++){
+									System.out.print(trimarr[l]);
+								}
+								System.out.println(".");
 							}
-							System.out.println(".");
+							else{
+								System.out.println("A "+cnt+": "+match+".");
+							}
+							//System.out.println(matchFirst1);
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							flag=true;
 						}
-						else{
-							System.out.println("A "+cnt+": "+match+".");
-						}
-						//System.out.println(matchFirst1);
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-						flag=true;
+
 					}
-
-
 					break;
 
 
@@ -681,26 +684,29 @@ public class Answer {
 					matcher = pattern.matcher(strLinePos);
 
 					while (matcher.find()) {
-						cnt++;
+
 						String matchFirst = matcher.group(1).trim();
 
 						String match = modifyString(matchFirst);
+						match=match.trim();
 
-						char[] trimarr= match.toCharArray();
-						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
-							System.out.print("A "+cnt+": ");
-							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
+						if(!match.equalsIgnoreCase("index") && !match.equalsIgnoreCase("index.") && !match.equalsIgnoreCase("index .")){
+							cnt++;
+							char[] trimarr= match.toCharArray();
+							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
+								System.out.print("A "+cnt+": ");
+								for(int l=0;l<trimarr.length-1;l++){
+									System.out.print(trimarr[l]);
+								}
+								System.out.println(".");
 							}
-							System.out.println(".");
+							else{
+								System.out.println("A "+cnt+": "+match+".");
+							}
+							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							flag=true;
 						}
-						else{
-							System.out.println("A "+cnt+": "+match+".");
-						}
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-						flag=true;
 					}
-
 
 					break;
 
@@ -1089,7 +1095,7 @@ public class Answer {
 							for(String a :ast){
 								//System.out.println(a);
 								if(!a.equals("")){
-									if (!a.contains("NNP")&&!a.contains("NNPS")){
+									if (!a.contains("NNP")&&!a.contains("NNPS")&&!a.contains("DT")){
 										flag1=false;
 									}
 								}
@@ -1099,6 +1105,7 @@ public class Answer {
 							if(flag1){
 
 								//match =match.replaceAll(" ","");
+								match=match.replaceAll(".*?DT", "");
 								match =match.replaceAll("/NNPS","");
 								match =match.replaceAll("/NNP","");
 
@@ -1214,6 +1221,7 @@ public class Answer {
 							if (!name.contains("NNP")) {
 								continue;
 							}
+
 							match=name;
 
 							String[] ast= match.split(" ");
@@ -1221,7 +1229,7 @@ public class Answer {
 							for(String a :ast){
 								//System.out.println(a);
 								if(!a.equals("")){
-									if (!a.contains("NNP")&&!a.contains("NNPS")){
+									if (!a.contains("NNP")&&!a.contains("NNPS")&&!a.contains("DT")){
 										flag5=false;
 									}
 								}
@@ -1231,8 +1239,10 @@ public class Answer {
 							if(flag5){
 
 								//match =match.replaceAll(" ","");
+								match=match.replaceAll(".*?DT", "");
 								match =match.replaceAll("/NNPS","");
 								match =match.replaceAll("/NNP","");
+
 
 								match =match.trim();
 
@@ -1317,10 +1327,14 @@ public class Answer {
 	private String modifyString(String strLine) {
 		// TODO Auto-generated method stub
 
-
 		strLine=strLine.replaceAll("\\\\/", "yesssrandomsss");
 
+		//System.out.println(strLine);
+		strLine=strLine.replaceAll(".*?DT", "");
+
+		//System.out.println(strLine);
 		String[] words =strLine.split("(/.*? |/.*?$)");
+		//String[] words =strLine.split("(/NN.*? |/NN.*?$)");
 
 		String line="";
 		int cnt =0;
