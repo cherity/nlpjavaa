@@ -5,9 +5,9 @@ public class Questions {
 
 	public ArrayList<String> questionList=new ArrayList<String>();
 
-	public String  negVerbs="(fall|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|carshing|crash|crashed|dip|dipped|dipping|declining|sinking|dropping|decline|declined|down|sink|sinked|drop|dropped|low|lower|fallen)";
+	public String  negVerbs="(fall|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|carshing|crash|crashed|dip|dipped|dipping|declining|sinking|dropping|decline|declined|down|sink|sinked|drop|dropped|low|lower|fallen|below)";
 	public String  posVerbs="(rise|risen|rises|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|jumps|jumped|jumping|jump)";
-	public String  allVerbs="(rise|risen|rises|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|jumps|jumped|jumping|jump|fall|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|carshing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|droppping|down|sink|sinked)";
+	public String  allVerbs="(rise|risen|rises|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|jumps|jumped|jumping|jump|fall|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|carshing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|droppping|down|sink|sinked|below)";
 	public String  extraEle="(went |have |had |has )?";
 
 	public Questions(){
@@ -29,8 +29,9 @@ public class Questions {
 		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*) s(ell|old) at\\?");
 
 
-		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+negVerbs+"\\?");
-		questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+posVerbs+"\\?");
+		questionList.add(".*[Ww](hat|hich) (index|indexes).*"+negVerbs+"\\?");
+		questionList.add(".*[Ww](hat|hich) (index|indexes).*"+posVerbs+"\\?");
+		//questionList.add(".*[Ww](hat|hich).*?(index|indexes).*"+posVerbs+"\\?");
 
 
 		//questionList.add(".*[Ww]hat was\\s?(the)?\\s?(.*)\\?");

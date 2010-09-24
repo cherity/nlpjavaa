@@ -18,7 +18,7 @@ Moreover/RB ,/,  [ the/DT current/JJ high/JJ level/NN ] of/IN  [ the/DT U.S./NNP
 And/CC as/IN  [ the/DT rate/NN ] on/IN newly/RB issued/VBN  [ three-month/JJ certificates/NNS ] of/IN  [ deposit/NN ] went/VBD up/IN to/TO  [ 6.2/CD %/NN Wednesday/NNP ] ,/,  [ institutions/NNS ] and/CC  [ corporations/NNS ] had/VBD  [ little/JJ incentive/NN ] to/TO invest/VB  [ new/JJ funds/NNS ] in/IN  [ stocks/NNS ] ./.
 [ The/DT higher/JJR discount/NN rate/NN ] discouraged/VBD  [ institutions/NNS ] from/IN  [ holding/VBG steel/NN ] and/CC  [ construction/NN shares/NNS ] ,/,  [ traders/NNS ] said/VBD ./.
 [ Nippon/NNP Steel/NNP ] fell/VBD  [ 10/CD ] to/TO  [ 698/CD yen/NN ]  (/(  [ $/$ 4.83/CD ]  )/)  [ a/DT share/NN ] ,/,  [ Sumitomo/NNP Metal/NNP ] lost/VBD  [ 19/CD ] to/TO  [ 677/CD ] ,/, and/CC  [ Kobe/NNP Steel/NNP ] was/VBD down/IN  [ 9/CD ] at/IN  [ 690/CD ] ./.
-[ Kajima/NNP ] was/VBD down/IN  [ 100/CD ] at/IN  [ 1,900/CD ] ,/, while/IN  [ Ohbayashi/NNP ] lost/VBD  [ 60/CD ] to/TO  [ 1,500/CD ] ./.
+[ The/DT Kajima/NNP ] was/VBD down/IN  [ 100/CD ] at/IN  [ 1,900/CD ] ,/, while/IN  [ Ohbayashi/NNP ] lost/VBD  [ 60/CD ] to/TO  [ 1,500/CD ] ./.
 [ Shipbuilding/NN issues/NNS ] also/RB were/VBD sold/VBN off/IN ./.
 [ Kawasaki/NNP Heavy/NNP Industries/NNPS ] fell/VBD  [ 37/CD ] to/TO  [ 903/CD ] ,/, and/CC  [ Mitsubishi/NNP Heavy/NNP Industries/NNPS ] was/VBD down/IN  [ 30/CD ] at/IN  [ 1,010/CD ] ./.
 Among/IN housing/NN  [ issues/NNS ] ,/,  [ Misawa/NNP Homes/NNP ] lost/VBD  [ 140/CD ] to/TO  [ 2,830/CD ] ,/,  [ Sekisui/NNP House/NNP ] declined/VBD  [ 70/CD ] to/TO  [ 2,400/CD ] ,/, and/CC  [ Daiwa/NNP House/NNP ] lost/VBD  [ 100/CD ] to/TO  [ 2,470/CD ] ./.
