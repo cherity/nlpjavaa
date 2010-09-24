@@ -15,8 +15,8 @@ public class Questions {
 		questionList.add(".*[Ww]hat did (the )?.*?([A-Z].*) do\\?");
 
 
-		questionList.add(".*[Hh]ow much did .*?([A-Z].*)\\s?.* "+negVerbs+"\\?");
-		questionList.add(".*[Hh]ow much did .*?([A-Z].*)\\s?.* "+posVerbs+"\\?");
+		questionList.add(".*[Hh]ow much did (the )?.*?([A-Z].*?) "+extraEle+negVerbs+"\\s?.*?\\?");
+		questionList.add(".*[Hh]ow much did (the )?.*?([A-Z].*?) "+extraEle+posVerbs+"\\s?.*?\\?");
 
 
 		questionList.add(".*[Dd]id (the )?.*?([A-Z].*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+"\\?");

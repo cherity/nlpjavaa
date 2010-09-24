@@ -19,7 +19,7 @@ public class Answer {
 
 			String nounCase;
 
-			if(casei==4 ||casei==9||casei==3||casei==0){
+			if(casei==4 ||casei==9||casei==3||casei==0||casei==1||casei==2){
 				nounCase= matcherr.group(2);
 			}
 			else if(casei==5||casei==6){
@@ -128,7 +128,7 @@ public class Answer {
 
 
 					boolean flag3=false;
-					caseQ = matcherr.group(2);
+					caseQ = matcherr.group(4);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^,\\.]*? (fall|fell|loose|lost) .*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?\\b"+question.negVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
@@ -197,7 +197,7 @@ public class Answer {
 
 					boolean flag2=false;
 
-					caseQ = matcherr.group(2);
+					caseQ = matcherr.group(4);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 					//pattern = Pattern.compile("\\b"+nounCase+"\\b [^,\\.]*?"+question.posVerbs+" ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?\\b"+question.posVerbs+"\\b ([0-9][0-9\\s\\.,/%]*).*?(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
