@@ -100,16 +100,7 @@ public class Answer {
 							cnt++;
 							String match = matcher.group(1).trim();
 							String out="";
-							/*if(question.negVerbs.matches(".*"+match+".*")){
-								out="It Fell";
-
-							}
-							else if(question.posVerbs.matches(".*"+match+".*")){
-								out="It Rose";
-							}else{
-								out=match.toUpperCase();
-							}
-							 */
+							
 							System.out.println("A "+cnt+": "+match+".");
 							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 							flag=true;
