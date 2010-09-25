@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,18 +20,7 @@ public class Answer {
 
 			String nounCase;
 
-			if(casei==4 ||casei==9||casei==3||casei==0||casei==1||casei==2){
-				nounCase= matcherr.group(2);
-			}
-			else if(casei==5||casei==6){
-				nounCase= matcherr.group(3);
-			}
-			else if(casei==14){
-				nounCase="";
-			}
-			else{
-				nounCase= matcherr.group(1);
-			}
+			
 
 			/*FileInputStream fstream = new FileInputStream("inputfile.txt");
 			//FileInputStream fstream = new FileInputStream("posfile.txt");
@@ -51,66 +41,55 @@ public class Answer {
 				strLinePos=posff.freeposfile.get(ttt);
 				strLine=posff.freetextfile.get(ttt);
 
-
+				if(casei==4 ||casei==9||casei==3||casei==0||casei==1||casei==2){
+					nounCase= matcherr.group(2);
+				}
+				else if(casei==5||casei==6){
+					nounCase= matcherr.group(3);
+				}
+				else if(casei==14){
+					nounCase="";
+				}
+				else{
+					nounCase= matcherr.group(1);
+				}
 				cntLine++;
+				
 				switch(casei){
+				
 				case 0:
 
-					boolean flagcase0=false;
-					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					pattern = Pattern.compile("\\b("+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					String nouncases[]=getPermutationsParaphrases(nounCase);
+					boolean flagrep=false;
+					
+					for(int kk=0;kk<nouncases.length;kk++){
+						if(!flagrep){
 
-					matcher = pattern.matcher(strLine);
+							nounCase=nouncases[kk];
+							boolean flagcase0=false;
+							//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							pattern = Pattern.compile("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							//System.out.println("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+							matcher = pattern.matcher(strLine);
 
 
-					while (matcher.find()) {
-						cnt++;
-						//String match = matcher.group(1).trim();
-						String match = matcher.group(1).trim();
-						String out="";
-						/*if(question.negVerbs.matches(".*"+match+".*")){
-							out="It Fell";
-
+							while (matcher.find()) {
+								cnt++;
+								//String match = matcher.group(1).trim();
+								String match = matcher.group(1).trim();
+								
+								System.out.println("A "+cnt+": "+match+".");
+								System.out.println(nounCase);
+								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								flag=true;
+								flagcase0=true;
+								flagrep=true;
+							}
+						
 						}
-						else if(question.posVerbs.matches(".*"+match+".*")){
-							out="It Rose";
-						}else{
-							out=match.toUpperCase();
-						}*/
-
-						System.out.println("A "+cnt+": "+match+".");
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-						flag=true;
-						flagcase0=true;
 					}
-
-					//System.out.println(strLine);
-					if(!flagcase0){
-						nounCase=getDiffNoun(nounCase);
-
-						//System.out.println("\\b"+nounCase+"\\b .*?\\b"+question.allVerbs+"\\b.*?(,\\s|\\.($|\\s))");
-
-						pattern = Pattern.compile("\\b("+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-
-						matcher = pattern.matcher(strLine);
-
-
-						while (matcher.find()) {
-							cnt++;
-							String match = matcher.group(1).trim();
-							String out="";
-							
-							System.out.println("A "+cnt+": "+match+".");
-							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-							flag=true;
-							flagcase0=true;
-						}
-
-
-					}
-
-
+					
 
 					break;
 
@@ -1294,6 +1273,106 @@ public class Answer {
 		}
 
 
+	}
+
+	private String[] getPermutationsParaphrases(String nounCase) {
+		// TODO Auto-generated method stub
+		try{
+			String nounArray[]=nounCase.split(" ");
+			//System.out.println(nounArray.length);
+
+			if(nounArray.length==2){
+				ArrayList<String> a= new ArrayList<String>();
+				a.add(nounArray[0]+" "+nounArray[1]);
+
+				a.add(nounArray[0]+".*?"+nounArray[1]);
+				a.add(nounArray[0]);
+
+				String[] hidden = a.toArray(new String[a.size()]);
+
+				return hidden;
+			}
+			else if(nounArray.length==3){
+
+				ArrayList<String> a= new ArrayList<String>();
+
+				a.add(nounArray[0]+" "+nounArray[1]+" "+nounArray[2]);
+				a.add(nounArray[0]+".*?"+nounArray[1]+".*?"+nounArray[2]);
+				a.add(nounArray[0]+".*?"+nounArray[1]);
+				a.add(nounArray[0]+".*?"+nounArray[2]);
+				a.add(nounArray[1]+".*?"+nounArray[2]);
+				a.add(nounArray[0]);
+				a.add(nounArray[1]);
+
+				String[] hidden = a.toArray(new String[a.size()]);
+
+				return hidden;
+			}
+			/*else if(nounArray.length==4){
+				return nounArray;
+			}*/
+			else if (nounArray.length==1){
+
+				String[] hidden = new String[1];
+				hidden[0]=nounCase;
+				return hidden;
+
+			}
+			else {
+
+				String[] hidden = new String[4];
+				hidden[0]=nounCase;
+
+
+				hidden[1]="";
+				for(int i=1;i<nounArray.length;i++){
+					if(i==nounArray.length-1){
+						hidden[1]=hidden[1]+nounArray[i];
+					}
+					else{
+						hidden[1]=hidden[1]+nounArray[i]+" ";
+					}
+				}
+
+
+				hidden[2]="";
+				for(int i=0;i<nounArray.length;i++){
+					if(i==nounArray.length-1){
+						//hidden[1]=hidden[1]+nounArray[i];
+					}
+					else if(i==nounArray.length-2){
+						hidden[2]=hidden[2]+nounArray[i];
+					}
+					else{
+						hidden[2]=hidden[2]+nounArray[i]+" ";
+					}
+				}
+
+				hidden[3]="";
+				for(int i=1;i<nounArray.length;i++){
+					if(i==nounArray.length-1){
+						//hidden[1]=hidden[1]+nounArray[i];
+					}
+					else if(i==nounArray.length-2){
+						hidden[3]=hidden[3]+nounArray[i];
+					}
+					else{
+						hidden[3]=hidden[3]+nounArray[i]+" ";
+					}
+				}
+
+
+				return hidden;
+
+
+			}
+
+		}catch(Exception ex){
+
+			String[] hidden = new String[1];
+			hidden[0]="";
+			return hidden;
+		}
 	}
 
 	private String getDiffNoun(String nounCase) {
