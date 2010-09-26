@@ -738,7 +738,7 @@ public class Answer {
 
 
 
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?(was |is )([0-9][0-9\\s\\.,/%]*)",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^\\.]*?(was |is )([0-9][0-9\\s\\.,/%]*)",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -766,7 +766,7 @@ public class Answer {
 
 
 
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^,\\.]*?(to |at )([0-9][0-9\\s\\.,/%]*).*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^\\.]*?(to |at )([0-9][0-9\\s\\.,/%]*).*?",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
 
 
@@ -787,6 +787,7 @@ public class Answer {
 						}
 						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
 						flag=true;
+						flagdr=true;
 					}
 
 
