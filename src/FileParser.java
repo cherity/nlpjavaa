@@ -31,17 +31,17 @@ public class FileParser {
 				//POSFileReader.freeposfile.add("The Rupee edged down in comparison to the dollar");
 
 
-				//POSFileReader.freetextfile.add("Nitt have been opened at 5235");
+				//POSFileReader.freetextfile.add("Nitt have been sold at 5235");
 				//POSFileReader.freeposfile.add("Nitt have been opened at 5235");
 
 
 
-				//POSFileReader.freetextfile.add("Nitt Industries have opened low today at 5234235");
-				//POSFileReader.freeposfile.add("Nitt have been opened at 5235");
+				//				POSFileReader.freetextfile.add("Nitt Industries have bought low today at 5234235");
+				//			POSFileReader.freeposfile.add("Nitt have been opened at 5235");
 
 
-				//POSFileReader.freetextfile.add("Nitt Heavy Industries have opened low today at 22");
-				//POSFileReader.freeposfile.add("Nitt have been opened at 5235");
+				//				POSFileReader.freetextfile.add("Nitt Heavy Industries have started selling low today at 22");
+				//			POSFileReader.freeposfile.add("Nitt have been opened at 5235");
 
 				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
 
