@@ -1352,7 +1352,7 @@ public class Answer {
 		Matcher 	matcher = pattern.matcher(strLinePos);
 
 		while(matcher.find()){
-			//System.out.println(realpat+"------------------ "+matcher.group());
+			//System.out.println(realpat+" ------------------ "+matcher.group());
 
 			flag=true;
 		}
