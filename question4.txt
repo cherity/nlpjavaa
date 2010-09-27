@@ -5,3 +5,6 @@ Did the Nikkei Index gain or lost?
 Did Tesco went up or down?
 Did British Telecommuncations had risen or fallen?
 Did British Petroleum rise or fall?
+Did Tesco rise or fall?
+Did British Telecommuncations rise or fall?
+Did British Petroleum rise or fall?
