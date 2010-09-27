@@ -41,10 +41,10 @@ public class Answer {
 				strLinePos=posff.freeposfile.get(ttt);
 				strLine=posff.freetextfile.get(ttt);
 
-				if(casei==4 ||casei==9||casei==3||casei==0||casei==1||casei==2){
+				if(casei==9||casei==3||casei==0||casei==1||casei==2){
 					nounCase= matcherr.group(2);
 				}
-				else if(casei==5||casei==6){
+				else if(casei==5||casei==6||casei==4 ){
 					nounCase= matcherr.group(3);
 				}
 				else if(casei==14){
@@ -318,62 +318,74 @@ public class Answer {
 				case 4:
 
 
-					boolean flagclose=false;
-					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(closed|close) (to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					matcher = pattern.matcher(strLine);
+					nouncases=getPermutationsParaphrases(nounCase);
+					flagrep=false;
+
+					for(int kk=0;kk<nouncases.length;kk++){
+						if(!flagrep){
+
+							nounCase=nouncases[kk];
+
+							boolean flagclose=false;
+							//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
+							//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+							pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(closed|close) (to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							matcher = pattern.matcher(strLine);
 
 
-					while (matcher.find()) {
-						cnt++;
-						String match = matcher.group(3).trim();
+							while (matcher.find()) {
+								cnt++;
+								String match = matcher.group(3).trim();
 
-						char[] trimarr= match.toCharArray();
-						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-							System.out.print("A "+cnt+": ");
-							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
-							}
-							System.out.println(".");
-						}
-						else{
-							System.out.println("A "+cnt+": "+match+".");
-						}
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-						flag=true;
-						flagclose=true;
-					}
-
-
-
-					if(!flagclose){
-
-						pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-						matcher = pattern.matcher(strLine);
-
-
-						while (matcher.find()) {
-							cnt++;
-							String match = matcher.group(2).trim();
-
-							char[] trimarr= match.toCharArray();
-							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-								System.out.print("A "+cnt+": ");
-								for(int l=0;l<trimarr.length-1;l++){
-									System.out.print(trimarr[l]);
+								char[] trimarr= match.toCharArray();
+								if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+									System.out.print("A "+cnt+": ");
+									for(int l=0;l<trimarr.length-1;l++){
+										System.out.print(trimarr[l]);
+									}
+									System.out.println(".");
 								}
-								System.out.println(".");
+								else{
+									System.out.println("A "+cnt+": "+match+".");
+								}
+								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								flag=true;
+								flagclose=true;
+								flagrep=true;
 							}
-							else{
-								System.out.println("A "+cnt+": "+match+".");
+
+
+
+							if(!flagclose){
+
+								pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+								matcher = pattern.matcher(strLine);
+
+
+								while (matcher.find()) {
+									cnt++;
+									String match = matcher.group(2).trim();
+
+									char[] trimarr= match.toCharArray();
+									if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
+										System.out.print("A "+cnt+": ");
+										for(int l=0;l<trimarr.length-1;l++){
+											System.out.print(trimarr[l]);
+										}
+										System.out.println(".");
+									}
+									else{
+										System.out.println("A "+cnt+": "+match+".");
+									}
+									System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									flag=true;
+									flagclose=true;
+									flagrep=true;
+								}
 							}
-							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-							flag=true;
+
 						}
 					}
-
-
 					break;
 
 
@@ -1300,7 +1312,7 @@ public class Answer {
 				a.add(nounArray[0]+" "+nounArray[1]);
 
 				a.add(nounArray[0]+".*?"+nounArray[1]);
-				a.add(nounArray[0]);
+				//a.add(nounArray[0]);
 
 				String[] hidden = a.toArray(new String[a.size()]);
 
@@ -1315,8 +1327,8 @@ public class Answer {
 				a.add(nounArray[0]+".*?"+nounArray[1]);
 				a.add(nounArray[0]+".*?"+nounArray[2]);
 				a.add(nounArray[1]+".*?"+nounArray[2]);
-				a.add(nounArray[0]);
-				a.add(nounArray[1]);
+				//a.add(nounArray[0]);
+				//a.add(nounArray[1]);
 
 				String[] hidden = a.toArray(new String[a.size()]);
 
