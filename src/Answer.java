@@ -64,7 +64,7 @@ public class Answer {
 
 					for(int kk=0;kk<nouncases.length;kk++){
 
-						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk],kk);
 						//if(!flagrep){
 						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
@@ -326,7 +326,7 @@ public class Answer {
 					for(int kk=0;kk<nouncases.length;kk++){
 
 
-						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk],kk);
 						//if(!flagrep){
 						if(!flagrep && flagtodo){
 							//if(!flagrep){
@@ -405,7 +405,7 @@ public class Answer {
 					flagrep=false;
 
 					for(int kk=0;kk<nouncases.length;kk++){
-						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk],kk);
 						//if(!flagrep){
 						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
@@ -448,7 +448,7 @@ public class Answer {
 					flagrep=false;
 
 					for(int kk=0;kk<nouncases.length;kk++){
-						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk],kk);
 						//if(!flagrep){
 						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
@@ -1310,7 +1310,7 @@ public class Answer {
 
 	}
 
-	private boolean getRightMatch(String strLinePos, String nounSet) {
+	private boolean getRightMatch(String strLinePos, String nounSet,int indexx) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
 		String dt="(the/DT |The/DT |a/DT |A/DT )?.*?";
@@ -1323,25 +1323,47 @@ public class Answer {
 		String pat=dt;
 
 
-
-		for(int kk=0;kk<noun.length;kk++){
-			if(kk==noun.length-1){
-				if(noun[kk].equals("'s")){
-					pat+=noun[kk]+posTag;
+		if(indexx==0){
+			for(int kk=0;kk<noun.length;kk++){
+				if(kk==noun.length-1){
+					if(noun[kk].equals("'s")){
+						pat+=noun[kk]+posTag+".*?";
+					}
+					else{
+						pat+=noun[kk]+posNounTag+".*?";
+					}
 				}
 				else{
-					pat+=noun[kk]+posNounTag;
+					if(noun[kk].equals("'s")){
+						pat+=noun[kk]+posTag+" ";
+					}
+					else{
+						pat+=noun[kk]+posNounTag+" ";
+					}
 				}
+
 			}
-			else{
-				if(noun[kk].equals("'s")){
-					pat+=noun[kk]+posTag+".*?";
+		}
+		else{
+			for(int kk=0;kk<noun.length;kk++){
+				if(kk==noun.length-1){
+					if(noun[kk].equals("'s")){
+						pat+=noun[kk]+posTag;
+					}
+					else{
+						pat+=noun[kk]+posNounTag;
+					}
 				}
 				else{
-					pat+=noun[kk]+posNounTag+".*?";
+					if(noun[kk].equals("'s")){
+						pat+=noun[kk]+posTag+".*?";
+					}
+					else{
+						pat+=noun[kk]+posNounTag+".*?";
+					}
 				}
-			}
 
+			}
 		}
 		String realpat= "\\[ "+pat+" \\]";
 

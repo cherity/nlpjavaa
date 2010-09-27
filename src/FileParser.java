@@ -27,8 +27,8 @@ public class FileParser {
 				//POSFileReader posfi=new POSFileReader();
 				POSFileReader.readFile(args[0]);
 
-				
-				
+
+
 				//POSFileReader.freetextfile.add("The Rupee edged down in opposing to the dollar");
 				//POSFileReader.freeposfile.add("The Rupee edged down in comparison to the dollar");
 
@@ -53,8 +53,23 @@ public class FileParser {
 				//POSFileReader.freeposfile.add("[ Nitt/NNP Industries/NNPS ] have bought low today at 5234235");
 
 
-				//POSFileReader.freetextfile.add("Nitt Heavy Industries have started opening low today at 22");
-				//POSFileReader.freeposfile.add("[ Nitt/NNP Heavy/NNP Industries/NNPS ] have started selling low today at 22");
+				//POSFileReader.freetextfile.add("Nitt Heavy Industries have opening low today at 22");
+				//POSFileReader.freeposfile.add("[ Nitt/NNP Heavy/NNP Industries/NNPS ] have selling low today at 22");
+
+
+
+
+				//POSFileReader.freetextfile.add("Nitt have been sold at 5235");
+				//POSFileReader.freeposfile.add("[ Nitt/NNP ] have been opened at 5235");
+
+
+
+				//POSFileReader.freetextfile.add("Nitt Industries have sold low today at 5234235");
+				//POSFileReader.freeposfile.add("[ Nitt/NNP Industries/NNPS ] have bought low today at 5234235");
+
+
+				//POSFileReader.freetextfile.add("Nitt Heavy Industries have sold low today at 22");
+				//POSFileReader.freeposfile.add("[ Nitt/NNP Heavy/NNP Industries/NNPS ] have  selling low today at 22");
 
 				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
 
