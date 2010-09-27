@@ -63,8 +63,10 @@ public class Answer {
 					boolean flagrep=false;
 
 					for(int kk=0;kk<nouncases.length;kk++){
-						if(!flagrep){
 
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						//if(!flagrep){
+						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
 							boolean flagcase0=false;
 							//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
@@ -322,7 +324,12 @@ public class Answer {
 					flagrep=false;
 
 					for(int kk=0;kk<nouncases.length;kk++){
-						if(!flagrep){
+
+
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						//if(!flagrep){
+						if(!flagrep && flagtodo){
+							//if(!flagrep){
 
 							nounCase=nouncases[kk];
 
@@ -398,8 +405,9 @@ public class Answer {
 					flagrep=false;
 
 					for(int kk=0;kk<nouncases.length;kk++){
-						if(!flagrep){
-
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						//if(!flagrep){
+						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
 							//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 							//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
@@ -440,8 +448,9 @@ public class Answer {
 					flagrep=false;
 
 					for(int kk=0;kk<nouncases.length;kk++){
-						if(!flagrep){
-
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk]);
+						//if(!flagrep){
+						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
 							//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
 							//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
@@ -1301,6 +1310,55 @@ public class Answer {
 
 	}
 
+	private boolean getRightMatch(String strLinePos, String nounSet) {
+		// TODO Auto-generated method stub
+		boolean flag=false;
+		String dt="(the/DT |The/DT |a/DT |A/DT )?.*?";
+		String posNounTag="(/NNP|/NNPS|/NN)";
+		String posTag="(/POS)";
+		nounSet=nounSet.replaceAll("'s", " 's");
+		//System.out.println(nounSet);
+		nounSet=nounSet.replaceAll("\\.\\*\\?", " ");
+		String[] noun=nounSet.split(" ");
+		String pat=dt;
+
+
+
+		for(int kk=0;kk<noun.length;kk++){
+			if(kk==noun.length-1){
+				if(noun[kk].equals("'s")){
+					pat+=noun[kk]+posTag;
+				}
+				else{
+					pat+=noun[kk]+posNounTag;
+				}
+			}
+			else{
+				if(noun[kk].equals("'s")){
+					pat+=noun[kk]+posTag+".*?";
+				}
+				else{
+					pat+=noun[kk]+posNounTag+".*?";
+				}
+			}
+
+		}
+		String realpat= "\\[ "+pat+" \\]";
+
+		//System.out.println(realpat);
+
+		Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+		//System.out.println("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+		Matcher 	matcher = pattern.matcher(strLinePos);
+
+		while(matcher.find()){
+			//System.out.println(realpat+"------------------ "+matcher.group());
+
+			flag=true;
+		}
+		return flag;
+	}
+
 	private String[] getPermutationsParaphrases(String nounCase) {
 		// TODO Auto-generated method stub
 		try{
@@ -1312,7 +1370,7 @@ public class Answer {
 				a.add(nounArray[0]+" "+nounArray[1]);
 
 				a.add(nounArray[0]+".*?"+nounArray[1]);
-				//a.add(nounArray[0]);
+				a.add(nounArray[0]);
 
 				String[] hidden = a.toArray(new String[a.size()]);
 
@@ -1327,8 +1385,8 @@ public class Answer {
 				a.add(nounArray[0]+".*?"+nounArray[1]);
 				a.add(nounArray[0]+".*?"+nounArray[2]);
 				a.add(nounArray[1]+".*?"+nounArray[2]);
-				//a.add(nounArray[0]);
-				//a.add(nounArray[1]);
+				a.add(nounArray[0]);
+				a.add(nounArray[1]);
 
 				String[] hidden = a.toArray(new String[a.size()]);
 
