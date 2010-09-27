@@ -22,7 +22,7 @@ public class Questions {
 		questionList.add(".*[Dd]id (the )?.*?([A-Z].*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+"\\?");
 
 
-		questionList.add(".*([Ww]hat|How much) did .*?([A-Z].*?) "+extraEle+"close(d|) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"close(d|) at\\?");
 
 
 		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"open(ed|) at\\?");
