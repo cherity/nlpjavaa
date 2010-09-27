@@ -209,11 +209,11 @@ public class FileParser {
 			if(i==q.questionList.size()-1){
 				cnttt++;
 				System.out.println();
-				System.out.println(cnttt+". "+str);
+				System.out.println("Q "+cnttt+": "+str);
 				//System.out.println(match);
 				//Answer answer = new Answer();
 
-				System.out.println("No Information Available.");
+				System.out.println("A: No Information Available.");
 
 				return;
 			}
@@ -222,12 +222,12 @@ public class FileParser {
 				cnttt++;
 				k++;
 				System.out.println();
-				System.out.println(cnttt+". "+str);
+				System.out.println("Q "+cnttt+": "+str);
 				//System.out.println(match);
 				Answer answer = new Answer();
 				boolean ans= answer.getAnswer(matcher,i);
 				if(ans==false){
-					System.out.println("No Information Available.");
+					System.out.println("A: No Information Available.");
 				}
 
 				flag=true;
