@@ -266,79 +266,87 @@ public class Answer {
 
 				case 3:
 
+					nouncases=getPermutationsParaphrases(nounCase);
+					flagrep=false;
+
+					for(int kk=0;kk<nouncases.length;kk++){
+
+						boolean flagtodo=getRightMatch(strLinePos,nouncases[kk],kk);
+						//if(!flagrep){
+						if(!flagrep && flagtodo){
 
 
-					boolean wrflag=true;
-					//int cntt =matcherr.groupCount();
-					//for(int tt=0;tt<= matcherr.groupCount();tt++){
-					//	System.out.print(tt+matcherr.group(tt)+"            ");
-					//}
+							nounCase=nouncases[kk];
 
-					caseQ = matcherr.group(4);
-					//System.out.println(nounCase+caseQ+" "+matcherr.group(6));
-
-					pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^\\.]*?\\b"+question.allVerbs+"\\b.*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					//	pattern = Pattern.compile(".*\\b"+nounCase+"\\b.* \\b"+question.allVerbs+"\\b .*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					//pattern = Pattern.compile(".*\\b"+nounCase+"\\b.*(fell).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-					//System.out.println(".*\\b"+nounCase+"\\b.*fell.*");
-					matcher = pattern.matcher(strLine);
+							boolean wrflag=true;
 
 
-					while (matcher.find()) {
-						cnt++;
-						String match = matcher.group(1).trim();
-						String pos="";
-						String neg="";
-						String x=caseQ;
-						String y=matcherr.group(6);
+							caseQ = matcherr.group(4);
 
-						if(question.negVerbs.matches(".*\\b"+x+"\\b.*")){
-							neg=x;
-							pos=y;
+							pattern = Pattern.compile("\\b"+nounCase+"\\b,? [^\\.]*?\\b"+question.allVerbs+"\\b.*(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							//	pattern = Pattern.compile(".*\\b"+nounCase+"\\b.* \\b"+question.allVerbs+"\\b .*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							//pattern = Pattern.compile(".*\\b"+nounCase+"\\b.*(fell).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+
+							matcher = pattern.matcher(strLine);
+
+
+							while (matcher.find()) {
+								cnt++;
+								String match = matcher.group(1).trim();
+								String pos="";
+								String neg="";
+								String x=caseQ;
+								String y=matcherr.group(6);
+
+								if(question.negVerbs.matches(".*\\b"+x+"\\b.*")){
+									neg=x;
+									pos=y;
+
+								}
+								else if(question.posVerbs.matches(".*\\b"+x+"\\b.*")){
+									neg=y;
+									pos=x;
+								}
+								else if(question.posVerbs.matches(".*\\b"+y+"\\b.*")){
+									neg=x;
+									pos=y;
+								}
+								else if(question.negVerbs.matches(".*\\b"+y+"\\b.*")){
+									neg=y;
+									pos=x;
+								}
+								else{
+									wrflag=false;
+								}
+
+
+
+								if(question.negVerbs.matches(".*\\b"+match+"\\b.*")){
+									if(wrflag)
+										System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
+									else
+										System.out.println("A "+cnt+": "+match+".");
+								}
+								else if(question.posVerbs.matches(".*\\b"+match+"\\b.*")){
+									if(wrflag)
+										System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
+									else
+										System.out.println("A "+cnt+": "+match+".");
+								}
+								else{
+									System.out.println("A "+cnt+": "+match+".");
+								}
+
+
+
+								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								flag=true;
+								flagrep=true;
+							}
+
 
 						}
-						else if(question.posVerbs.matches(".*\\b"+x+"\\b.*")){
-							neg=y;
-							pos=x;
-						}
-						else if(question.posVerbs.matches(".*\\b"+y+"\\b.*")){
-							neg=x;
-							pos=y;
-						}
-						else if(question.negVerbs.matches(".*\\b"+y+"\\b.*")){
-							neg=y;
-							pos=x;
-						}
-						else{
-							wrflag=false;
-						}
-
-
-
-						if(question.negVerbs.matches(".*\\b"+match+"\\b.*")){
-							if(wrflag)
-								System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
-							else
-								System.out.println("A "+cnt+": "+match+".");
-						}
-						else if(question.posVerbs.matches(".*\\b"+match+"\\b.*")){
-							if(wrflag)
-								System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
-							else
-								System.out.println("A "+cnt+": "+match+".");
-						}
-						else{
-							System.out.println("A "+cnt+": "+match+".");
-						}
-
-
-
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-						flag=true;
 					}
-
-
-
 
 					break;
 
