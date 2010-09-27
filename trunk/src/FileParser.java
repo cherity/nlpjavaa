@@ -196,7 +196,6 @@ public class FileParser {
 
 
 	private static void parseQuestion(String str) {
-		// TODO Auto-generated method stub
 		Questions q = new Questions();
 
 		boolean flag = false;
