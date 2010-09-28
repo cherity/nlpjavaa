@@ -5,10 +5,11 @@ public class Questions {
 
 	public ArrayList<String> questionList=new ArrayList<String>();
 
-	public String  negVerbs="(fall|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|carshing|crash|crashed|dip|dipped|dipping|declining|sinking|dropping|decline|declined|down|sink|sinked|drop|dropped|low|lower|fallen|below)";
-	public String  posVerbs="(rise|risen|rises|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|jumps|jumped|jumping|jump)";
-	public String  allVerbs="(rise|risen|rises|rising|climb|climbed|climbing|gain|gained|gaining|advanced|advancing|high|higher|advance|rose|grow|grown|growing|raised|raising|raise|hike|hiking|hiked|up|elevate|elevated|elevating|jumps|jumped|jumping|jump|fall|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|carshing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|droppping|down|sink|sinked|below)";
-	public String  extraEle="(went |have |had |has )?";
+	public String  negVerbs="(fall|falls|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|crashing|crash|crashed|dip|dips|crashes|collapses|sinks|declines|drops|plunges|dipped|dipping|declining|sinking|dropping|lessen|decline|declined|down|sink|sinked|sank|drop|dropped|low|lower|fallen|below|plunge|plunged|plunging|plummet|plummets|plummeting|plummeted|droping|lose|recede|receding|recedes|wane|waned|waning|wanes|plump|plumped|plumping|plumps|plunk|plunks|plunked|plunking|descend|descends|descended|descending|dive|dove|lowered)";
+	public String  posVerbs="(rise|risen|rises|rising|climb|climbs|climbed|climbing|gain|gains|gained|gaining|advanced|advancing|high|higher|advance|advances|rose|grow|grown|grows|growing|raised|raising|raise|raises|hike|hikes|hiking|hiked|up|elevate|elevates|elevated|elevating|jumps|jumped|jumping|jump|ascend|ascends|ascended|ascending|increase|increases|increased|increasing|mount|mounts|mounted|mounting|wax|waxes|waxed|waxing)";
+	public String  allVerbs="(rise|risen|rises|rising|climb|climbs|climbed|climbing|gain|gains|gained|gaining|advanced|advancing|high|higher|advance|advances|rose|grow|grown|grows|growing|raised|raising|raise|raises|hike|hikes|hiking|hiked|up|elevate|elevates|elevated|elevating|jumps|jumped|jumping|jump|ascend|ascends|ascended|ascending|increase|increases|increased|increasing|mount|mounts|mounted|mounting|wax|waxes|waxed|waxing|fall|falls|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|crashing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|dropping|down|sink|sinked|below|plunge|plunged|plunging|plummet|sank|plummets|plummeting|plummeted|dips|crashes|collapses|sinks|declines|drops|plunges|droping|lessen|lose|recede|receding|recedes|wane|waned|waning|wanes|plump|plumped|plumping|plumps|plunk|plunks|plunked|plunking|descend|descends|descended|descending|dive|dove|lowered)";
+	public String  extraEle="(went |have |had |has |was |go |gone |is |move |moved |lift |come )?";
+
 
 	public Questions(){
 
@@ -22,11 +23,11 @@ public class Questions {
 		questionList.add(".*[Dd]id (the )?.*?([A-Z].*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+"\\?");
 
 
-		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"close(d|) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(closed|close|end|ended|finish|finished|shut|terminate|terminated|stop|stopped|cease|ceased) at\\?");
 
 
-		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"open(ed|) at\\?");
-		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"s(ell|old) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(opened|open|commence|commenced|begin|began|start|started|initiate|initiated) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(sell|sold|deal|dealt|trade|transact|traded|transacted|bought) at\\?");
 
 
 		questionList.add(".*[Ww](hat|hich) (index|indexes).*"+negVerbs+"\\?");
@@ -37,8 +38,8 @@ public class Questions {
 		//questionList.add(".*[Ww]hat was\\s?(the)?\\s?(.*)\\?");
 		questionList.add(".*[Ww]hat was\\s?(the)?\\s?([Dd]iscount [Rr]ate)\\?");
 
-		questionList.add(".*[Ww]hat did\\s?(the)?\\s?(.*?) do against\\s?(the)?\\s?(.*?)\\?");
-		questionList.add(".*Did\\s?(the)?\\s?(.*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+" against\\s?(the)?\\s?(.*?)\\?");
+		questionList.add(".*[Ww]hat did\\s?(the)?\\s?(.*?) do (against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs|as opposed to|as compared to|as counter to|as contrary to)\\s?(the)?\\s?(.*?)\\?");
+		questionList.add(".*Did\\s?(the)?\\s?(.*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+" (against|compared to|in comparison to|opposed to|as opposed to|as compared to|as counter to|as contrary to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs)\\s?(the)?\\s?(.*?)\\?");
 
 		questionList.add(".*[Ww](hat|hich)\\s?(company)?\\s?(stock|stocks)\\s?.*"+negVerbs+"\\?");
 		questionList.add(".*[Ww](hat|hich)\\s?(company)?\\s?(stock|stocks)\\s?.*"+posVerbs+"\\?");
