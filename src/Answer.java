@@ -67,7 +67,7 @@ public class Answer {
 							//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 							//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 							pattern = Pattern.compile("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-							//System.out.println("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+
 							matcher = pattern.matcher(strLine);
 
 
@@ -76,9 +76,16 @@ public class Answer {
 								//String match = matcher.group(1).trim();
 								String match = matcher.group(1).trim();
 
-								System.out.println("A "+cnt+": "+match+".");
 
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								//FileParser.brout.write("A "+cnt+": "+match+".");
+								//FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+
+
+								FileParser.brout.write("A "+cnt+": "+match+".");
+								FileParser.brout.newLine();
+								FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.newLine();
+
 								flag=true;
 								flagcase0=true;
 								flagrep=true;
@@ -120,22 +127,31 @@ public class Answer {
 								String match = matcher.group(2).trim();
 								char[] trimarr= match.toCharArray();
 								if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-									System.out.print("A "+cnt+": ");
+									//FileParser.brout.write("A "+cnt+": ");
+									FileParser.brout.write("A "+cnt+": ");
 									for(int l=0;l<trimarr.length-1;l++){
-										System.out.print(trimarr[l]);
+										//FileParser.brout.write(trimarr[l]);
+										FileParser.brout.write(trimarr[l]);
 									}
-									System.out.println(".");
+									//FileParser.brout.write(".");
+									FileParser.brout.write(".");
+									FileParser.brout.newLine();
 								}
 								else{
-									System.out.println("A "+cnt+": "+match+".");
+									//FileParser.brout.write("A "+cnt+": "+match+".");
+									FileParser.brout.write("A "+cnt+": "+match+".");
+									FileParser.brout.newLine();
 								}
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								//FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+
+								FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.newLine();
+
 								flag=true;
 								flag3=true;
 								flagrep=true;
 							}
 
-							//System.out.println(strLine);
 
 
 							if(!flag3){
@@ -151,16 +167,25 @@ public class Answer {
 
 									char[] trimarr= match.toCharArray();
 									if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-										System.out.print("A "+cnt+": ");
+										//FileParser.brout.write("A "+cnt+": ");
+										FileParser.brout.write("A "+cnt+": ");
 										for(int l=0;l<trimarr.length-1;l++){
-											System.out.print(trimarr[l]);
+											//FileParser.brout.write(trimarr[l]);
+											FileParser.brout.write(trimarr[l]);
 										}
-										System.out.println(".");
+										//FileParser.brout.write(".");
+
+										FileParser.brout.write(".");
+										FileParser.brout.newLine();
 									}
 									else{
-										System.out.println("A "+cnt+": "+match+".");
+										//FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.newLine();
 									}
-									System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									//FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									FileParser.brout.newLine();
 									flag=true;
 									flagrep=true;
 								}
@@ -203,16 +228,19 @@ public class Answer {
 
 								char[] trimarr= match.toCharArray();
 								if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-									System.out.print("A "+cnt+": ");
+									FileParser.brout.write("A "+cnt+": ");
 									for(int l=0;l<trimarr.length-1;l++){
-										System.out.print(trimarr[l]);
+										FileParser.brout.write(trimarr[l]);
 									}
-									System.out.println(".");
+									FileParser.brout.write(".");
+									FileParser.brout.newLine();
 								}
 								else{
-									System.out.println("A "+cnt+": "+match+".");
+									FileParser.brout.write("A "+cnt+": "+match+".");
+									FileParser.brout.newLine();
 								}
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.newLine();
 								flag=true;
 								flag2=true;
 								flagrep=true;
@@ -231,22 +259,25 @@ public class Answer {
 
 									char[] trimarr= match.toCharArray();
 									if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-										System.out.print("A "+cnt+": ");
+										FileParser.brout.write("A "+cnt+": ");
 										for(int l=0;l<trimarr.length-1;l++){
-											System.out.print(trimarr[l]);
+											FileParser.brout.write(trimarr[l]);
 										}
-										System.out.println(".");
+										FileParser.brout.write(".");
+										FileParser.brout.newLine();
 									}
 									else{
-										System.out.println("A "+cnt+": "+match+".");
+										FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.newLine();
 									}
-									System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									FileParser.brout.newLine();
 									flag=true;
 									flagrep=true;
 								}
 							}
 
-							//System.out.println(strLine);
+
 
 						}
 					}
@@ -316,24 +347,34 @@ public class Answer {
 
 
 								if(question.negVerbs.matches(".*\\b"+match+"\\b.*")){
-									if(wrflag)
-										System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
-									else
-										System.out.println("A "+cnt+": "+match+".");
+									if(wrflag){
+										FileParser.brout.write("A "+cnt+": "+neg.toUpperCase()+".");
+										FileParser.brout.newLine();
+									}
+									else{
+										FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.newLine();
+									}
 								}
 								else if(question.posVerbs.matches(".*\\b"+match+"\\b.*")){
-									if(wrflag)
-										System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
-									else
-										System.out.println("A "+cnt+": "+match+".");
+									if(wrflag){
+										FileParser.brout.write("A "+cnt+": "+pos.toUpperCase()+".");
+										FileParser.brout.newLine();
+									}
+									else{
+										FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.newLine();
+									}
 								}
 								else{
-									System.out.println("A "+cnt+": "+match+".");
+									FileParser.brout.write("A "+cnt+": "+match+".");
+									FileParser.brout.newLine();
 								}
 
 
 
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.newLine();
 								flag=true;
 								flagrep=true;
 							}
@@ -365,7 +406,7 @@ public class Answer {
 
 							boolean flagclose=false;
 							//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-							//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+
 							pattern = Pattern.compile("\\b"+nounCase+"\\b,?.*?(closed|close) (to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 							matcher = pattern.matcher(strLine);
 
@@ -376,16 +417,19 @@ public class Answer {
 
 								char[] trimarr= match.toCharArray();
 								if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-									System.out.print("A "+cnt+": ");
+									FileParser.brout.write("A "+cnt+": ");
 									for(int l=0;l<trimarr.length-1;l++){
-										System.out.print(trimarr[l]);
+										FileParser.brout.write(trimarr[l]);
 									}
-									System.out.println(".");
+									FileParser.brout.write(".");
+									FileParser.brout.newLine();
 								}
 								else{
-									System.out.println("A "+cnt+": "+match+".");
+									FileParser.brout.write("A "+cnt+": "+match+".");
+									FileParser.brout.newLine();
 								}
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.newLine();
 								flag=true;
 								flagclose=true;
 								flagrep=true;
@@ -405,16 +449,19 @@ public class Answer {
 
 									char[] trimarr= match.toCharArray();
 									if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-										System.out.print("A "+cnt+": ");
+										FileParser.brout.write("A "+cnt+": ");
 										for(int l=0;l<trimarr.length-1;l++){
-											System.out.print(trimarr[l]);
+											FileParser.brout.write(trimarr[l]);
 										}
-										System.out.println(".");
+										FileParser.brout.write(".");
+										FileParser.brout.newLine();
 									}
 									else{
-										System.out.println("A "+cnt+": "+match+".");
+										FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.newLine();
 									}
-									System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+									FileParser.brout.newLine();
 									flag=true;
 									flagclose=true;
 									flagrep=true;
@@ -440,7 +487,7 @@ public class Answer {
 						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
 							//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-							//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+
 							pattern = Pattern.compile("\\b"+nounCase+"\\b,? .*?\\b(open|opened|start|started|opening|starting|initiated|initiating|initiate|commence|commencing|commenced)\\s?.*?\\s?(to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 							matcher = pattern.matcher(strLine);
 
@@ -451,17 +498,20 @@ public class Answer {
 
 								char[] trimarr= match.toCharArray();
 								if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-									System.out.print("A "+cnt+": ");
+									FileParser.brout.write("A "+cnt+": ");
 									for(int l=0;l<trimarr.length-1;l++){
-										System.out.print(trimarr[l]);
+										FileParser.brout.write(trimarr[l]);
 									}
-									System.out.println(".");
+									FileParser.brout.write(".");
+									FileParser.brout.newLine();
 								}
 								else{
-									System.out.println("A "+cnt+": "+match+".");
+									FileParser.brout.write("A "+cnt+": "+match+".");
+									FileParser.brout.newLine();
 								}
-								//System.out.println(nounCase);
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+
+								FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.newLine();
 								flag=true;
 								flagrep=true;
 							}
@@ -483,7 +533,7 @@ public class Answer {
 						if(!flagrep && flagtodo){
 							nounCase=nouncases[kk];
 							//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-							//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+
 							pattern = Pattern.compile("\\b"+nounCase+"\\b,? .*?\\b(sell|sold|bought|selling|buying|buy)\\s?.*?\\s?(to|at) ([0-9][0-9\\s\\.,/%]*).*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 							matcher = pattern.matcher(strLine);
 
@@ -494,16 +544,19 @@ public class Answer {
 
 								char[] trimarr= match.toCharArray();
 								if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-									System.out.print("A "+cnt+": ");
+									FileParser.brout.write("A "+cnt+": ");
 									for(int l=0;l<trimarr.length-1;l++){
-										System.out.print(trimarr[l]);
+										FileParser.brout.write(trimarr[l]);
 									}
-									System.out.println(".");
+									FileParser.brout.write(".");
+									FileParser.brout.newLine();
 								}
 								else{
-									System.out.println("A "+cnt+": "+match+".");
+									FileParser.brout.write("A "+cnt+": "+match+".");
+									FileParser.brout.newLine();
 								}
-								System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+								FileParser.brout.newLine();
 								flag=true;
 								flagrep=true;
 							}
@@ -532,17 +585,20 @@ public class Answer {
 							cnt++;
 							char[] trimarr= match.toCharArray();
 							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
-								System.out.print("A "+cnt+": ");
+								FileParser.brout.write("A "+cnt+": ");
 								for(int l=0;l<trimarr.length-1;l++){
-									System.out.print(trimarr[l]);
+									FileParser.brout.write(trimarr[l]);
 								}
-								System.out.println(".");
+								FileParser.brout.write(".");
+								FileParser.brout.newLine();
 							}
 							else{
-								System.out.println("A "+cnt+": "+match+".");
+								FileParser.brout.write("A "+cnt+": "+match+".");
+								FileParser.brout.newLine();
 							}
-							//System.out.println(matchFirst1);
-							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+
+							FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							FileParser.brout.newLine();
 							flag=true;
 						}
 
@@ -570,16 +626,19 @@ public class Answer {
 							cnt++;
 							char[] trimarr= match.toCharArray();
 							if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','|| trimarr[trimarr.length-1]==' '){
-								System.out.print("A "+cnt+": ");
+								FileParser.brout.write("A "+cnt+": ");
 								for(int l=0;l<trimarr.length-1;l++){
-									System.out.print(trimarr[l]);
+									FileParser.brout.write(trimarr[l]);
 								}
-								System.out.println(".");
+								FileParser.brout.write(".");
+								FileParser.brout.newLine();
 							}
 							else{
-								System.out.println("A "+cnt+": "+match+".");
+								FileParser.brout.write("A "+cnt+": "+match+".");
+								FileParser.brout.newLine();
 							}
-							System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+							FileParser.brout.newLine();
 							flag=true;
 						}
 					}
@@ -597,7 +656,6 @@ public class Answer {
 
 					boolean flagdr=false;
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
 
 					//pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) [^,\\.]*?\\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					pattern = Pattern.compile("([0-9][0-9\\s\\.,/%]*) in (the )?\\b"+nounCase+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
@@ -611,19 +669,21 @@ public class Answer {
 
 						char[] trimarr= match.toCharArray();
 						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-							System.out.print("A "+cnt+": ");
+							FileParser.brout.write("A "+cnt+": ");
 							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
+								FileParser.brout.write(trimarr[l]);
 							}
-							System.out.println(".");
+							FileParser.brout.write(".");
+							FileParser.brout.newLine();
 						}
 						else{
-							System.out.println("A "+cnt+": "+match+".");
+							FileParser.brout.write("A "+cnt+": "+match+".");
+							FileParser.brout.newLine();
 						}
 
 
-						//System.out.println("A "+cnt+": "+match+".");
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.newLine();
 						flag=true;
 						flagdr=true;
 					}
@@ -641,18 +701,20 @@ public class Answer {
 
 						char[] trimarr= match.toCharArray();
 						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-							System.out.print("A "+cnt+": ");
+							FileParser.brout.write("A "+cnt+": ");
 							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
+								FileParser.brout.write(trimarr[l]);
 							}
-							System.out.println(".");
+							FileParser.brout.write(".");
+							FileParser.brout.newLine();
 						}
 						else{
-							System.out.println("A "+cnt+": "+match+".");
+							FileParser.brout.write("A "+cnt+": "+match+".");
+							FileParser.brout.newLine();
 						}
 
-						//System.out.println("A "+cnt+": "+match+".");
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.newLine();
 						flag=true;
 						flagdr=true;
 					}
@@ -669,16 +731,19 @@ public class Answer {
 
 						char[] trimarr= match.toCharArray();
 						if(trimarr[trimarr.length-1]=='.' || trimarr[trimarr.length-1]==','){
-							System.out.print("A "+cnt+": ");
+							FileParser.brout.write("A "+cnt+": ");
 							for(int l=0;l<trimarr.length-1;l++){
-								System.out.print(trimarr[l]);
+								FileParser.brout.write(trimarr[l]);
 							}
-							System.out.println(".");
+							FileParser.brout.write(".");
+							FileParser.brout.newLine();
 						}
 						else{
-							System.out.println("A "+cnt+": "+match+".");
+							FileParser.brout.write("A "+cnt+": "+match+".");
+							FileParser.brout.newLine();
 						}
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.newLine();
 						flag=true;
 						flagdr=true;
 					}
@@ -695,19 +760,20 @@ public class Answer {
 					String c1= matcherr.group(2);
 					String c2= matcherr.group(4);
 					//Pattern pattern = Pattern.compile("("+nounCase+"[^\\.]*? (rise|gain|gained|rose).*?)(,\\s|\\.($|\\s))",Pattern.DOTALL);
-					//System.out.println(""+nounCase+" [^,\\.]*?(to|at) ([0-9\\s.,/]*).*?(,\\s|\\.($|\\s))");
+
 					pattern = Pattern.compile("\\b"+c1+"\\b,?.*? \\b"+question.allVerbs+"\\b .*?(against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs) .*?\\b"+c2+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
-					//System.out.println("\\b"+c1+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c2+"\\b.*");
 
 					while (matcher.find()) {
 						cnt++;
 						String match = matcher.group(1).trim();
 
 
-						System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+						FileParser.brout.write("A "+cnt+": "+match.toUpperCase()+".");
+						FileParser.brout.newLine();
 
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.newLine();
 						flag=true;
 					}
 
@@ -718,22 +784,23 @@ public class Answer {
 
 					pattern = Pattern.compile("\\b"+c2+"\\b,?.*? \\b"+question.allVerbs+"\\b .*?(against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs) .*?\\b"+c1+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
-					//System.out.println("\\b"+c1+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c2+"\\b.*");
 
 					while (matcher.find()) {
 						cnt++;
 						String match = matcher.group(1).trim();
 
 						if(question.negVerbs.matches(".*"+match+".*")){
-							System.out.println("A "+cnt+": "+"RISE"+".");
+							FileParser.brout.write("A "+cnt+": "+"RISE"+".");
+							FileParser.brout.newLine();
 						}
 						else if(question.posVerbs.matches(".*"+match+".*")){
-							System.out.println("A "+cnt+": "+"FALL"+".");
+							FileParser.brout.write("A "+cnt+": "+"FALL"+".");
+							FileParser.brout.newLine();
 						}
 
-						//System.out.println("A "+cnt+": "+match.toUpperCase()+".");
 
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.newLine();
 						flag=true;
 					}
 
@@ -758,7 +825,6 @@ public class Answer {
 
 					pattern = Pattern.compile("\\b"+c3+"\\b,?.*? \\b"+question.allVerbs+"\\b .*?(against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs) .*?\\b"+c4+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
-					//System.out.println("\\b"+c3+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c4+"\\b.*");
 
 					while (matcher.find()) {
 						cnt++;
@@ -793,24 +859,34 @@ public class Answer {
 
 
 						if(question.negVerbs.matches(".*"+match+".*")){
-							if(wrflag2)
-								System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
-							else
-								System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+							if(wrflag2){
+								FileParser.brout.write("A "+cnt+": "+neg.toUpperCase()+".");
+								FileParser.brout.newLine();
+							}
+							else{
+								FileParser.brout.write("A "+cnt+": "+match.toUpperCase()+".");
+								FileParser.brout.newLine();
+							}
 						}
 						else if(question.posVerbs.matches(".*"+match+".*")){
-							if(wrflag2)
-								System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
-							else
-								System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+							if(wrflag2){
+								FileParser.brout.write("A "+cnt+": "+pos.toUpperCase()+".");
+								FileParser.brout.newLine();
+							}
+							else{
+								FileParser.brout.write("A "+cnt+": "+match.toUpperCase()+".");
+								FileParser.brout.newLine();
+							}
 						}
 						else{
-							System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+							FileParser.brout.write("A "+cnt+": "+match.toUpperCase()+".");
+							FileParser.brout.newLine();
 						}
 
 
 
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.newLine();
 						flag=true;
 					}
 
@@ -826,7 +902,6 @@ public class Answer {
 
 					pattern = Pattern.compile("\\b"+c4+"\\b,?.*? \\b"+question.allVerbs+"\\b .*?(against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs) .*?\\b"+c3+"\\b.*",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(strLine);
-					//System.out.println("\\b"+c3+"\\b.*? \\b"+question.allVerbs+"\\b .*?against .*?\\b"+c4+"\\b.*");
 
 					while (matcher.find()) {
 						cnt++;
@@ -861,24 +936,34 @@ public class Answer {
 
 
 						if(question.negVerbs.matches(".*"+match+".*")){
-							if(wrflag2)
-								System.out.println("A "+cnt+": "+pos.toUpperCase()+".");
-							else
-								System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+							if(wrflag2){
+								FileParser.brout.write("A "+cnt+": "+pos.toUpperCase()+".");
+								FileParser.brout.newLine();	
+							}
+							else{
+								FileParser.brout.write("A "+cnt+": "+match.toUpperCase()+".");
+								FileParser.brout.newLine();	
+							}
 						}
 						else if(question.posVerbs.matches(".*"+match+".*")){
-							if(wrflag2)
-								System.out.println("A "+cnt+": "+neg.toUpperCase()+".");
-							else
-								System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+							if(wrflag2){
+								FileParser.brout.write("A "+cnt+": "+neg.toUpperCase()+".");
+								FileParser.brout.newLine();	
+							}
+							else{
+								FileParser.brout.write("A "+cnt+": "+match.toUpperCase()+".");
+								FileParser.brout.newLine();
+							}
 						}
 						else{
-							System.out.println("A "+cnt+": "+match.toUpperCase()+".");
+							FileParser.brout.write("A "+cnt+": "+match.toUpperCase()+".");
+							FileParser.brout.newLine();
 						}
 
 
 
-						System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+						FileParser.brout.newLine();
 						flag=true;
 					}
 
@@ -930,9 +1015,9 @@ public class Answer {
 							match=name;
 
 							String[] ast= match.split(" ");
-							//System.out.println(match);
+
 							for(String a :ast){
-								//System.out.println(a);
+
 								if(!a.equals("")){
 									if (!a.contains("NNP")&&!a.contains("NNPS")&&!a.contains("DT")){
 										flag1=false;
@@ -949,7 +1034,7 @@ public class Answer {
 								match =match.replaceAll("/NNP","");
 
 								match =match.trim();
-								//System.out.println(verb);
+
 								//Matcher m2 = Pattern.compile("("+match+".*?"+verb+").*").matcher(strLine);
 
 
@@ -958,14 +1043,16 @@ public class Answer {
 								Matcher m2 = Pattern.compile("(\\b"+match+"\\b,? .*?\\b"+verb+").*[0-9]+").matcher(strLine);
 
 								while(m2.find()){
-									//System.out.println("--------" +m2.group());
+
 									String distStr =m2.group(1);
 									String dist[] =distStr.split(" ");
 									if(dist.length<=10){
 										cnt++;
 
-										System.out.println("A "+cnt+": "+match+".");
-										System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+										FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.newLine();
+										FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+										FileParser.brout.newLine();
 									}
 								}
 
@@ -1014,9 +1101,9 @@ public class Answer {
 							match=name;
 
 							String[] ast= match.split(" ");
-							//System.out.println(match);
+
 							for(String a :ast){
-								//System.out.println(a);
+
 								if(!a.equals("")){
 									if (!a.contains("NNP")&&!a.contains("NNPS")&&!a.contains("DT")){
 										flag5=false;
@@ -1045,14 +1132,16 @@ public class Answer {
 								Matcher m2 = Pattern.compile("(\\b"+match+"\\b,? .*?\\b"+verb2+").*[0-9]+").matcher(strLine);
 
 								while(m2.find()){
-									//System.out.println("--------" +m2.group());
+
 									String distStr =m2.group(1);
 									String dist[] =distStr.split(" ");
 									if(dist.length<=10){
 										cnt++;
 
-										System.out.println("A "+cnt+": "+match+".");
-										System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+										FileParser.brout.write("A "+cnt+": "+match+".");
+										FileParser.brout.newLine();
+										FileParser.brout.write("Source "+cnt+": "+strLine+" (line "+cntLine+")");
+										FileParser.brout.newLine();
 									}
 								}
 
@@ -1100,7 +1189,7 @@ public class Answer {
 		String posNounTag="(/NNP|/NNPS|/NN)";
 		String posTag="(/POS)";
 		nounSet=nounSet.replaceAll("'s", " 's");
-		//System.out.println(nounSet);
+		//FileParser.brout.write(nounSet);
 		nounSet=nounSet.replaceAll("\\.\\*\\?", " ");
 		String[] noun=nounSet.split(" ");
 		String pat=dt;
@@ -1150,14 +1239,14 @@ public class Answer {
 		}
 		String realpat= "\\[ "+pat+" \\]";
 
-		//System.out.println(realpat);
+		//FileParser.brout.write(realpat);
 
 		Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-		//System.out.println("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+		//FileParser.brout.write("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
 		Matcher 	matcher = pattern.matcher(strLinePos);
 
 		while(matcher.find()){
-			//System.out.println(realpat+" ------------------ "+matcher.group());
+			//FileParser.brout.write(realpat+" ------------------ "+matcher.group());
 
 			flag=true;
 		}
@@ -1167,7 +1256,7 @@ public class Answer {
 	private String[] getPermutationsParaphrases(String nounCase) {
 		try{
 			String nounArray[]=nounCase.split(" ");
-			//System.out.println(nounArray.length);
+			//FileParser.brout.write(nounArray.length);
 
 			if(nounArray.length==2){
 				ArrayList<String> a= new ArrayList<String>();
@@ -1285,17 +1374,17 @@ public class Answer {
 
 		strLine=strLine.replaceAll("\\\\/", "yesssrandomsss");
 
-		//System.out.println(strLine);
+		//FileParser.brout.write(strLine);
 		strLine=strLine.replaceAll(".*?DT", "");
 
-		//System.out.println(strLine);
+		//FileParser.brout.write(strLine);
 		String[] words =strLine.split("(/.*? |/.*?$)");
 		//String[] words =strLine.split("(/NN.*? |/NN.*?$)");
 
 		String line="";
 		int cnt =0;
 		for(String word: words){
-			//System.out.println(word);
+			//FileParser.brout.write(word);
 			cnt++;
 			word=	word.replace("]","");
 			word = word.replaceAll("yesssrandomsss", "/");
@@ -1309,7 +1398,7 @@ public class Answer {
 
 
 			}
-			//System.out.println(word);
+			//FileParser.brout.write(word);
 		}
 		line=line.replaceAll("\\( ", "\\(");
 		line=line.replaceAll(" \\)", "\\)");
