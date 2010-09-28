@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="QA" default="install" basedir=".">
+	<property name="src" location="src"/> <!-- java source folder -->
+	<property name="bin" location="bin"/> <!-- intermediate build products -->
+	<property name="jars" location="jars"/> <!-- jar files -->
+	<property name="dist" location="dist"/> <!-- build product location -->
+	<property name="compile.debug" value="true"/>
+
+
+	<target name="compile" description="Compile code">
+		<mkdir dir="${bin}"/>
+		<javac deprecation="on" srcdir="${src}" destdir="${bin}"
+			   source="1.5" target="1.5"
+			   includeAntRuntime="no"
+			   debug="${compile.debug}">
+		</javac>
+	</target>
+
+    <target name="run" depends="compile" description="Run the tool">
+		<java classname="FileParser" classpath="${bin}" fork="true">
+		</java>
+	</target>
+	
+    <target name="clean" description="Remove build and dist directories">
+        <delete dir="${bin}"/>
+    </target>
+</project>
