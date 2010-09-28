@@ -105,7 +105,8 @@ public class FileParser {
 
 				in2.close();
 
-				out.flush();
+				brout.flush();
+				
 				out.close();
 
 			}
@@ -128,48 +129,71 @@ public class FileParser {
 
 
 	private static void parseQuestion(String str) {
-		Questions q = new Questions();
 
-		boolean flag = false;
 
-		for(int i=0;i<q.questionList.size();i++){
-			Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
-			Matcher matcher = pattern.matcher(str);
+		try{
+			Questions q = new Questions();
 
-			int k=0;
+			boolean flag = false;
 
-			if(i==q.questionList.size()-1){
-				cnttt++;
+			for(int i=0;i<q.questionList.size();i++){
+				Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
+				Matcher matcher = pattern.matcher(str);
 
-				System.out.println("Q "+cnttt+": "+str);
-				//System.out.println(match);
-				//Answer answer = new Answer();
+				int k=0;
 
-				System.out.println("A: No Information Available.");
-				System.out.println();
-				return;
-			}
+				if(i==q.questionList.size()-1){
+					cnttt++;
 
-			while (matcher.find()) {
-				cnttt++;
-				k++;
+					//System.out.println("Q "+cnttt+": "+str);
+					//System.out.println("A: No Information Available.");
+					//System.out.println();
 
-				System.out.println("Q "+cnttt+": "+str);
-				//System.out.println(match);
-				Answer answer = new Answer();
-				boolean ans= answer.getAnswer(matcher,i);
-				if(ans==false){
-					System.out.println("A: No Information Available.");
+
+
+
+					brout.write("Q "+cnttt+": "+str);
+					brout.newLine();
+					brout.write("A: No Information Available.");
+					brout.newLine();
+					brout.newLine();
+
+
+					return;
 				}
-				System.out.println();
-				flag=true;
+
+				while (matcher.find()) {
+					cnttt++;
+					k++;
+
+					//System.out.println("Q "+cnttt+": "+str);
+					brout.write("Q "+cnttt+": "+str);
+					brout.newLine();
+
+					Answer answer = new Answer();
+					boolean ans= answer.getAnswer(matcher,i);
+					if(ans==false){
+						//System.out.println("A: No Information Available.");
+						brout.write("A: No Information Available.");
+						brout.newLine();
+					}
+					//System.out.println();
+					brout.newLine();
+					flag=true;
+				}
+
+				if(flag){
+					break;
+				}
+
+
 			}
 
-			if(flag){
-				break;
-			}
-
-
+		}
+		catch (Exception e)
+		{
+			System.err.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 
 
