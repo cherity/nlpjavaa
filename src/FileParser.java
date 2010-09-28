@@ -1,7 +1,11 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.regex.Matcher;
@@ -13,6 +17,9 @@ public class FileParser {
 	public static Hashtable<String,String> Verbs = new Hashtable<String,String>();
 	public static Hashtable<String,String> Nouns = new Hashtable<String,String>();
 	public static int cnttt=0;
+	public static 	FileOutputStream fstreamOut;
+	public static DataOutputStream out ;
+	public static BufferedWriter brout;
 
 
 	public static void main(String args[]){
@@ -24,7 +31,15 @@ public class FileParser {
 			try
 			{
 
-				//POSFileReader posfi=new POSFileReader();
+
+
+
+
+				fstreamOut = new FileOutputStream("outputAnswer.txt");
+				out = new DataOutputStream(fstreamOut);
+				brout = new BufferedWriter(new OutputStreamWriter(out));
+
+
 				POSFileReader.readFile(args[0]);
 
 
@@ -74,12 +89,6 @@ public class FileParser {
 				//POSFileReader.freeposfile.add("discount rate down at 200.00. By the end discount rate was 300.00.");
 
 
-				/*if(POSFileReader.freetextfile.size()==POSFileReader.freeposfile.size()){
-					System.out.println("Size Equal");
-				}
-				else{
-					System.out.println("Not Equal");
-				}*/
 
 				FileInputStream fstream2 = new FileInputStream(args[1]);
 				DataInputStream in2 = new DataInputStream(fstream2);
@@ -96,22 +105,8 @@ public class FileParser {
 
 				in2.close();
 
-
-				FileInputStream fstream = new FileInputStream(args[0]);
-				DataInputStream in = new DataInputStream(fstream);
-				BufferedReader br = new BufferedReader(new InputStreamReader(in));
-				String strLine;
-				while ((strLine = br.readLine()) != null)
-				{
-					cnt++;
-					//System.out.println(strLine);
-					parseLine(strLine);
-					//if(cnt==4)
-					//	break;
-				}
-
-				in.close();
-
+				out.flush();
+				out.close();
 
 			}
 			catch (Exception e)
@@ -132,69 +127,6 @@ public class FileParser {
 	}
 
 
-
-	/*
-	private static void printTable(Hashtable<String,String> ht) {
-
-
-		Enumeration<String> e = ht.keys();
-		while( e. hasMoreElements() ){
-			System.out.println( e.nextElement() );
-		}
-
-	}
-
-	 */
-	private static void parseLine(String strLine) {
-		try {
-
-			String st[] =strLine.split(" ");
-			for(int i=0;i<st.length;i++){
-
-				getVerbs(st[i]);
-
-				getNouns(st[i]);
-
-			}
-		} catch (Exception e) {
-		}
-
-	}
-
-
-	private static void getVerbs(String str) {
-		Pattern pattern = Pattern.compile("(.*)/VB");
-		Matcher matcher = pattern.matcher(str);
-
-		// Find all matches
-		while (matcher.find()) {
-			// Get the matching string
-			String match = matcher.group(1);
-			if(!Verbs.containsKey(match))
-				Verbs.put(match, "1");
-			//System.out.println(match);
-		}
-	}
-
-
-
-	private static void getNouns(String str) {
-		Pattern pattern = Pattern.compile("(.*)/NN");
-		Matcher matcher = pattern.matcher(str);
-
-		// Find all matches
-		while (matcher.find()) {
-			// Get the matching string
-			String match = matcher.group(1);
-			if(!Nouns.containsKey(match))
-				Nouns.put(match, "1");
-			//System.out.println(match);
-		}
-	}
-
-
-
-
 	private static void parseQuestion(String str) {
 		Questions q = new Questions();
 
@@ -208,20 +140,20 @@ public class FileParser {
 
 			if(i==q.questionList.size()-1){
 				cnttt++;
-				System.out.println();
+
 				System.out.println("Q "+cnttt+": "+str);
 				//System.out.println(match);
 				//Answer answer = new Answer();
 
 				System.out.println("A: No Information Available.");
-
+				System.out.println();
 				return;
 			}
 
 			while (matcher.find()) {
 				cnttt++;
 				k++;
-				System.out.println();
+
 				System.out.println("Q "+cnttt+": "+str);
 				//System.out.println(match);
 				Answer answer = new Answer();
@@ -229,7 +161,7 @@ public class FileParser {
 				if(ans==false){
 					System.out.println("A: No Information Available.");
 				}
-
+				System.out.println();
 				flag=true;
 			}
 
@@ -242,10 +174,6 @@ public class FileParser {
 
 
 	}
-
-
-
-
 
 
 

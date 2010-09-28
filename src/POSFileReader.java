@@ -13,11 +13,12 @@ public class POSFileReader {
 	public static ArrayList<String> freeposfile=new ArrayList<String>();
 
 	//public static String[] ast;
-	public static void main(String args[]){
+	/*
+	 public static void main(String args[]){
 		//readFile(args[0]);
 		readFileAgain(args[0]);
 	}
-
+	 */
 
 
 	public static void readFile(String fileName) {
@@ -62,24 +63,7 @@ public class POSFileReader {
 		String[] words =strLine.split("(/.*? |/.*?$)");
 		String line2="";
 		int cnt2=0;
-		/*		
-		for(String word: words){
-			System.out.println(word);
-			cnt2++;
-			if(cnt2==3)
-				break;
-			word = word.replaceAll("\\s", "");
-			if(cnt2==1||word.startsWith("'")||word.startsWith(",")||word.startsWith(".")){
-				line2= line2+word;
-			}
-			else{
-				line2=line2+" "+word;
 
-			}
-			System.out.print(line2);
-		}*/
-
-		//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   $SIGN ()inner side
 
 		for(String word: words){
 			//System.out.println(word);
