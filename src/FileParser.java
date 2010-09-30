@@ -3,6 +3,7 @@
  * ast2124
  * NLP Assignment # 1
  * Stock market QA System
+ * FileParser.java
  */
 
 
@@ -15,32 +16,31 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Enumeration;
-import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class FileParser {
 
-	public static Hashtable<String,String> Verbs = new Hashtable<String,String>();
-	public static Hashtable<String,String> Nouns = new Hashtable<String,String>();
 	public static int cnttt=0;
-	public static 	FileOutputStream fstreamOut;
+	public static FileOutputStream fstreamOut;
 	public static DataOutputStream out ;
 	public static BufferedWriter brout;
 
-
+	/*
+	 * This is the main function that controls the QA System flow.
+	 * It creates the output file --outputAnswer.txt.
+	 * It takes the POS File and Questions file as input.
+	 * It first parses the POS File and creates the Arraylists of POS lines and free text lines.
+	 *  * It reads the Questions from the Question file one by one and tries to find the answer and writes it into the output file  --outputAnswer.txt
+	 */
 	public static void main(String args[]){
-		int cnt =0;
 
 		if(args.length==2)
 		{
 
 			try
 			{
-
-
 
 
 
@@ -115,7 +115,7 @@ public class FileParser {
 				in2.close();
 
 				brout.flush();
-				
+
 				out.close();
 
 			}
@@ -136,22 +136,27 @@ public class FileParser {
 		}
 	}
 
+	/*
+	 * This function is called by main class to parse the Question and identify the Question noun and the answer for the question asked using Questions and Answer class.
+	 * This function tries to match the question with the list of Questions from the Questions class.
+	 * When the Question is matched -- Answer class is called to get the answer for the questions.
+	 */
 
-	private static void parseQuestion(String str) {
+	private static void parseQuestion(String strQuestion) {
 
 
 		try{
-			Questions q = new Questions();
+			Questions question = new Questions();
 
 			boolean flag = false;
 
-			for(int i=0;i<q.questionList.size();i++){
-				Pattern pattern = Pattern.compile(q.questionList.get(i),Pattern.CASE_INSENSITIVE);
-				Matcher matcher = pattern.matcher(str);
+			for(int i=0;i<question.questionList.size();i++){
+				Pattern pattern = Pattern.compile(question.questionList.get(i),Pattern.CASE_INSENSITIVE);
+				Matcher matcher = pattern.matcher(strQuestion);
 
 				int k=0;
 
-				if(i==q.questionList.size()-1){
+				if(i==question.questionList.size()-1){
 					cnttt++;
 
 					//System.out.println("Q "+cnttt+": "+str);
@@ -159,9 +164,7 @@ public class FileParser {
 					//System.out.println();
 
 
-
-
-					brout.write("Q "+cnttt+": "+str);
+					brout.write("Q "+cnttt+": "+strQuestion);
 					brout.newLine();
 					brout.write("A: No Information Available.");
 					brout.newLine();
@@ -176,7 +179,7 @@ public class FileParser {
 					k++;
 
 					//System.out.println("Q "+cnttt+": "+str);
-					brout.write("Q "+cnttt+": "+str);
+					brout.write("Q "+cnttt+": "+strQuestion);
 					brout.newLine();
 
 					Answer answer = new Answer();
