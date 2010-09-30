@@ -16,6 +16,12 @@ public class Answer {
 
 	public String suffix="(to |at |)";
 
+
+
+	/*
+	 * This is the function that is called form the main function to get the Answers for the Questions.
+	 * Based on the Question type a switch case statement is used and then the appropriate pattern is searched in the POS lines and free text line  to  retrieve the answer.
+	 */
 	public  boolean getAnswer(Matcher matcherr, int casei) {
 
 		boolean flag=false;
@@ -23,10 +29,7 @@ public class Answer {
 
 		try{
 
-			String nounCase;
-
-
-			String strLine, strLinePos, caseQ;
+			String nounCase, strLine, strLinePos, caseQ;
 			Pattern pattern;
 			Matcher matcher;
 
@@ -56,6 +59,7 @@ public class Answer {
 
 				switch(casei){
 
+				//".*[Ww]hat did (the )?.*?([A-Z].*) do\\?"
 				case 0:
 
 					String nouncases[]=getPermutationsParaphrases(nounCase);
@@ -102,7 +106,7 @@ public class Answer {
 
 					break;
 
-
+					//".*[Hh]ow much did (the )?.*?([A-Z].*?) "+extraEle+negVerbs+"\\s?.*?\\?"
 				case 1:
 
 					nouncases=getPermutationsParaphrases(nounCase);
@@ -202,6 +206,7 @@ public class Answer {
 
 					break;
 
+					//".*[Hh]ow much did (the )?.*?([A-Z].*?) "+extraEle+posVerbs+"\\s?.*?\\?"
 				case 2:
 
 					nouncases=getPermutationsParaphrases(nounCase);
@@ -293,7 +298,7 @@ public class Answer {
 
 
 
-
+					//".*[Dd]id (the )?.*?([A-Z].*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+"\\?"
 				case 3:
 
 					nouncases=getPermutationsParaphrases(nounCase);
@@ -392,7 +397,7 @@ public class Answer {
 
 
 
-
+					//".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(closed|close|end|ended|finish|finished|shut|terminate|terminated|stop|stopped|cease|ceased) at\\?"
 				case 4:
 
 
@@ -480,7 +485,7 @@ public class Answer {
 
 
 
-
+					//".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(opened|open|commence|commenced|begin|began|start|started|initiate|initiated) at\\?"
 				case 5:
 
 					nouncases=getPermutationsParaphrases(nounCase);
@@ -528,6 +533,8 @@ public class Answer {
 					break;
 
 
+
+					//".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(sell|sold|deal|dealt|trade|transact|traded|transacted|bought) at\\?"
 				case 6:
 
 					nouncases=getPermutationsParaphrases(nounCase);
@@ -576,6 +583,8 @@ public class Answer {
 
 
 
+					//".*[Ww](hat|hich) (index|indexes).*"+negVerbs+"\\?"
+
 				case 7:
 
 					pattern = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?\\b"+question.negVerbs+"\\b.*?",Pattern.DOTALL);
@@ -615,7 +624,7 @@ public class Answer {
 
 
 
-
+					//".*[Ww](hat|hich) (index|indexes).*"+posVerbs+"\\?"
 
 				case 8:
 
@@ -658,7 +667,7 @@ public class Answer {
 
 
 
-
+					//".*[Ww]hat was\\s?(the)?\\s?([Dd]iscount [Rr]ate)\\?"
 
 				case 9:
 
@@ -762,7 +771,7 @@ public class Answer {
 
 
 
-
+					//".*[Ww]hat did\\s?(the)?\\s?(.*?) do (against|compared to|in comparison to|opposed to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs|as opposed to|as compared to|as counter to|as contrary to)\\s?(the)?\\s?(.*?)\\?"
 				case 10:
 
 					String c1= matcherr.group(2);
@@ -822,7 +831,7 @@ public class Answer {
 					break;
 
 
-
+					//".*Did\\s?(the)?\\s?(.*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+" (against|compared to|in comparison to|opposed to|as opposed to|as compared to|as counter to|as contrary to|in oppposing to|counter to|contrary to|in contrary to|in counter to|opposing|versus|vs)\\s?(the)?\\s?(.*?)\\?"
 
 				case 11:
 
@@ -990,7 +999,7 @@ public class Answer {
 
 
 
-
+					//".*[Ww](hat|hich)\\s?(company)?\\s?(stock|stocks)\\s?.*"+posVerbs+"\\?"
 
 				case 13:
 
@@ -1078,7 +1087,7 @@ public class Answer {
 					break;
 
 
-
+					//".*[Ww](hat|hich)\\s?(company)?\\s?(stock|stocks)\\s?.*"+negVerbs+"\\?"
 				case 12:
 
 
@@ -1191,12 +1200,21 @@ public class Answer {
 
 	}
 
+	/*
+	 * This function is used when the paraphrases for the Nouns is used for finding the answer.
+	 * Because the paraphrases some times can be loose this function makes sure that the the regex is tight enough to pick meaningful matches.
+	 * It makes sure that a particular paraphrase case is the only term in that phrase in a given line.
+	 * 
+	 */
+
 	private boolean getRightMatch(String strLinePos, String nounSet,int indexx) {
+
 		boolean flag=false;
 		String dt="(the/DT |The/DT |a/DT |A/DT )?.*?";
 		String posNounTag="(/NNP|/NNPS|/NN)";
 		String posTag="(/POS)";
 		nounSet=nounSet.replaceAll("'s", " 's");
+		nounSet=nounSet.replaceAll("'t", " 't");
 		//FileParser.brout.write(nounSet);
 		nounSet=nounSet.replaceAll("\\.\\*\\?", " ");
 		String[] noun=nounSet.split(" ");
@@ -1206,7 +1224,7 @@ public class Answer {
 		if(indexx==0){
 			for(int kk=0;kk<noun.length;kk++){
 				if(kk==noun.length-1){
-					if(noun[kk].equals("'s")){
+					if(noun[kk].equals("'s") || noun[kk].equals("'t")){
 						pat+=noun[kk]+posTag+".*?";
 					}
 					else{
@@ -1214,7 +1232,7 @@ public class Answer {
 					}
 				}
 				else{
-					if(noun[kk].equals("'s")){
+					if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
 						pat+=noun[kk]+posTag+" ";
 					}
 					else{
@@ -1227,7 +1245,7 @@ public class Answer {
 		else{
 			for(int kk=0;kk<noun.length;kk++){
 				if(kk==noun.length-1){
-					if(noun[kk].equals("'s")){
+					if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
 						pat+=noun[kk]+posTag;
 					}
 					else{
@@ -1235,7 +1253,7 @@ public class Answer {
 					}
 				}
 				else{
-					if(noun[kk].equals("'s")){
+					if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
 						pat+=noun[kk]+posTag+".*?";
 					}
 					else{
@@ -1260,6 +1278,11 @@ public class Answer {
 		}
 		return flag;
 	}
+
+
+	/*
+	 * This function is used to get all the paraphrases of the Noun from the Question
+	 */
 
 	private String[] getPermutationsParaphrases(String nounCase) {
 		try{
@@ -1286,8 +1309,8 @@ public class Answer {
 				a.add(nounArray[0]+".*?"+nounArray[1]);
 				a.add(nounArray[0]+".*?"+nounArray[2]);
 				a.add(nounArray[1]+".*?"+nounArray[2]);
-				a.add(nounArray[0]);
-				a.add(nounArray[1]);
+				//a.add(nounArray[0]);
+				//a.add(nounArray[1]);
 
 				String[] hidden = a.toArray(new String[a.size()]);
 
@@ -1360,7 +1383,11 @@ public class Answer {
 		}
 	}
 
-	
+	/*
+	 * this functions is used to strip the POS Tags matched for the Index related Questions 
+	 * 		".*[Ww](hat|hich) (index|indexes).*"+negVerbs+"\\?"
+		".*[Ww](hat|hich) (index|indexes).*"+posVerbs+"\\?"
+	 */
 
 	private String modifyString(String strLine) {
 
@@ -1382,7 +1409,7 @@ public class Answer {
 			word = word.replaceAll("yesssrandomsss", "/");
 			word=word.replace("[ ","");
 			word = word.replaceAll("\\s", "");
-			if(cnt==1||word.startsWith("'")||word.startsWith(",")||word.startsWith(".")||word.startsWith("%")||word.startsWith("n't")||word.startsWith("'t")){
+			if(cnt==1||word.startsWith("'")||word.startsWith(",")||word.startsWith(".")||word.startsWith("%")||word.startsWith("n't")||word.startsWith("'t")||word.startsWith("'s")){
 				line= line+word;
 			}
 			else{

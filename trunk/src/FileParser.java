@@ -156,7 +156,7 @@ public class FileParser {
 
 				int k=0;
 
-				if(i==question.questionList.size()-1){
+				if(i==(question.questionList.size()-1)){
 					cnttt++;
 
 					//System.out.println("Q "+cnttt+": "+str);
