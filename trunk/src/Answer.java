@@ -1,3 +1,14 @@
+/**
+ * Ashish S Tomar
+ * ast2124
+ * NLP Assignment # 1
+ * Stock market QA System
+ */
+
+
+
+
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;

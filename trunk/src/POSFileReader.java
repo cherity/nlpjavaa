@@ -1,26 +1,33 @@
+
+/**
+ * Ashish S Tomar
+ * ast2124
+ * NLP Assignment # 1
+ * Stock market QA System
+ * POSFileReader.java
+ */
+
+
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 
 public class POSFileReader {
 
+	// These Arraylists are used to store the POS Line and free text lines in a String format.
+	// So we dont have to read from file again and again and can be done in a faster way from these ArrayLists.
 	public static ArrayList<String> freetextfile=new ArrayList<String>();
 	public static ArrayList<String> freeposfile=new ArrayList<String>();
 
-	//public static String[] ast;
+
 	/*
-	 public static void main(String args[]){
-		//readFile(args[0]);
-		readFileAgain(args[0]);
-	}
+	 * This function is called by the main class to read the POS file and generate Arraylists containing POS lines and free text lines.
 	 */
-
-
 	public static void readFile(String fileName) {
 		int cnt=0;
 		try{
@@ -37,8 +44,7 @@ public class POSFileReader {
 				freeposfile.add(strLine);
 				parseEachLine(strLine);
 
-				//		if(cnt==2)
-				//		break;
+
 			}
 
 			in.close();
@@ -53,10 +59,11 @@ public class POSFileReader {
 
 	}
 
-
+	/*
+	 * This function is called by readFile() as a helper function to parse each line and save them in arrayLists.
+	 */
 
 	private static void parseEachLine(String strLine) {
-		// TODO Auto-generated method stub
 
 		//System.out.println(strLine);
 		strLine=strLine.replaceAll("\\\\/", "yesssrandomsss");
@@ -120,95 +127,6 @@ public class POSFileReader {
 
 
 
-	public static void readFileAgain(String fileName) {
-		int cnt=0;
-		try{
-
-
-			FileInputStream fstream = new FileInputStream(fileName);
-			DataInputStream in = new DataInputStream(fstream);
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String strLine;
-			while ((strLine = br.readLine()) != null)
-			{
-				cnt++;
-				//System.out.println(cnt);
-				//System.out.println(strLine);
-				parseEachLinePhrase(strLine);
-				//if(cnt==2)
-				//break;
-			}
-
-			in.close();
-
-
-
-		}
-		catch (Exception e)
-		{
-			System.err.println("Error: " + e.getMessage());
-			e.printStackTrace();
-		}
-
-	}
-
-
-
-	private static void parseEachLinePhrase(String strLine) {
-		// TODO Auto-generated method stub
-
-		Questions question = new Questions();
-		Pattern pattern = Pattern.compile("(\\[.*?\\])",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-		Pattern pattern2 = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*"+question.posVerbs+".*?",Pattern.DOTALL);
-		Pattern pattern3 = Pattern.compile(".*(\\[.*?[iI]ndex.*?\\]).*?"+question.negVerbs+".*?",Pattern.DOTALL);
-
-		Matcher matcher = pattern.matcher(strLine);
-		Matcher matcher2 = pattern2.matcher(strLine);
-		Matcher matcher3 = pattern3.matcher(strLine);
-
-
-		//System.out.println("");
-		//System.out.println("match1");
-		/*while (matcher.find()) {
-
-			String match = matcher.group(1).trim();
-			//System.out.println(match);
-			//System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-
-		}*/
-
-
-
-		while (matcher2.find()) {
-			System.out.println("");
-
-
-
-			System.out.println("pos match");
-			String match = matcher2.group(1).trim();
-			String matchFull = matcher2.group().trim();
-			System.out.println(match);
-			System.out.println(matchFull);
-			//System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-			System.out.println("------------");
-		}
-
-
-
-		while (matcher3.find()) {
-			System.out.println("");
-
-
-
-			System.out.println("neg match");
-			String match = matcher3.group(1).trim();
-			System.out.println(match);
-			//System.out.println("Source "+cnt+": "+strLine+" (line "+cntLine+")");
-			System.out.println("------------");
-		}
-
-
-	}
 
 
 
