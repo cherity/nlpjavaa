@@ -21,6 +21,7 @@ public class Answer {
 	/*
 	 * This is the function that is called form the main function to get the Answers for the Questions.
 	 * Based on the Question type a switch case statement is used and then the appropriate pattern is searched in the POS lines and free text line  to  retrieve the answer.
+	 * It takes two arguments, the nouns and verbs retrieved from the questions in the form  of a matcher object and the question type.
 	 */
 	public  boolean getAnswer(Matcher matcherr, int casei) {
 
@@ -1219,7 +1220,9 @@ public class Answer {
 		nounSet=nounSet.replaceAll("\\.\\*\\?", " ");
 		String[] noun=nounSet.split(" ");
 		String pat=dt;
-
+		if(indexx==0){
+			return true;
+		}
 
 		if(indexx==0){
 			for(int kk=0;kk<noun.length;kk++){

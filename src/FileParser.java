@@ -32,7 +32,7 @@ public class FileParser {
 	 * It creates the output file --outputAnswer.txt.
 	 * It takes the POS File and Questions file as input.
 	 * It first parses the POS File and creates the Arraylists of POS lines and free text lines.
-	 *  * It reads the Questions from the Question file one by one and tries to find the answer and writes it into the output file  --outputAnswer.txt
+	 *   It reads the Questions from the Question file one by one and tries to find the answer and writes it into the output file  --outputAnswer.txt
 	 */
 	public static void main(String args[]){
 

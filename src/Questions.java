@@ -23,27 +23,27 @@ public class Questions {
 
 	/*
 	 * All the patterns for Questions
-	 * This is a constructor and is called when the class s Instantiated.
+	 * This is a constructor and is called when the class is Instantiated.
 	 * It is used to parse the Questions file for matching the Questions with these patterns. 
 	 */
 
 	public Questions(){
 
-		questionList.add(".*[Ww]hat did (the )?.*?([A-Z].*) do\\?");
+		questionList.add(".*[Ww]hat did (the )?.*?([A-Z0-9].*) do\\?");
 
 
-		questionList.add(".*[Hh]ow much did (the )?.*?([A-Z].*?) "+extraEle+negVerbs+"\\s?.*?\\?");
-		questionList.add(".*[Hh]ow much did (the )?.*?([A-Z].*?) "+extraEle+posVerbs+"\\s?.*?\\?");
+		questionList.add(".*[Hh]ow much did (the )?.*?([A-Z0-9].*?) "+extraEle+negVerbs+"\\s?.*?\\?");
+		questionList.add(".*[Hh]ow much did (the )?.*?([A-Z0-9].*?) "+extraEle+posVerbs+"\\s?.*?\\?");
 
 
-		questionList.add(".*[Dd]id (the )?.*?([A-Z].*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+"\\?");
+		questionList.add(".*[Dd]id (the )?.*?([A-Z0-9].*?) "+extraEle+allVerbs+" or "+extraEle+allVerbs+"\\?");
 
 
-		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(closed|close|end|ended|finish|finished|shut|terminate|terminated|stop|stopped|cease|ceased) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z0-9].*?) "+extraEle+"(closed|close|end|ended|finish|finished|shut|terminate|terminated|stop|stopped|cease|ceased) at\\?");
 
 
-		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(opened|open|commence|commenced|begin|began|start|started|initiate|initiated) at\\?");
-		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z].*?) "+extraEle+"(sell|sold|deal|dealt|trade|transact|traded|transacted|bought) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z0-9].*?) "+extraEle+"(opened|open|commence|commenced|begin|began|start|started|initiate|initiated) at\\?");
+		questionList.add(".*([Ww]hat|How much) did (the )?.*?([A-Z0-9].*?) "+extraEle+"(sell|sold|deal|dealt|trade|transact|traded|transacted|bought) at\\?");
 
 
 		questionList.add(".*[Ww](hat|hich) (index|indexes).*"+negVerbs+"\\?");
