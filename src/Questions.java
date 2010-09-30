@@ -1,3 +1,12 @@
+/**
+ * Ashish S Tomar
+ * ast2124
+ * NLP Assignment # 1
+ * Stock market QA System
+ * Questions.java
+ */
+
+
 import java.util.ArrayList;
 
 
@@ -5,11 +14,18 @@ public class Questions {
 
 	public ArrayList<String> questionList=new ArrayList<String>();
 
+	// Verb Patterns -- Got from Wordnet
 	public String  negVerbs="(fall|falls|fell|falling|loose|lost|losing|collapse|collapsed|collapsing|crashing|crash|crashed|dip|dips|crashes|collapses|sinks|declines|drops|plunges|dipped|dipping|declining|sinking|dropping|lessen|decline|declined|down|sink|sinked|sank|drop|dropped|low|lower|fallen|below|plunge|plunged|plunging|plummet|plummets|plummeting|plummeted|droping|lose|recede|receding|recedes|wane|waned|waning|wanes|plump|plumped|plumping|plumps|plunk|plunks|plunked|plunking|descend|descends|descended|descending|dive|dove|lowered)";
 	public String  posVerbs="(rise|risen|rises|rising|climb|climbs|climbed|climbing|gain|gains|gained|gaining|advanced|advancing|high|higher|advance|advances|rose|grow|grown|grows|growing|raised|raising|raise|raises|hike|hikes|hiking|hiked|up|elevate|elevates|elevated|elevating|jumps|jumped|jumping|jump|ascend|ascends|ascended|ascending|increase|increases|increased|increasing|mount|mounts|mounted|mounting|wax|waxes|waxed|waxing)";
 	public String  allVerbs="(rise|risen|rises|rising|climb|climbs|climbed|climbing|gain|gains|gained|gaining|advanced|advancing|high|higher|advance|advances|rose|grow|grown|grows|growing|raised|raising|raise|raises|hike|hikes|hiking|hiked|up|elevate|elevates|elevated|elevating|jumps|jumped|jumping|jump|ascend|ascends|ascended|ascending|increase|increases|increased|increasing|mount|mounts|mounted|mounting|wax|waxes|waxed|waxing|fall|falls|fell|fallen|falling|loose|lost|low|lower|losing|collapse|collapsed|collapsing|crashing|crash|drop|dropped|crashed|dip|dipped|decline|declined|dipping|declining|sinking|dropping|down|sink|sinked|below|plunge|plunged|plunging|plummet|sank|plummets|plummeting|plummeted|dips|crashes|collapses|sinks|declines|drops|plunges|droping|lessen|lose|recede|receding|recedes|wane|waned|waning|wanes|plump|plumped|plumping|plumps|plunk|plunks|plunked|plunking|descend|descends|descended|descending|dive|dove|lowered)";
 	public String  extraEle="(went |have |had |has |was |go |gone |is |move |moved |lift |come )?";
 
+
+	/*
+	 * All the patterns for Questions
+	 * This is a constructor and is called when the class s Instantiated.
+	 * It is used to parse the Questions file for matching the Questions with these patterns. 
+	 */
 
 	public Questions(){
 
