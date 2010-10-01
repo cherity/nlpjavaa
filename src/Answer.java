@@ -1297,8 +1297,10 @@ public class Answer {
 				a.add(nounArray[0]+" "+nounArray[1]);
 
 				a.add(nounArray[0]+".*?"+nounArray[1]);
-				a.add(nounArray[0]);
-
+				boolean checkExistence=getIfNotExistsInFile(nounArray[0],nounArray);
+				if(checkExistence){
+					a.add(nounArray[0]);
+				}
 				String[] hidden = a.toArray(new String[a.size()]);
 
 				return hidden;
@@ -1309,9 +1311,22 @@ public class Answer {
 
 				a.add(nounArray[0]+" "+nounArray[1]+" "+nounArray[2]);
 				a.add(nounArray[0]+".*?"+nounArray[1]+".*?"+nounArray[2]);
-				a.add(nounArray[0]+".*?"+nounArray[1]);
-				a.add(nounArray[0]+".*?"+nounArray[2]);
-				a.add(nounArray[1]+".*?"+nounArray[2]);
+
+				boolean checkExistence=getIfNotExistsInFileThree(nounArray[0]+" "+nounArray[1],nounArray, 1);
+				if(checkExistence){
+					a.add(nounArray[0]+".*?"+nounArray[1]);
+				}
+
+				checkExistence=getIfNotExistsInFileThree(nounArray[0]+" "+nounArray[2],nounArray, 2);
+				if(checkExistence){
+					a.add(nounArray[0]+".*?"+nounArray[2]);
+				}
+
+				checkExistence=getIfNotExistsInFileThree(nounArray[1]+" "+nounArray[2],nounArray, 3);
+				if(checkExistence){
+					a.add(nounArray[1]+".*?"+nounArray[2]);
+				}
+
 				//a.add(nounArray[0]);
 				//a.add(nounArray[1]);
 
@@ -1384,6 +1399,377 @@ public class Answer {
 			hidden[0]="";
 			return hidden;
 		}
+	}
+
+
+
+	private boolean getIfNotExistsInFileThree(String nounToCheck,	String[] nounArray, int caseC) {
+		// TODO Auto-generated method stub
+		try{
+
+			int tt=0;
+			int ll=0;
+
+			String nounToCheck2=nounToCheck;
+
+			boolean flag=false,flagmatch=false;
+			String dt="(the/DT |The/DT |a/DT |A/DT )?";
+			String posNounTag="(/NNP|/NNPS|/NN)";
+			String posTag="(/POS)";
+			nounToCheck=nounToCheck.replaceAll("'s", " 's");
+			nounToCheck=nounToCheck.replaceAll("'t", " 't");
+			//FileParser.brout.write(nounSet);
+			nounToCheck=nounToCheck.replaceAll("\\.\\*\\?", " ");
+			String[] noun=nounToCheck.split(" ");
+			String pat=dt;
+			tt++;
+
+
+			if(caseC==1){
+				pat+=".*?";
+
+				for(int kk=0;kk<noun.length;kk++){
+					if(kk==noun.length-1){
+						if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+							pat+=noun[kk]+posTag+" (.*?)";
+							tt++;
+							tt++;
+
+						}
+						else{
+							pat+=noun[kk]+posNounTag+" (.*?)";
+							tt++;
+							tt++;
+						}
+					}
+					else{
+						if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+							pat+=noun[kk]+posTag+" ";
+							tt++;
+
+						}
+						else{
+							pat+=noun[kk]+posNounTag+" ";
+							tt++;
+
+						}
+					}
+
+				}
+
+				String realpat= "\\[ "+pat+"\\]";
+
+				//System.out.println(realpat);
+
+				Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+				//FileParser.brout.write("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+
+				for(String strLinePos: POSFileReader.freeposfile){
+					Matcher 	matcher = pattern.matcher(strLinePos);
+
+
+					while(matcher.find()){
+						//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+
+						String matcheComp=matcher.group(tt).trim();
+
+						String nn=nounArray[2];
+						nn=nn.replaceAll("'.", "");
+
+						if(matcheComp.toLowerCase().contains(nn.toLowerCase())||matcheComp.equals("")){
+
+						}
+						else{
+							flagmatch=true;
+							//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+							//System.out.println(matcheComp);
+
+						}
+
+						flag=true;
+					}
+				}
+
+
+
+			}
+			else if(caseC==2){
+
+
+
+
+
+				pat+=".*?";
+
+				String[] noun2=nounToCheck2.split(" ");
+
+				for(String nounToChec:noun2){
+					nounToChec=nounToChec.replaceAll("'s", " 's");
+					nounToChec=nounToChec.replaceAll("'t", " 't");
+					//FileParser.brout.write(nounSet);
+					nounToChec=nounToChec.replaceAll("\\.\\*\\?", " ");
+					//System.out.println(nounToChec);
+					String[] nounn=nounToChec.split(" ");
+
+					for(int kk=0;kk<nounn.length;kk++){
+						if(kk==nounn.length-1){
+							if(nounn[kk].equals("'s")|| nounn[kk].equals("'t")){
+								pat+=nounn[kk]+posTag+" ";
+								tt++;
+
+
+							}
+							else{
+								pat+=nounn[kk]+posNounTag+" ";
+								tt++;
+
+							}
+						}
+						else{
+							if(nounn[kk].equals("'s")|| nounn[kk].equals("'t")){
+								pat+=nounn[kk]+posTag+" ";
+								tt++;
+
+							}
+							else{
+								pat+=nounn[kk]+posNounTag+" ";
+								tt++;
+
+							}
+						}
+
+					}
+					pat+="(.*?)";
+					tt++;
+					if(ll==0){
+						ll=tt;
+					}
+				}
+				String realpat= "\\[ "+pat+"\\]";
+
+				//System.out.println(realpat);
+
+				Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+				//FileParser.brout.write("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+
+				for(String strLinePos: POSFileReader.freeposfile){
+					Matcher 	matcher = pattern.matcher(strLinePos);
+
+
+					while(matcher.find()){
+						//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+
+						String matcheComp=matcher.group(ll).trim();
+
+						String nn=nounArray[1];
+						nn=nn.replaceAll("'.", "");
+
+						if(matcheComp.toLowerCase().contains(nn.toLowerCase())||matcheComp.equals("")){
+
+						}
+						else{
+							flagmatch=true;
+							//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+							//System.out.println(matcheComp);
+
+						}
+
+						flag=true;
+					}
+				}
+
+
+
+
+
+
+
+
+
+			}
+			else if(caseC==3){
+
+				pat+="(.*?) ";
+
+
+				for(int kk=0;kk<noun.length;kk++){
+					if(kk==noun.length-1){
+						if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+							pat+=noun[kk]+posTag+" ";
+							tt++;
+
+
+						}
+						else{
+							pat+=noun[kk]+posNounTag+" ";
+							tt++;
+
+						}
+					}
+					else{
+						if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+							pat+=noun[kk]+posTag+" ";
+							tt++;
+
+						}
+						else{
+							pat+=noun[kk]+posNounTag+" ";
+							tt++;
+
+						}
+					}
+
+				}
+
+				String realpat= "\\[ "+pat+"\\]";
+
+				//System.out.println(realpat);
+
+				Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+				//FileParser.brout.write("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+
+				for(String strLinePos: POSFileReader.freeposfile){
+					Matcher 	matcher = pattern.matcher(strLinePos);
+
+
+					while(matcher.find()){
+						//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+
+						String matcheComp=matcher.group(2).trim();
+						String nn=nounArray[0];
+						nn=nn.replaceAll("'.", "");
+
+						if(matcheComp.toLowerCase().contains(nn.toLowerCase())||matcheComp.equals("")){
+
+						}
+						else{
+							flagmatch=true;
+							//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+							//System.out.println(matcheComp + " " +nn);
+
+						}
+
+						flag=true;
+					}
+				}
+
+
+
+
+
+			}
+
+
+
+			if(flagmatch){
+				flag=false;
+			}
+			else{
+				flag=true;
+			}
+			return flag;
+
+		}catch(Exception ex){
+			return false;
+		}
+	}
+
+	private boolean getIfNotExistsInFile(String nounToCheck, String[] nounArray) {
+		// TODO Auto-generated method stub
+
+		int tt=0;
+
+
+		boolean flag=false,flagmatch=false;
+		String dt="(the/DT |The/DT |a/DT |A/DT )?.*?";
+		String posNounTag="(/NNP|/NNPS|/NN)";
+		String posTag="(/POS)";
+		nounToCheck=nounToCheck.replaceAll("'s", " 's");
+		nounToCheck=nounToCheck.replaceAll("'t", " 't");
+		//FileParser.brout.write(nounSet);
+		nounToCheck=nounToCheck.replaceAll("\\.\\*\\?", " ");
+		String[] noun=nounToCheck.split(" ");
+		String pat=dt;
+		tt++;
+
+
+		for(int kk=0;kk<noun.length;kk++){
+			if(kk==noun.length-1){
+				if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+					pat+=noun[kk]+posTag+" (.*?)";
+					tt++;
+					tt++;
+
+				}
+				else{
+					pat+=noun[kk]+posNounTag+" (.*?)";
+					tt++;
+					tt++;
+				}
+			}
+			else{
+				if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+					pat+=noun[kk]+posTag+" ";
+					tt++;
+
+				}
+				else{
+					pat+=noun[kk]+posNounTag+" ";
+					tt++;
+
+				}
+			}
+
+		}
+
+		String realpat= "\\[ "+pat+"\\]";
+
+		//System.out.println(realpat);
+
+		Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+		//FileParser.brout.write("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+
+		for(String strLinePos: POSFileReader.freeposfile){
+			Matcher 	matcher = pattern.matcher(strLinePos);
+
+
+			while(matcher.find()){
+				//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+
+				String matcheComp=matcher.group(tt).trim();
+
+				String nn=nounArray[1];
+				nn=nn.replaceAll("'.", "");
+
+
+				if(matcheComp.toLowerCase().contains(nn.toLowerCase())||matcheComp.equals("")){
+
+				}
+				else{
+					flagmatch=true;
+					//System.out.println(matcheComp);
+
+				}
+
+				flag=true;
+			}
+		}
+
+		if(flagmatch){
+			flag=false;
+		}
+		else{
+			flag=true;
+		}
+		return flag;
+
+
+
+
+
+
+
+		//return true;
 	}
 
 	/*
