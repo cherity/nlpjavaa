@@ -76,7 +76,8 @@ public class Answer {
 							boolean flagcase0=false;
 							//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*?"+question.allVerbs+")(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 							//pattern = Pattern.compile("(\\b"+nounCase+"\\b .*"+question.allVerbs+".*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-							pattern = Pattern.compile("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							pattern = Pattern.compile("(\\b"+nounCase+"\\b,? .*?\\b"+question.allExtraEle+"\\b.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+							//pattern = Pattern.compile("(\\b"+nounCase+",?.*?)(,\\s|\\.($|\\s))",Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
 
 							matcher = pattern.matcher(strLine);
 
@@ -1224,7 +1225,7 @@ public class Answer {
 			return true;
 		}
 
-		if(indexx==0){
+		if(indexx==1){
 			for(int kk=0;kk<noun.length;kk++){
 				if(kk==noun.length-1){
 					if(noun[kk].equals("'s") || noun[kk].equals("'t")){
@@ -1236,10 +1237,10 @@ public class Answer {
 				}
 				else{
 					if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
-						pat+=noun[kk]+posTag+" ";
+						pat+=noun[kk]+posTag+".*?";
 					}
 					else{
-						pat+=noun[kk]+posNounTag+" ";
+						pat+=noun[kk]+posNounTag+".*?";
 					}
 				}
 
