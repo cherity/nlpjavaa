@@ -1402,9 +1402,13 @@ public class Answer {
 	}
 
 
+	/*
+	 * This function takes care of tight paraphrasing for Companies with 3 words.
+	 * The paraphrases are added only when there are no ambiguous patterns
+	 */
 
 	private boolean getIfNotExistsInFileThree(String nounToCheck,	String[] nounArray, int caseC) {
-		// TODO Auto-generated method stub
+
 		try{
 
 			int tt=0;
@@ -1581,11 +1585,6 @@ public class Answer {
 
 
 
-
-
-
-
-
 			}
 			else if(caseC==3){
 
@@ -1656,7 +1655,6 @@ public class Answer {
 
 
 
-
 			}
 
 
@@ -1674,99 +1672,107 @@ public class Answer {
 		}
 	}
 
+
+
+	/*
+	 * This function takes care of tight paraphrasing for Companies with 2 words.
+	 * The paraphrases are added only when there are no ambiguous patterns
+	 */
+
 	private boolean getIfNotExistsInFile(String nounToCheck, String[] nounArray) {
-		// TODO Auto-generated method stub
-
-		int tt=0;
-
-
-		boolean flag=false,flagmatch=false;
-		String dt="(the/DT |The/DT |a/DT |A/DT )?.*?";
-		String posNounTag="(/NNP|/NNPS|/NN)";
-		String posTag="(/POS)";
-		nounToCheck=nounToCheck.replaceAll("'s", " 's");
-		nounToCheck=nounToCheck.replaceAll("'t", " 't");
-		//FileParser.brout.write(nounSet);
-		nounToCheck=nounToCheck.replaceAll("\\.\\*\\?", " ");
-		String[] noun=nounToCheck.split(" ");
-		String pat=dt;
-		tt++;
+		try{
+			int tt=0;
 
 
-		for(int kk=0;kk<noun.length;kk++){
-			if(kk==noun.length-1){
-				if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
-					pat+=noun[kk]+posTag+" (.*?)";
-					tt++;
-					tt++;
+			boolean flag=false,flagmatch=false;
+			String dt="(the/DT |The/DT |a/DT |A/DT )?.*?";
+			String posNounTag="(/NNP|/NNPS|/NN)";
+			String posTag="(/POS)";
+			nounToCheck=nounToCheck.replaceAll("'s", " 's");
+			nounToCheck=nounToCheck.replaceAll("'t", " 't");
+			//FileParser.brout.write(nounSet);
+			nounToCheck=nounToCheck.replaceAll("\\.\\*\\?", " ");
+			String[] noun=nounToCheck.split(" ");
+			String pat=dt;
+			tt++;
 
+
+			for(int kk=0;kk<noun.length;kk++){
+				if(kk==noun.length-1){
+					if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+						pat+=noun[kk]+posTag+" (.*?)";
+						tt++;
+						tt++;
+
+					}
+					else{
+						pat+=noun[kk]+posNounTag+" (.*?)";
+						tt++;
+						tt++;
+					}
 				}
 				else{
-					pat+=noun[kk]+posNounTag+" (.*?)";
-					tt++;
-					tt++;
+					if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
+						pat+=noun[kk]+posTag+" ";
+						tt++;
+
+					}
+					else{
+						pat+=noun[kk]+posNounTag+" ";
+						tt++;
+
+					}
 				}
+
+			}
+
+			String realpat= "\\[ "+pat+"\\]";
+
+			//System.out.println(realpat);
+
+			Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+			//FileParser.brout.write("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
+
+			for(String strLinePos: POSFileReader.freeposfile){
+				Matcher 	matcher = pattern.matcher(strLinePos);
+
+
+				while(matcher.find()){
+					//System.out.println(realpat+" ------------------ "+matcher.group(tt));
+
+					String matcheComp=matcher.group(tt).trim();
+
+					String nn=nounArray[1];
+					nn=nn.replaceAll("'.", "");
+
+
+					if(matcheComp.toLowerCase().contains(nn.toLowerCase())||matcheComp.equals("")){
+
+					}
+					else{
+						flagmatch=true;
+						//System.out.println(matcheComp);
+
+					}
+
+					flag=true;
+				}
+			}
+
+			if(flagmatch){
+				flag=false;
 			}
 			else{
-				if(noun[kk].equals("'s")|| noun[kk].equals("'t")){
-					pat+=noun[kk]+posTag+" ";
-					tt++;
-
-				}
-				else{
-					pat+=noun[kk]+posNounTag+" ";
-					tt++;
-
-				}
-			}
-
-		}
-
-		String realpat= "\\[ "+pat+"\\]";
-
-		//System.out.println(realpat);
-
-		Pattern pattern = Pattern.compile(realpat,Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-		//FileParser.brout.write("(\\b"+nounCase+"\\b,? .*?\\b"+question.allVerbs+"\\b.*?)(,\\s|\\.($|\\s))");
-
-		for(String strLinePos: POSFileReader.freeposfile){
-			Matcher 	matcher = pattern.matcher(strLinePos);
-
-
-			while(matcher.find()){
-				//System.out.println(realpat+" ------------------ "+matcher.group(tt));
-
-				String matcheComp=matcher.group(tt).trim();
-
-				String nn=nounArray[1];
-				nn=nn.replaceAll("'.", "");
-
-
-				if(matcheComp.toLowerCase().contains(nn.toLowerCase())||matcheComp.equals("")){
-
-				}
-				else{
-					flagmatch=true;
-					//System.out.println(matcheComp);
-
-				}
-
 				flag=true;
 			}
+			return flag;
+
+
+
+
+		}catch(Exception ex){
+			return false;
 		}
-
-		if(flagmatch){
-			flag=false;
-		}
-		else{
-			flag=true;
-		}
-		return flag;
-
-
-
-
-
 
 
 		//return true;
