@@ -68,9 +68,37 @@ public class FileParser {
 				//POSFileReader.freetextfile.add("At the end discount rate was 243,12");
 				//POSFileReader.freeposfile.add("Nitt have been opened at 52,35");
 
-				//POSFileReader.freetextfile.add("Nitt have been open at 5235");
-				//POSFileReader.freeposfile.add("[ Nitt/NNP ] have been opened at 5235");
+				//POSFileReader.freetextfile.add("India Nitt Pvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ India/NNP Nitt/NNP Pvt/NNP ] have been opened at 5235");
 
+				//POSFileReader.freetextfile.add("India Nitt Wvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ India/NNP Nitt/NNP Wvt/NNP ] have been opened at 5235");
+
+				//POSFileReader.freetextfile.add("India Nitt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ India/NNP Nitt/NNP ] have been opened at 5235");
+
+
+
+
+				//POSFileReader.freetextfile.add("Tokyo's Mitt Pvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ Tokyo/NNP 's/POS Mitt/NNP Pvt/NNP ] have been opened at 5235");
+
+				//POSFileReader.freetextfile.add("China's Mitt Pvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ China/NNP 's/POS Mitt/NNP Pvt/NNP ] have been opened at 5235");
+
+				//POSFileReader.freetextfile.add("Mitt Pvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ Mitt/NNP Pvt/NNP ] have been opened at 5235");
+
+
+
+				//POSFileReader.freetextfile.add("Tokyo's Mitt Pvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ Tokyo/NNP 's/POS Mitt/NNP Pvt/NNP ] have been opened at 5235");
+
+				//POSFileReader.freetextfile.add("Tokyo's Pvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ Tokyo/NNP 's/POS Pvt/NNP ] have been opened at 5235");
+
+				//POSFileReader.freetextfile.add("Tokyo's Steel Pvt have been open at 5235");
+				//POSFileReader.freeposfile.add("[ Tokyo/NNP 's/POS Steel/NNP Pvt/NNP ] have been opened at 5235");
 
 
 				//POSFileReader.freetextfile.add("Nitt Industries have opened low today at 5234235");
