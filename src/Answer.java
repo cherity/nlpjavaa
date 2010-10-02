@@ -1194,8 +1194,8 @@ public class Answer {
 		}
 		catch (Exception e)
 		{
-			System.err.println("Error: " + e.getMessage());
-			e.printStackTrace();
+			//System.err.println("Error: " + e.getMessage());
+			//e.printStackTrace();
 			return false;
 		}
 
