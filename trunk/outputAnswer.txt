@@ -1,30 +1,341 @@
-Q 1: What did Seiyu do?
+Q 1: What did the Nitt open at?
+A: No Information Available.
+
+Q 2: What did Seiyu do?
 A 1: Seiyu was down 240 at 2,710.
 Source 1: Seiyu was down 240 at 2,710, Daiei fell 70 to 2,980, and Isetan lost 170 to 4,720. (line 26)
 
-Q 2: What did Aiwa do?
+Q 3: What did Aiwa do?
 A 1: Aiwa, which gained 120 to 2,000.
 Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
 
-Q 3: What did Mitsubishi do?
+Q 4: What did Mitsubishi Industries do?
 A 1: Mitsubishi Heavy Industries was down 30 at 1,010.
 Source 1: Kawasaki Heavy Industries fell 37 to 903, and Mitsubishi Heavy Industries was down 30 at 1,010. (line 23)
 
-Q 4: What did Tokyo's Nikkei Index do?
+Q 5: What did Tokyo's Nikkei Index do?
 A 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday.
 Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
 A 2: Nikkei Index rose 145.96 points to 34941.01.
 Source 2: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
 
-Q 5: What did Sumitomo metal do?
+Q 6: What did Sumitomo metal do?
 A 1: Sumitomo Metal lost 19 to 677.
 Source 1: Nippon Steel fell 10 to 698 yen ($4.83) a share, Sumitomo Metal lost 19 to 677, and Kobe Steel was down 9 at 690. (line 20)
 
-Q 6: What did Nippon Steel do?
-A 1: Nippon Steel fell 10 to 698 yen ($4.83) a share.
-Source 1: Nippon Steel fell 10 to 698 yen ($4.83) a share, Sumitomo Metal lost 19 to 677, and Kobe Steel was down 9 at 690. (line 20)
+Q 7: Did Misawa Homes rise or fall?
+A 1: FALL.
+Source 1: Among housing issues, Misawa Homes lost 140 to 2,830, Sekisui House declined 70 to 2,400, and Daiwa House lost 100 to 2,470. (line 24)
 
-Q 7: How much did Ferranti rise?
+Q 8: Did Misawa Homes up or down?
+A 1: DOWN.
+Source 1: Among housing issues, Misawa Homes lost 140 to 2,830, Sekisui House declined 70 to 2,400, and Daiwa House lost 100 to 2,470. (line 24)
+
+Q 9: How much did Ferranti International Signal rise?
 A 1: 1 1/2.
 Source 1: Ferranti International Signal rose 1 1/2 to 58 on 8.5 million shares. (line 44)
+
+Q 10: What did Nippon Shokubai close at?
+A 1: 2,270.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 11: How much did Aiwa fall? 
+A: No Information Available.
+
+Q 12: How much did the Dow index rise?
+A: No Information Available.
+
+Q 13: Did the Nikkei Index rise or fall?
+A 1: FALL.
+Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
+A 2: RISE.
+Source 2: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+
+Q 14: Did the Nikkei Index gain or lost?
+A 1: LOST.
+Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
+A 2: GAIN.
+Source 2: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+
+Q 15: Which index went up?
+A 1: Nikkei Index.
+Source 1: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+A 2: Financial Times-Stock Exchange 100-share index.
+Source 2: In London, the Financial Times-Stock Exchange 100-share index finished 19 points higher at 2237.8. (line 32)
+A 3: Financial Times 30-share index.
+Source 3: The Financial Times 30-share index rose 20.4 to 1817.7. (line 33)
+
+Q 16: How much did Aiwa have dipped?
+A: No Information Available.
+
+Q 17: How much did Aiwa went up?
+A 1: 120.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 18: How much did Aiwa rise?
+A 1: 120.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 19: How much did Aiwa have hiked up?
+A 1: 120.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 20: What did Nikon close at?
+A 1: 1,620.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 21: How much did Toshiba close at?
+A 1: 1,130.
+Source 1: Hitachi lost 10 to 1,510, Toshiba was down 40 at 1,130, and Toyota Motor lost 30 to 2,820. (line 28)
+
+Q 22: Did the dollar up or down against the yen?
+A 1: UP.
+Source 1: Traders said the reason its drop was larger than Wednesday's moderate loss was that investors began selling their holdings when they saw that Wednesday's rise to 3.75% in the discount rate -- the central bank's base rate on loans to commercial banks -- failed to curb the dollar's rise against the yen. (line 10)
+
+Q 23: What did Nikkei Index close at?
+A 1: 34795.05.
+Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
+A 2: 34941.01.
+Source 2: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+
+Q 24: How much did Kajima fall?
+A 1: 100.
+Source 1: The Kajima was down 100 at 1,900, while Ohbayashi lost 60 to 1,500. (line 21)
+
+Q 25: How much did Ohbayashi fall?
+A 1: 60.
+Source 1: The Kajima was down 100 at 1,900, while Ohbayashi lost 60 to 1,500. (line 21)
+
+Q 26: What indexes fell?
+A 1: Tokyo's Nikkei Index.
+Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
+A 2: Tokyo Stock Price Index.
+Source 2: The Tokyo Stock Price Index of all issues in the first section, which lost 13.07 Wednesday, was down 36.89, or 1.4%, to 2623.60. (line 8)
+
+Q 27: What indexes rose?
+A 1: Nikkei Index.
+Source 1: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+A 2: Financial Times-Stock Exchange 100-share index.
+Source 2: In London, the Financial Times-Stock Exchange 100-share index finished 19 points higher at 2237.8. (line 32)
+A 3: Financial Times 30-share index.
+Source 3: The Financial Times 30-share index rose 20.4 to 1817.7. (line 33)
+
+Q 28: What did dollar do against yen?
+A 1: RISE.
+Source 1: Traders said the reason its drop was larger than Wednesday's moderate loss was that investors began selling their holdings when they saw that Wednesday's rise to 3.75% in the discount rate -- the central bank's base rate on loans to commercial banks -- failed to curb the dollar's rise against the yen. (line 10)
+
+Q 29: What did the dollar do against the yen?
+A 1: RISE.
+Source 1: Traders said the reason its drop was larger than Wednesday's moderate loss was that investors began selling their holdings when they saw that Wednesday's rise to 3.75% in the discount rate -- the central bank's base rate on loans to commercial banks -- failed to curb the dollar's rise against the yen. (line 10)
+
+Q 30: What did the dollar do against the rupee?
+A: No Information Available.
+
+Q 31: What did Nikkei Index do?
+A 1: Nikkei Index of 225 issues, which fell 136.28 points Wednesday.
+Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
+A 2: Nikkei Index rose 145.96 points to 34941.01.
+Source 2: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+
+Q 32: What did Sumitomo metal do?
+A 1: Sumitomo Metal lost 19 to 677.
+Source 1: Nippon Steel fell 10 to 698 yen ($4.83) a share, Sumitomo Metal lost 19 to 677, and Kobe Steel was down 9 at 690. (line 20)
+
+Q 33: What was the discount rate?
+A 1: 3.75%.
+Source 1: Traders said the reason its drop was larger than Wednesday's moderate loss was that investors began selling their holdings when they saw that Wednesday's rise to 3.75% in the discount rate -- the central bank's base rate on loans to commercial banks -- failed to curb the dollar's rise against the yen. (line 10)
+
+Q 34: What was discount rate?
+A 1: 3.75%.
+Source 1: Traders said the reason its drop was larger than Wednesday's moderate loss was that investors began selling their holdings when they saw that Wednesday's rise to 3.75% in the discount rate -- the central bank's base rate on loans to commercial banks -- failed to curb the dollar's rise against the yen. (line 10)
+
+Q 35: How much did British Steel close at?
+A 1: 126 1/2.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 36: How much did British Steel rise?
+A 1: 2.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 37: Did Tesco rise or fall?
+A 1: RISE.
+Source 1: Other companies in the food sector also firmed on active volume, with Argyll Group gaining 8 to 223, Tesco up 1/2 to 194 1/2 and J. Sainsbury advancing 3 to 255. (line 48)
+
+Q 38: Did British Telecommuncations rise or fall?
+A 1: RISE.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 39: Did British Petroleum rise or fall?
+A 1: RISE.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 40: How much did British Petroleum close at?
+A 1: 307 1/2.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 41: How much did British Telecommuncations close at?
+A 1: 268.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 42: How much did British Telecommuncations rise?
+A 1: 6.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 43: How much did British Petroleum rise?
+A 1: 1.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 44: How much did Nikon rise?
+A 1: 30.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 45: How much did Tesco close at?
+A 1: 194 1/2.
+Source 1: Other companies in the food sector also firmed on active volume, with Argyll Group gaining 8 to 223, Tesco up 1/2 to 194 1/2 and J. Sainsbury advancing 3 to 255. (line 48)
+
+Q 46: Which stocks fall?
+A 1: Nippon Steel.
+Source 1: Nippon Steel fell 10 to 698 yen ($4.83) a share, Sumitomo Metal lost 19 to 677, and Kobe Steel was down 9 at 690. (line 20)
+A 2: Sumitomo Metal.
+Source 2: Nippon Steel fell 10 to 698 yen ($4.83) a share, Sumitomo Metal lost 19 to 677, and Kobe Steel was down 9 at 690. (line 20)
+A 3: Kobe Steel.
+Source 3: Nippon Steel fell 10 to 698 yen ($4.83) a share, Sumitomo Metal lost 19 to 677, and Kobe Steel was down 9 at 690. (line 20)
+A 4: Kajima.
+Source 4: The Kajima was down 100 at 1,900, while Ohbayashi lost 60 to 1,500. (line 21)
+A 5: Ohbayashi.
+Source 5: The Kajima was down 100 at 1,900, while Ohbayashi lost 60 to 1,500. (line 21)
+A 6: Kawasaki Heavy Industries.
+Source 6: Kawasaki Heavy Industries fell 37 to 903, and Mitsubishi Heavy Industries was down 30 at 1,010. (line 23)
+A 7: Mitsubishi Heavy Industries.
+Source 7: Kawasaki Heavy Industries fell 37 to 903, and Mitsubishi Heavy Industries was down 30 at 1,010. (line 23)
+A 8: Misawa Homes.
+Source 8: Among housing issues, Misawa Homes lost 140 to 2,830, Sekisui House declined 70 to 2,400, and Daiwa House lost 100 to 2,470. (line 24)
+A 9: Sekisui House.
+Source 9: Among housing issues, Misawa Homes lost 140 to 2,830, Sekisui House declined 70 to 2,400, and Daiwa House lost 100 to 2,470. (line 24)
+A 10: Daiwa House.
+Source 10: Among housing issues, Misawa Homes lost 140 to 2,830, Sekisui House declined 70 to 2,400, and Daiwa House lost 100 to 2,470. (line 24)
+A 11: Seiyu.
+Source 11: Seiyu was down 240 at 2,710, Daiei fell 70 to 2,980, and Isetan lost 170 to 4,720. (line 26)
+A 12: Daiei.
+Source 12: Seiyu was down 240 at 2,710, Daiei fell 70 to 2,980, and Isetan lost 170 to 4,720. (line 26)
+A 13: Isetan.
+Source 13: Seiyu was down 240 at 2,710, Daiei fell 70 to 2,980, and Isetan lost 170 to 4,720. (line 26)
+A 14: Hitachi.
+Source 14: Hitachi lost 10 to 1,510, Toshiba was down 40 at 1,130, and Toyota Motor lost 30 to 2,820. (line 28)
+A 15: Toshiba.
+Source 15: Hitachi lost 10 to 1,510, Toshiba was down 40 at 1,130, and Toyota Motor lost 30 to 2,820. (line 28)
+A 16: Toyota Motor.
+Source 16: Hitachi lost 10 to 1,510, Toshiba was down 40 at 1,130, and Toyota Motor lost 30 to 2,820. (line 28)
+
+Q 47: Which stocks rise?
+A 1: Sharp.
+Source 1: Sharp gained 20 to 1,550. (line 30)
+A 2: Nippon Shokubai.
+Source 2: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+A 3: Nikon.
+Source 3: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+A 4: Aiwa.
+Source 4: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+A 5: BTR.
+Source 5: BTR ended 7 higher at 437 pence ($6.76) a share. (line 43)
+A 6: Ferranti International Signal.
+Source 6: Ferranti International Signal rose 1 1/2 to 58 on 8.5 million shares. (line 44)
+A 7: ASDA Group.
+Source 7: ASDA Group, a U.K. food retailer, closed 4 higher at 163 after holders approved the company's acquisition of 61 stores from Isosceles. (line 46)
+A 8: Argyll Group.
+Source 8: Other companies in the food sector also firmed on active volume, with Argyll Group gaining 8 to 223, Tesco up 1/2 to 194 1/2 and J. Sainsbury advancing 3 to 255. (line 48)
+A 9: Tesco.
+Source 9: Other companies in the food sector also firmed on active volume, with Argyll Group gaining 8 to 223, Tesco up 1/2 to 194 1/2 and J. Sainsbury advancing 3 to 255. (line 48)
+A 10: J. Sainsbury.
+Source 10: Other companies in the food sector also firmed on active volume, with Argyll Group gaining 8 to 223, Tesco up 1/2 to 194 1/2 and J. Sainsbury advancing 3 to 255. (line 48)
+A 11: British Steel.
+Source 11: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+A 12: British Telecommuncations.
+Source 12: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+A 13: British Petroleum.
+Source 13: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 48: How much did Nitt open at?
+A: No Information Available.
+
+Q 49: How much did Nitt sell at?
+A: No Information Available.
+
+Q 50: How much did Ferranti International Signal have rise?
+A 1: 1 1/2.
+Source 1: Ferranti International Signal rose 1 1/2 to 58 on 8.5 million shares. (line 44)
+
+Q 51: How much did Aiwa fall? 
+A: No Information Available.
+
+Q 52: How much did Aiwa have dipped?
+A: No Information Available.
+
+Q 53: How much did the Aiwa went up?
+A 1: 120.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 54: How much did Aiwa rise?
+A 1: 120.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 55: How much did Aiwa have hiked up?
+A 1: 120.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 56: How much did Kajima have fallen down?
+A 1: 100.
+Source 1: The Kajima was down 100 at 1,900, while Ohbayashi lost 60 to 1,500. (line 21)
+
+Q 57: How much did Ohbayashi had dipped?
+A 1: 60.
+Source 1: The Kajima was down 100 at 1,900, while Ohbayashi lost 60 to 1,500. (line 21)
+
+Q 58: How much did British Steel rise?
+A 1: 2.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 59: How much did British Telecommuncations rise?
+A 1: 6.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 60: How much did British Petroleum rise?
+A 1: 1.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 61: How much did Nikon rise?
+A 1: 30.
+Source 1: Other gainers included Nippon Shokubai, which rose 70 to 2,270, Nikon, up 30 to 1,620, and Aiwa, which gained 120 to 2,000. (line 31)
+
+Q 62: Did Misawa Homes have rise or had fall?
+A 1: FALL.
+Source 1: Among housing issues, Misawa Homes lost 140 to 2,830, Sekisui House declined 70 to 2,400, and Daiwa House lost 100 to 2,470. (line 24)
+
+Q 63: Did Misawa Homes up or down?
+A 1: DOWN.
+Source 1: Among housing issues, Misawa Homes lost 140 to 2,830, Sekisui House declined 70 to 2,400, and Daiwa House lost 100 to 2,470. (line 24)
+
+Q 64: Did the Nikkei Index rise or fall?
+A 1: FALL.
+Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
+A 2: RISE.
+Source 2: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+
+Q 65: Did the Nikkei Index gain or lost?
+A 1: LOST.
+Source 1: Tokyo's Nikkei Index of 225 issues, which fell 136.28 points Wednesday, closed at 34795.05, down 445.02. (line 3)
+A 2: GAIN.
+Source 2: In the first hour of trading in Tokyo Friday, the Nikkei Index rose 145.96 points to 34941.01. (line 5)
+
+Q 66: Did Tesco went up or down?
+A 1: UP.
+Source 1: Other companies in the food sector also firmed on active volume, with Argyll Group gaining 8 to 223, Tesco up 1/2 to 194 1/2 and J. Sainsbury advancing 3 to 255. (line 48)
+
+Q 67: Did British Telecommuncations had risen or fallen?
+A 1: RISEN.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
+
+Q 68: Did British Petroleum rise or fall?
+A 1: RISE.
+Source 1: British Steel edged 2 higher to 126 1/2 on 8.3 million shares, British Telecommuncations settled 6 higher at 268, and British Petroleum gained 1 to 307 1/2. (line 50)
 
