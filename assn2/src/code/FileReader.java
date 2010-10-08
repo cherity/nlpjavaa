@@ -27,7 +27,8 @@ public class FileReader {
 	public static Hashtable<String, Integer> poswordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, Integer> negwordList= new Hashtable<String, Integer>();
 	public static ArrayList<Document> docList= new ArrayList<Document>();
-
+	public static String[] stopwords= {"a","able","about","across","after","all","almost","also","am","among","an","and","any","are","as","at","be","because","been","but","by","can","cannot","could","dear","did","do","does","either","else","ever","every","for","from","get","got","had","has","have","he","her","hers","him","his","how","however","i","if","in","into","is","it","its","just","least","let","like","likely","may","me","might","most","must","my","neither","no","nor","not","of","off","often","on","only","or","other","our","own","rather","said","say","says","she","should","since","so","some","than","that","the","their","them","then","there","these","they","this","tis","to","too","twas","us","wants","was","we","were","what","when","where","which","while","who","whom","why","will","with","would","yet","you","your"};
+	public static ArrayList<String> stopWords=new ArrayList<String>();
 	public static double wordCnt=0, wordFromPos=0,wordFromNeg=0;
 
 
@@ -44,6 +45,12 @@ public class FileReader {
 
 		try{
 
+			for(String s :stopwords){
+				//System.out.println(s);
+
+				stopWords.add(s);
+
+			}
 			FileInputStream fstream = new FileInputStream(args[1]);
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -57,7 +64,7 @@ public class FileReader {
 
 
 
-			fstream3 = new FileOutputStream("outputFile.arff");
+			fstream3 = new FileOutputStream("outputFile8.arff");
 			in3 = new DataOutputStream(fstream3);
 			br3 = new BufferedWriter(new OutputStreamWriter(in3));
 
@@ -139,11 +146,80 @@ public class FileReader {
 
 
 
-	private static void printDocList() {
+	private static void printDocList() throws IOException {
 		// TODO Auto-generated method stub
 
+		br3.write("@RELATION moviestraining");
+		br3.newLine();
+		br3.newLine();
+		br3.newLine();
+
+		int ccnt=0;
+		Enumeration<String> e = docFrequency.keys();
+		while( e. hasMoreElements() ){
+			ccnt++;
+
+			if(ccnt==12000)
+			break;
+
+			String key = (String)e.nextElement() ;
+
+			br3.write("@ATTRIBUTE "+key+" NUMERIC");
+			br3.newLine();
+
+
+		}
+
+		br3.write("@ATTRIBUTE doclength NUMERIC");
+		br3.newLine();
+		br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
+		br3.newLine();
+		br3.write("@ATTRIBUTE testFinal {1,2,3,4}");
+		br3.newLine();
+
+		br3.newLine();
+		br3.newLine();
+		br3.write("@DATA");
+		br3.newLine();
+		br3.flush();
+
+
+		Enumeration<String> ee;
+
 		for(Document d : docList){
-			logln(d.countWords);
+			//logln(d.star);
+			ee= docFrequency.keys();
+			ccnt=0;
+
+			while( ee. hasMoreElements() ){
+				String key = (String)ee.nextElement() ;
+
+				ccnt++;
+
+				if(ccnt==12000)
+				break;
+
+				if(d.termFrequency.containsKey(key)){
+					//need to be changed
+					//System.out.println("here");
+					br3.write(1+",");
+				}
+				else{
+					br3.write(0+",");
+				}
+
+				//br3.write(0+",");
+
+
+			}
+
+			//System.out.println("finished");
+			br3.write(d.countWords+",");
+			br3.write(d.star+",");
+			br3.write("1");
+			br3.newLine();
+			br3.flush();
+
 		}
 
 
@@ -188,10 +264,23 @@ public class FileReader {
 
 		Document d= new Document();
 		d.countWords=bow.length;
+		d.star=star;
 
 		docList.add(d);
 
 		for(String bowWord:bow){
+			bowWord=bowWord.replaceAll("'", "");
+			bowWord=bowWord.replaceAll("", "");
+			bowWord=bowWord.replaceAll("%", "");
+			//",",box,","empty"
+			if(bowWord.equals("")||bowWord.equals("\"")||bowWord.equals(",")||bowWord.length()<=2||stopWords.contains(bowWord))
+			{
+				continue;
+			}
+
+			//if(bowWord.contains("nobody")){
+			//	logln(bowWord +"  "+cntt);
+			//}
 
 			addToWordList(bowWord,wordList);
 			addToDocFreqTracker(bowWord,cntt);
