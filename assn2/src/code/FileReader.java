@@ -29,7 +29,7 @@ public class FileReader {
 	public static ArrayList<Document> docList= new ArrayList<Document>();
 	public static String[] stopwords= {"a","able","about","across","after","all","almost","also","am","among","an","and","any","are","as","at","be","because","been","but","by","can","cannot","could","dear","did","do","does","either","else","ever","every","for","from","get","got","had","has","have","he","her","hers","him","his","how","however","i","if","in","into","is","it","its","just","least","let","like","likely","may","me","might","most","must","my","neither","no","nor","not","of","off","often","on","only","or","other","our","own","rather","said","say","says","she","should","since","so","some","than","that","the","their","them","then","there","these","they","this","tis","to","too","twas","us","wants","was","we","were","what","when","where","which","while","who","whom","why","will","with","would","yet","you","your"};
 	public static ArrayList<String> stopWords=new ArrayList<String>();
-	public static double wordCnt=0, wordFromPos=0,wordFromNeg=0;
+	public static double wordCnt=0, wordFromPos=0,wordFromNeg=0,docCount=0;
 
 
 	public static FileOutputStream fstream2 ;
@@ -64,7 +64,7 @@ public class FileReader {
 
 
 
-			fstream3 = new FileOutputStream("outputFile8.arff");
+			fstream3 = new FileOutputStream("outputFile9.arff");
 			in3 = new DataOutputStream(fstream3);
 			br3 = new BufferedWriter(new OutputStreamWriter(in3));
 
@@ -111,6 +111,7 @@ public class FileReader {
 
 
 			System.out.println("Total Docs- "+cnt);
+			docCount=cnt;
 			System.out.println("Avg doc length- "+wordCnt/cnt);
 			logln();
 
@@ -159,8 +160,8 @@ public class FileReader {
 		while( e. hasMoreElements() ){
 			ccnt++;
 
-			if(ccnt==12000)
-			break;
+			if(ccnt==15000)
+				break;
 
 			String key = (String)e.nextElement() ;
 
@@ -196,13 +197,21 @@ public class FileReader {
 
 				ccnt++;
 
-				if(ccnt==12000)
-				break;
+				if(ccnt==15000)
+					break;
 
 				if(d.termFrequency.containsKey(key)){
 					//need to be changed
 					//System.out.println("here");
-					br3.write(1+",");
+					int termCount=d.termFrequency.get(key);
+					double tf=termCount/d.countWords;
+
+					ArrayList<Integer> listt=docFrequency.get(key);
+
+					double df=Math.log(docCount/listt.size());
+					double tfidf=tf*df;
+
+					br3.write(tfidf+",");
 				}
 				else{
 					br3.write(0+",");
