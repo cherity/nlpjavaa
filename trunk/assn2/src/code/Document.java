@@ -7,6 +7,7 @@ public class Document {
 	public double countWords; 
 	public double posWords; 
 	public double negWords; 
+	public double commaWords;
 	public double notWords; 
 	public int star; 
 	public  Hashtable<String, Integer> termFrequency;
@@ -20,6 +21,7 @@ public class Document {
 		countWords=0;
 		posWords=0;
 		negWords=0;
+		commaWords=0;
 		notWords=0;
 		termFrequency= new Hashtable<String, Integer>();
 		postermFrequency= new Hashtable<String, Integer>();

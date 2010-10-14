@@ -58,30 +58,34 @@ public class CountGenerator {
 		String[] bow=match.split(" ");
 
 		Document d= new Document();
-		d.countWords=bow.length;
+		//d.countWords=bow.length;
 		d.star=star;
 
-		docList.add(d);
 
 		for(String bowWord:bow){
 			bowWord=bowWord.replaceAll("'", "");
 			bowWord=bowWord.replaceAll("", "");
 			bowWord=bowWord.replaceAll("%", "");
 			//",",box,","empty"
-			if(bowWord.equals("")||bowWord.equals("\"")||bowWord.equals(",")||bowWord.length()<=2||stopWords.contains(bowWord))
-			{
-				continue;
-			}
-
 			if(bowWord.equals("not")||bowWord.equals("no"))
 			{
 				d.notWords++;
 			}
+			
+			if(bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")){
+				d.commaWords++;
+			}
+			if(bowWord.equals("")||bowWord.equals("\"")||bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")||bowWord.length()<=2||stopWords.contains(bowWord))
+			{
+				continue;
+			}
+
+			d.countWords++;
 			if(posWords.contains(bowWord.trim().toLowerCase())){
 				d.posWords++;
 				addTermPos(bowWord,d);
 			}
-			else 				if(negWords.contains(bowWord.trim().toLowerCase())){
+			else if(negWords.contains(bowWord.trim().toLowerCase())){
 				d.negWords++;
 				addTermNeg(bowWord,d);
 			}
@@ -104,6 +108,7 @@ public class CountGenerator {
 
 		}
 
+		docList.add(d);
 	}
 
 
