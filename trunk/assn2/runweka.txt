@@ -1,0 +1,1 @@
+ java -cp weka.jar -Xmx2048m weka.classifiers.meta.AttributeSelectedClassifier    -t c:\data\outputArff18.arff    -E "weka.attributeSelection.CfsSubsetEval -M"    -S "weka.attributeSelection.BestFirst -D 1 -N 5"    -W weka.classifiers.trees.J48 -- -C 0.25 -M 2

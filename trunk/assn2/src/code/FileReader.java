@@ -1,6 +1,11 @@
 package code;
 
 import java.io.BufferedReader;
+
+import edu.stanford.nlp.trees.*; 
+import edu.stanford.nlp.process.*;
+import edu.stanford.nlp.objectbank.TokenizerFactory;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,19 +14,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+
 public class FileReader {
 
 
-	public static String outFile="outputArff15.arff";
+	public static String outFile="outputArff18.arff";
 
 
 	public static FileOutputStream fstream2 ;
@@ -38,6 +47,9 @@ public class FileReader {
 		try{
 
 
+			//LexicalizedParser lp = new LexicalizedParser("englishPCFG.ser.gz"); 
+			//TokenizerFactory tf = PTBTokenizer.factory(false, new WordTokenFactory());
+			//TreePrint tp = new TreePrint("penn,typedDependenciesCollapsed");
 
 			FileInputStream fstream = new FileInputStream(args[1]);
 			DataInputStream in = new DataInputStream(fstream);
@@ -77,7 +89,22 @@ public class FileReader {
 					cg.getCount(match,cnt,starr);
 					//System.out.println (strLine);
 					//System.out.println (cnt +" " +star+" "+match);
+					/*
+					String ss[]=match.split("\\.");
+					for(String match2 :ss){
+						System.out.println(match2);
+					//List tokens = tf.getTokenizer(new StringReader(match)).tokenize(); 
+					//lp.parse(tokens); // parse the tokens
+					//Tree t = lp.getBestParse(); // get the best parse tree
+					//System.out.println("\nPROCESSED:\n\n"); tp.printTree(t);
+
+					}*/
+
+
 				}
+				//if(cnt==1){
+				//break;
+				//}
 
 			}
 
@@ -114,8 +141,8 @@ public class FileReader {
 			printDocList2(cg);
 
 
-			
 
+			/*
 			for(Document d : cg.docList){
 				br2.newLine();
 				br2.newLine();
@@ -135,7 +162,7 @@ public class FileReader {
 				br2.newLine();
 				br2.newLine();
 			}
-			 
+			 */
 			br2.flush();
 			in2.close();
 			br3.flush();
@@ -244,8 +271,8 @@ public class FileReader {
 
 			//System.out.println("finished");
 			br3.write(d.countWords+",");
-			br3.write((d.posWords-(d.notWords/2))/d.countWords+",");
-			br3.write((d.negWords-(d.notWords/2))/d.countWords+",");
+			br3.write((d.posWords)/d.countWords+",");
+			br3.write((d.negWords)/d.countWords+",");
 
 			if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
 				br3.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
@@ -311,8 +338,8 @@ public class FileReader {
 
 
 
-		//br3.write("@ATTRIBUTE doclength NUMERIC");
-		//br3.newLine();
+		br3.write("@ATTRIBUTE doclength NUMERIC");
+		br3.newLine();
 
 		br3.write("@ATTRIBUTE posword NUMERIC");
 		br3.newLine();
@@ -325,7 +352,12 @@ public class FileReader {
 		br3.write("@ATTRIBUTE diffneg NUMERIC");
 		br3.newLine();
 		 */
-		br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
+
+
+		br3.write("@ATTRIBUTE notWord NUMERIC");
+		br3.newLine();
+
+		br3.write("@ATTRIBUTE classFinal {0,1}");
 		br3.newLine();
 
 		br3.newLine();
@@ -378,7 +410,7 @@ public class FileReader {
 			for(String key :cg.posWords){
 
 
-				if(d.postermFrequency.contains(key)){
+				if(d.postermFrequency.containsKey(key)){
 					br3.write(d.postermFrequency.get(key)+",");
 				}
 				else{
@@ -393,7 +425,7 @@ public class FileReader {
 
 
 
-				if(d.negtermFrequency.contains(key)){
+				if(d.negtermFrequency.containsKey(key)){
 					br3.write(d.negtermFrequency.get(key)+",");
 				}
 				else{
@@ -403,10 +435,11 @@ public class FileReader {
 
 			}
 
+			br3.write(d.countWords+",");
 
 			//br3.write(d.countWords+",");
-			br3.write((d.posWords-(d.notWords/2))/d.countWords+",");
-			br3.write((d.negWords-(d.notWords/2))/d.countWords+",");
+			br3.write((d.posWords)/d.countWords+",");
+			br3.write((d.negWords)/d.countWords+",");
 			/*
 			if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
 				br3.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
@@ -418,8 +451,16 @@ public class FileReader {
 			}
 			 */
 
+
+			br3.write(d.notWords+",");
 			String sstar=""+d.star;
-			br3.write(sstar);
+			if(d.star>=3){
+				br3.write("1");
+			}
+			else{
+				br3.write("0");
+			}
+			//br3.write(sstar);
 
 			br3.newLine();
 			br3.flush();
