@@ -356,6 +356,10 @@ public class FileReader {
 
 		br3.write("@ATTRIBUTE notWord NUMERIC");
 		br3.newLine();
+		
+
+		br3.write("@ATTRIBUTE commaWord NUMERIC");
+		br3.newLine();
 
 		br3.write("@ATTRIBUTE classFinal {0,1}");
 		br3.newLine();
@@ -453,6 +457,10 @@ public class FileReader {
 
 
 			br3.write(d.notWords+",");
+
+			br3.write(d.commaWords+",");
+			
+			
 			String sstar=""+d.star;
 			if(d.star>=3){
 				br3.write("1");
