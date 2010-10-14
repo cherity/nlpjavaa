@@ -114,9 +114,9 @@ public class FileReader {
 			printDocList2(cg);
 
 
-			/*
+			
 
-			for(Document d : docList){
+			for(Document d : cg.docList){
 				br2.newLine();
 				br2.newLine();
 				br2.write(d.star+" --- pos");
@@ -135,7 +135,7 @@ public class FileReader {
 				br2.newLine();
 				br2.newLine();
 			}
-			 */
+			 
 			br2.flush();
 			in2.close();
 			br3.flush();
