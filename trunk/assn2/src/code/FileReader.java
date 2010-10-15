@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class FileReader {
 
 
-	public static String outFile="outputArff18.arff";
+	public static String outFile="outputArff2000.arff";
 
 
 	public static FileOutputStream fstream2 ;
@@ -40,6 +40,9 @@ public class FileReader {
 	public static FileOutputStream fstream3 ;
 	public static DataOutputStream in3 ;
 	public static BufferedWriter br3;
+
+	public static Integer[] x;
+	public static String[] yy;
 
 
 	public static void main(String args[]){
@@ -311,6 +314,33 @@ public class FileReader {
 		br3.newLine();
 
 		int ccnt=0;
+
+
+
+
+
+		yy = new String[cg.wordList.size()];
+		Enumeration en=cg.wordList.keys();
+		int kk=0;
+		while( en. hasMoreElements() ){
+			yy[kk] = (String)en.nextElement() ;
+			kk++;
+		}
+
+		x = new Integer[cg.wordList.size()];
+		Enumeration env=cg.wordList.keys();
+		int kkk=0;
+		while( env. hasMoreElements() ){
+			String keyss = (String)env.nextElement() ;
+			x[kkk]=cg.wordList.get(keyss);
+			kkk++;
+		}
+
+
+		bubbleSort1();
+
+		//printArray();
+
 		for(String key :cg.posWords){
 
 
@@ -338,6 +368,14 @@ public class FileReader {
 
 
 
+		for(int i=(yy.length-1);i>(yy.length-2001);i--){
+			if((!cg.negWords.contains(yy[i])) && (!cg.posWords.contains(yy[i]))){
+				br3.write("@ATTRIBUTE "+yy[i]+" NUMERIC");
+				br3.newLine();
+			}
+
+		}
+
 		br3.write("@ATTRIBUTE doclength NUMERIC");
 		br3.newLine();
 
@@ -356,7 +394,7 @@ public class FileReader {
 
 		br3.write("@ATTRIBUTE notWord NUMERIC");
 		br3.newLine();
-		
+
 
 		br3.write("@ATTRIBUTE commaWord NUMERIC");
 		br3.newLine();
@@ -439,6 +477,20 @@ public class FileReader {
 
 			}
 
+
+
+
+
+			for(int i=(yy.length-1);i>(yy.length-2001);i--){
+				if((!cg.negWords.contains(yy[i])) && (!cg.posWords.contains(yy[i]))){
+					if(d.termFrequency.containsKey(yy[i])){
+						br3.write(d.termFrequency.get(yy[i])+",");
+					}
+					else{
+						br3.write("0,");
+					}
+				}
+			}
 			br3.write(d.countWords+",");
 
 			//br3.write(d.countWords+",");
@@ -459,8 +511,8 @@ public class FileReader {
 			br3.write(d.notWords+",");
 
 			br3.write(d.commaWords+",");
-			
-			
+
+
 			String sstar=""+d.star;
 			if(d.star>=3){
 				br3.write("1");
@@ -478,6 +530,40 @@ public class FileReader {
 
 	}
 
+
+
+
+	private static void printArray() {
+		// TODO Auto-generated method stub
+		for(int i=0;i<20;i++){
+			System.out.println(x[i] +" "+yy[i]);
+		}
+
+
+
+		for(int i=(x.length-1);i>(x.length-21);i--){
+			System.out.println(x[i] +" "+yy[i]);
+		}
+
+	}
+
+
+
+
+
+	public static void bubbleSort1() {
+		int n = x.length;
+		for (int pass=1; pass < n; pass++) {  // count how many times
+			// This next loop becomes shorter and shorter
+			for (int i=0; i < n-pass; i++) {
+				if (x[i] > x[i+1]) {
+					// exchange elements
+					int temp = x[i];  x[i] = x[i+1];  x[i+1] = temp;
+					String tempp = yy[i];  yy[i] = yy[i+1];  yy[i+1] = tempp;
+				}
+			}
+		}
+	}
 
 	private static void printHashTable(Hashtable<String, Integer> poswordList2) throws IOException {
 
