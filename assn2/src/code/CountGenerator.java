@@ -71,7 +71,7 @@ public class CountGenerator {
 			{
 				d.notWords++;
 			}
-			
+
 			if(bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")){
 				d.commaWords++;
 			}
