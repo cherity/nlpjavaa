@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class FileReader {
 
 
-	public static String outFile="outputArff10withPorter.arff";
+	public static String outFile="outputArff1000eachtfidf_WITHout_PORTER.arff";
 
 
 	public static FileOutputStream fstream2 ;
@@ -43,6 +43,17 @@ public class FileReader {
 
 	public static Integer[] wordlistvals;
 	public static String[] wordlistkeys;
+
+
+
+
+	public static Integer[] poswordlistvals;
+	public static String[] poswordlistkeys;
+
+
+
+	public static Integer[] negwordlistvals;
+	public static String[] negwordlistkeys;
 
 
 	public static void main(String args[]){
@@ -129,18 +140,27 @@ public class FileReader {
 
 			System.out.println("Total Docs- "+cnt);
 			cg.docCount=cnt;
+			System.out.println(" doc cnt- "+cg.wordCnt);
 			System.out.println("Avg doc length- "+cg.wordCnt/cnt);
 			logln();
 
 
 			System.out.println("Total neg Docs- "+negCnt);
+			System.out.println(" neg doc cnt- "+cg.wordFromNeg);
 			System.out.println("Avg neg doc length- "+cg.wordFromNeg/negCnt);
 			logln();
 
 
 			System.out.println("Total pos Docs- "+posCnt);
+			System.out.println(" neg doc cnt- "+cg.wordFromPos);
 			System.out.println("Avg pos doc length- "+cg.wordFromPos/posCnt);
 			logln();
+
+
+
+			System.out.println("Total cntposwordList Docs- "+cg.cntposwordList.size());
+
+			System.out.println("Total cntnegwordList Docs- "+cg.cntnegwordList.size());
 
 			printDocList2(cg);
 
@@ -339,8 +359,15 @@ public class FileReader {
 
 		bubbleSort1();
 
+
+
+		sortpos(cg);
+
+		sortneg(cg);
+
 		//printArray();
 
+		/*
 		for(String key :cg.posWords){
 
 			br3.write("@ATTRIBUTE "+key+" NUMERIC");
@@ -356,9 +383,39 @@ public class FileReader {
 			br3.newLine();
 
 		}
+		 */
+
+		int cSize=1001;
+		if(poswordlistkeys.length<1000){
+			cSize=poswordlistkeys.length+1;
+		}
+		for(int i=(poswordlistkeys.length-1);i>(poswordlistkeys.length-cSize);i--){
+
+			br3.write("@ATTRIBUTE "+poswordlistkeys[i]+" NUMERIC");
+			br3.newLine();
 
 
-		for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-11);i--){
+		}
+
+
+		int cSizeNeg=1001;
+		if(negwordlistkeys.length<1000){
+			cSizeNeg=negwordlistkeys.length+1;
+		}
+		for(int i=(negwordlistkeys.length-1);i>(negwordlistkeys.length-cSizeNeg);i--){
+
+			br3.write("@ATTRIBUTE "+negwordlistkeys[i]+" NUMERIC");
+			br3.newLine();
+
+
+		}
+
+
+		int cSizet=1001;
+		if(wordlistkeys.length<1000){
+			cSizet=wordlistkeys.length+1;
+		}
+		for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-cSizet);i--){
 			if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
 				br3.write("@ATTRIBUTE "+wordlistkeys[i]+" NUMERIC");
 				br3.newLine();
@@ -440,7 +497,7 @@ public class FileReader {
 			//System.out.println("finished");
 
 
-
+			/*
 			for(String key :cg.posWords){
 
 
@@ -469,11 +526,57 @@ public class FileReader {
 
 			}
 
+			 */
+
+			for(int i=(poswordlistkeys.length-1);i>(poswordlistkeys.length-cSize);i--){
+
+				if(d.postermFrequency.containsKey(poswordlistkeys[i])){
+
+					double tf=d.postermFrequency.get(poswordlistkeys[i])/d.countWords;
+
+					ArrayList<Integer> listt=cg.docFrequency.get(poswordlistkeys[i]);
+
+					double df=Math.log(cg.docCount/listt.size());
+					double tfidf=tf*df;
+
+					br3.write(tfidf+",");
+				}
+				else{
+					br3.write("0,");
+				}
+
+			}
+
+
+
+			for(int i=(negwordlistkeys.length-1);i>(negwordlistkeys.length-cSizeNeg);i--){
+				if(d.negtermFrequency.containsKey(negwordlistkeys[i])){
+
+					double tf=d.negtermFrequency.get(negwordlistkeys[i])/d.countWords;
+
+					ArrayList<Integer> listt=cg.docFrequency.get(negwordlistkeys[i]);
+
+					double df=Math.log(cg.docCount/listt.size());
+					double tfidf=tf*df;
+
+					br3.write(tfidf+",");
+				}
+				else{
+					br3.write("0,");
+				}
+
+
+			}
 
 
 
 
-			for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-11);i--){
+
+
+
+
+
+			for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-cSizet);i--){
 				if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
 					if(d.termFrequency.containsKey(wordlistkeys[i])){
 
@@ -534,6 +637,65 @@ public class FileReader {
 
 
 
+	private static void sortneg(CountGenerator cg) {
+		// TODO Auto-generated method stub
+
+
+
+		negwordlistkeys = new String[cg.cntnegwordList.size()];
+		Enumeration en=cg.cntnegwordList.keys();
+		int kk=0;
+		while( en. hasMoreElements() ){
+			negwordlistkeys[kk] = (String)en.nextElement() ;
+			kk++;
+		}
+
+		negwordlistvals = new Integer[cg.cntnegwordList.size()];
+		Enumeration env=cg.cntnegwordList.keys();
+		int kkk=0;
+		while( env. hasMoreElements() ){
+			String keyss = (String)env.nextElement() ;
+			negwordlistvals[kkk]=cg.cntnegwordList.get(keyss);
+			kkk++;
+		}
+
+
+		bubbleSortneg();
+
+	}
+
+
+
+
+	private static void sortpos(CountGenerator cg) {
+		// TODO Auto-generated method stub
+
+
+		poswordlistkeys = new String[cg.cntposwordList.size()];
+		Enumeration en=cg.cntposwordList.keys();
+		int kk=0;
+		while( en. hasMoreElements() ){
+			poswordlistkeys[kk] = (String)en.nextElement() ;
+			kk++;
+		}
+
+		poswordlistvals = new Integer[cg.cntposwordList.size()];
+		Enumeration env=cg.cntposwordList.keys();
+		int kkk=0;
+		while( env. hasMoreElements() ){
+			String keyss = (String)env.nextElement() ;
+			poswordlistvals[kkk]=cg.cntposwordList.get(keyss);
+			kkk++;
+		}
+
+
+		bubbleSortpos();
+
+	}
+
+
+
+
 	private static void printArray() {
 		for(int i=0;i<20;i++){
 			System.out.println(wordlistvals[i] +" "+wordlistkeys[i]);
@@ -564,6 +726,42 @@ public class FileReader {
 			}
 		}
 	}
+
+
+
+
+	public static void bubbleSortneg() {
+		int n = negwordlistvals.length;
+		for (int pass=1; pass < n; pass++) {  // count how many times
+			// This next loop becomes shorter and shorter
+			for (int i=0; i < n-pass; i++) {
+				if (negwordlistvals[i] > negwordlistvals[i+1]) {
+					// exchange elements
+					int temp = negwordlistvals[i];  negwordlistvals[i] = negwordlistvals[i+1];  negwordlistvals[i+1] = temp;
+					String tempp = negwordlistkeys[i];  negwordlistkeys[i] = negwordlistkeys[i+1];  negwordlistkeys[i+1] = tempp;
+				}
+			}
+		}
+	}
+
+
+
+
+
+	public static void bubbleSortpos() {
+		int n = poswordlistvals.length;
+		for (int pass=1; pass < n; pass++) {  // count how many times
+			// This next loop becomes shorter and shorter
+			for (int i=0; i < n-pass; i++) {
+				if (poswordlistvals[i] > poswordlistvals[i+1]) {
+					// exchange elements
+					int temp = poswordlistvals[i];  poswordlistvals[i] = poswordlistvals[i+1];  poswordlistvals[i+1] = temp;
+					String tempp = poswordlistkeys[i];  poswordlistkeys[i] = poswordlistkeys[i+1];  poswordlistkeys[i+1] = tempp;
+				}
+			}
+		}
+	}
+
 
 	private static void printHashTable(Hashtable<String, Integer> poswordList2) throws IOException {
 
