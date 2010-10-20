@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class FileReader {
 
 
-	public static String outFile="outputArff10fin.arff";
+	public static String outFile="outputArff10withPorter.arff";
 
 
 	public static FileOutputStream fstream2 ;
@@ -41,8 +41,8 @@ public class FileReader {
 	public static DataOutputStream in3 ;
 	public static BufferedWriter br3;
 
-	public static Integer[] x;
-	public static String[] yy;
+	public static Integer[] wordlistvals;
+	public static String[] wordlistkeys;
 
 
 	public static void main(String args[]){
@@ -90,6 +90,7 @@ public class FileReader {
 					}
 					String match = matcher.group(2).trim();
 					cg.getCount(match,cnt,starr);
+
 					//System.out.println (strLine);
 					//System.out.println (cnt +" " +star+" "+match);
 					/*
@@ -185,7 +186,6 @@ public class FileReader {
 
 
 	private static void printDocList(CountGenerator cg ) throws IOException {
-		// TODO Auto-generated method stub
 
 		br3.write("@RELATION moviestraining");
 		br3.newLine();
@@ -319,20 +319,20 @@ public class FileReader {
 
 
 
-		yy = new String[cg.wordList.size()];
+		wordlistkeys = new String[cg.wordList.size()];
 		Enumeration en=cg.wordList.keys();
 		int kk=0;
 		while( en. hasMoreElements() ){
-			yy[kk] = (String)en.nextElement() ;
+			wordlistkeys[kk] = (String)en.nextElement() ;
 			kk++;
 		}
 
-		x = new Integer[cg.wordList.size()];
+		wordlistvals = new Integer[cg.wordList.size()];
 		Enumeration env=cg.wordList.keys();
 		int kkk=0;
 		while( env. hasMoreElements() ){
 			String keyss = (String)env.nextElement() ;
-			x[kkk]=cg.wordList.get(keyss);
+			wordlistvals[kkk]=cg.wordList.get(keyss);
 			kkk++;
 		}
 
@@ -343,12 +343,8 @@ public class FileReader {
 
 		for(String key :cg.posWords){
 
-
-
-
 			br3.write("@ATTRIBUTE "+key+" NUMERIC");
 			br3.newLine();
-
 
 		}
 
@@ -356,25 +352,20 @@ public class FileReader {
 
 		for(String key :cg.negWords){
 
-
-
-
 			br3.write("@ATTRIBUTE "+key+" NUMERIC");
 			br3.newLine();
-
 
 		}
 
 
-
-
-		for(int i=(yy.length-1);i>(yy.length-11);i--){
-			if((!cg.negWords.contains(yy[i])) && (!cg.posWords.contains(yy[i]))){
-				br3.write("@ATTRIBUTE "+yy[i]+" NUMERIC");
+		for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-11);i--){
+			if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
+				br3.write("@ATTRIBUTE "+wordlistkeys[i]+" NUMERIC");
 				br3.newLine();
 			}
 
 		}
+
 
 		br3.write("@ATTRIBUTE doclength NUMERIC");
 		br3.newLine();
@@ -430,7 +421,7 @@ public class FileReader {
 					ArrayList<Integer> listt=docFrequency.get(key);
 
 					double df=Math.log(docCount/listt.size());
-					
+
 					double tfidf=tf*df;
 
 					br3.write(tfidf+",");
@@ -482,17 +473,17 @@ public class FileReader {
 
 
 
-			for(int i=(yy.length-1);i>(yy.length-11);i--){
-				if((!cg.negWords.contains(yy[i])) && (!cg.posWords.contains(yy[i]))){
-					if(d.termFrequency.containsKey(yy[i])){
-						
-						double tf=d.termFrequency.get(yy[i])/d.countWords;
+			for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-11);i--){
+				if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
+					if(d.termFrequency.containsKey(wordlistkeys[i])){
 
-						ArrayList<Integer> listt=cg.docFrequency.get(yy[i]);
+						double tf=d.termFrequency.get(wordlistkeys[i])/d.countWords;
+
+						ArrayList<Integer> listt=cg.docFrequency.get(wordlistkeys[i]);
 
 						double df=Math.log(cg.docCount/listt.size());
 						double tfidf=tf*df;
-						
+
 						br3.write(tfidf+",");
 					}
 					else{
@@ -500,6 +491,7 @@ public class FileReader {
 					}
 				}
 			}
+
 			br3.write(d.countWords+",");
 
 			//br3.write(d.countWords+",");
@@ -543,15 +535,14 @@ public class FileReader {
 
 
 	private static void printArray() {
-		// TODO Auto-generated method stub
 		for(int i=0;i<20;i++){
-			System.out.println(x[i] +" "+yy[i]);
+			System.out.println(wordlistvals[i] +" "+wordlistkeys[i]);
 		}
 
 
 
-		for(int i=(x.length-1);i>(x.length-21);i--){
-			System.out.println(x[i] +" "+yy[i]);
+		for(int i=(wordlistvals.length-1);i>(wordlistvals.length-21);i--){
+			System.out.println(wordlistvals[i] +" "+wordlistkeys[i]);
 		}
 
 	}
@@ -561,14 +552,14 @@ public class FileReader {
 
 
 	public static void bubbleSort1() {
-		int n = x.length;
+		int n = wordlistvals.length;
 		for (int pass=1; pass < n; pass++) {  // count how many times
 			// This next loop becomes shorter and shorter
 			for (int i=0; i < n-pass; i++) {
-				if (x[i] > x[i+1]) {
+				if (wordlistvals[i] > wordlistvals[i+1]) {
 					// exchange elements
-					int temp = x[i];  x[i] = x[i+1];  x[i+1] = temp;
-					String tempp = yy[i];  yy[i] = yy[i+1];  yy[i+1] = tempp;
+					int temp = wordlistvals[i];  wordlistvals[i] = wordlistvals[i+1];  wordlistvals[i+1] = temp;
+					String tempp = wordlistkeys[i];  wordlistkeys[i] = wordlistkeys[i+1];  wordlistkeys[i+1] = tempp;
 				}
 			}
 		}
