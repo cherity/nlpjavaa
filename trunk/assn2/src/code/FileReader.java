@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class FileReader {
 
 
-	public static String outFile="outputArff1000eachtfidf_WITHout_PORTER.arff";
+	public static String outFile="outputArff1000eachtfidf_WITH_PORTER.arff";
 
 
 	public static FileOutputStream fstream2 ;
