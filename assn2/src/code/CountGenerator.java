@@ -82,7 +82,7 @@ public class CountGenerator {
 			bowWord=bowWord.replaceAll("%", "");
 			//",",box,","empty"
 
-			//bowWord=callStemmer(bowWord);
+			bowWord=callStemmer(bowWord);
 
 			if(bowWord.equals("not")||bowWord.equals("no"))
 			{
