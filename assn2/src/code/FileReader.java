@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class FileReader {
 
 
-	public static String outFile="outputArff2000.arff";
+	public static String outFile="outputArff10fin.arff";
 
 
 	public static FileOutputStream fstream2 ;
@@ -368,7 +368,7 @@ public class FileReader {
 
 
 
-		for(int i=(yy.length-1);i>(yy.length-2001);i--){
+		for(int i=(yy.length-1);i>(yy.length-11);i--){
 			if((!cg.negWords.contains(yy[i])) && (!cg.posWords.contains(yy[i]))){
 				br3.write("@ATTRIBUTE "+yy[i]+" NUMERIC");
 				br3.newLine();
@@ -430,6 +430,7 @@ public class FileReader {
 					ArrayList<Integer> listt=docFrequency.get(key);
 
 					double df=Math.log(docCount/listt.size());
+					
 					double tfidf=tf*df;
 
 					br3.write(tfidf+",");
@@ -453,7 +454,7 @@ public class FileReader {
 
 
 				if(d.postermFrequency.containsKey(key)){
-					br3.write(d.postermFrequency.get(key)+",");
+					br3.write(d.postermFrequency.get(key)/d.countWords+",");
 				}
 				else{
 					br3.write("0,");
@@ -468,7 +469,7 @@ public class FileReader {
 
 
 				if(d.negtermFrequency.containsKey(key)){
-					br3.write(d.negtermFrequency.get(key)+",");
+					br3.write(d.negtermFrequency.get(key)/d.countWords+",");
 				}
 				else{
 					br3.write("0,");
@@ -481,10 +482,18 @@ public class FileReader {
 
 
 
-			for(int i=(yy.length-1);i>(yy.length-2001);i--){
+			for(int i=(yy.length-1);i>(yy.length-11);i--){
 				if((!cg.negWords.contains(yy[i])) && (!cg.posWords.contains(yy[i]))){
 					if(d.termFrequency.containsKey(yy[i])){
-						br3.write(d.termFrequency.get(yy[i])+",");
+						
+						double tf=d.termFrequency.get(yy[i])/d.countWords;
+
+						ArrayList<Integer> listt=cg.docFrequency.get(yy[i]);
+
+						double df=Math.log(cg.docCount/listt.size());
+						double tfidf=tf*df;
+						
+						br3.write(tfidf+",");
 					}
 					else{
 						br3.write("0,");
@@ -508,9 +517,9 @@ public class FileReader {
 			 */
 
 
-			br3.write(d.notWords+",");
+			br3.write(d.notWords/d.countWords+",");
 
-			br3.write(d.commaWords+",");
+			br3.write(d.commaWords/d.countWords+",");
 
 
 			String sstar=""+d.star;
