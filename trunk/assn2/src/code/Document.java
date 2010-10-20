@@ -10,12 +10,12 @@ public class Document {
 	public double commaWords;
 	public double notWords; 
 	public int star; 
+	
 	public  Hashtable<String, Integer> termFrequency;
-
 	public  Hashtable<String, Integer> postermFrequency;
-
 	public  Hashtable<String, Integer> negtermFrequency;
 
+	
 	public Document(){
 		star=1;
 		countWords=0;
@@ -25,7 +25,6 @@ public class Document {
 		notWords=0;
 		termFrequency= new Hashtable<String, Integer>();
 		postermFrequency= new Hashtable<String, Integer>();
-
 		negtermFrequency= new Hashtable<String, Integer>();
 
 	}
