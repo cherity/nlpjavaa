@@ -9,6 +9,9 @@ public class CountGenerator {
 	public static Hashtable<String, Integer> wordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, ArrayList<Integer>> docFrequency= new Hashtable<String, ArrayList<Integer>>();
 
+	public static Hashtable<String, Integer> cntposwordList= new Hashtable<String, Integer>();
+	public static Hashtable<String, Integer> cntnegwordList= new Hashtable<String, Integer>();
+
 	public static Hashtable<String, Integer> poswordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, Integer> negwordList= new Hashtable<String, Integer>();
 
@@ -162,6 +165,24 @@ public class CountGenerator {
 		else{
 			d.negtermFrequency.put(bowWord, 1);
 		}
+
+
+
+
+		if(cntnegwordList.containsKey(bowWord)){
+
+			Integer count = cntnegwordList.get(bowWord);
+			count++;
+			cntnegwordList.remove(bowWord);
+			cntnegwordList.put(bowWord, count);
+
+
+		}
+		else{
+			cntnegwordList.put(bowWord, 1);
+		}
+
+
 	}
 
 
@@ -180,6 +201,23 @@ public class CountGenerator {
 		else{
 			d.postermFrequency.put(bowWord, 1);
 		}
+
+
+		if(cntposwordList.containsKey(bowWord)){
+
+			Integer count = cntposwordList.get(bowWord);
+			count++;
+			cntposwordList.remove(bowWord);
+			cntposwordList.put(bowWord, count);
+
+
+		}
+		else{
+			cntposwordList.put(bowWord, 1);
+		}
+
+
+
 	}
 
 
