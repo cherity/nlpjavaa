@@ -2,10 +2,6 @@ package code;
 
 import java.io.BufferedReader;
 
-import edu.stanford.nlp.trees.*; 
-import edu.stanford.nlp.process.*;
-import edu.stanford.nlp.objectbank.TokenizerFactory;
-import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -29,8 +25,8 @@ import java.util.regex.Pattern;
 
 public class FileReader {
 
-	public static int FEATcnt =2001;
-	public static String outFile="outputArff"+FEATcnt+"each_tfidf_WITHout_PORTER.arff";
+	public static int FEATcnt =3001;
+	public static String outFile="outputArff"+FEATcnt+"_reviewer_tfidf_wo_PORTER.arff";
 	
 
 	public static FileOutputStream fstream2 ;
@@ -83,7 +79,7 @@ public class FileReader {
 
 			String strLine;
 			int cnt =0,negCnt=0,posCnt=0;
-			Pattern pattern  = Pattern.compile(".*<star>(.*)</star><review>(.*)</review>.*");
+			Pattern pattern  = Pattern.compile(".*<reviewer>(.*)</reviewer><star>(.*)</star><review>(.*)</review>.*");
 			Matcher matcher;
 
 			while ((strLine = br.readLine()) != null)   {
@@ -91,7 +87,8 @@ public class FileReader {
 				matcher = pattern.matcher(strLine);
 				while (matcher.find()) {
 					cnt++;
-					String star = matcher.group(1).trim();
+					String reviewer = matcher.group(1).trim();
+					String star = matcher.group(2).trim();
 					int starr=Integer.parseInt(star);
 					if(starr<=2){
 						negCnt++;
@@ -99,8 +96,8 @@ public class FileReader {
 					else{
 						posCnt++;
 					}
-					String match = matcher.group(2).trim();
-					cg.getCount(match,cnt,starr);
+					String match = matcher.group(3).trim();
+					cg.getCount(match,cnt,starr,reviewer);
 
 					//System.out.println (strLine);
 					//System.out.println (cnt +" " +star+" "+match);
@@ -187,6 +184,12 @@ public class FileReader {
 				br2.newLine();
 			}
 			 */
+			
+			
+			compareList(cg.posWords,cg.oldposwords);
+
+			compareList(cg.negWords,cg.oldnegwords);
+			
 			br2.flush();
 			in2.close();
 			br3.flush();
@@ -200,6 +203,23 @@ public class FileReader {
 
 		}
 
+	}
+
+
+
+
+	private static void compareList(ArrayList<String> posWords,			String[] oldposwords) throws IOException {
+		// TODO Auto-generated method stub
+		br2.write("-------------------list---------------------------------------------------------------");
+		for(String s : oldposwords){
+			
+			if(!posWords.contains(s)){
+				br2.write("\""+s+"\"");
+				br2.newLine();
+			}
+			
+		}
+		
 	}
 
 
@@ -246,7 +266,7 @@ public class FileReader {
 		br3.write("@ATTRIBUTE diffneg NUMERIC");
 		br3.newLine();
 
-		br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
+		br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
 		br3.newLine();
 
 		br3.newLine();
@@ -411,7 +431,8 @@ public class FileReader {
 		}
 
 
-		int cSizet=FEATcnt;
+		//int cSizet=FEATcnt;
+		int cSizet=11;
 		if(wordlistkeys.length<cSizet){
 			cSizet=wordlistkeys.length+1;
 		}
@@ -447,7 +468,8 @@ public class FileReader {
 		br3.write("@ATTRIBUTE commaWord NUMERIC");
 		br3.newLine();
 
-		br3.write("@ATTRIBUTE classFinal {0,1}");
+		//br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
+		br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
 		br3.newLine();
 
 		br3.newLine();
@@ -618,12 +640,16 @@ public class FileReader {
 
 
 			String sstar=""+d.star;
+			
+			//br3.write(sstar);
+			br3.write(d.reviewer);
+/*
 			if(d.star>=3){
 				br3.write("1");
 			}
 			else{
 				br3.write("0");
-			}
+			}*/
 			//br3.write(sstar);
 
 			br3.newLine();
