@@ -7,6 +7,9 @@ import java.util.Hashtable;
 public class CountGenerator {
 
 	public static Hashtable<String, Integer> wordList= new Hashtable<String, Integer>();
+
+	public static Hashtable<String, Integer> bigramwordList= new Hashtable<String, Integer>();
+
 	public static Hashtable<String, ArrayList<Integer>> docFrequency= new Hashtable<String, ArrayList<Integer>>();
 
 	public static Hashtable<String, Integer> cntposwordList= new Hashtable<String, Integer>();
@@ -72,7 +75,8 @@ public class CountGenerator {
 		//d.countWords=bow.length;
 		d.star=star;
 		d.reviewer=reviewer;
-
+		int cntWordId=0;
+		String lastword="";
 		for(String bowWord:bow){
 			bowWord=bowWord.replaceAll("'", "");
 			bowWord=bowWord.replaceAll("", "");
@@ -95,6 +99,7 @@ public class CountGenerator {
 			}
 
 			d.countWords++;
+			cntWordId++;
 			if(posWords.contains(bowWord.trim().toLowerCase())){
 				d.posWords++;
 				addTermPos(bowWord,d);
@@ -102,6 +107,12 @@ public class CountGenerator {
 			else if(negWords.contains(bowWord.trim().toLowerCase())){
 				d.negWords++;
 				addTermNeg(bowWord,d);
+			}
+
+
+
+			if(cntWordId>=2){
+				addToBigram(bowWord,lastword,d);
 			}
 
 
@@ -119,10 +130,47 @@ public class CountGenerator {
 				wordFromPos++;
 			}
 
-
+			lastword=bowWord;
 		}
 
 		docList.add(d);
+	}
+
+
+
+
+
+	private static void addToBigram(String bowWord2, String lastword, Document d) {
+
+		String bowWord= lastword+"-"+bowWord2;
+		d.bicountWords++;
+		if(d.bigramtermFrequency.containsKey(bowWord)){
+
+			Integer count = d.bigramtermFrequency.get(bowWord);
+			count++;
+			d.bigramtermFrequency.remove(bowWord);
+			d.bigramtermFrequency.put(bowWord, count);
+
+
+		}
+		else{
+			d.bigramtermFrequency.put(bowWord, 1);
+		}
+
+
+		if(bigramwordList.containsKey(bowWord)){
+
+			Integer count = bigramwordList.get(bowWord);
+			count++;
+			bigramwordList.remove(bowWord);
+			bigramwordList.put(bowWord, count);
+
+
+		}
+		else{
+			bigramwordList.put(bowWord, 1);
+		}
+
 	}
 
 
