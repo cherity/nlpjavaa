@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class FileReader {
 
 	public static int FEATcnt =3001;
-	public static String outFile="outputArff"+FEATcnt+"_10_multi_tfidf_w_bigram.arff";
+	public static String outFile="outputArff"+FEATcnt+"_10_newbinary_w_bigram.arff";
 
 
 	public static String[] oldposwordss= {"captivating","wise","perfection","Absolutely","compelling","cogent","convince","amazing","payoff","tremendous","revealing","brilliance","genuinely","gracefully","importance","intrinsic","masterly","involved","memorable","simplicity","unfold","unfolds","unmatched","outdoes","rarely","successfully","successful","accomplished","great","imagination","exhibited","imagined","intriguing","masterpiece","masterpieces","pleased","monumental","inspiring","intelligent","masterful","smoothly","different","Abundant","Acclaimed","Accomplishment","Achievement","Acumen","Admire","Adorable","Adored","Affirmative","Affluent","Amaze","Amity","Appreciation","Approve","Artistic","Astonish","Astounding","Astute","surprises","Attractive","good","entertaining","entertained","entertain","special","Authentic","engaging","interesting","Beautiful","Benefit","Blessed","Bliss","Bloom","Bountiful","Bounty","Brave","Bright","Brilliant","Bubbly","Calm","Celebrate","Charitable","Charming","Cheer","Cherish","Clarity","Classy","Clean","Clever","Closeness","Commend","Companionship","Complete","Comradeship","Confident","Conviction","Copious","Core","Coupled","Courageous","Creative","Cultivate","Curious","Cute","Dazzling","Delight","Distinguished","Divine","Earnest","Ecstasy","Effervescent","Efficient","Effortless","Electrifying","Elegance","Embrace","Encompassing","Encourage","Endorse","Energized","Energy","Enjoy","Enjoyed","Enormously","Enthuse","Enthusiastic","Essence","Established","Esteem","Esteemed","Excited","Exciting","Exhilarating","Exquisite","Exultant","Faith","Famous","Feat","Flourish","Fortunate","Fortune","Freedom","Fresh","Funny","authenticity","grit","gritty","improvise","improvisational","libbing","satisfying","surprisingly","unique","uniquely","unnerving","Generous","Genius","Genuine","accurately","accurate","mysterious","suprisingly","best","classic","deserved","deservedly","glib","glibness","honors","profound","realistic","justice","poignant","poignancy","reminiscent","Glad","Glow","Gorgeous","Grace","Graceful","Gratitude","Handsome","Harmony","Healthy","Hearty","Heavenly","Helpful","Holy","Honest","Honored","affirm","Ideal","Imaginative","Increase","Incredible","Independent","Ingenious","Innate","Innovate","Inspire","Instantaneous","Instinct","Intellectual","Intelligence","Intuitive","Inventive","Jovial","Jubilation","Keen","Key","Knowledge","Laugh","Leader","Learn","Legendary","Light","Lively","merit","merits","stunning","magnificently","neat","tender","topped","nice","nicely","noteworthy","Loveliness","Lucidity","Lucrative","Luminous","Maintain","Marvelous","Master","Meaningful","Meditate","Mend","Metamorphosis","Mind-Blowing","Miracle","Mission","Modify","Motivate","Moving","Natural","Nature","Nourish","Nourished","Novel","Nurture","Nutritious","Open","Openhanded","Optimistic","Paradise","Peace","Perfect","Phenomenon","Pleasure","Plenteous","Plentiful","Plenty","Plethora","Poise","Polish","Popular","Positive","Powerful","Prepared","Pretty","Principle","Productive","Project","Prominent","Prosperous","Protect","Proud","Quest","Ready","Recognized","Refinement","Refresh","Rejoice","Rejuvenate","Relax","Reliance","Rely","Remarkable","Renew","Renowned","Replenished","Resolution","Resound","Resources","Respect","Restore","Revered","Revolutionize","Rewarding","Robust","Rousing","Safe","Secure","Sensation","Serenity","Shift","Shine","Silence","Simple","Sincerity","Smart","Smooth","Solution","Sparkling","Spirit","Spirited","Spiritual","Splendid","Spontaneous","Stillness","Stir","Stirring","Strong","Style","Success","Sunny","Support","Surprise","Surprised","Sustain","Synchronized","Team","Thankful","Therapeutic","Thorough","Thrilled","Thrive","Tied","Today","Tranquil","Transform","Triumph","Unity","Unusual","Unwavering","Upbeat","Valued","Vary","Venerated","Venture","Vibrant","Victory","Vigorous","Vision","Visualize","Vital","Vivacious","Voyage","Welcome","Well","Whole","Wholesome","Wonder","Wonderful","Wondrous","Yes"};
@@ -80,7 +80,7 @@ public class FileReader {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
 
-			fstream2 = new FileOutputStream("output3.txt");
+			fstream2 = new FileOutputStream("output55.txt");
 			in2 = new DataOutputStream(fstream2);
 			br2 = new BufferedWriter(new OutputStreamWriter(in2));
 
@@ -92,7 +92,7 @@ public class FileReader {
 
 
 
-			fstream4 = new FileOutputStream("outputbigram.txt");
+			fstream4 = new FileOutputStream("outputbigram66.txt");
 			in4 = new DataOutputStream(fstream4);
 			br4 = new BufferedWriter(new OutputStreamWriter(in4));
 
@@ -286,14 +286,6 @@ public class FileReader {
 
 
 
-
-
-
-
-
-
-
-
 	private static void printDocList2(CountGenerator cg ) throws IOException {
 		// TODO Auto-generated method stub
 
@@ -390,10 +382,10 @@ public class FileReader {
 			cSizebigram=bigramwordlistkeys.length+1;
 		}
 		for(int i=(bigramwordlistkeys.length-1);i>(bigramwordlistkeys.length-cSizebigram);i--){
-
-			br3.write("@ATTRIBUTE "+bigramwordlistkeys[i]+" NUMERIC");
-			br3.newLine();
-
+			if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
+				br3.write("@ATTRIBUTE "+bigramwordlistkeys[i]+" NUMERIC");
+				br3.newLine();
+			}
 
 		}
 
@@ -437,8 +429,8 @@ public class FileReader {
 		br3.write("@ATTRIBUTE commaWord NUMERIC");
 		br3.newLine();
 
-		//br3.write("@ATTRIBUTE classFinal {0,1}");
-		br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
+		br3.write("@ATTRIBUTE classFinal {0,1}");
+		//br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
 		//br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
 		br3.newLine();
 
@@ -530,22 +522,26 @@ public class FileReader {
 
 
 			for(int i=(bigramwordlistkeys.length-1);i>(bigramwordlistkeys.length-cSizebigram);i--){
-				if(d.bigramtermFrequency.containsKey(bigramwordlistkeys[i])){
 
-					double tf=((d.bigramtermFrequency.get(bigramwordlistkeys[i]))/(d.bicountWords));
+				if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
 
-					//ArrayList<Integer> listt=cg.docFrequency.get(negwordlistkeys[i]);
 
-					//double df=Math.log(cg.docCount/listt.size());
-					//double tfidf=tf*df;
+					if(d.bigramtermFrequency.containsKey(bigramwordlistkeys[i])){
 
-					br3.write(tf+",");
+						double tf=((d.bigramtermFrequency.get(bigramwordlistkeys[i]))/(d.bicountWords));
+
+						//ArrayList<Integer> listt=cg.docFrequency.get(negwordlistkeys[i]);
+
+						//double df=Math.log(cg.docCount/listt.size());
+						//double tfidf=tf*df;
+
+						br3.write(tf+",");
+					}
+					else{
+						br3.write("0,");
+					}
+
 				}
-				else{
-					br3.write("0,");
-				}
-
-
 			}
 
 
@@ -600,17 +596,17 @@ public class FileReader {
 
 			String sstar=""+d.star;
 
-			br3.write(sstar);
+			//br3.write(sstar);
 			//br3.write(d.reviewer);
 
-			/*
+
 			if(d.star>=3){
 				br3.write("1");
 			}
 			else{
 				br3.write("0");
 			}
-			 */
+
 
 			br3.newLine();
 			br3.flush();
