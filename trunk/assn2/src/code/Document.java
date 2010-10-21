@@ -5,6 +5,7 @@ import java.util.Hashtable;
 public class Document {
 
 	public double countWords; 
+	public double bicountWords; 
 	public double posWords; 
 	public double negWords; 
 	public double commaWords;
@@ -12,6 +13,7 @@ public class Document {
 	public int star; 
 	public String reviewer; 
 	public  Hashtable<String, Integer> termFrequency;
+	public  Hashtable<String, Integer> bigramtermFrequency;
 	public  Hashtable<String, Integer> postermFrequency;
 	public  Hashtable<String, Integer> negtermFrequency;
 
@@ -19,12 +21,14 @@ public class Document {
 	public Document(){
 		star=1;
 		countWords=0;
+		bicountWords=0;
 		posWords=0;
 		negWords=0;
 		commaWords=0;
 		notWords=0;
 		reviewer="A";
 		termFrequency= new Hashtable<String, Integer>();
+		bigramtermFrequency= new Hashtable<String, Integer>();
 		postermFrequency= new Hashtable<String, Integer>();
 		negtermFrequency= new Hashtable<String, Integer>();
 
