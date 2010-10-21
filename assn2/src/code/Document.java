@@ -10,7 +10,7 @@ public class Document {
 	public double commaWords;
 	public double notWords; 
 	public int star; 
-
+	public String reviewer; 
 	public  Hashtable<String, Integer> termFrequency;
 	public  Hashtable<String, Integer> postermFrequency;
 	public  Hashtable<String, Integer> negtermFrequency;
@@ -23,6 +23,7 @@ public class Document {
 		negWords=0;
 		commaWords=0;
 		notWords=0;
+		reviewer="A";
 		termFrequency= new Hashtable<String, Integer>();
 		postermFrequency= new Hashtable<String, Integer>();
 		negtermFrequency= new Hashtable<String, Integer>();
