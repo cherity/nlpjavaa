@@ -29,9 +29,9 @@ import java.util.regex.Pattern;
 
 public class FileReader {
 
-
-	public static String outFile="outputArff1000eachtfidf_WITH_PORTER.arff";
-
+	public static int FEATcnt =2001;
+	public static String outFile="outputArff"+FEATcnt+"each_tfidf_WITHout_PORTER.arff";
+	
 
 	public static FileOutputStream fstream2 ;
 	public static DataOutputStream in2 ;
@@ -385,8 +385,8 @@ public class FileReader {
 		}
 		 */
 
-		int cSize=1001;
-		if(poswordlistkeys.length<1000){
+		int cSize=FEATcnt;
+		if(poswordlistkeys.length<cSize-1){
 			cSize=poswordlistkeys.length+1;
 		}
 		for(int i=(poswordlistkeys.length-1);i>(poswordlistkeys.length-cSize);i--){
@@ -398,8 +398,8 @@ public class FileReader {
 		}
 
 
-		int cSizeNeg=1001;
-		if(negwordlistkeys.length<1000){
+		int cSizeNeg=FEATcnt;
+		if(negwordlistkeys.length<cSizeNeg-1){
 			cSizeNeg=negwordlistkeys.length+1;
 		}
 		for(int i=(negwordlistkeys.length-1);i>(negwordlistkeys.length-cSizeNeg);i--){
@@ -411,8 +411,8 @@ public class FileReader {
 		}
 
 
-		int cSizet=1001;
-		if(wordlistkeys.length<1000){
+		int cSizet=FEATcnt;
+		if(wordlistkeys.length<cSizet){
 			cSizet=wordlistkeys.length+1;
 		}
 		for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-cSizet);i--){
