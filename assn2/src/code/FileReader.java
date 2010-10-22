@@ -38,6 +38,7 @@ public class FileReader {
 	public static DataOutputStream in2 ;
 	public static BufferedWriter br2;
 
+	
 	public static FileOutputStream fstream3 ;
 	public static DataOutputStream in3 ;
 	public static BufferedWriter br3;
