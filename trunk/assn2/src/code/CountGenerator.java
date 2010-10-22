@@ -64,12 +64,13 @@ public class CountGenerator {
 
 
 
-	public static void getCount(String match, int cntt, int star,String reviewer) {
+	public static void getCount(String match, int cntt, int star,String reviewer, String id) {
 
 		String[] bow=match.split(" ");
 
 		Document d= new Document();
 		//d.countWords=bow.length;
+		d.id =id;
 		d.star=star;
 		d.reviewer=reviewer;
 		int cntWordId=0;
