@@ -11,7 +11,10 @@ public class Document {
 	public double commaWords;
 	public double notWords; 
 	public int star; 
+	public int NNcount; 
+	public int NNpaircount; 
 	public String reviewer; 
+	public String id; 
 	public  Hashtable<String, Integer> termFrequency;
 	public  Hashtable<String, Integer> bigramtermFrequency;
 	public  Hashtable<String, Integer> postermFrequency;
@@ -31,6 +34,9 @@ public class Document {
 		bigramtermFrequency= new Hashtable<String, Integer>();
 		postermFrequency= new Hashtable<String, Integer>();
 		negtermFrequency= new Hashtable<String, Integer>();
+		id="";
+		NNpaircount=0;
+		NNcount=0;
 
 	}
 
