@@ -1,7 +1,6 @@
 package code;
 
 import java.io.BufferedReader;
-
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -40,31 +39,26 @@ public class FileReader {
 	public static BufferedWriter br3;
 
 
-
 	public static FileOutputStream fstream4 ;
 	public static DataOutputStream in4 ;
 	public static BufferedWriter br4;
-
 
 
 	public static Integer[] wordlistvals;
 	public static String[] wordlistkeys;
 
 
-
-
 	public static Integer[] poswordlistvals;
 	public static String[] poswordlistkeys;
-
 
 
 	public static Integer[] negwordlistvals;
 	public static String[] negwordlistkeys;
 
 
-
 	public static Integer[] bigramwordlistvals;
 	public static String[] bigramwordlistkeys;
+
 
 	public static void main(String args[]){
 
@@ -382,7 +376,7 @@ public class FileReader {
 			cSizebigram=bigramwordlistkeys.length+1;
 		}
 		for(int i=(bigramwordlistkeys.length-1);i>(bigramwordlistkeys.length-cSizebigram);i--){
-			if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
+			if((!cg.negWords.contains(bigramwordlistkeys[i])) && (!cg.posWords.contains(bigramwordlistkeys[i]))){
 				br3.write("@ATTRIBUTE "+bigramwordlistkeys[i]+" NUMERIC");
 				br3.newLine();
 			}
@@ -523,7 +517,7 @@ public class FileReader {
 
 			for(int i=(bigramwordlistkeys.length-1);i>(bigramwordlistkeys.length-cSizebigram);i--){
 
-				if((!cg.negWords.contains(wordlistkeys[i])) && (!cg.posWords.contains(wordlistkeys[i]))){
+				if((!cg.negWords.contains(bigramwordlistkeys[i])) && (!cg.posWords.contains(bigramwordlistkeys[i]))){
 
 
 					if(d.bigramtermFrequency.containsKey(bigramwordlistkeys[i])){
@@ -666,7 +660,7 @@ public class FileReader {
 
 
 
-	private static void printDocList(CountGenerator cg ) throws IOException {
+	private static void printDocList(CountGenerator cg) throws IOException {
 
 		br3.write("@RELATION moviestraining");
 		br3.newLine();
@@ -782,11 +776,7 @@ public class FileReader {
 
 
 
-
-
-
-
-	private static void printDocList_reviewer(CountGenerator cg ) throws IOException {
+	private static void printDocList_reviewer(CountGenerator cg) throws IOException {
 		// TODO Auto-generated method stub
 
 		br3.write("@RELATION moviestraining");
