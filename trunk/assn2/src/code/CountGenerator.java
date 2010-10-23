@@ -18,6 +18,11 @@ public class CountGenerator {
 	public static Hashtable<String, Integer> poswordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, Integer> negwordList= new Hashtable<String, Integer>();
 
+	public static Hashtable<String, Integer> star1wordList= new Hashtable<String, Integer>();
+	public static Hashtable<String, Integer> star2wordList= new Hashtable<String, Integer>();
+	public static Hashtable<String, Integer> star3wordList= new Hashtable<String, Integer>();
+	public static Hashtable<String, Integer> star4wordList= new Hashtable<String, Integer>();
+
 	public static ArrayList<Document> docList= new ArrayList<Document>();
 
 
@@ -137,6 +142,24 @@ public class CountGenerator {
 			else{
 				addToWordList(bowWord,poswordList);
 				wordFromPos++;
+			}
+
+
+			if(star==1){
+				addToWordList(bowWord,star1wordList);
+
+			}
+			else if(star==2){
+				addToWordList(bowWord,star2wordList);
+
+			}
+			else if(star==3){
+				addToWordList(bowWord,star3wordList);
+
+			}
+			else if(star==4){
+				addToWordList(bowWord,star4wordList);
+
 			}
 
 			lastword=bowWord;
@@ -335,11 +358,6 @@ public class CountGenerator {
 		}
 
 	}
-
-
-
-
-
 
 
 
