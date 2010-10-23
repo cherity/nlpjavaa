@@ -66,15 +66,16 @@ public class CountGenerator {
 
 	public static void getCount(String match, int cntt, int star,String reviewer, String id) {
 
-		String[] bow=match.split(" ");
+		String[] bow = match.split(" ");
 
-		Document d= new Document();
+		Document d = new Document();
 		//d.countWords=bow.length;
-		d.id =id;
-		d.star=star;
-		d.reviewer=reviewer;
-		int cntWordId=0;
-		String lastword="";
+		d.id = id;
+		d.star = star;
+		d.reviewer = reviewer;
+		int cntWordId = 0;
+		String lastword = "";
+
 		for(String bowWord:bow){
 			bowWord=bowWord.replaceAll("'", "");
 			bowWord=bowWord.replaceAll("", "");
@@ -83,21 +84,31 @@ public class CountGenerator {
 
 			//bowWord=callStemmer(bowWord);
 
-			if(bowWord.equals("not")||bowWord.equals("no"))
+			if(bowWord.equals("not")||bowWord.equals("no")||bowWord.equals("none")||bowWord.equals("nothing")||bowWord.equals("isn't"))
 			{
 				d.notWords++;
+				addToDocFreqTracker("notWords",cntt);
 			}
 
-			if(bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")){
+			if(bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")||bowWord.equals("*")||bowWord.equals("\"")||bowWord.equals("?")||bowWord.equals("!")||bowWord.equals("-")){
 				d.commaWords++;
+				addToDocFreqTracker("commaWords",cntt);
 			}
-			if(bowWord.equals("")||bowWord.equals("\"")||bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")||bowWord.length()<=2||stopWords.contains(bowWord))
+
+
+			if(bowWord.equals("very")||bowWord.equals("most")||bowWord.equals("more")||bowWord.equals("less")||bowWord.equals("best")||bowWord.equals("highest")||bowWord.equals("strongest")||bowWord.equals("extremely")){
+				d.extremeWords++;
+				addToDocFreqTracker("extremeWords",cntt);
+			}
+
+			if(bowWord.equals("")||bowWord.equals("\"")||bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")||bowWord.length()<=1||stopWords.contains(bowWord))
 			{
 				continue;
 			}
 
 			d.countWords++;
 			cntWordId++;
+
 			if(posWords.contains(bowWord.trim().toLowerCase())){
 				d.posWords++;
 				addTermPos(bowWord,d);
@@ -208,9 +219,6 @@ public class CountGenerator {
 		else{
 			d.negtermFrequency.put(bowWord, 1);
 		}
-
-
-
 
 		if(cntnegwordList.containsKey(bowWord)){
 

@@ -9,6 +9,7 @@ public class Document {
 	public double posWords; 
 	public double negWords; 
 	public double commaWords;
+	public double extremeWords;
 	public double notWords; 
 	public int star; 
 	public int NNcount; 
@@ -22,6 +23,7 @@ public class Document {
 
 
 	public Document(){
+
 		star=1;
 		countWords=0;
 		bicountWords=0;
@@ -37,6 +39,7 @@ public class Document {
 		id="";
 		NNpaircount=0;
 		NNcount=0;
+		extremeWords=0;
 
 	}
 
