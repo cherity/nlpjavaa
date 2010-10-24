@@ -12,8 +12,8 @@ public class Document {
 	public double extremeWords;
 	public double notWords; 
 	public int star; 
-	public int NNcount; 
-	public int NNpaircount; 
+	public double NNcount; 
+	public double NNpaircount; 
 	public String reviewer; 
 	public String id; 
 	public  Hashtable<String, Integer> termFrequency;

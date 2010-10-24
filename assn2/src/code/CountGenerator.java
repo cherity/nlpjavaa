@@ -144,7 +144,7 @@ public class CountGenerator {
 				wordFromPos++;
 			}
 
-
+/*
 			if(star==1){
 				addToWordList(bowWord,star1wordList);
 
@@ -161,7 +161,7 @@ public class CountGenerator {
 				addToWordList(bowWord,star4wordList);
 
 			}
-
+*/
 			lastword=bowWord;
 		}
 
