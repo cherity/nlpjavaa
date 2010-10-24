@@ -69,7 +69,7 @@ public class CountGenerator {
 
 
 
-	public static void getCount(String match, int cntt, int star,String reviewer, String id) {
+	public static void getCount(String match, int cntt, int star,String reviewer, String id, boolean trainFlag) {
 
 		String[] bow = match.split(" ");
 
@@ -134,7 +134,7 @@ public class CountGenerator {
 			addToDocFreqTracker(bowWord,cntt);
 			wordCnt++;
 			addTerm(bowWord,d);
-
+			/*
 			if(star<=2){
 				addToWordList(bowWord,negwordList);
 				wordFromNeg++;
@@ -144,7 +144,7 @@ public class CountGenerator {
 				wordFromPos++;
 			}
 
-/*
+
 			if(star==1){
 				addToWordList(bowWord,star1wordList);
 
@@ -161,7 +161,7 @@ public class CountGenerator {
 				addToWordList(bowWord,star4wordList);
 
 			}
-*/
+			 */
 			lastword=bowWord;
 		}
 
