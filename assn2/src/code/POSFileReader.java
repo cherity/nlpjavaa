@@ -20,12 +20,12 @@ public class POSFileReader {
 
 			String strLine;
 
-			
+
 			Document d = new Document();
 			while ((strLine = br.readLine()) != null)   {
 				if(!strLine.equalsIgnoreCase("")){
 					//System.out.println(strLine);
-					
+
 					if(strLine.contains(" <<")){
 						d = getDocument(strLine);
 					}else if(strLine.contains(">> END")){
@@ -52,57 +52,57 @@ public class POSFileReader {
 		Matcher matcher;
 		matcher = pattern.matcher(strLine);
 		while (matcher.find()) {
-			
+
 			String id = matcher.group(1).trim();
-			
+
 			for(Document ddd:CountGenerator.docList){
 				if(ddd.id.equalsIgnoreCase(id)){
 					dd=ddd;
 				}
 			}
-			
+
 		}
 		return dd;
 	}
 
 	private void parseLineforNN(String strLine, Document d) {
-		
+
 		Pattern pattern  = Pattern.compile("/NN");
 		Matcher matcher;
 		matcher = pattern.matcher(strLine);
 		double cnt=0;
 		while (matcher.find()) {
-			
+
 			cnt++;
-		
-			
+
+
 		}
 		d.NNcount+=cnt;
-		
+
 		//System.out.println(d.id+"  "+d.NNcount+"  "+cnt);
-		
+
 	}
-	
-	
-	
-	
+
+
+
+
 	private void parseLineforNNpair(String strLine, Document d) {
-		
+
 		Pattern pattern  = Pattern.compile("/NN :/: [A-Za-z-]*/(JJ|NN)");
 		Matcher matcher;
 		matcher = pattern.matcher(strLine);
 		double cnt=0;
 		while (matcher.find()) {
-			
+
 			cnt++;
-		
-			
+
+
 		}
 		d.NNpaircount+=cnt;
-		
+
 		//System.out.println(d.id+"  "+d.NNpaircount+"  "+cnt);
-		
+
 	}
-	
+
 
 }
