@@ -71,6 +71,9 @@ public class CountGenerator {
 
 	public static void getCount(String match, int cntt, int star,String reviewer, String id, boolean trainFlag) {
 
+
+		POSFileReader poss= new POSFileReader();
+
 		String[] bow = match.split(" ");
 
 		Document d = new Document();
@@ -78,6 +81,19 @@ public class CountGenerator {
 		d.id = id;
 		d.star = star;
 		d.reviewer = reviewer;
+
+
+
+		if(!trainFlag){
+			String[] lines = match.split("\\.");
+			for(String line:lines){
+				String parsedline= getParsedLine(line);
+				poss.parseLineforNN(parsedline, d);
+				poss.parseLineforNNpair(parsedline, d);
+			}
+		}
+
+
 		int cntWordId = 0;
 		String lastword = "";
 
@@ -172,6 +188,16 @@ public class CountGenerator {
 
 
 
+	private static String getParsedLine(String line) {
+		// TODO Auto-generated method stub
+		//call stanford parser here
+		return null;
+	}
+
+
+
+
+
 	private static void addToBigram(String bowWord2, String lastword, Document d) {
 
 		String bowWord= lastword+"-"+bowWord2;
@@ -209,7 +235,8 @@ public class CountGenerator {
 
 
 
-	private static String callStemmer(String str) {
+	/*
+	 private static String callStemmer(String str) {
 
 		Stemmer s = new Stemmer();
 
@@ -224,7 +251,7 @@ public class CountGenerator {
 		String ss =s.toString();
 		return ss;
 	}
-
+	 */
 
 
 
