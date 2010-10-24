@@ -4,6 +4,8 @@
 
 CLASSFILES=bin/code/Document.class \
 	bin/code/CountGenerator.class \
+        bin/code/POSFileReader.class \
+        bin/code/ParseFileReader.class \
 	bin/code/FileReader.class 
 	
 
