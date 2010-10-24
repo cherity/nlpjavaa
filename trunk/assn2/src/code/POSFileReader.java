@@ -70,7 +70,7 @@ public class POSFileReader {
 		Pattern pattern  = Pattern.compile("/NN");
 		Matcher matcher;
 		matcher = pattern.matcher(strLine);
-		int cnt=0;
+		double cnt=0;
 		while (matcher.find()) {
 			
 			cnt++;
@@ -91,7 +91,7 @@ public class POSFileReader {
 		Pattern pattern  = Pattern.compile("/NN :/: [A-Za-z-]*/(JJ|NN)");
 		Matcher matcher;
 		matcher = pattern.matcher(strLine);
-		int cnt=0;
+		double cnt=0;
 		while (matcher.find()) {
 			
 			cnt++;
