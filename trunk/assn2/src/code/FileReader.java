@@ -440,13 +440,13 @@ public class FileReader {
 
 
 
-		//br3.write("@ATTRIBUTE NNCount NUMERIC");
-		//br3.newLine();
+		br3.write("@ATTRIBUTE NNCount NUMERIC");
+		br3.newLine();
 
 
 
-		//br3.write("@ATTRIBUTE NNPairCount NUMERIC");
-		//br3.newLine();
+		br3.write("@ATTRIBUTE NNPairCount NUMERIC");
+		br3.newLine();
 
 
 		br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
@@ -528,9 +528,9 @@ public class FileReader {
 
 
 
-			//br3.write(d.NNcount/d.countWords+",");
+			br3.write(d.NNcount/d.countWords+",");
 
-			//br3.write(d.NNpaircount/d.countWords+",");
+			br3.write(d.NNpaircount/d.countWords+",");
 
 
 
