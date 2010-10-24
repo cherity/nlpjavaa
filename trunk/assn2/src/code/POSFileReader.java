@@ -65,7 +65,7 @@ public class POSFileReader {
 		return dd;
 	}
 
-	private void parseLineforNN(String strLine, Document d) {
+	public void parseLineforNN(String strLine, Document d) {
 
 		Pattern pattern  = Pattern.compile("/NN");
 		Matcher matcher;
@@ -86,7 +86,7 @@ public class POSFileReader {
 
 
 
-	private void parseLineforNNpair(String strLine, Document d) {
+	public void parseLineforNNpair(String strLine, Document d) {
 
 		Pattern pattern  = Pattern.compile("/NN :/: [A-Za-z-]*/(JJ|NN)");
 		Matcher matcher;

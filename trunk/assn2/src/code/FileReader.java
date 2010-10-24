@@ -289,9 +289,10 @@ public class FileReader {
 
 			System.out.println("Total cntnegwordList Docs- "+cg.cntnegwordList.size());
 
-			//POSFileReader pos = new POSFileReader();
-			//pos.getCount("parsedCorpus.txt");
-
+			if(trainFlag){
+				POSFileReader pos = new POSFileReader();
+				pos.getCount("parsedCorpus.txt");
+			}
 
 			//XXXXXXXXXXXXXXXXX
 			//printDocList2(cg);
