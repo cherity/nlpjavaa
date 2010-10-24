@@ -116,7 +116,7 @@ public class FileReader {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
 
-			fstream2 = new FileOutputStream("alllistuni_4.txt");
+			fstream2 = new FileOutputStream("alllistuni_4"+args[0]+".txt");
 			in2 = new DataOutputStream(fstream2);
 			br2 = new BufferedWriter(new OutputStreamWriter(in2));
 
@@ -128,7 +128,7 @@ public class FileReader {
 
 
 
-			fstream4 = new FileOutputStream("all_quotes_list_desc_4.txt");
+			fstream4 = new FileOutputStream("all_quotes_list_desc_4"+args[0]+".txt");
 			in4 = new DataOutputStream(fstream4);
 			br4 = new BufferedWriter(new OutputStreamWriter(in4));
 
