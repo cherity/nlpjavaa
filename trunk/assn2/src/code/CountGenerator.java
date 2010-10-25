@@ -154,7 +154,7 @@ public class CountGenerator {
 			addToDocFreqTracker(bowWord,cntt);
 			wordCnt++;
 			addTerm(bowWord,d);
-			/*
+			
 			if(star<=2){
 				addToWordList(bowWord,negwordList);
 				wordFromNeg++;
@@ -181,7 +181,7 @@ public class CountGenerator {
 				addToWordList(bowWord,star4wordList);
 
 			}
-			 */
+			 
 			lastword=bowWord;
 		}
 
