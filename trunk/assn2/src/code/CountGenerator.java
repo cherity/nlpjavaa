@@ -6,11 +6,12 @@ import java.util.Hashtable;
 
 public class CountGenerator {
 
+
 	public static Hashtable<String, Integer> wordList= new Hashtable<String, Integer>();
 
 	public static Hashtable<String, Integer> bigramwordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, ArrayList<Integer>> docFrequency= new Hashtable<String, ArrayList<Integer>>();
-	public static ParseFileReader parsReader= new ParseFileReader();
+	//public static ParseFileReader parsReader= new ParseFileReader();
 
 	public static Hashtable<String, Integer> cntposwordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, Integer> cntnegwordList= new Hashtable<String, Integer>();
@@ -84,7 +85,7 @@ public class CountGenerator {
 		d.reviewer = reviewer;
 
 
-
+		/*
 		if(!trainFlag){
 			String[] lines = match.split("\\.");
 			for(String line:lines){
@@ -95,7 +96,7 @@ public class CountGenerator {
 				}
 			}
 		}
-
+		 */
 
 		int cntWordId = 0;
 		String lastword = "";
