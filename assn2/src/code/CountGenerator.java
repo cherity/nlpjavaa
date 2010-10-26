@@ -128,14 +128,14 @@ public class CountGenerator {
 				addToDocFreqTracker("extremeWords",cntt);
 			}
 
-			if(bowWord.equals("."))
+			/*if(bowWord.equals("."))
 			{
 				lastword = ".";
 				lastTolastword = "";
 				fourthlastword = "";
 			//	fifthlastword = "";
 			}
-
+*/
 			if(bowWord.equals("")||bowWord.equals("\"")||bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")||bowWord.length()<=1||stopWords.contains(bowWord))
 			{
 				continue;
