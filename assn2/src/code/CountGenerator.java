@@ -109,7 +109,7 @@ public class CountGenerator {
 
 			//bowWord=callStemmer(bowWord);
 
-			if(bowWord.equals("not")||bowWord.equals("no")||bowWord.equals("none")||bowWord.equals("nothing")||bowWord.equals("isn't"))
+			if(bowWord.equals("not")||bowWord.equals("no")||bowWord.equals("none")||bowWord.equals("nothing")||bowWord.equals("isn't")||bowWord.equals("wasn't"))
 			{
 				d.notWords++;
 				addToDocFreqTracker("notWords",cntt);
@@ -134,16 +134,31 @@ public class CountGenerator {
 			d.countWords++;
 			cntWordId++;
 
-			if(posWords.contains(bowWord.trim().toLowerCase())){
-				d.posWords++;
-				addTermPos(bowWord,d);
-			}
-			else if(negWords.contains(bowWord.trim().toLowerCase())){
-				d.negWords++;
-				addTermNeg(bowWord,d);
-			}
+			if(lastword.equals("not")||lastword.equals("no")||lastword.equals("none")||lastword.equals("nothing")||lastword.equals("isn't")||lastword.equals("wasn't"))
+			{
+				if(posWords.contains(bowWord.trim().toLowerCase())){
 
 
+					d.negWords++;
+					//addTermNeg(bowWord,d);
+
+				}
+				else if(negWords.contains(bowWord.trim().toLowerCase())){
+					d.posWords++;
+					//addTermPos(bowWord,d);
+				}
+
+			}
+			else{
+				if(posWords.contains(bowWord.trim().toLowerCase())){
+					d.posWords++;
+					addTermPos(bowWord,d);
+				}
+				else if(negWords.contains(bowWord.trim().toLowerCase())){
+					d.negWords++;
+					addTermNeg(bowWord,d);
+				}
+			}
 
 			if(cntWordId>=2){
 				addToBigram(bowWord,lastword,d);
@@ -154,7 +169,7 @@ public class CountGenerator {
 			addToDocFreqTracker(bowWord,cntt);
 			wordCnt++;
 			addTerm(bowWord,d);
-			
+
 			if(star<=2){
 				addToWordList(bowWord,negwordList);
 				wordFromNeg++;
@@ -181,7 +196,7 @@ public class CountGenerator {
 				addToWordList(bowWord,star4wordList);
 
 			}
-			 
+
 			lastword=bowWord;
 		}
 
@@ -191,12 +206,6 @@ public class CountGenerator {
 
 
 
-
-	private static String getParsedLine(String line) {
-		// TODO Auto-generated method stub
-		//call stanford parser here
-		return null;
-	}
 
 
 
