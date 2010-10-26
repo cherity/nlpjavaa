@@ -12,6 +12,7 @@ public class CountGenerator {
 	public static Hashtable<String, Integer> bigramwordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, ArrayList<Integer>> docFrequency= new Hashtable<String, ArrayList<Integer>>();
 	//public static ParseFileReader parsReader= new ParseFileReader();
+	public static Hashtable<String, ArrayList<Integer>> stardocFrequency= new Hashtable<String, ArrayList<Integer>>();
 
 	public static Hashtable<String, Integer> cntposwordList= new Hashtable<String, Integer>();
 	public static Hashtable<String, Integer> cntnegwordList= new Hashtable<String, Integer>();
@@ -38,7 +39,7 @@ public class CountGenerator {
 	public static ArrayList<String> negWords=new ArrayList<String>();
 
 	public static double wordCnt=0, wordFromPos=0,wordFromNeg=0,docCount=0;
-
+	public static double cntstar1wordList=0,cntstar2wordList=0,cntstar3wordList=0,cntstar4wordList=0;
 
 	public CountGenerator(){
 
@@ -102,7 +103,7 @@ public class CountGenerator {
 		String lastword = "";
 		String lastTolastword = "";
 		String fourthlastword = "";
-	//	String fifthlastword = "";
+		//	String fifthlastword = "";
 		for(String bowWord:bow){
 			bowWord=bowWord.replaceAll("'", "");
 			bowWord=bowWord.replaceAll("", "");
@@ -135,7 +136,7 @@ public class CountGenerator {
 				fourthlastword = "";
 			//	fifthlastword = "";
 			}
-*/
+			 */
 			if(bowWord.equals("")||bowWord.equals("\"")||bowWord.equals(",")||bowWord.equals(".")||bowWord.equals(";")||bowWord.equals(":")||bowWord.length()<=1||stopWords.contains(bowWord))
 			{
 				continue;
@@ -191,19 +192,30 @@ public class CountGenerator {
 
 
 			if(star==1){
+				cntstar1wordList++;
 				addToWordList(bowWord,star1wordList);
+				addToDocFreqTracker2(bowWord,star);
 
 			}
 			else if(star==2){
+				cntstar2wordList++;
 				addToWordList(bowWord,star2wordList);
+				addToDocFreqTracker2(bowWord,star);
+
 
 			}
 			else if(star==3){
+				cntstar3wordList++;
 				addToWordList(bowWord,star3wordList);
+				addToDocFreqTracker2(bowWord,star);
+
 
 			}
 			else if(star==4){
+				cntstar4wordList++;
 				addToWordList(bowWord,star4wordList);
+				addToDocFreqTracker2(bowWord,star);
+
 
 			}
 
@@ -230,6 +242,36 @@ public class CountGenerator {
 
 
 
+
+
+
+
+
+	private static void addToDocFreqTracker2(String bowWord, int cntt) {
+		// TODO Auto-generated method stub
+
+		if(stardocFrequency.containsKey(bowWord)){
+
+			ArrayList<Integer> list = stardocFrequency.get(bowWord);
+			if(list.contains(cntt)){
+
+			}
+			else{
+				list.add(cntt);
+			}
+
+			stardocFrequency.remove(bowWord);
+			stardocFrequency.put(bowWord, list);
+
+
+		}
+		else{
+			ArrayList<Integer> list = new 	ArrayList<Integer> ();
+			list.add(cntt);
+			stardocFrequency.put(bowWord, list);
+
+		}
+	}
 
 
 
