@@ -24,11 +24,12 @@ public class FileReader {
 
 	public static int FEATcnt =3101;
 
+	public static String outFile6="FinArff"+"-D-";
 	public static String outFile="FinArff"+"_reviewer-";
 	public static String outFile2="FinArff"+"_binary-f-";
 	public static String outFile3="FinArff"+"_binary-extra-reviewer-f-";
 	public static String outFile4="FinArff"+"_multi-f-";
-	public static String outFile5="FinArff"+"_multi-extra-reviewer-f-";
+	public static String outFile5="FinArff"+"_multi-extra-reviewer-f-D-";
 
 
 	public static String[] oldposwordss= {"captivating","wise","perfection","Absolutely","compelling","cogent","convince","amazing","payoff","tremendous","revealing","brilliance","genuinely","gracefully","importance","intrinsic","masterly","involved","memorable","simplicity","unfold","unfolds","unmatched","outdoes","rarely","successfully","successful","accomplished","great","imagination","exhibited","imagined","intriguing","masterpiece","masterpieces","pleased","monumental","inspiring","intelligent","masterful","smoothly","different","Abundant","Acclaimed","Accomplishment","Achievement","Acumen","Admire","Adorable","Adored","Affirmative","Affluent","Amaze","Amity","Appreciation","Approve","Artistic","Astonish","Astounding","Astute","surprises","Attractive","good","entertaining","entertained","entertain","special","Authentic","engaging","interesting","Beautiful","Benefit","Blessed","Bliss","Bloom","Bountiful","Bounty","Brave","Bright","Brilliant","Bubbly","Calm","Celebrate","Charitable","Charming","Cheer","Cherish","Clarity","Classy","Clean","Clever","Closeness","Commend","Companionship","Complete","Comradeship","Confident","Conviction","Copious","Core","Coupled","Courageous","Creative","Cultivate","Curious","Cute","Dazzling","Delight","Distinguished","Divine","Earnest","Ecstasy","Effervescent","Efficient","Effortless","Electrifying","Elegance","Embrace","Encompassing","Encourage","Endorse","Energized","Energy","Enjoy","Enjoyed","Enormously","Enthuse","Enthusiastic","Essence","Established","Esteem","Esteemed","Excited","Exciting","Exhilarating","Exquisite","Exultant","Faith","Famous","Feat","Flourish","Fortunate","Fortune","Freedom","Fresh","Funny","authenticity","grit","gritty","improvise","improvisational","libbing","satisfying","surprisingly","unique","uniquely","unnerving","Generous","Genius","Genuine","accurately","accurate","mysterious","suprisingly","best","classic","deserved","deservedly","glib","glibness","honors","profound","realistic","justice","poignant","poignancy","reminiscent","Glad","Glow","Gorgeous","Grace","Graceful","Gratitude","Handsome","Harmony","Healthy","Hearty","Heavenly","Helpful","Holy","Honest","Honored","affirm","Ideal","Imaginative","Increase","Incredible","Independent","Ingenious","Innate","Innovate","Inspire","Instantaneous","Instinct","Intellectual","Intelligence","Intuitive","Inventive","Jovial","Jubilation","Keen","Key","Knowledge","Laugh","Leader","Learn","Legendary","Light","Lively","merit","merits","stunning","magnificently","neat","tender","topped","nice","nicely","noteworthy","Loveliness","Lucidity","Lucrative","Luminous","Maintain","Marvelous","Master","Meaningful","Meditate","Mend","Metamorphosis","Mind-Blowing","Miracle","Mission","Modify","Motivate","Moving","Natural","Nature","Nourish","Nourished","Novel","Nurture","Nutritious","Open","Openhanded","Optimistic","Paradise","Peace","Perfect","Phenomenon","Pleasure","Plenteous","Plentiful","Plenty","Plethora","Poise","Polish","Popular","Positive","Powerful","Prepared","Pretty","Principle","Productive","Project","Prominent","Prosperous","Protect","Proud","Quest","Ready","Recognized","Refinement","Refresh","Rejoice","Rejuvenate","Relax","Reliance","Rely","Remarkable","Renew","Renowned","Replenished","Resolution","Resound","Resources","Respect","Restore","Revered","Revolutionize","Rewarding","Robust","Rousing","Safe","Secure","Sensation","Serenity","Shift","Shine","Silence","Simple","Sincerity","Smart","Smooth","Solution","Sparkling","Spirit","Spirited","Spiritual","Splendid","Spontaneous","Stillness","Stir","Stirring","Strong","Style","Success","Sunny","Support","Surprise","Surprised","Sustain","Synchronized","Team","Thankful","Therapeutic","Thorough","Thrilled","Thrive","Tied","Today","Tranquil","Transform","Triumph","Unity","Unusual","Unwavering","Upbeat","Valued","Vary","Venerated","Venture","Vibrant","Victory","Vigorous","Vision","Visualize","Vital","Vivacious","Voyage","Welcome","Well","Whole","Wholesome","Wonder","Wonderful","Wondrous","Yes"};
@@ -144,6 +145,7 @@ public class FileReader {
 			outFile3+=args[0]+"-"+args[1]+".arff";
 			outFile4+=args[0]+"-"+args[1]+".arff";
 			outFile5+=args[0]+"-"+args[1]+".arff";
+			outFile6+=args[0]+"-"+args[1]+".arff";
 
 
 			FileInputStream fstream = new FileInputStream(args[1]);
@@ -156,7 +158,7 @@ public class FileReader {
 			br2 = new BufferedWriter(new OutputStreamWriter(in2));
 
 
-			fstream3 = new FileOutputStream(outFile);
+			fstream3 = new FileOutputStream(outFile6);
 			in3 = new DataOutputStream(fstream3);
 			br3 = new BufferedWriter(new OutputStreamWriter(in3));
 
@@ -350,20 +352,20 @@ public class FileReader {
 			}
 
 			//XXXXXXXXXXXXXXXXX
-			//printDocList2(cg);
-			printDocListForReviewer(cg,args[0]);
+			printDocList2(cg, "D");
+			// right printDocListForReviewer(cg,args[0]);
 
 
-			printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
+			//right printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
 			//printDocListForClassification(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
 
 
-			printDocListForClassification(cg,args[0],br_mul,"multi",mulFeaturesWords, mulFeaturesbigramWords);
+			//right printDocListForClassification(cg,args[0],br_mul,"multi",mulFeaturesWords, mulFeaturesbigramWords);
 			//printDocListForClassification(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
 
 
-			printDocListForClassificationtesting2(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
-			printDocListForClassificationtesting2(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
+			//printDocListForClassificationtesting3("D",cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
+			//right printDocListForClassificationtesting(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
 
 			/*
 			for(Document d : cg.docList){
@@ -428,6 +430,245 @@ public class FileReader {
 		}
 
 	}
+
+
+
+
+
+
+
+
+	private static void printDocListForClassificationtesting3(String reviewernew,CountGenerator cg,String casee, BufferedWriter br_bin2, String classicationCase, String[] featuresWordss, String featuresbigramWordss[]) {
+		// TODO Auto-generated method stub
+
+		try {
+
+
+
+
+
+
+			br_bin2.write("@RELATION "+classicationCase+casee+"ing");
+
+			br_bin2.newLine();
+			br_bin2.newLine();
+			br_bin2.newLine();
+
+
+			for(int i=0;i<featuresWordss.length;i++){
+
+				br_bin2.write("@ATTRIBUTE "+featuresWordss[i]+" NUMERIC");
+				br_bin2.newLine();
+
+
+			}
+
+			for(int i=0;i<featuresbigramWordss.length;i++){
+
+				br_bin2.write("@ATTRIBUTE "+featuresbigramWordss[i]+" NUMERIC");
+				br_bin2.newLine();
+
+
+			}
+
+
+
+
+
+			if(classicationCase.equalsIgnoreCase("binary") || classicationCase.equalsIgnoreCase("binaryr")){
+
+
+				br_bin2.write("@ATTRIBUTE posword NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE negword NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE diffposs NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE diffneg NUMERIC");
+				br_bin2.newLine();
+
+
+
+
+
+				br_bin2.write("@ATTRIBUTE classFinal {0,1}");
+				br_bin2.newLine();
+			}
+			else{
+
+
+				br_bin2.write("@ATTRIBUTE doclength NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE posword NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE negword NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE diffposs NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE diffneg NUMERIC");
+				br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE extremeWord NUMERIC");
+				br_bin2.newLine();
+
+				br_bin2.write("@ATTRIBUTE classFinal {1,2,3,4}");
+				br_bin2.newLine();
+			}
+
+			br_bin2.newLine();
+			br_bin2.newLine();
+			br_bin2.write("@DATA");
+			br_bin2.newLine();
+			br_bin2.flush();
+
+
+			for(Document d : cg.docList){
+
+				if(d.reviewer.equalsIgnoreCase(reviewernew)){
+
+					for(int i=0;i<featuresWordss.length;i++){
+
+						if(d.termFrequency.containsKey(featuresWordss[i])){
+
+							double tf=((d.termFrequency.get(featuresWordss[i]))/(d.countWords));
+
+							ArrayList<Integer> listt=cg.docFrequency.get(featuresWordss[i]);
+
+							double df=Math.log(cg.docCount/listt.size());
+							double tfidf=tf*df;
+
+							br_bin2.write(tfidf+",");
+						}
+						else{
+							br_bin2.write("0,");
+						}
+
+
+					}
+
+
+					for(int i=0;i<featuresbigramWordss.length;i++){
+
+						if(d.bigramtermFrequency.containsKey(featuresbigramWordss[i])){
+
+							double tf=((d.bigramtermFrequency.get(featuresbigramWordss[i]))/(d.bicountWords));
+
+
+
+							br_bin2.write(tf+",");
+						}
+						else{
+							br_bin2.write("0,");
+						}
+
+
+					}
+
+
+
+
+
+
+					if(classicationCase.equalsIgnoreCase("binary") || classicationCase.equalsIgnoreCase("binaryr")){
+
+
+
+						br_bin2.write((d.posWords)/d.countWords+",");
+						br_bin2.write((d.negWords)/d.countWords+",");
+
+						if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
+							br_bin2.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
+							br_bin2.write(0+",");
+						}
+						else{
+							br_bin2.write(0+",");
+							br_bin2.write((d.negWords/d.countWords)-(d.posWords/d.countWords)+",");
+						}
+
+
+					}
+					else{
+
+						br_bin2.write(d.countWords+",");
+
+						br_bin2.write((d.posWords)/d.countWords+",");
+						br_bin2.write((d.negWords)/d.countWords+",");
+
+						if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
+							br_bin2.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
+							br_bin2.write(0+",");
+						}
+						else{
+							br_bin2.write(0+",");
+							br_bin2.write((d.negWords/d.countWords)-(d.posWords/d.countWords)+",");
+						}
+
+
+						if(cg.docFrequency.containsKey("extremeWords")){
+
+							double tf=d.extremeWords/d.countWords;
+
+							ArrayList<Integer> listt=cg.docFrequency.get("extremeWords");
+
+							double df=Math.log(cg.docCount/listt.size());
+							double tfidf=tf*df;
+
+							br_bin2.write(tfidf+",");
+						}
+						else{
+							br_bin2.write("0,");
+						}
+
+					}
+					//br_bin2.write(d.NNcount/d.countWords+",");
+
+					//br_bin2.write(d.NNpaircount/d.countWords+",");
+
+
+					if(casee.equalsIgnoreCase("train")){
+						if(classicationCase.equalsIgnoreCase("binary") || classicationCase.equalsIgnoreCase("binaryr")){
+							if(d.star>=3){
+								br_bin2.write("1");
+							}
+							else{
+								br_bin2.write("0");
+							}
+						}
+						else{
+							String sstar =""+d.star;
+							br_bin2.write(sstar);
+						}
+					}
+					else{
+						br_bin2.write("?");
+					}
+					br_bin2.newLine();
+					br_bin2.flush();
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+
 
 
 
@@ -1345,7 +1586,7 @@ public class FileReader {
 
 
 
-	private static void printDocList2(CountGenerator cg ) throws IOException {
+	private static void printDocList2(CountGenerator cg, String reviewernew ) throws IOException {
 		// TODO Auto-generated method stub
 
 		br3.write("@RELATION moviestraining");
@@ -1444,7 +1685,7 @@ public class FileReader {
 
 
 		//int cSizet=FEATcnt;
-		int cSizet=11;
+		int cSizet=201;
 		if(wordlistkeys.length<cSizet){
 			cSizet=wordlistkeys.length+1;
 		}
@@ -1495,8 +1736,8 @@ public class FileReader {
 		br3.newLine();
 
 		//br3.write("@ATTRIBUTE classFinal {0,1}");
-		//br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
-		br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
+		br3.write("@ATTRIBUTE classFinal {1,2,3,4}");
+		//br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
 		br3.newLine();
 
 		br3.newLine();
@@ -1509,50 +1750,51 @@ public class FileReader {
 		for(Document d : cg.docList){
 
 
+			if(d.reviewer.equalsIgnoreCase(reviewernew)){
 
 
-			for(int i=(poswordlistkeys.length-1);i>(poswordlistkeys.length-cSize);i--){
+				for(int i=(poswordlistkeys.length-1);i>(poswordlistkeys.length-cSize);i--){
 
-				if(d.postermFrequency.containsKey(poswordlistkeys[i])){
+					if(d.postermFrequency.containsKey(poswordlistkeys[i])){
 
-					double tf=d.postermFrequency.get(poswordlistkeys[i])/d.countWords;
+						double tf=d.postermFrequency.get(poswordlistkeys[i])/d.countWords;
 
-					ArrayList<Integer> listt=cg.docFrequency.get(poswordlistkeys[i]);
+						ArrayList<Integer> listt=cg.docFrequency.get(poswordlistkeys[i]);
 
-					double df=Math.log(cg.docCount/listt.size());
-					double tfidf=tf*df;
+						double df=Math.log(cg.docCount/listt.size());
+						double tfidf=tf*df;
 
-					br3.write(tfidf+",");
-				}
-				else{
-					br3.write("0,");
-				}
+						br3.write(tfidf+",");
+					}
+					else{
+						br3.write("0,");
+					}
 
-			}
-
-
-
-			for(int i=(negwordlistkeys.length-1);i>(negwordlistkeys.length-cSizeNeg);i--){
-				if(d.negtermFrequency.containsKey(negwordlistkeys[i])){
-
-					double tf=d.negtermFrequency.get(negwordlistkeys[i])/d.countWords;
-
-					ArrayList<Integer> listt=cg.docFrequency.get(negwordlistkeys[i]);
-
-					double df=Math.log(cg.docCount/listt.size());
-					double tfidf=tf*df;
-
-					br3.write(tfidf+",");
-				}
-				else{
-					br3.write("0,");
 				}
 
 
-			}
+
+				for(int i=(negwordlistkeys.length-1);i>(negwordlistkeys.length-cSizeNeg);i--){
+					if(d.negtermFrequency.containsKey(negwordlistkeys[i])){
+
+						double tf=d.negtermFrequency.get(negwordlistkeys[i])/d.countWords;
+
+						ArrayList<Integer> listt=cg.docFrequency.get(negwordlistkeys[i]);
+
+						double df=Math.log(cg.docCount/listt.size());
+						double tfidf=tf*df;
+
+						br3.write(tfidf+",");
+					}
+					else{
+						br3.write("0,");
+					}
 
 
-			/*
+				}
+
+
+				/*
 
 			for(int i=(bigramwordlistkeys.length-1);i>(bigramwordlistkeys.length-cSizebigram);i--){
 
@@ -1578,161 +1820,161 @@ public class FileReader {
 			}
 
 
-			 */
+				 */
 
 
 
-			for(int i=0;i<distWords.length;i++){
-				if((!printedneglist.contains(distWords[i])) && (!printedposlist.contains(distWords[i]))){
-					if(d.termFrequency.containsKey(distWords[i])){
+				for(int i=0;i<distWords.length;i++){
+					if((!printedneglist.contains(distWords[i])) && (!printedposlist.contains(distWords[i]))){
+						if(d.termFrequency.containsKey(distWords[i])){
 
-						double tf=((d.termFrequency.get(distWords[i]))/(d.countWords));
+							double tf=((d.termFrequency.get(distWords[i]))/(d.countWords));
 
-						ArrayList<Integer> listt=cg.docFrequency.get(distWords[i]);
+							ArrayList<Integer> listt=cg.docFrequency.get(distWords[i]);
 
-						double df=Math.log(cg.docCount/listt.size());
-						double tfidf=tf*df;
+							double df=Math.log(cg.docCount/listt.size());
+							double tfidf=tf*df;
 
-						br3.write(tf+",");
+							br3.write(tf+",");
+						}
+						else{
+							br3.write("0,");
+						}
 					}
-					else{
-						br3.write("0,");
+
+				}
+
+
+				for(int i=0;i<bigramList.length;i++){
+					if((!printedneglist.contains(bigramList[i])) && (!printedposlist.contains(bigramList[i]))){
+						if(d.bigramtermFrequency.containsKey(bigramList[i])){
+
+							double tf=((d.bigramtermFrequency.get(bigramList[i]))/(d.bicountWords));
+
+							//ArrayList<Integer> listt=cg.docFrequency.get(negwordlistkeys[i]);
+
+							//double df=Math.log(cg.docCount/listt.size());
+							//double tfidf=tf*df;
+
+							br3.write(tf+",");
+						}
+						else{
+							br3.write("0,");
+						}
+					}
+
+				}
+
+
+
+
+
+				for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-cSizet);i--){
+					if((!printedneglist.contains(wordlistkeys[i])) && (!printedposlist.contains(wordlistkeys[i])) && (!distWordslist.contains(wordlistkeys[i]))){
+						if(d.termFrequency.containsKey(wordlistkeys[i])){
+
+							double tf=d.termFrequency.get(wordlistkeys[i])/d.countWords;
+
+							ArrayList<Integer> listt=cg.docFrequency.get(wordlistkeys[i]);
+
+							double df=Math.log(cg.docCount/listt.size());
+							double tfidf=tf*df;
+
+							br3.write(tfidf+",");
+						}
+						else{
+							br3.write("0,");
+						}
 					}
 				}
 
-			}
+				br3.write(d.countWords+",");
 
+				br3.write((d.posWords)/d.countWords+",");
+				br3.write((d.negWords)/d.countWords+",");
 
-			for(int i=0;i<bigramList.length;i++){
-				if((!printedneglist.contains(bigramList[i])) && (!printedposlist.contains(bigramList[i]))){
-					if(d.bigramtermFrequency.containsKey(bigramList[i])){
-
-						double tf=((d.bigramtermFrequency.get(bigramList[i]))/(d.bicountWords));
-
-						//ArrayList<Integer> listt=cg.docFrequency.get(negwordlistkeys[i]);
-
-						//double df=Math.log(cg.docCount/listt.size());
-						//double tfidf=tf*df;
-
-						br3.write(tf+",");
-					}
-					else{
-						br3.write("0,");
-					}
+				if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
+					br3.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
+					br3.write(0+",");
+				}
+				else{
+					br3.write(0+",");
+					br3.write((d.negWords/d.countWords)-(d.posWords/d.countWords)+",");
 				}
 
-			}
 
 
 
 
 
-			for(int i=(wordlistkeys.length-1);i>(wordlistkeys.length-cSizet);i--){
-				if((!printedneglist.contains(wordlistkeys[i])) && (!printedposlist.contains(wordlistkeys[i])) && (!distWordslist.contains(wordlistkeys[i]))){
-					if(d.termFrequency.containsKey(wordlistkeys[i])){
 
-						double tf=d.termFrequency.get(wordlistkeys[i])/d.countWords;
+				if(cg.docFrequency.containsKey("notWords")){
 
-						ArrayList<Integer> listt=cg.docFrequency.get(wordlistkeys[i]);
+					double tf=d.notWords/d.countWords;
 
-						double df=Math.log(cg.docCount/listt.size());
-						double tfidf=tf*df;
+					ArrayList<Integer> listt=cg.docFrequency.get("notWords");
 
-						br3.write(tfidf+",");
-					}
-					else{
-						br3.write("0,");
-					}
+					double df=Math.log(cg.docCount/listt.size());
+					double tfidf=tf*df;
+
+					br3.write(tfidf+",");
 				}
-			}
+				else{
+					br3.write("0,");
+				}
 
-			br3.write(d.countWords+",");
+				if(cg.docFrequency.containsKey("commaWords")){
 
-			br3.write((d.posWords)/d.countWords+",");
-			br3.write((d.negWords)/d.countWords+",");
+					double tf=d.commaWords/d.countWords;
 
-			if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
-				br3.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
-				br3.write(0+",");
-			}
-			else{
-				br3.write(0+",");
-				br3.write((d.negWords/d.countWords)-(d.posWords/d.countWords)+",");
-			}
+					ArrayList<Integer> listt=cg.docFrequency.get("commaWords");
 
+					double df=Math.log(cg.docCount/listt.size());
+					double tfidf=tf*df;
 
-
-
-
+					br3.write(tfidf+",");
+				}
+				else{
+					br3.write("0,");
+				}
 
 
-			if(cg.docFrequency.containsKey("notWords")){
+				if(cg.docFrequency.containsKey("extremeWords")){
 
-				double tf=d.notWords/d.countWords;
+					double tf=d.extremeWords/d.countWords;
 
-				ArrayList<Integer> listt=cg.docFrequency.get("notWords");
+					ArrayList<Integer> listt=cg.docFrequency.get("extremeWords");
 
-				double df=Math.log(cg.docCount/listt.size());
-				double tfidf=tf*df;
+					double df=Math.log(cg.docCount/listt.size());
+					double tfidf=tf*df;
 
-				br3.write(tfidf+",");
-			}
-			else{
-				br3.write("0,");
-			}
-
-			if(cg.docFrequency.containsKey("commaWords")){
-
-				double tf=d.commaWords/d.countWords;
-
-				ArrayList<Integer> listt=cg.docFrequency.get("commaWords");
-
-				double df=Math.log(cg.docCount/listt.size());
-				double tfidf=tf*df;
-
-				br3.write(tfidf+",");
-			}
-			else{
-				br3.write("0,");
-			}
+					br3.write(tfidf+",");
+				}
+				else{
+					br3.write("0,");
+				}
 
 
-			if(cg.docFrequency.containsKey("extremeWords")){
+				//br3.write(d.notWords/d.countWords+",");
 
-				double tf=d.extremeWords/d.countWords;
+				//br3.write(d.commaWords/d.countWords+",");
 
-				ArrayList<Integer> listt=cg.docFrequency.get("extremeWords");
-
-				double df=Math.log(cg.docCount/listt.size());
-				double tfidf=tf*df;
-
-				br3.write(tfidf+",");
-			}
-			else{
-				br3.write("0,");
-			}
-
-
-			//br3.write(d.notWords/d.countWords+",");
-
-			//br3.write(d.commaWords/d.countWords+",");
-
-			//br3.write(d.extremeWords/d.countWords+",");
+				//br3.write(d.extremeWords/d.countWords+",");
 
 
 
-			br3.write(d.NNcount/d.countWords+",");
+				br3.write(d.NNcount/d.countWords+",");
 
-			br3.write(d.NNpaircount/d.countWords+",");
+				br3.write(d.NNpaircount/d.countWords+",");
 
 
 
-			String sstar=""+d.star;
+				String sstar=""+d.star;
 
-			//br3.write(sstar);
-			br3.write(d.reviewer);
+				br3.write(sstar);
+				//br3.write(d.reviewer);
 
-			/*
+				/*
 			if(d.star>=3){
 				br3.write("1");
 			}
@@ -1740,10 +1982,11 @@ public class FileReader {
 				br3.write("0");
 			}
 
-			 */
-			br3.newLine();
-			br3.flush();
+				 */
+				br3.newLine();
+				br3.flush();
 
+			}
 		}
 
 
