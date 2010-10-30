@@ -1241,13 +1241,13 @@ public class FileReader {
 				br_bin2.write("@ATTRIBUTE reviewerWord {A,B,C,D}");
 				br_bin2.newLine();
 
-				br_bin2.write("@ATTRIBUTE adjWord NUMERIC");
-				br_bin2.newLine();
+				//br_bin2.write("@ATTRIBUTE adjWord NUMERIC");
+				//br_bin2.newLine();
 
 
 
-				br_bin2.write("@ATTRIBUTE adverbWord NUMERIC");
-				br_bin2.newLine();
+				//br_bin2.write("@ATTRIBUTE adverbWord NUMERIC");
+				//br_bin2.newLine();
 
 				br_bin2.write("@ATTRIBUTE classFinal {0,1}");
 				br_bin2.newLine();
@@ -1291,13 +1291,13 @@ public class FileReader {
 				br_bin2.write("@ATTRIBUTE reviewerWord {A,B,C,D}");
 				br_bin2.newLine();
 
-				br_bin2.write("@ATTRIBUTE adjWord NUMERIC");
-				br_bin2.newLine();
+				//br_bin2.write("@ATTRIBUTE adjWord NUMERIC");
+				//br_bin2.newLine();
 
 
 
-				br_bin2.write("@ATTRIBUTE adverbWord NUMERIC");
-				br_bin2.newLine();
+				//br_bin2.write("@ATTRIBUTE adverbWord NUMERIC");
+				//br_bin2.newLine();
 
 				br_bin2.write("@ATTRIBUTE classFinal {1,2,3,4}");
 				br_bin2.newLine();
@@ -1410,9 +1410,9 @@ public class FileReader {
 
 					br_bin2.write(d.reviewer+",");
 
-				br_bin2.write(d.JJcount/d.countWords+",");
+				//br_bin2.write(d.JJcount/d.countWords+",");
 
-				br_bin2.write(d.RBcount/d.countWords+",");
+				//br_bin2.write(d.RBcount/d.countWords+",");
 
 
 				if(casee.equalsIgnoreCase("train")){
