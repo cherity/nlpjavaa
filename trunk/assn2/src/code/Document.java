@@ -13,6 +13,8 @@ public class Document {
 	public double notWords; 
 	public int star; 
 	public double NNcount; 
+	public double JJcount; 
+	public double RBcount; 
 	public double NNpaircount; 
 	public String reviewer; 
 	public String id; 
@@ -39,6 +41,8 @@ public class Document {
 		id="";
 		NNpaircount=0;
 		NNcount=0;
+		JJcount=0;
+		RBcount=0;
 		extremeWords=0;
 
 	}

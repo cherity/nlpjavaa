@@ -33,6 +33,8 @@ public class POSFileReader {
 					}
 					else{
 						parseLineforNN(strLine, d);
+						parseLineforJJ(strLine, d);
+						parseLineforRB(strLine, d);
 						parseLineforNNpair(strLine, d);
 					}
 				}
@@ -44,6 +46,36 @@ public class POSFileReader {
 			e.printStackTrace();
 
 		}
+	}
+
+	private void parseLineforRB(String strLine, Document d) {
+		// TODO Auto-generated method stub
+		Pattern pattern  = Pattern.compile("/RB");
+		Matcher matcher;
+		matcher = pattern.matcher(strLine);
+		double cnt=0;
+		while (matcher.find()) {
+
+			cnt++;
+
+		}
+		d.RBcount+=cnt;
+
+	}
+
+	private void parseLineforJJ(String strLine, Document d) {
+		// TODO Auto-generated method stub
+		Pattern pattern  = Pattern.compile("/JJ");
+		Matcher matcher;
+		matcher = pattern.matcher(strLine);
+		double cnt=0;
+		while (matcher.find()) {
+
+			cnt++;
+
+		}
+		d.JJcount+=cnt;
+
 	}
 
 	private Document getDocument(String strLine) {
