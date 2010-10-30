@@ -347,20 +347,19 @@ public class FileReader {
 			System.out.println("Total cntnegwordList Docs- "+cg.cntnegwordList.size());
 
 			if(trainFlag){
-				//POSFileReader pos = new POSFileReader();
-				//pos.getCount("parsedCorpus.txt");
+				POSFileReader pos = new POSFileReader();
+				pos.getCount("parsedCorpus.txt");
 			}
 
 			//XXXXXXXXXXXXXXXXX
-			printDocList2(cg, "D");
+			//printDocList2(cg, "D");
 			// right printDocListForReviewer(cg,args[0]);
 
 
-			//right printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
+			printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
 			//printDocListForClassification(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
 
-
-			//right printDocListForClassification(cg,args[0],br_mul,"multi",mulFeaturesWords, mulFeaturesbigramWords);
+			printDocListForClassification(cg,args[0],br_mul,"multi",mulFeaturesWords, mulFeaturesbigramWords);
 			//printDocListForClassification(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
 
 
@@ -1239,7 +1238,16 @@ public class FileReader {
 
 
 
+				br_bin2.write("@ATTRIBUTE reviewerWord {A,B,C,D}");
+				br_bin2.newLine();
 
+				br_bin2.write("@ATTRIBUTE adjWord NUMERIC");
+				br_bin2.newLine();
+
+
+
+				br_bin2.write("@ATTRIBUTE adverbWord NUMERIC");
+				br_bin2.newLine();
 
 				br_bin2.write("@ATTRIBUTE classFinal {0,1}");
 				br_bin2.newLine();
@@ -1268,6 +1276,27 @@ public class FileReader {
 
 
 				br_bin2.write("@ATTRIBUTE extremeWord NUMERIC");
+				br_bin2.newLine();
+
+
+				//	br_bin2.write("@ATTRIBUTE nnWord NUMERIC");
+				//br_bin2.newLine();
+
+
+
+				//br_bin2.write("@ATTRIBUTE nnpairWord NUMERIC");
+				//br_bin2.newLine();
+
+
+				br_bin2.write("@ATTRIBUTE reviewerWord {A,B,C,D}");
+				br_bin2.newLine();
+
+				br_bin2.write("@ATTRIBUTE adjWord NUMERIC");
+				br_bin2.newLine();
+
+
+
+				br_bin2.write("@ATTRIBUTE adverbWord NUMERIC");
 				br_bin2.newLine();
 
 				br_bin2.write("@ATTRIBUTE classFinal {1,2,3,4}");
@@ -1378,6 +1407,12 @@ public class FileReader {
 				//br_bin2.write(d.NNcount/d.countWords+",");
 
 				//br_bin2.write(d.NNpaircount/d.countWords+",");
+
+					br_bin2.write(d.reviewer+",");
+
+				br_bin2.write(d.JJcount/d.countWords+",");
+
+				br_bin2.write(d.RBcount/d.countWords+",");
 
 
 				if(casee.equalsIgnoreCase("train")){
