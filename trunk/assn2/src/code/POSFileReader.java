@@ -35,6 +35,8 @@ public class POSFileReader {
 						parseLineforNN(strLine, d);
 						parseLineforJJ(strLine, d);
 						parseLineforRB(strLine, d);
+						parseLineforVB(strLine, d);
+						parseLineforDT(strLine, d);
 						parseLineforNNpair(strLine, d);
 					}
 				}
@@ -60,6 +62,35 @@ public class POSFileReader {
 
 		}
 		d.RBcount+=cnt;
+
+	}
+	
+	private void parseLineforDT(String strLine, Document d) {
+		// TODO Auto-generated method stub
+		Pattern pattern  = Pattern.compile("/DT");
+		Matcher matcher;
+		matcher = pattern.matcher(strLine);
+		double cnt=0;
+		while (matcher.find()) {
+
+			cnt++;
+
+		}
+		d.DTcount+=cnt;
+
+	}
+	private void parseLineforVB(String strLine, Document d) {
+		// TODO Auto-generated method stub
+		Pattern pattern  = Pattern.compile("/VB");
+		Matcher matcher;
+		matcher = pattern.matcher(strLine);
+		double cnt=0;
+		while (matcher.find()) {
+
+			cnt++;
+
+		}
+		d.VBcount+=cnt;
 
 	}
 
