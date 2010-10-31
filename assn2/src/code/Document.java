@@ -8,6 +8,7 @@ public class Document {
 	public double bicountWords; 
 	public double posWords; 
 	public double negWords; 
+	public double neutWords;
 	public double commaWords;
 	public double extremeWords;
 	public double notWords; 
@@ -23,7 +24,7 @@ public class Document {
 	public  Hashtable<String, Integer> postermFrequency;
 	public  Hashtable<String, Integer> negtermFrequency;
 
-
+	public  Hashtable<String, Integer> neuttermFrequency;
 	public Document(){
 
 		star=1;
@@ -31,6 +32,7 @@ public class Document {
 		bicountWords=0;
 		posWords=0;
 		negWords=0;
+		neutWords=0;
 		commaWords=0;
 		notWords=0;
 		reviewer="A";
@@ -38,6 +40,7 @@ public class Document {
 		bigramtermFrequency= new Hashtable<String, Integer>();
 		postermFrequency= new Hashtable<String, Integer>();
 		negtermFrequency= new Hashtable<String, Integer>();
+		neuttermFrequency= new Hashtable<String, Integer>();
 		id="";
 		NNpaircount=0;
 		NNcount=0;
