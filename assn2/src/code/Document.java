@@ -16,6 +16,8 @@ public class Document {
 	public double NNcount; 
 	public double JJcount; 
 	public double RBcount; 
+	public double VBcount; 
+	public double DTcount; 
 	public double NNpaircount; 
 	public String reviewer; 
 	public String id; 
@@ -46,6 +48,8 @@ public class Document {
 		NNcount=0;
 		JJcount=0;
 		RBcount=0;
+		VBcount=0;
+		DTcount=0;
 		extremeWords=0;
 
 	}

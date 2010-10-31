@@ -54,7 +54,7 @@ public class CountGenerator {
 		for(String s :stopwords){
 			//System.out.println(s);
 			if(!stopWords.contains(s.toLowerCase().trim())){
-			stopWords.add(s.toLowerCase().trim());
+				stopWords.add(s.toLowerCase().trim());
 			}
 		}
 
@@ -110,6 +110,11 @@ public class CountGenerator {
 				if(!parsedline.equalsIgnoreCase("")){
 					poss.parseLineforNN(parsedline, d);
 					poss.parseLineforNNpair(parsedline, d);
+						parseLineforNN(strLine, d);
+						parseLineforJJ(strLine, d);
+						parseLineforRB(strLine, d);
+						parseLineforVB(strLine, d);
+						parseLineforNNpair(strLine, d);
 				}
 			}
 		}
