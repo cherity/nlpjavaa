@@ -67,10 +67,10 @@ public class FileReader {
 
 
 	//57.75 public static String[] mulFeaturesbigramWords={"character-study", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single","motion-picture", "mature-themes", "one-best", "best-performance", "thumbs-down", "best-picture", "best-films"};
-	//79.6 public static String[] binFeaturesbigramWords={	"mature-themes","best-picture","best-films","best-performance","motion-picture", "character-study", "one-best", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "thumbs-down", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single"};
+	public static String[] binFeaturesbigramWords={	"mature-themes","best-picture","best-films","best-performance","motion-picture", "character-study", "one-best", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "thumbs-down", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single"};
 
 	public static String[] mulFeaturesbigramWords={"waste-money", "dont-waste", "running-time", "message-subject", "reply-message", "rated-pg-13", "fine-kids", "son-jeffrey", "fine-teenagers", "older-teenagers", "theres-nothing", "film-one", "motion-pictures", "running-length", "film-makers", "far-more", "relationship-between", "kind-film", "very-good", "theres-little", "film-making", "screen-presence", "doesnt-take", "film-maker", "film-film", "theres-enough", "find-yourself", "theres-one", "entertainment-value", "taking-place", "even-better", "entire-movie", "rated-probably", "end-credits", "title-character", "films-title", "films-end", "nothing-offend","character-study", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single","motion-picture", "mature-themes", "one-best", "best-performance", "thumbs-down", "best-picture", "best-films"};
-	public static String[] binFeaturesbigramWords={"waste-money", "dont-waste", "running-time", "message-subject", "reply-message", "rated-pg-13", "fine-kids", "son-jeffrey", "fine-teenagers", "older-teenagers", "theres-nothing", "film-one", "motion-pictures", "running-length", "film-makers", "far-more", "relationship-between", "kind-film", "very-good", "theres-little", "film-making", "screen-presence", "doesnt-take", "film-maker", "film-film", "theres-enough", "find-yourself", "theres-one", "entertainment-value", "taking-place", "even-better", "entire-movie", "rated-probably", "end-credits", "title-character", "films-title", "films-end", "nothing-offend",	"mature-themes","best-picture","best-films","best-performance","motion-picture", "character-study", "one-best", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "thumbs-down", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single"};
+	//public static String[] binFeaturesbigramWords={"waste-money", "dont-waste", "running-time", "message-subject", "reply-message", "rated-pg-13", "fine-kids", "son-jeffrey", "fine-teenagers", "older-teenagers", "theres-nothing", "film-one", "motion-pictures", "running-length", "film-makers", "far-more", "relationship-between", "kind-film", "very-good", "theres-little", "film-making", "screen-presence", "doesnt-take", "film-maker", "film-film", "theres-enough", "find-yourself", "theres-one", "entertainment-value", "taking-place", "even-better", "entire-movie", "rated-probably", "end-credits", "title-character", "films-title", "films-end", "nothing-offend",	"mature-themes","best-picture","best-films","best-performance","motion-picture", "character-study", "one-best", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "thumbs-down", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single"};
 
 	//old max--public static String[] binFeaturesWords={"fine", "quite", "interesting", "strong", "effective", "acceptable", "simple", "perfect", "wonderful", "solid", "nevertheless", "power", "fascinating", "memorable", "award", "predictable", "moving", "intelligent", "powerful", "surprising", "rare", "subtle", "perfectly", "hilarious", "brilliant", "wonderfully", "perspective", "strength", "masterpiece", "fortunately", "poignant", "incredible", "mesmerizing", "outstanding", "recommendation", "masterful", "resolved", "keen", "delicious", "simplicity", "although", "bad", "down", "problem", "unfortunately", "supposed", "worse", "complex", "tragedy", "dull", "dumb", "awful", "boring", "bland", "tedious", "annoying", "lame", "lifeless", "pointless", "mindless", "lackluster", "embarrassing", "bore", "juvenile", "laughable", "film", "story"};
 	//old max--public static String[] binFeaturesbigramWords={"motion-picture", "character-study", "one-best", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "thumbs-down", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single"};
@@ -1412,7 +1412,7 @@ public class FileReader {
 						br_bin2.write((d.negWords/d.countWords)-(d.posWords/d.countWords)+",");
 					}
 
-
+					//br_bin2.write(d.reviewer+",");
 				}
 				else{
 
@@ -1445,10 +1445,10 @@ public class FileReader {
 					else{
 						br_bin2.write("0,");
 					}
-					
-					
+
+
 					//br_bin2.write(d.reviewer+",");
-					
+
 				}
 				//br_bin2.write(d.NNcount/d.countWords+",");
 
