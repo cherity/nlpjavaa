@@ -30,7 +30,7 @@ public class ParseFileReader {
 
 	public ParseFileReader(){
 
-		lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
+		//lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
 		tf = PTBTokenizer.factory(false, new WordTokenFactory());
 		tp = new TreePrint("wordsAndTags");
 
@@ -42,6 +42,7 @@ public class ParseFileReader {
 		try{
 
 
+			lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
 
 			tf = PTBTokenizer.factory(false, new WordTokenFactory());
 			tp = new TreePrint("wordsAndTags");
