@@ -50,7 +50,7 @@ public class POSFileReader {
 		}
 	}
 
-	private void parseLineforRB(String strLine, Document d) {
+	public void parseLineforRB(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/RB");
 		Matcher matcher;
@@ -65,7 +65,7 @@ public class POSFileReader {
 
 	}
 
-	private void parseLineforDT(String strLine, Document d) {
+	public void parseLineforDT(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/DT");
 		Matcher matcher;
@@ -79,7 +79,7 @@ public class POSFileReader {
 		d.DTcount+=cnt;
 
 	}
-	private void parseLineforVB(String strLine, Document d) {
+	public void parseLineforVB(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/VB");
 		Matcher matcher;
@@ -94,7 +94,7 @@ public class POSFileReader {
 
 	}
 
-	private void parseLineforJJ(String strLine, Document d) {
+	public void parseLineforJJ(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/JJ");
 		Matcher matcher;
@@ -109,7 +109,7 @@ public class POSFileReader {
 
 	}
 
-	private Document getDocument(String strLine) {
+	public Document getDocument(String strLine) {
 		Document dd= new Document();
 		Pattern pattern  = Pattern.compile("(.*) <<");
 		Matcher matcher;

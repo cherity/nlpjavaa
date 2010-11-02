@@ -27,8 +27,8 @@ public class Document {
 	public  Hashtable<String, Integer> negtermFrequency;
 
 	public  Hashtable<String, Integer> neuttermFrequency;
-	
-	
+
+
 	public Document(){
 
 		star=1;
