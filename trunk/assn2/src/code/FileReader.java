@@ -20,7 +20,7 @@ public class FileReader {
 	public static int FEATcnt =5001;
 
 	public static String outFile6="FinArff"+"-binary-newterms-";
-	public static String outFile="FinArff"+"_reviewer-";
+	public static String outFile="FinArff"+"_reviewer-fff-";
 	public static String outFile2="FinArff"+"_binary-fff-";
 	public static String outFile3="FinArff"+"_binary-extra-reviewer-f-";
 	public static String outFile4="FinArff"+"_multi-fff-";
@@ -134,7 +134,7 @@ public class FileReader {
 			br2 = new BufferedWriter(new OutputStreamWriter(in2));
 
 
-			fstream3 = new FileOutputStream(outFile6);
+			fstream3 = new FileOutputStream(outFile);
 			in3 = new DataOutputStream(fstream3);
 			br3 = new BufferedWriter(new OutputStreamWriter(in3));
 
@@ -241,7 +241,7 @@ public class FileReader {
 			}
 
 			//XXXXXXXXXXXXXXXXX
-			// right printDocListForReviewer(cg,args[0]);
+			 printDocListForReviewer(cg,args[0]);
 
 
 			printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
@@ -570,6 +570,136 @@ public class FileReader {
 			e.printStackTrace();
 		}
 	}
+
+
+
+	private static void printDocListForReviewer(CountGenerator cg, String casee ) throws IOException {
+		// TODO Auto-generated method stub
+
+		br3.write("@RELATION reviewer"+casee+"ing");
+		br3.newLine();
+		br3.newLine();
+		br3.newLine();
+
+
+		for(int i=0;i<reviewerFeaturesWords.length;i++){
+
+			br3.write("@ATTRIBUTE "+reviewerFeaturesWords[i]+" NUMERIC");
+			br3.newLine();
+
+
+		}
+
+		for(int i=0;i<reviewerFeaturesbigramWords.length;i++){
+
+			br3.write("@ATTRIBUTE "+reviewerFeaturesbigramWords[i]+" NUMERIC");
+			br3.newLine();
+
+
+		}
+
+
+		br3.write("@ATTRIBUTE doclength NUMERIC");
+		br3.newLine();
+
+
+		br3.write("@ATTRIBUTE diffposs NUMERIC");
+		br3.newLine();
+
+
+		//br3.write("@ATTRIBUTE NNCount NUMERIC");
+		//br3.newLine();
+
+
+		//br3.write("@ATTRIBUTE NNPairCount NUMERIC");
+		//br3.newLine();
+
+
+		br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
+		br3.newLine();
+
+		br3.newLine();
+		br3.newLine();
+		br3.write("@DATA");
+		br3.newLine();
+		br3.flush();
+
+
+		for(Document d : cg.docList){
+
+			for(int i=0;i<reviewerFeaturesWords.length;i++){
+
+				if(d.termFrequency.containsKey(reviewerFeaturesWords[i])){
+
+					double tf=((d.termFrequency.get(reviewerFeaturesWords[i]))/(d.countWords));
+
+					ArrayList<Integer> listt=cg.docFrequency.get(reviewerFeaturesWords[i]);
+
+					double df=Math.log(cg.docCount/listt.size());
+					double tfidf=tf*df;
+
+					br3.write(tfidf+",");
+				}
+				else{
+					br3.write("0,");
+				}
+
+
+			}
+
+			for(int i=0;i<reviewerFeaturesbigramWords.length;i++){
+
+				if(d.bigramtermFrequency.containsKey(reviewerFeaturesbigramWords[i])){
+
+					double tf=((d.bigramtermFrequency.get(reviewerFeaturesbigramWords[i]))/(d.bicountWords));
+
+					br3.write(tf+",");
+				}
+				else{
+					br3.write("0,");
+				}
+
+
+			}
+
+
+			br3.write(d.countWords+",");
+
+
+			if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
+				br3.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
+
+			}
+			else{
+				br3.write(0+",");
+
+			}
+
+
+			//br3.write(d.NNcount/d.countWords+",");
+			//br3.write(d.NNpaircount/d.countWords+",");
+
+
+			if(casee.equalsIgnoreCase("train")){
+				br3.write(d.reviewer);
+			}
+			else{
+				br3.write("?");
+			}
+			br3.newLine();
+			br3.flush();
+
+		}
+
+
+	}
+
+
+
+
+
+
+
 
 
 
