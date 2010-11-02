@@ -20,7 +20,7 @@ public class FileReader {
 	public static int FEATcnt =5001;
 
 	public static String outFile6="FinArff"+"-binary-newterms-";
-	public static String outFile="FinArff"+"_reviewer-fff-";
+	public static String outFile="FinArff"+"_reviewer-ffff-";
 	public static String outFile2="FinArff"+"_binary-fff-";
 	public static String outFile3="FinArff"+"_binary-extra-reviewer-fff-";
 	public static String outFile4="FinArff"+"_multi-fff-";
@@ -274,16 +274,18 @@ public class FileReader {
 
 
 
-			System.out.println("Total Docs- "+cnt);
+			//System.out.println("Total Docs- "+cnt);
 			cg.docCount=cnt;
 
 
 			if(trainFlag){
+				System.out.println("Reading POS Tags now...");
 				POSFileReader pos = new POSFileReader();
 				pos.getCount("parsedCorpus.txt");
 			}
 
 			//XXXXXXXXXXXXXXXXX
+			System.out.println("Creating ARFF files Now.");
 			printDocListForReviewer(cg,args[0]);
 
 
@@ -294,7 +296,7 @@ public class FileReader {
 			printDocListForClassification(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
 
 
-
+			System.out.println("Created ARFF files.");
 			br2.flush();
 			in2.close();
 			br3.flush();
@@ -326,6 +328,8 @@ public class FileReader {
 			featin4.close();
 			featin5.close();
 			featin6.close();
+
+
 		}catch (Exception e){
 
 			System.err.println("Error: " + e.getMessage());
@@ -355,7 +359,7 @@ public class FileReader {
 
 			e.printStackTrace();
 		}
-		System.out.println(reviewerFeaturesWords2.length);
+		//System.out.println(reviewerFeaturesWords2.length);
 		return reviewerFeaturesWords2;
 
 	}
@@ -514,8 +518,11 @@ public class FileReader {
 
 						ArrayList<Integer> listt=cg.docFrequency.get(featuresWordss[i]);
 
+
 						double df=Math.log(cg.docCount/listt.size());
+
 						double tfidf=tf*df;
+
 
 						br_bin2.write(tfidf+",");
 					}
@@ -681,6 +688,35 @@ public class FileReader {
 		//br3.newLine();
 
 
+		br3.write("@ATTRIBUTE diffneg NUMERIC");
+		br3.newLine();
+
+
+		br3.write("@ATTRIBUTE posword NUMERIC");
+		br3.newLine();
+
+
+
+		br3.write("@ATTRIBUTE extremeWord NUMERIC");
+		br3.newLine();
+
+
+		br3.write("@ATTRIBUTE adjWord NUMERIC");
+		br3.newLine();
+
+
+		br3.write("@ATTRIBUTE adverbWord NUMERIC");
+		br3.newLine();
+
+
+
+
+		br3.write("@ATTRIBUTE verbWord NUMERIC");
+		br3.newLine();
+
+		br3.write("@ATTRIBUTE detWord NUMERIC");
+		br3.newLine();
+
 		br3.write("@ATTRIBUTE classFinal {A,B,C,D}");
 		br3.newLine();
 
@@ -734,16 +770,55 @@ public class FileReader {
 
 			if(((d.posWords/d.countWords)-(d.negWords/d.countWords))>0){
 				br3.write((d.posWords/d.countWords)-(d.negWords/d.countWords)+",");
-
+				br3.write(0+",");
 			}
 			else{
 				br3.write(0+",");
-
+				br3.write((d.negWords/d.countWords)-(d.posWords/d.countWords)+",");
 			}
 
 
+
+			br3.write((d.posWords)/d.countWords+",");
+			//br3.write((d.negWords)/d.countWords+",");
+
 			//br3.write(d.NNcount/d.countWords+",");
 			//br3.write(d.NNpaircount/d.countWords+",");
+
+
+
+			if(cg.docFrequency.containsKey("extremeWords")){
+
+				double tf=d.extremeWords/d.countWords;
+
+				ArrayList<Integer> listt=cg.docFrequency.get("extremeWords");
+
+				double df=Math.log(cg.docCount/listt.size());
+				double tfidf=tf*df;
+
+				br3.write(tfidf+",");
+			}
+			else{
+				br3.write("0,");
+			}
+
+
+			//br_bin2.write(d.reviewer+",");
+
+
+			//br_bin2.write(d.NNcount/d.countWords+",");
+
+			//br_bin2.write(d.NNpaircount/d.countWords+",");
+
+
+
+			br3.write(d.JJcount/d.countWords+",");
+
+			br3.write(d.RBcount/d.countWords+",");
+			br3.write(d.VBcount/d.countWords+",");
+			br3.write(d.DTcount/d.countWords+",");
+
+
 
 
 			if(casee.equalsIgnoreCase("train")){

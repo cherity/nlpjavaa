@@ -121,7 +121,7 @@ public class CountGenerator {
 
 
 
-		System.out.println(readLines.size());
+		//System.out.println(readLines.size());
 		return readLines;
 
 	}
@@ -137,6 +137,7 @@ public class CountGenerator {
 
 		Document d = new Document();
 		//d.countWords=bow.length;
+		System.out.println("Extracting features for Document -- "+id+".");
 		d.id = id;
 		d.star = star;
 		d.reviewer = reviewer;
@@ -171,6 +172,7 @@ public class CountGenerator {
 			bowWord=bowWord.replaceAll("", "");
 			bowWord=bowWord.replaceAll("%", "");
 			//",",box,","empty"
+			bowWord= bowWord.toLowerCase().trim();
 			//System.out.println(fourthlastword+ " "+lastTolastword+ " "+lastword+ " "+bowWord);
 			//bowWord=callStemmer(bowWord);
 
