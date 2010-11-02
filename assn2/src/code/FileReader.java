@@ -42,9 +42,8 @@ public class FileReader {
 
 
 
-	public static String[] newwfeatWords={ "intrinsic", "masterly", "annoyingly"};
 
-	public static String[] mulFeaturesWords={"show", "though", "subscribe", "particularly", "simply", "nature", "ultimately", "familiar", "entirely", "believable", "appealing", "fast", "mostly", "potential", "necessary", "particular", "central", "opportunity", "largely", "worthwhile", "apparent", "apparently", "primarily", "universal", "superb", "core", "evident", "therefore", "competent", "vastly", "profanity", "despite", "difficult", "contrived", "unexpected", "critical", "melodramatic", "unfortunate", "distracting", "movie", "enhanced", "recommend", "delightful", "easy", "clich", "guilty", "ridiculous", "stale", "still", "uninteresting", "gripping", "many", "both", "anything", "quite", "interesting", "acceptable", "solid", "nevertheless", "award", "predictable", "surprising", "perfectly", "hilarious", "perspective", "strength", "fortunately", "poignant", "incredible", "outstanding", "recommendation", "resolved", "delicious", "simplicity", "down", "bland", "tedious", "lame", "pointless", "mindless", "lackluster", "bore", "juvenile", "laughable","moving", "simple", "strong", "great", "nice", "mesmerizing", "memorable", "polite", "unique", "best", "confidence", "compelling", "true", "worst", "problem", "enough", "idea", "remotely", "sitcom", "uninspired", "life","fine", "effective", "perfect", "wonderful", "power", "understand", "fascinating", "important", "intelligent", "powerful", "rich", "rare", "subtle", "minor", "emotions", "brilliant", "wonderfully", "masterpiece", "suppose", "upbeat", "masterful", "keen", "tolerable", "brag",  "bad", "unfortunately", "supposed", "worse", "complex", "tragedy", "dull", "dumb", "awful", "force", "boring", "uneven", "annoying", "mess", "lifeless", "badly", "embarrassing", "inane", "inept", "abomination", "unfunny", "watchable", "academy", "strongly", "film", "story"};
+	public static String[] mulFeaturesWords={"intrinsic", "masterly", "annoyingly","show", "though", "subscribe", "particularly", "simply", "nature", "ultimately", "familiar", "entirely", "believable", "appealing", "fast", "mostly", "potential", "necessary", "particular", "central", "opportunity", "largely", "worthwhile", "apparent", "apparently", "primarily", "universal", "superb", "core", "evident", "therefore", "competent", "vastly", "profanity", "despite", "difficult", "contrived", "unexpected", "critical", "melodramatic", "unfortunate", "distracting", "movie", "enhanced", "recommend", "delightful", "easy", "clich", "guilty", "ridiculous", "stale", "still", "uninteresting", "gripping", "many", "both", "anything", "quite", "interesting", "acceptable", "solid", "nevertheless", "award", "predictable", "surprising", "perfectly", "hilarious", "perspective", "strength", "fortunately", "poignant", "incredible", "outstanding", "recommendation", "resolved", "delicious", "simplicity", "down", "bland", "tedious", "lame", "pointless", "mindless", "lackluster", "bore", "juvenile", "laughable","moving", "simple", "strong", "great", "nice", "mesmerizing", "memorable", "polite", "unique", "best", "confidence", "compelling", "true", "worst", "problem", "enough", "idea", "remotely", "sitcom", "uninspired", "life","fine", "effective", "perfect", "wonderful", "power", "understand", "fascinating", "important", "intelligent", "powerful", "rich", "rare", "subtle", "minor", "emotions", "brilliant", "wonderfully", "masterpiece", "suppose", "upbeat", "masterful", "keen", "tolerable", "brag",  "bad", "unfortunately", "supposed", "worse", "complex", "tragedy", "dull", "dumb", "awful", "force", "boring", "uneven", "annoying", "mess", "lifeless", "badly", "embarrassing", "inane", "inept", "abomination", "unfunny", "watchable", "academy", "strongly", "film", "story"};
 	public static String[] mulFeaturesbigramWords={"waste-money", "dont-waste", "running-time", "message-subject", "reply-message", "rated-pg-13", "fine-kids", "son-jeffrey", "fine-teenagers", "older-teenagers", "theres-nothing", "film-one", "motion-pictures", "running-length", "film-makers", "far-more", "relationship-between", "kind-film", "very-good", "theres-little", "film-making", "screen-presence", "doesnt-take", "film-maker", "film-film", "theres-enough", "find-yourself", "theres-one", "entertainment-value", "taking-place", "even-better", "entire-movie", "rated-probably", "end-credits", "title-character", "films-title", "films-end", "nothing-offend","character-study", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single","motion-picture", "mature-themes", "one-best", "best-performance", "thumbs-down", "best-picture", "best-films"};
 
 	public static String[] binFeaturesWords={"show", "though", "subscribe", "particularly", "simply", "nature", "ultimately", "familiar", "entirely", "believable", "appealing", "fast", "mostly", "potential", "necessary", "particular", "central", "opportunity", "largely", "worthwhile", "apparent", "apparently", "primarily", "universal", "superb", "core", "evident", "therefore", "competent", "vastly", "profanity", "despite", "difficult", "contrived", "unexpected", "critical", "melodramatic", "unfortunate", "distracting", "movie","great", "nice", "polite", "unique", "best", "confidence", "compelling", "true", "worst", "enough", "idea", "understand", "rich", "minor", "upbeat", "tolerable", "brag", "force", "uneven", "mess", "inept", "abomination", "strongly","important", "enhanced", "recommend", "delightful", "easy", "clich", "guilty", "ridiculous", "badly", "inane", "stale", "still", "suppose", "emotions", "unfunny", "remotely", "sitcom", "watchable", "uninteresting", "uninspired", "academy", "gripping", "many", "life", "both", "anything", "fine", "quite", "interesting", "strong", "effective", "acceptable", "simple", "perfect", "wonderful", "solid", "nevertheless", "power", "fascinating", "memorable", "award", "predictable", "moving", "intelligent", "powerful", "surprising", "rare", "subtle", "perfectly", "hilarious", "brilliant", "wonderfully", "perspective", "strength", "masterpiece", "fortunately", "poignant", "incredible", "mesmerizing", "outstanding", "recommendation", "masterful", "resolved", "keen", "delicious", "simplicity",  "bad", "down", "problem", "unfortunately", "supposed", "worse", "complex", "tragedy", "dull", "dumb", "awful", "boring", "bland", "tedious", "annoying", "lame", "lifeless", "pointless", "mindless", "lackluster", "embarrassing", "bore", "juvenile", "laughable", "film", "story"};
@@ -320,14 +319,6 @@ public class FileReader {
 
 
 
-			for(int i=0;i<newwfeatWords.length;i++){
-
-				br_bin2.write("@ATTRIBUTE "+newwfeatWords[i]+" NUMERIC");
-				br_bin2.newLine();
-
-
-			}
-
 
 
 			if(classicationCase.equalsIgnoreCase("binary") || classicationCase.equalsIgnoreCase("binaryr")){
@@ -484,25 +475,6 @@ public class FileReader {
 
 
 
-				for(int i=0;i<newwfeatWords.length;i++){
-
-					if(d.termFrequency.containsKey(newwfeatWords[i])){
-
-						double tf=((d.termFrequency.get(newwfeatWords[i]))/(d.countWords));
-
-						ArrayList<Integer> listt=cg.docFrequency.get(newwfeatWords[i]);
-
-						double df=Math.log(cg.docCount/listt.size());
-						double tfidf=tf*df;
-
-						br_bin2.write(tfidf+",");
-					}
-					else{
-						br_bin2.write("0,");
-					}
-
-
-				}
 
 
 

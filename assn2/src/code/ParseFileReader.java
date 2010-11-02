@@ -4,24 +4,15 @@ package code;
 import java.util.Iterator;
 import edu.stanford.nlp.ling.TaggedWord;
 import java.util.List;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.StringReader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import edu.stanford.nlp.trees.*;
 import edu.stanford.nlp.process.*;
 import edu.stanford.nlp.objectbank.TokenizerFactory;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 
 
 public class ParseFileReader {
