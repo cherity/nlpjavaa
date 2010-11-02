@@ -124,7 +124,7 @@ public class FinalOutput {
 					brOut2.write("<"+op+">");
 
 					String s = classifiedValues.get(cnt);
-					
+
 					if(classifierCase.equalsIgnoreCase("binary")){
 
 						if(s.equalsIgnoreCase("1")){
@@ -133,7 +133,7 @@ public class FinalOutput {
 						else if(s.equalsIgnoreCase("0")){
 							brOut2.write("N");
 						}
-						
+
 					}
 					else{
 						brOut2.write(s);
