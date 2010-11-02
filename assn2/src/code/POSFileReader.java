@@ -64,7 +64,7 @@ public class POSFileReader {
 		d.RBcount+=cnt;
 
 	}
-	
+
 	private void parseLineforDT(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/DT");
