@@ -22,9 +22,9 @@ public class FileReader {
 	public static String outFile6="FinArff"+"-binary-newterms-";
 	public static String outFile="FinArff"+"_reviewer-fff-";
 	public static String outFile2="FinArff"+"_binary-fff-";
-	public static String outFile3="FinArff"+"_binary-extra-reviewer-f-";
+	public static String outFile3="FinArff"+"_binary-extra-reviewer-fff-";
 	public static String outFile4="FinArff"+"_multi-fff-";
-	public static String outFile5="FinArff"+"_multi-extra-reviewer-f-D-";
+	public static String outFile5="FinArff"+"_multi-extra-reviewer-fff-";
 
 
 
@@ -37,9 +37,9 @@ public class FileReader {
 	public static ArrayList<String> featlist=new ArrayList<String>();
 	public static ArrayList<String> featbilist=new ArrayList<String>();
 
-	public static String[] reviewerFeaturesWords={"show", "though", "subscribe", "acceptable", "particularly", "simply", "solid", "nature", "ultimately", "familiar", "entirely", "believable", "appealing", "rare", "fast", "mostly", "potential", "necessary", "particular", "central", "opportunity", "perspective", "largely", "worthwhile", "apparent", "apparently", "primarily", "universal", "superb", "core", "evident", "therefore", "fortunately", "mesmerizing", "competent", "vastly", "although", "profanity", "despite", "unfortunately", "difficult", "contrived", "unexpected", "critical", "melodramatic", "unfortunate", "distracting", "film", "movie", "story", "--"};
-	public static String[] reviewerFeaturesbigramWords={"motion-picture", "waste-money", "dont-waste", "running-time", "message-subject", "reply-message", "rated-pg-13", "fine-kids", "son-jeffrey", "fine-teenagers", "older-teenagers", "theres-nothing", "film-one", "motion-pictures", "running-length", "film-makers", "far-more", "relationship-between", "kind-film", "very-good", "theres-little", "film-making", "screen-presence", "doesnt-take", "film-maker", "film-film", "theres-enough", "find-yourself", "theres-one", "entertainment-value", "taking-place", "even-better", "entire-movie", "rated-probably", "end-credits", "title-character", "films-title", "films-end", "nothing-offend"};
 
+	public static String[] reviewerFeaturesWords={"intrinsic", "masterly", "annoyingly", "enhanced", "recommend", "delightful", "easy", "clich", "guilty", "ridiculous", "stale", "still", "uninteresting", "gripping", "many", "both", "anything", "quite", "interesting", "nevertheless", "award", "predictable", "surprising", "perfectly", "hilarious", "strength", "poignant", "incredible", "outstanding", "recommendation", "resolved", "delicious", "simplicity", "down", "bland", "tedious", "lame", "pointless", "mindless", "lackluster", "bore", "juvenile", "laughable", "moving", "simple", "strong", "great", "nice", "memorable", "polite", "unique", "best", "confidence", "compelling", "true", "worst", "problem", "enough", "idea", "remotely", "sitcom", "uninspired", "life", "fine", "effective", "perfect", "wonderful", "power", "understand", "fascinating", "important", "intelligent", "powerful", "rich", "subtle", "minor", "emotions", "brilliant", "wonderfully", "masterpiece", "suppose", "upbeat", "masterful", "keen", "tolerable", "brag", "bad", "supposed", "worse", "complex", "tragedy", "dull", "dumb", "awful", "force", "boring", "uneven", "annoying", "mess", "lifeless", "badly", "embarrassing", "inane", "inept", "abomination", "unfunny", "watchable", "academy", "strongly","show", "though", "subscribe", "acceptable", "particularly", "simply", "solid", "nature", "ultimately", "familiar", "entirely", "believable", "appealing", "rare", "fast", "mostly", "potential", "necessary", "particular", "central", "opportunity", "perspective", "largely", "worthwhile", "apparent", "apparently", "primarily", "universal", "superb", "core", "evident", "therefore", "fortunately", "mesmerizing", "competent", "vastly", "although", "profanity", "despite", "unfortunately", "difficult", "contrived", "unexpected", "critical", "melodramatic", "unfortunate", "distracting", "film", "movie", "story"};
+	public static String[] reviewerFeaturesbigramWords={"character-study", "runs-long", "1/2-see", "director-robert", "ensemble-cast", "waste-time", "movie-made", "find-film", "thing-film", "few-laughs", "little-long", "edge-seat", "breaking-waves", "david-lynch", "best-actor", "surprise-ending", "myself-recommend", "give-single", "mature-themes", "one-best", "best-performance", "thumbs-down", "best-picture", "best-films","motion-picture", "waste-money", "dont-waste", "running-time", "message-subject", "reply-message", "rated-pg-13", "fine-kids", "son-jeffrey", "fine-teenagers", "older-teenagers", "theres-nothing", "film-one", "motion-pictures", "running-length", "film-makers", "far-more", "relationship-between", "kind-film", "very-good", "theres-little", "film-making", "screen-presence", "doesnt-take", "film-maker", "film-film", "theres-enough", "find-yourself", "theres-one", "entertainment-value", "taking-place", "even-better", "entire-movie", "rated-probably", "end-credits", "title-character", "films-title", "films-end", "nothing-offend"};
 
 
 
@@ -241,14 +241,14 @@ public class FileReader {
 			}
 
 			//XXXXXXXXXXXXXXXXX
-			 printDocListForReviewer(cg,args[0]);
+			printDocListForReviewer(cg,args[0]);
 
 
 			printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
-			//printDocListForClassification(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
+			printDocListForClassification(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
 
 			printDocListForClassification(cg,args[0],br_mul,"multi",mulFeaturesWords, mulFeaturesbigramWords);
-			//printDocListForClassification(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
+			printDocListForClassification(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
 
 
 
