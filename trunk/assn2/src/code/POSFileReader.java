@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 
 public class POSFileReader {
 
-	
-	
+
+
 	public void getCount(String fileName) {
 		// TODO Auto-generated method stub
 		try{
