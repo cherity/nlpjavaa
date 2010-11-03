@@ -154,7 +154,7 @@ public class FinalOutput {
 			}
 		}
 
-		System.out.println(cnt);
+		//System.out.println(cnt);
 
 	}
 
@@ -172,7 +172,7 @@ public class FinalOutput {
 				//System.out.println(strLine);
 				String extracted = extractValue(strLine);
 				classifiedValues.put(cnt, extracted);
-				System.out.println(extracted);
+				//System.out.println(extracted);
 			}
 
 
@@ -186,7 +186,7 @@ public class FinalOutput {
 		}
 
 
-		System.out.println(cnt);
+		//System.out.println(cnt);
 	}
 
 

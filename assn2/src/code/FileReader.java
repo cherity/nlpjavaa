@@ -20,11 +20,11 @@ public class FileReader {
 	public static int FEATcnt =5001;
 
 	public static String outFile6="FinArff"+"-binary-newterms-";
-	public static String outFile="FinArff"+"_reviewer-ffff-";
-	public static String outFile2="FinArff"+"_binary-fff-";
-	public static String outFile3="FinArff"+"_binary-extra-reviewer-fff-";
-	public static String outFile4="FinArff"+"_multi-fff-";
-	public static String outFile5="FinArff"+"_multi-extra-reviewer-fff-";
+	public static String outFile="author";
+	public static String outFile2="binaryRatingSameUsers";
+	public static String outFile3="binaryRatingDiffUsers";
+	public static String outFile4="starRatingSameUsers";
+	public static String outFile5="starRatingDiffUsers";
 
 
 
@@ -121,12 +121,12 @@ public class FileReader {
 		try{
 
 
-			outFile+=args[0]+"-"+args[1]+".arff";
-			outFile2+=args[0]+"-"+args[1]+".arff";
-			outFile3+=args[0]+"-"+args[1]+".arff";
-			outFile4+=args[0]+"-"+args[1]+".arff";
-			outFile5+=args[0]+"-"+args[1]+".arff";
-			outFile6+=args[0]+"-"+args[1]+".arff";
+			outFile+=args[0]+".arff";
+			outFile2+=args[0]+".arff";
+			outFile3+=args[0]+".arff";
+			outFile4+=args[0]+".arff";
+			outFile5+=args[0]+".arff";
+			outFile6+=args[0]+".arff";
 
 
 			String INPUTPATH=args[2];
@@ -281,7 +281,7 @@ public class FileReader {
 			if(trainFlag){
 				System.out.println("Reading POS Tags now...");
 				POSFileReader pos = new POSFileReader();
-				pos.getCount("parsedCorpus.txt");
+				pos.getCount(INPUTPATH+"parsedCorpus.txt");
 			}
 
 			//XXXXXXXXXXXXXXXXX

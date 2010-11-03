@@ -30,7 +30,7 @@ public class ParseFileReader {
 
 	public ParseFileReader(){
 
-		//lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
+		lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
 		tf = PTBTokenizer.factory(false, new WordTokenFactory());
 		tp = new TreePrint("wordsAndTags");
 
@@ -42,7 +42,7 @@ public class ParseFileReader {
 		try{
 
 
-			lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
+			//lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
 
 			tf = PTBTokenizer.factory(false, new WordTokenFactory());
 			tp = new TreePrint("wordsAndTags");
@@ -51,8 +51,9 @@ public class ParseFileReader {
 			int cnt =0,negCnt=0,posCnt=0;
 
 
-			if(strLine.length()>0)		{				
+			if(strLine.length()>0 && !strLine.equals(" ")&& !strLine.equals("  "))		{				
 				try{
+					//System.out.println(strLine);
 					List tokens = tf.getTokenizer(new StringReader(strLine)).tokenize(); 
 					lp.parse(tokens); // parse the tokens
 					Tree t = lp.getBestParse(); // get the best parse tree
@@ -74,7 +75,7 @@ public class ParseFileReader {
 
 
 				}catch (Exception e){
-
+					System.out.println(strLine);
 					System.err.println("Error: " + e.getMessage());
 					e.printStackTrace();
 
