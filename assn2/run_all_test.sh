@@ -42,8 +42,8 @@ java -cp bin/.:/home/cs4705/stanford-parser-2010-08-20/stanford-parser-2010-08-2
 
 # 5 times - 4 args
 
-./run_weka_on_test.sh starRatingSameUsers.model starRatingSameUsersTest.arff out_starRatingSameUsersTest.arff multi "$2"
-./run_weka_on_test.sh starRatingDiffUsers.model starRatingDiffUsersTest.arff out_starRatingDiffUsersTest.arff multi "$2"
-./run_weka_on_test.sh binaryRatingSameUsers.model binaryRatingSameUsersTest.arff out_binaryRatingSameUsersTest.arff binary "$2"
-./run_weka_on_test.sh binaryRatingDiffUsers.model binaryRatingDiffUsersTest.arff out_binaryRatingDiffUsersTest.arff binary "$2"
-./run_weka_on_test.sh author.model authorTest.arff out_authorTest.arff reviewer "$2"
+./run_weka_on_test.sh starRatingSameUsers.model starRatingSameUsersTest.arff out_starRatingSameUsersTest.arff multi "$2" classified-starRatingSameUsersTest-"$2"
+./run_weka_on_test.sh starRatingDiffUsers.model starRatingDiffUsersTest.arff out_starRatingDiffUsersTest.arff multi "$2" classified-starRatingDiffUsersTest-"$2"
+./run_weka_on_test.sh binaryRatingSameUsers.model binaryRatingSameUsersTest.arff out_binaryRatingSameUsersTest.arff binary "$2" classified-binaryRatingSameUsersTest-"$2"
+./run_weka_on_test.sh binaryRatingDiffUsers.model binaryRatingDiffUsersTest.arff out_binaryRatingDiffUsersTest.arff binary "$2" classified-binaryRatingDiffUsersTest-"$2"
+./run_weka_on_test.sh author.model authorTest.arff out_authorTest.arff reviewer "$2" classified-authorTest-"$2"
