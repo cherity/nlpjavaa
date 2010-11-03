@@ -49,7 +49,7 @@ public class FinalOutput {
 			br2 = new BufferedReader(new InputStreamReader(in2));
 
 
-			fstreamOut = new FileOutputStream("classified-"+args[0]);
+			fstreamOut = new FileOutputStream(args[3]);
 			inOut = new DataOutputStream(fstreamOut);
 			brOut = new BufferedWriter(new OutputStreamWriter(inOut));
 
