@@ -136,7 +136,7 @@ public class CountGenerator {
 
 
 	/*
-	 * Function to calculate all the counts. It calls all the functions and initailizes all the data structutures with their proper counts.
+	 * Function to calculate all the counts. It calls all the functions and initailizes all the data structures with their proper counts.
 	 * 
 	 */
 	public static void getCount(String match, int cntt, int star,String reviewer, String id, boolean trainFlag) {
