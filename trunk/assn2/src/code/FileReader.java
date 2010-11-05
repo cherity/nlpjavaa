@@ -133,9 +133,9 @@ public class FileReader {
 				outFile5+=args[1]+"-"+args[0]+".arff";
 			}
 			int outputCase=Integer.parseInt(args[3]);
-			
+
 			String INPUTPATH=args[2];
-			
+
 			FileInputStream fstream = new FileInputStream(args[1]);
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -170,7 +170,7 @@ public class FileReader {
 			DataInputStream featin6 = new DataInputStream(featstream6);
 			BufferedReader featbr6 = new BufferedReader(new InputStreamReader(featin6));
 
-			
+
 			if(outputCase==5 ||(outputCase==6)){
 
 				fstream3 = new FileOutputStream(outFile);
@@ -178,7 +178,7 @@ public class FileReader {
 				br3 = new BufferedWriter(new OutputStreamWriter(in3));
 			}
 
-			
+
 			if(outputCase==1||(outputCase==6)){
 
 				fstream_bin = new FileOutputStream(outFile2);
@@ -307,12 +307,12 @@ public class FileReader {
 			}
 
 			System.out.println("Created ARFF files.");
-			
+
 			if(outputCase==5||(outputCase==6)){
 				br3.flush();
 				in3.close();
 			}
-			
+
 			if(outputCase==1||(outputCase==6)){
 				br_bin.flush();
 				in_bin.close();
