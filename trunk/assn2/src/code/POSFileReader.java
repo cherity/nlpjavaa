@@ -1,5 +1,9 @@
 package code;
-
+/*
+ * Ashish Tomar
+ * NLP HW 2
+ * The file to calculate POS features for the reviews
+ */
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -10,7 +14,9 @@ import java.util.regex.Pattern;
 public class POSFileReader {
 
 
-
+	/*
+	 * This function reads a POS tagged file and calculates the counts for POS Tags.
+	 */
 	public void getCount(String fileName) {
 		// TODO Auto-generated method stub
 		try{
@@ -52,6 +58,9 @@ public class POSFileReader {
 		}
 	}
 
+	/*
+	 * This function calculates the count of Adverbs.
+	 */
 	public void parseLineforRB(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/RB");
@@ -67,6 +76,9 @@ public class POSFileReader {
 
 	}
 
+	/*
+	 * This function calculates the count of Determiners.
+	 */
 	public void parseLineforDT(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/DT");
@@ -81,6 +93,10 @@ public class POSFileReader {
 		d.DTcount+=cnt;
 
 	}
+
+	/*
+	 * This function calculates the count of Verbs.
+	 */
 	public void parseLineforVB(String strLine, Document d) {
 		// TODO Auto-generated method stub
 		Pattern pattern  = Pattern.compile("/VB");
@@ -95,6 +111,10 @@ public class POSFileReader {
 		d.VBcount+=cnt;
 
 	}
+
+	/*
+	 * This function calculates the count of Adjectives.
+	 */
 
 	public void parseLineforJJ(String strLine, Document d) {
 		// TODO Auto-generated method stub
@@ -111,6 +131,9 @@ public class POSFileReader {
 
 	}
 
+	/*
+	 * This function retrieves the record for a given review id.
+	 */
 	public Document getDocument(String strLine) {
 		Document dd= new Document();
 		Pattern pattern  = Pattern.compile("(.*) <<");
@@ -130,6 +153,10 @@ public class POSFileReader {
 		return dd;
 	}
 
+
+	/*
+	 * This function calculates the count of Nouns.
+	 */
 	public void parseLineforNN(String strLine, Document d) {
 
 		Pattern pattern  = Pattern.compile("/NN");
@@ -150,7 +177,9 @@ public class POSFileReader {
 
 
 
-
+	/*
+	 * This function calculates the count of NN : JJ pair or NN: NN pair
+	 */
 	public void parseLineforNNpair(String strLine, Document d) {
 
 		Pattern pattern  = Pattern.compile("/NN :/: [A-Za-z-]*/(JJ|NN)");

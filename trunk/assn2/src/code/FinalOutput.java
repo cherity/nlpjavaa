@@ -1,6 +1,11 @@
 package code;
 
-
+/*
+ * Ashish Tomar
+ * NLP HW 2
+ * 
+ * Converts the ARFF file output to text file as required for the assignment. 
+ */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -32,7 +37,9 @@ public class FinalOutput {
 	public static DataInputStream in2 ;
 	public static BufferedReader br2 ;
 
-
+	/*
+	 * Converts the ARFF file output to text file as required for the assignment. 
+	 */
 	public static void main(String args[]){
 
 		try{
@@ -73,7 +80,9 @@ public class FinalOutput {
 
 	}
 
-
+	/*
+	 * Reads the ARFF file output and write sit to text file as required for the assignment. 
+	 */
 	private static void readAndWrite(String classifierCase, BufferedReader brr, BufferedWriter brOut2) throws IOException {
 		// TODO Auto-generated method stub
 
@@ -84,20 +93,20 @@ public class FinalOutput {
 		Matcher matcher;
 		pattern= Pattern.compile("<id>(.*)</id><review>(.*)</review>.*");
 
-		String op="";
+		String opTag="";
 
 		if(classifierCase.equalsIgnoreCase("multi")){
 
-			op="star";
+			opTag="star";
 
 		}
 		else if(classifierCase.equalsIgnoreCase("binary")){
 
-			op = "PN";
+			opTag = "PN";
 		}
 		else if(classifierCase.equalsIgnoreCase("reviewer")){
 
-			op="reviewer";
+			opTag="reviewer";
 		}
 
 
@@ -121,7 +130,7 @@ public class FinalOutput {
 					brOut2.write("</id>");
 
 
-					brOut2.write("<"+op+">");
+					brOut2.write("<"+opTag+">");
 
 					String s = classifiedValues.get(cnt);
 
@@ -139,7 +148,7 @@ public class FinalOutput {
 						brOut2.write(s);
 					}
 
-					brOut2.write("</"+op+">");
+					brOut2.write("</"+opTag+">");
 
 					brOut2.write("<review>");
 					brOut2.write(match);
@@ -158,7 +167,9 @@ public class FinalOutput {
 
 	}
 
-
+	/*
+	 * Enters the classified results values into the data structure.
+	 */
 	private static void setTheClassifiedValues(BufferedReader brr) throws IOException {
 
 		String strLine="";
@@ -189,14 +200,16 @@ public class FinalOutput {
 		//System.out.println(cnt);
 	}
 
-
+	/*
+	 * Extracts classified results values.
+	 */
 	private static String extractValue(String strLine) {
 
-		String s="";
+		String stringclassifiedVal="";
 		char arr[] = strLine.toCharArray();
-		char ss = arr[arr.length-1];
-		s = Character.toString(ss);
-		return s;
+		char classifiedVal = arr[arr.length-1];
+		stringclassifiedVal = Character.toString(classifiedVal);
+		return stringclassifiedVal;
 
 	}
 

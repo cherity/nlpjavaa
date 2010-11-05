@@ -1,5 +1,9 @@
 package code;
-
+/*
+ * Ashish Tomar
+ * NLP HW 2
+ * Main File for Feature Extraction
+ */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -18,6 +22,7 @@ import java.util.regex.Pattern;
 public class FileReader {
 
 
+	//Filenames for arff files
 	public static String outFile="author";
 	public static String outFile2="binaryRatingSameUsers";
 	public static String outFile3="binaryRatingDiffUsers";
@@ -35,6 +40,9 @@ public class FileReader {
 	public static ArrayList<String> featlist=new ArrayList<String>();
 	public static ArrayList<String> featbilist=new ArrayList<String>();
 
+	/*
+	 * The selected Features for the three classifiers are read from the files.
+	 */
 	public static String[] reviewerFeaturesWords ;
 	public static String[] reviewerFeaturesbigramWords;
 
@@ -113,7 +121,9 @@ public class FileReader {
 	public static Integer[] bigramwordlistvals;
 	public static String[] bigramwordlistkeys;
 
-
+	/*
+	 * The main function reads the movie corpus file and extracts the features for each review using CountGenerator class and then writes the features into respective arff files.
+	 */
 	public static void main(String args[]){
 
 		try{
@@ -132,8 +142,10 @@ public class FileReader {
 				outFile4+=args[1]+"-"+args[0]+".arff";
 				outFile5+=args[1]+"-"+args[0]+".arff";
 			}
+
 			int outputCase=Integer.parseInt(args[3]);
 
+			// PATH for the files to read the features
 			String INPUTPATH=args[2];
 
 			FileInputStream fstream = new FileInputStream(args[1]);
@@ -222,6 +234,7 @@ public class FileReader {
 			int cnt =0,negCnt=0,posCnt=0;
 			Pattern pattern ;
 
+			// pattern for reading from the movie corpus file.
 			if(args[0].equalsIgnoreCase("train")){
 				pattern= Pattern.compile("<id>(.*)</id><reviewer>(.*)</reviewer><star>(.*)</star><review>(.*)</review>.*");
 				trainFlag=true;
@@ -288,6 +301,7 @@ public class FileReader {
 			//XXXXXXXXXXXXXXXXX
 			System.out.println("Creating ARFF files Now.");
 
+			// Functions called for Writing the computed data into the arff files. 
 			if(outputCase==5||(outputCase==6)){
 				printDocListForReviewer(cg,args[0]);
 			}
@@ -349,7 +363,9 @@ public class FileReader {
 	}
 
 
-
+	/*
+	 * Function to read features for the file and store it in the appropriate array.
+	 */
 	private static String[] readFeaturesFromFile(String[] reviewerFeaturesWords2,			BufferedReader br)  {
 
 		String strLine="";
@@ -374,7 +390,9 @@ public class FileReader {
 	}
 
 
-
+	/*
+	 * This function writes the extracted features into the arff files for binary and 4 star rating.
+	 */
 	private static void printDocListForClassification(CountGenerator cg,String casee, BufferedWriter br_bin2, String classicationCase, String[] featuresWordss, String featuresbigramWordss[]) {
 
 		try {
@@ -655,7 +673,9 @@ public class FileReader {
 	}
 
 
-
+	/*
+	 * This function writes the extracted features into the arff files for reviewer classification task.
+	 */
 	private static void printDocListForReviewer(CountGenerator cg, String casee ) throws IOException {
 
 		br3.write("@RELATION reviewer"+casee+"ing");
@@ -844,59 +864,6 @@ public class FileReader {
 
 	}
 
-
-
-
-
-
-
-
-
-
-
-	public static void bubbleSort1() {
-		int n = wordlistvals.length;
-		for (int pass=1; pass < n; pass++) {  // count how many times
-			// This next loop becomes shorter and shorter
-			for (int i=0; i < n-pass; i++) {
-				if (wordlistvals[i] > wordlistvals[i+1]) {
-					// exchange elements
-					int temp = wordlistvals[i];  wordlistvals[i] = wordlistvals[i+1];  wordlistvals[i+1] = temp;
-					String tempp = wordlistkeys[i];  wordlistkeys[i] = wordlistkeys[i+1];  wordlistkeys[i+1] = tempp;
-				}
-			}
-		}
-	}
-
-
-	public static void bubbleSortneg() {
-		int n = negwordlistvals.length;
-		for (int pass=1; pass < n; pass++) {  // count how many times
-			// This next loop becomes shorter and shorter
-			for (int i=0; i < n-pass; i++) {
-				if (negwordlistvals[i] > negwordlistvals[i+1]) {
-					// exchange elements
-					int temp = negwordlistvals[i];  negwordlistvals[i] = negwordlistvals[i+1];  negwordlistvals[i+1] = temp;
-					String tempp = negwordlistkeys[i];  negwordlistkeys[i] = negwordlistkeys[i+1];  negwordlistkeys[i+1] = tempp;
-				}
-			}
-		}
-	}
-
-
-	public static void bubbleSortpos() {
-		int n = poswordlistvals.length;
-		for (int pass=1; pass < n; pass++) {  // count how many times
-			// This next loop becomes shorter and shorter
-			for (int i=0; i < n-pass; i++) {
-				if (poswordlistvals[i] > poswordlistvals[i+1]) {
-					// exchange elements
-					int temp = poswordlistvals[i];  poswordlistvals[i] = poswordlistvals[i+1];  poswordlistvals[i+1] = temp;
-					String tempp = poswordlistkeys[i];  poswordlistkeys[i] = poswordlistkeys[i+1];  poswordlistkeys[i+1] = tempp;
-				}
-			}
-		}
-	}
 
 
 

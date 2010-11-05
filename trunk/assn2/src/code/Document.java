@@ -1,5 +1,9 @@
 package code;
-
+/*
+ * Ashish Tomar
+ * NLP HW 2
+ * this is a class for storing the features for each review
+ */
 import java.util.Hashtable;
 
 public class Document {

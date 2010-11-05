@@ -1,6 +1,10 @@
 package code;
 
-
+/*
+ * Ashish Tomar
+ * NLP HW 2
+ * This class calculates all the values for the features.
+ */
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -54,6 +58,7 @@ public class CountGenerator {
 
 		try {
 
+			// Read a list of Opinion/Sentiment words from the files.
 			FileInputStream featstream1 = new FileInputStream(INPUTPATH+"stopwords.txt");
 
 			DataInputStream featin1 = new DataInputStream(featstream1);
@@ -98,7 +103,10 @@ public class CountGenerator {
 	}
 
 
-
+	/*
+	 * Function to read Opinion words form files and initialize the data structures.
+	 * 
+	 */
 	private static ArrayList <String> readFeaturesFromFile(	BufferedReader br, ArrayList <String> readLines )  {
 
 		String strLine="";
@@ -127,6 +135,10 @@ public class CountGenerator {
 	}
 
 
+	/*
+	 * Function to calculate all the counts. It calls all the functions and initailizes all the data structutures with their proper counts.
+	 * 
+	 */
 	public static void getCount(String match, int cntt, int star,String reviewer, String id, boolean trainFlag) {
 
 
@@ -267,27 +279,27 @@ public class CountGenerator {
 			if(star==1){
 				cntstar1wordList++;
 				addToWordList(bowWord,star1wordList);
-				addToDocFreqTracker2(bowWord,star);
+				addToDocFreqTrackerStar(bowWord,star);
 
 			}
 			else if(star==2){
 				cntstar2wordList++;
 				addToWordList(bowWord,star2wordList);
-				addToDocFreqTracker2(bowWord,star);
+				addToDocFreqTrackerStar(bowWord,star);
 
 
 			}
 			else if(star==3){
 				cntstar3wordList++;
 				addToWordList(bowWord,star3wordList);
-				addToDocFreqTracker2(bowWord,star);
+				addToDocFreqTrackerStar(bowWord,star);
 
 
 			}
 			else if(star==4){
 				cntstar4wordList++;
 				addToWordList(bowWord,star4wordList);
-				addToDocFreqTracker2(bowWord,star);
+				addToDocFreqTrackerStar(bowWord,star);
 
 
 			}
@@ -315,8 +327,11 @@ public class CountGenerator {
 
 
 
-	private static void addToDocFreqTracker2(String bowWord, int cntt) {
-		// TODO Auto-generated method stub
+	/*
+	 * Function to insert the word count for the purpose of document ferquency to proper data structure for each star rating.
+
+	 */
+	private static void addToDocFreqTrackerStar(String bowWord, int cntt) {
 
 		if(stardocFrequency.containsKey(bowWord)){
 
@@ -344,7 +359,9 @@ public class CountGenerator {
 
 
 
-
+	/*
+	 * Function to insert the bigram word count to proper data structure.
+	 */
 	private static void addToBigram(String bowWord2, String lastword, Document d) {
 
 		String bowWord= lastword+"-"+bowWord2;
@@ -380,7 +397,9 @@ public class CountGenerator {
 
 
 
-
+	/*
+	 * Function to insert the negative word count to proper data structure.
+	 */
 	private static void addTermNeg(String bowWord, Document d) {
 		if(d.negtermFrequency.containsKey(bowWord)){
 
@@ -414,6 +433,9 @@ public class CountGenerator {
 
 
 
+	/*
+	 * Function to insert the neutral word count to proper data structure.
+	 */
 	private static void addTermNeut(String bowWord, Document d) {
 		// TODO Auto-generated method stub
 		if(d.neuttermFrequency.containsKey(bowWord)){
@@ -445,6 +467,10 @@ public class CountGenerator {
 
 
 
+
+	/*
+	 * Function to insert the postive word count to proper data structure.
+	 */
 
 	private static void addTermPos(String bowWord, Document d) {
 		if(d.postermFrequency.containsKey(bowWord)){
@@ -481,6 +507,10 @@ public class CountGenerator {
 
 
 
+	/*
+	 * Function to insert the word count for the purpose of document ferquency to proper data structure.
+	 */
+
 	private static void addToDocFreqTracker(String bowWord, int cntt) {
 
 		if(docFrequency.containsKey(bowWord)){
@@ -508,6 +538,11 @@ public class CountGenerator {
 	}
 
 
+
+	/*
+	 * Function to insert the word count per document to proper data structure.
+	 */
+
 	private static void addTerm(String bowWord, Document d) {
 
 		if(d.termFrequency.containsKey(bowWord)){
@@ -526,6 +561,10 @@ public class CountGenerator {
 	}
 
 
+
+	/*
+	 * Function to insert the word count to proper data structure.
+	 */
 	private static void addToWordList(String bowWord, 	Hashtable<String, Integer> wordList2) {
 
 		if(wordList2.containsKey(bowWord)){
