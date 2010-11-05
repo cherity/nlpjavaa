@@ -1,5 +1,9 @@
 package code;
-
+/*
+ * Ashish Tomar
+ * NLP HW 2
+ * This File calls Stanford parser for getting POS Tags
+ */
 
 import java.util.Iterator;
 import edu.stanford.nlp.ling.TaggedWord;
@@ -30,19 +34,23 @@ public class ParseFileReader {
 
 	public ParseFileReader(){
 
-		//lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
+		lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
 		tf = PTBTokenizer.factory(false, new WordTokenFactory());
 		tp = new TreePrint("wordsAndTags");
 
 	}
 
+	/*
+	 * This function is called for each line to get the POS tags.
+	 * The function receives a line and it then uses Stanford parser to get the POS Tags and returns the POS tags.
+	 */
 	public String parseTheLine(String strLine){
 		String parse="";
 
 		try{
 
 
-			lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
+			//lp = new LexicalizedParser("/home/cs4705/stanford-parser-2010-08-20/englishPCFG.ser.gz"); 
 
 			tf = PTBTokenizer.factory(false, new WordTokenFactory());
 			tp = new TreePrint("wordsAndTags");
