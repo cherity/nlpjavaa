@@ -17,9 +17,7 @@ import java.util.regex.Pattern;
 
 public class FileReader {
 
-	public static int FEATcnt =5001;
 
-	public static String outFile6="FinArff"+"-binary-newterms-";
 	public static String outFile="author";
 	public static String outFile2="binaryRatingSameUsers";
 	public static String outFile3="binaryRatingDiffUsers";
@@ -120,16 +118,24 @@ public class FileReader {
 
 		try{
 
-
-			outFile+=args[0]+".arff";
-			outFile2+=args[0]+".arff";
-			outFile3+=args[0]+".arff";
-			outFile4+=args[0]+".arff";
-			outFile5+=args[0]+".arff";
-			outFile6+=args[0]+".arff";
-
-
+			if(args[0].equalsIgnoreCase("train")){
+				outFile+=args[0]+".arff";
+				outFile2+=args[0]+".arff";
+				outFile3+=args[0]+".arff";
+				outFile4+=args[0]+".arff";
+				outFile5+=args[0]+".arff";
+			}
+			else{
+				outFile+=args[1]+"-"+args[0]+".arff";
+				outFile2+=args[1]+"-"+args[0]+".arff";
+				outFile3+=args[1]+"-"+args[0]+".arff";
+				outFile4+=args[1]+"-"+args[0]+".arff";
+				outFile5+=args[1]+"-"+args[0]+".arff";
+			}
+			int outputCase=Integer.parseInt(args[3]);
+			
 			String INPUTPATH=args[2];
+			
 			FileInputStream fstream = new FileInputStream(args[1]);
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -164,46 +170,41 @@ public class FileReader {
 			DataInputStream featin6 = new DataInputStream(featstream6);
 			BufferedReader featbr6 = new BufferedReader(new InputStreamReader(featin6));
 
-			fstream2 = new FileOutputStream("alllistuni_4"+args[0]+"223.txt");
-			in2 = new DataOutputStream(fstream2);
-			br2 = new BufferedWriter(new OutputStreamWriter(in2));
+			
+			if(outputCase==5 ||(outputCase==6)){
 
+				fstream3 = new FileOutputStream(outFile);
+				in3 = new DataOutputStream(fstream3);
+				br3 = new BufferedWriter(new OutputStreamWriter(in3));
+			}
 
-			fstream3 = new FileOutputStream(outFile);
-			in3 = new DataOutputStream(fstream3);
-			br3 = new BufferedWriter(new OutputStreamWriter(in3));
+			
+			if(outputCase==1||(outputCase==6)){
 
+				fstream_bin = new FileOutputStream(outFile2);
+				in_bin = new DataOutputStream(fstream_bin);
+				br_bin = new BufferedWriter(new OutputStreamWriter(in_bin));
 
-			fstream4 = new FileOutputStream("all_quotes_list_desc_4"+args[0]+"223.txt");
-			in4 = new DataOutputStream(fstream4);
-			br4 = new BufferedWriter(new OutputStreamWriter(in4));
+			}
+			if(outputCase==2||(outputCase==6)){
+				fstream_bin_r = new FileOutputStream(outFile3);
+				in_bin_r = new DataOutputStream(fstream_bin_r);
+				br_bin_r = new BufferedWriter(new OutputStreamWriter(in_bin_r));
 
+			}
 
+			if(outputCase==3||(outputCase==6)){
+				fstream_mul = new FileOutputStream(outFile4);
+				in_mul = new DataOutputStream(fstream_mul);
+				br_mul = new BufferedWriter(new OutputStreamWriter(in_mul));
+			}
 
-			fstream_bin = new FileOutputStream(outFile2);
-			in_bin = new DataOutputStream(fstream_bin);
-			br_bin = new BufferedWriter(new OutputStreamWriter(in_bin));
+			if(outputCase==4||(outputCase==6)){
 
-
-
-			fstream_bin_r = new FileOutputStream(outFile3);
-			in_bin_r = new DataOutputStream(fstream_bin_r);
-			br_bin_r = new BufferedWriter(new OutputStreamWriter(in_bin_r));
-
-
-
-
-			fstream_mul = new FileOutputStream(outFile4);
-			in_mul = new DataOutputStream(fstream_mul);
-			br_mul = new BufferedWriter(new OutputStreamWriter(in_mul));
-
-
-
-
-			fstream_mul_r = new FileOutputStream(outFile5);
-			in_mul_r = new DataOutputStream(fstream_mul_r);
-			br_mul_r = new BufferedWriter(new OutputStreamWriter(in_mul_r));
-
+				fstream_mul_r = new FileOutputStream(outFile5);
+				in_mul_r = new DataOutputStream(fstream_mul_r);
+				br_mul_r = new BufferedWriter(new OutputStreamWriter(in_mul_r));
+			}
 
 			reviewerFeaturesWords=readFeaturesFromFile(reviewerFeaturesWords,featbr1);
 			reviewerFeaturesbigramWords=readFeaturesFromFile(reviewerFeaturesbigramWords,featbr2);
@@ -286,40 +287,48 @@ public class FileReader {
 
 			//XXXXXXXXXXXXXXXXX
 			System.out.println("Creating ARFF files Now.");
-			printDocListForReviewer(cg,args[0]);
 
+			if(outputCase==5||(outputCase==6)){
+				printDocListForReviewer(cg,args[0]);
+			}
+			if(outputCase==1||(outputCase==6)){
+				printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
+			}
 
-			printDocListForClassification(cg,args[0],br_bin,"binary",binFeaturesWords, binFeaturesbigramWords);
-			printDocListForClassification(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
+			if(outputCase==2||(outputCase==6)){
+				printDocListForClassification(cg,args[0],br_bin_r,"binaryr",binFeaturesWords, binFeaturesbigramWords);
+			}
+			if(outputCase==3||(outputCase==6)){
+				printDocListForClassification(cg,args[0],br_mul,"multi",mulFeaturesWords, mulFeaturesbigramWords);
+			}
 
-			printDocListForClassification(cg,args[0],br_mul,"multi",mulFeaturesWords, mulFeaturesbigramWords);
-			printDocListForClassification(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
-
+			if(outputCase==4||(outputCase==6)){
+				printDocListForClassification(cg,args[0],br_mul_r,"multi_and_extrareviewer",mulFeaturesWords, mulFeaturesbigramWords);
+			}
 
 			System.out.println("Created ARFF files.");
-			br2.flush();
-			in2.close();
-			br3.flush();
-			in3.close();
-			br4.flush();
-			in4.close();
-
-
-			br_bin.flush();
-			in_bin.close();
-
-
-			br_bin_r.flush();
-			in_bin_r.close();
-
-
-			br_mul.flush();
-			in_mul.close();
-
-
-			br_mul_r.flush();
-			in_mul_r.close();
-
+			
+			if(outputCase==5||(outputCase==6)){
+				br3.flush();
+				in3.close();
+			}
+			
+			if(outputCase==1||(outputCase==6)){
+				br_bin.flush();
+				in_bin.close();
+			}
+			if(outputCase==2||(outputCase==6)){
+				br_bin_r.flush();
+				in_bin_r.close();
+			}
+			if(outputCase==3||(outputCase==6)){
+				br_mul.flush();
+				in_mul.close();
+			}
+			if(outputCase==4||(outputCase==6)){
+				br_mul_r.flush();
+				in_mul_r.close();
+			}
 
 			in.close();
 			featin1.close();
