@@ -17,7 +17,7 @@ bin/%.class: src/%.java
 	ant compile
 
 clean:
-	ant clean; rm -f outt_*.txt extra*.txt
+	ant clean; rm -f outt_*.txt extra*.txt *.arff
 
 
 
