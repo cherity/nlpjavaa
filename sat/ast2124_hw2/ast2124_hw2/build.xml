@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Classifier" default="install" basedir=".">
+	<property name="src" location="src"/> <!-- java source folder -->
+	<property name="bin" location="bin"/> <!-- intermediate build products -->
+	<property name="jars" location="jars"/>
+	<property name="lib" location="/home/cs4705/stanford-parser-2010-08-20"/><!-- jar files -->
+	<property name="dist" location="dist"/> <!-- build product location -->
+	<property name="compile.debug" value="true"/>
+
+
+	<target name="compile" description="Compile code">
+		<mkdir dir="${bin}"/>
+		<javac deprecation="on" srcdir="${src}" destdir="${bin}"
+			   source="1.6" target="1.6"
+			   includeAntRuntime="no"
+			   debug="${compile.debug}">
+ <classpath>
+       
+        <fileset dir="${lib}">
+          <include name="*.jar"/>
+        </fileset>
+        
+      </classpath>
+		</javac>
+	</target>
+
+    <target name="run" depends="compile" description="Run the tool">
+		<java classname="FileReader" classpath="${bin}" fork="true">
+		</java>
+	</target>
+	
+    <target name="clean" description="Remove build and dist directories">
+        <delete dir="${bin}"/>
+    </target>
+</project>
