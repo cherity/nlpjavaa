@@ -1,6 +1,6 @@
 #!/bin/bash   
-# 2 args
-#  test.txt op 
+# 1 args
+#  test.txt  
 
 #train
 
@@ -77,9 +77,9 @@ java -cp bin/.:/home/cs4705/stanford-parser-2010-08-20/stanford-parser-2010-08-2
 # 5 times - 4 args
 
 
-./run_weka_on_test.sh starRatingSameUsers.model starRatingSameUsersTest.arff out_starRatingSameUsersTest.arff multi "$1" "$2"
-./run_weka_on_test.sh starRatingDiffUsers.model starRatingDiffUsersTest.arff out_starRatingDiffUsersTest.arff multi "$1" "$2"
-./run_weka_on_test.sh binaryRatingSameUsers.model binaryRatingSameUsersTest.arff out_binaryRatingSameUsersTest.arff binary "$1" "$2"
-./run_weka_on_test.sh binaryRatingDiffUsers.model binaryRatingDiffUsersTest.arff out_binaryRatingDiffUsersTest.arff binary "$1" "$2"
-./run_weka_on_test.sh author.model authorTest.arff out_authorTest.arff reviewer "$1" "$2"
+./run_weka_on_test.sh starRatingSameUsers.model starRatingSameUsersTest.arff out_starRatingSameUsersTest.arff multi "$1" classified-starRatingSameUsersTest.txt
+./run_weka_on_test.sh starRatingDiffUsers.model starRatingDiffUsersTest.arff out_starRatingDiffUsersTest.arff multi "$1" classified-starRatingDiffUsersTest.txt
+./run_weka_on_test.sh binaryRatingSameUsers.model binaryRatingSameUsersTest.arff out_binaryRatingSameUsersTest.arff binary "$1" classified-binaryRatingSameUsersTest.txt
+./run_weka_on_test.sh binaryRatingDiffUsers.model binaryRatingDiffUsersTest.arff out_binaryRatingDiffUsersTest.arff binary "$1" classified-binaryRatingDiffUsersTest.txt
+./run_weka_on_test.sh author.model authorTest.arff out_authorTest.arff reviewer "$1" classified-authorTest.txt
 
