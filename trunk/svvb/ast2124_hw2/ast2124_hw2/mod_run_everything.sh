@@ -1,6 +1,6 @@
 #!/bin/bash   
-# 2 args
-#train.txt test.txt 
+# 3 args
+#train.txt test.txt op 
 
 #train
 
@@ -89,9 +89,18 @@ java -cp bin/.:/home/cs4705/stanford-parser-2010-08-20/stanford-parser-2010-08-2
 # 5 times - 4 args
 
 
-./run_weka_on_test.sh starRatingSameUsers.model starRatingSameUsers"$2"-Test.arff out_starRatingSameUsers"$2"-Test.arff multi "$2" classified-starRatingSameUsersTest-"$2"
-./run_weka_on_test.sh starRatingDiffUsers.model starRatingDiffUsers"$2"-Test.arff out_starRatingDiffUsers"$2"-Test.arff multi "$2" classified-starRatingDiffUsersTest-"$2"
-./run_weka_on_test.sh binaryRatingSameUsers.model binaryRatingSameUsers"$2"-Test.arff out_binaryRatingSameUsers"$2"-Test.arff binary "$2" classified-binaryRatingSameUsersTest-"$2"
-./run_weka_on_test.sh binaryRatingDiffUsers.model binaryRatingDiffUsers"$2"-Test.arff out_binaryRatingDiffUsers"$2"-Test.arff binary "$2" classified-binaryRatingDiffUsersTest-"$2"
-./run_weka_on_test.sh author.model author"$2"-Test.arff out_author"$2"-Test.arff reviewer "$2" classified-authorTest-"$2"
+#./run_weka_on_test.sh starRatingSameUsers.model starRatingSameUsers"$2"-Test.arff out_starRatingSameUsers"$2"-Test.arff multi "$2" classified-starRatingSameUsersTest-"$2"
+#./run_weka_on_test.sh starRatingDiffUsers.model starRatingDiffUsers"$2"-Test.arff out_starRatingDiffUsers"$2"-Test.arff multi "$2" classified-starRatingDiffUsersTest-"$2"
+#./run_weka_on_test.sh binaryRatingSameUsers.model binaryRatingSameUsers"$2"-Test.arff out_binaryRatingSameUsers"$2"-Test.arff binary "$2" classified-binaryRatingSameUsersTest-"$2"
+#./run_weka_on_test.sh binaryRatingDiffUsers.model binaryRatingDiffUsers"$2"-Test.arff out_binaryRatingDiffUsers"$2"-Test.arff binary "$2" classified-binaryRatingDiffUsersTest-"$2"
+#./run_weka_on_test.sh author.model author"$2"-Test.arff out_author"$2"-Test.arff reviewer "$2" classified-authorTest-"$2"
+
+
+
+./run_weka_on_test.sh starRatingSameUsers.model starRatingSameUsersTest.arff out_starRatingSameUsersTest.arff multi "$2" "$3"
+./run_weka_on_test.sh starRatingDiffUsers.model starRatingDiffUsersTest.arff out_starRatingDiffUsersTest.arff multi "$2" "$3"
+./run_weka_on_test.sh binaryRatingSameUsers.model binaryRatingSameUsersTest.arff out_binaryRatingSameUsersTest.arff binary "$2" "$3"
+./run_weka_on_test.sh binaryRatingDiffUsers.model binaryRatingDiffUsersTest.arff out_binaryRatingDiffUsersTest.arff binary "$2" "$3"
+./run_weka_on_test.sh author.model authorTest.arff out_authorTest.arff reviewer "$2" "$3"
+
 

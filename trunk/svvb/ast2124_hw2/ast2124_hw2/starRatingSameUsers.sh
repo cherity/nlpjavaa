@@ -1,6 +1,6 @@
 #!/bin/bash   
-# 2args
-# model test.txt 
+# 3 args
+# model test.txt op
 
 
 
@@ -32,5 +32,5 @@ java -cp bin/.:/home/cs4705/stanford-parser-2010-08-20/stanford-parser-2010-08-2
 
 
 
-./run_weka_on_test.sh "$1" starRatingSameUsers"$2"-Test.arff out_starRatingSameUsers"$2"-Test.arff multi "$2" classified-starRatingSameUsersTest-"$2"
+./run_weka_on_test.sh "$1" starRatingSameUsersTest.arff out_starRatingSameUsersTest.arff multi "$2" "$3"
 

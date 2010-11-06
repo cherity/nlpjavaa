@@ -1,6 +1,6 @@
 #!/bin/bash   
-# 2 args
-#model test.txt 
+# 3 args
+#model test.txt op 
 
 
 
@@ -32,5 +32,5 @@ java -cp bin/.:/home/cs4705/stanford-parser-2010-08-20/stanford-parser-2010-08-2
 
 
 
-./run_weka_on_test.sh "$1" binaryRatingDiffUsers"$2"-Test.arff out_binaryRatingDiffUsers"$2"-Test.arff binary "$2" classified-binaryRatingDiffUsersTest-"$2"
+./run_weka_on_test.sh "$1" binaryRatingDiffUsersTest.arff out_binaryRatingDiffUsersTest.arff binary "$2" "$3"
 

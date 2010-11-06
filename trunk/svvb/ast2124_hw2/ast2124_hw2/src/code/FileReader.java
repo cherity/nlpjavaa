@@ -128,20 +128,13 @@ public class FileReader {
 
 		try{
 
-			if(args[0].equalsIgnoreCase("train")){
 				outFile+=args[0]+".arff";
 				outFile2+=args[0]+".arff";
 				outFile3+=args[0]+".arff";
 				outFile4+=args[0]+".arff";
 				outFile5+=args[0]+".arff";
-			}
-			else{
-				outFile+=args[1]+"-"+args[0]+".arff";
-				outFile2+=args[1]+"-"+args[0]+".arff";
-				outFile3+=args[1]+"-"+args[0]+".arff";
-				outFile4+=args[1]+"-"+args[0]+".arff";
-				outFile5+=args[1]+"-"+args[0]+".arff";
-			}
+			
+			
 
 			int outputCase=Integer.parseInt(args[3]);
 

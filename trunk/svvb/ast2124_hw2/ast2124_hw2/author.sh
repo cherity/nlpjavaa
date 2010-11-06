@@ -1,6 +1,6 @@
 #!/bin/bash   
-# 2 args
-#model test.txt 
+# 3 args
+#model test.txt op 
 
 
 
@@ -31,6 +31,5 @@ concat5="${VAR}_$auth$text"
 java -cp bin/.:/home/cs4705/stanford-parser-2010-08-20/stanford-parser-2010-08-20.jar -Xmx2048m code/FileReader "$casee" "$2" data/ 5
 
 
+./run_weka_on_test.sh "$1" authorTest.arff out_authorTest.arff reviewer "$2" "$3"
 
-
-./run_weka_on_test.sh "$1" author"$2"-Test.arff out_author"$2"-Test.arff reviewer "$2" classified-authorTest-"$2"
